@@ -227,71 +227,23 @@ function CaseStudyCard({
 
 /* ── Footer contact item ────────────────────────────────── */
 
-function FooterItem({
-  icon,
-  label,
-  isEmail,
-  isLinkedIn,
-  isBehance,
-}: {
-  icon: React.ReactNode;
-  label: string;
-  isEmail?: boolean;
-  isLinkedIn?: boolean;
-  isBehance?: boolean;
-}) {
-  return (
-    <div
-      className={[
-        "group relative flex gap-[9.011px] items-center cursor-pointer shrink-0",
-        "transition-transform duration-[220ms] ease-out",
-        "hover:-translate-y-0.5",
-        "motion-reduce:transition-none motion-reduce:hover:translate-y-0",
-      ].join(" ")}
-    >
-      {/* Icon */}
-      <div
-        className={[
-          "shrink-0 text-black",
-          "transition-all duration-[220ms] ease-out",
-          isLinkedIn
-            ? "group-hover:scale-110 group-hover:rotate-[8deg] group-hover:text-[#4793d6]"
-            : isBehance
-            ? "group-hover:scale-110 group-hover:opacity-100 group-hover:text-[#4793d6]"
-            : "group-hover:scale-110 group-hover:text-[#4793d6]",
-          isBehance ? "opacity-85" : "",
-          "motion-reduce:transition-none motion-reduce:group-hover:transform-none",
-        ].join(" ")}
-      >
-        {icon}
-      </div>
+const WA_MSG = encodeURIComponent("Hi Yotam, I came across your portfolio and I'd love to chat.");
 
-      {/* Text */}
-      <div className="relative flex flex-col items-start">
-        <p
-          className={[
-            "font-['Inter',sans-serif] font-normal text-[15.769px] leading-[23.653px] whitespace-nowrap",
-            "transition-colors duration-[220ms] ease-out",
-            "text-black group-hover:text-[#4793d6]",
-            "motion-reduce:transition-none",
-          ].join(" ")}
-        >
-          {label}
-        </p>
-        {/* Email underline animation: scaleX from 0 → 1 on hover */}
-        {isEmail && (
-          <span
-            className={[
-              "absolute bottom-0 left-0 h-[1px] w-full bg-[#4793d6] origin-left",
-              "scale-x-0 group-hover:scale-x-100",
-              "transition-transform duration-[220ms] ease-out",
-              "motion-reduce:transition-none",
-            ].join(" ")}
-          />
-        )}
-      </div>
+function FooterItem({
+  icon, href, title,
+}: {
+  icon: React.ReactNode; href?: string; title?: string;
+}) {
+  const inner = (
+    <div
+      className="group flex items-center justify-center cursor-pointer shrink-0 text-black transition-all duration-[220ms] ease-out hover:-translate-y-0.5 hover:text-[#4793d6] hover:scale-110 motion-reduce:transition-none motion-reduce:hover:transform-none"
+      title={title}
+    >
+      {icon}
     </div>
   );
+  if (href) return <a href={href} target="_blank" rel="noopener noreferrer" className="text-black no-underline">{inner}</a>;
+  return inner;
 }
 
 /* ── Main App ───────────────────────────────────────────── */
@@ -532,38 +484,11 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
         {/* ── Footer ─────────────────────────────────────── */}
         <footer className="h-[95.739px] w-full shrink-0 flex items-center px-[45.054px] py-[36.043px] justify-center">
           <div className="flex gap-[36.043px] items-center justify-center flex-1">
-            {/* Phone */}
-            <FooterItem
-              icon={<PhoneIcon />}
-              label="050-5795099"
-            />
-
-            {/* WhatsApp */}
-            <FooterItem
-              icon={<WhatsAppIcon />}
-              label="050-5795099"
-            />
-
-            {/* Email */}
-            <FooterItem
-              icon={<EmailIcon />}
-              label="yotam.eliraz@gmail.com"
-              isEmail
-            />
-
-            {/* LinkedIn */}
-            <FooterItem
-              icon={<LinkedInIcon />}
-              label="linkedin.com/in/yotameliraz"
-              isLinkedIn
-            />
-
-            {/* Behance */}
-            <FooterItem
-              icon={<BehanceIcon />}
-              label="behance"
-              isBehance
-            />
+            <FooterItem icon={<PhoneIcon />} title="050-5795099" />
+            <FooterItem icon={<WhatsAppIcon />} href={`https://web.whatsapp.com/send?phone=972505795099&text=${WA_MSG}`} />
+            <FooterItem icon={<EmailIcon />} href="mailto:yotam.eliraz@gmail.com" />
+            <FooterItem icon={<LinkedInIcon />} href="https://linkedin.com/in/yotameliraz" />
+            <FooterItem icon={<BehanceIcon />} href="https://www.behance.net/yotame" />
           </div>
         </footer>
       </div>

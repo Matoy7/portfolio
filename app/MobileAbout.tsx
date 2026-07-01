@@ -84,14 +84,15 @@ const BehanceIcon = () => (
   </svg>
 );
 
-function ContactRow({ icon, label, href }: { icon: React.ReactNode; label: string; href?: string }) {
+function ContactRow({ icon, href, title }: { icon: React.ReactNode; href?: string; title?: string }) {
   const content = (
-    <div className="flex items-center gap-4 py-3 border-b border-[#e8e4df]">
-      <span className="text-[#0e1d2b]/50 shrink-0">{icon}</span>
-      <span className="font-['Inter',sans-serif] font-normal text-[13px] text-[#0e1d2b]">{label}</span>
+    <div className="flex items-center justify-center p-3 rounded-full hover:bg-[#e8e4df] transition-colors">
+      <span className="text-[#0e1d2b]">{icon}</span>
     </div>
   );
-  return href ? <a href={href} className="block no-underline">{content}</a> : <div>{content}</div>;
+  return href
+    ? <a href={href} title={title} target="_blank" rel="noopener noreferrer" className="text-[#0e1d2b] no-underline">{content}</a>
+    : <div title={title} className="cursor-default">{content}</div>;
 }
 
 /* ── Main Mobile About ───────────────────────────────────── */
@@ -173,12 +174,12 @@ export default function MobileAbout({ onNavigate }: { onNavigate: (page: string)
 
       {/* ── Footer / Contact ──────────────────────────────── */}
       <footer className="px-6 pb-12">
-        <div className="border-t border-[#e8e4df] pt-6">
-          <ContactRow icon={<PhoneIcon />} label="050-5795099" href="tel:0505795099" />
-          <ContactRow icon={<WhatsAppIcon />} label="050-5795099" href="https://wa.me/972505795099" />
-          <ContactRow icon={<EmailIcon />} label="yotam.eliraz@gmail.com" href="mailto:yotam.eliraz@gmail.com" />
-          <ContactRow icon={<LinkedInIcon />} label="linkedin.com/in/yotameliraz" href="https://linkedin.com/in/yotameliraz" />
-          <ContactRow icon={<BehanceIcon />} label="behance.net/yotameliraz" href="https://behance.net/yotameliraz" />
+        <div className="border-t border-[#e8e4df] pt-4 flex justify-center gap-2">
+          <ContactRow icon={<PhoneIcon />} href="tel:0505795099" title="050-5795099" />
+          <ContactRow icon={<WhatsAppIcon />} href="https://wa.me/972505795099?text=Hi%20Yotam%2C%20I%20came%20across%20your%20portfolio%20and%20I'd%20love%20to%20chat." title="WhatsApp" />
+          <ContactRow icon={<EmailIcon />} href="mailto:yotam.eliraz@gmail.com" title="yotam.eliraz@gmail.com" />
+          <ContactRow icon={<LinkedInIcon />} href="https://linkedin.com/in/yotameliraz" title="LinkedIn" />
+          <ContactRow icon={<BehanceIcon />} href="https://www.behance.net/yotame" title="Behance" />
         </div>
       </footer>
 
