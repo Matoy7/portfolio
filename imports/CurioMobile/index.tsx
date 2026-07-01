@@ -2166,18 +2166,7 @@ function Group3() {
 }
 
 function Layer() {
-  return (
-    <div className="absolute contents inset-[6.19%_-7.91%_7.42%_57.33%]" data-name="Layer 1">
-      <div className="absolute h-[419px] left-[1.54px] top-0 w-[188.128px]" data-name="Vector">
-        <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 188.128 419">
-          <path d={svgPaths.p1885ec80} fill="var(--fill-0, #1A1A1A)" id="Vector" />
-        </svg>
-      </div>
-      <Group1 />
-      <Group2 />
-      <Group3 />
-    </div>
-  );
+  return null;
 }
 
 function Group() {
@@ -2249,18 +2238,7 @@ function Group7() {
 }
 
 function Layer1() {
-  return (
-    <div className="absolute contents inset-[-26.89%_-10.99%_-2777.27%_-11.86%]" data-name="Layer 1">
-      <div className="absolute h-[432px] left-[1.54px] top-0 w-[188.128px]" data-name="Vector">
-        <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 188.128 432">
-          <path d={svgPaths.p119afb00} fill="var(--fill-0, #1A1A1A)" id="Vector" />
-        </svg>
-      </div>
-      <Group5 />
-      <Group6 />
-      <Group7 />
-    </div>
-  );
+  return null;
 }
 
 function Group4() {
