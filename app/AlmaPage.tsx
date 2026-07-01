@@ -5,26 +5,67 @@ const DESIGN_WIDTH = 1920;
 
 export default function AlmaPage({ onNavigate }: { onNavigate: (page: string) => void }) {
   const [scale, setScale] = useState(1);
-  const [contentHeight, setContentHeight] = useState(0);
+  const [height, setHeight] = useState(0);
   const contentRef = useRef<HTMLDivElement>(null);
+  const observerRef = useRef<IntersectionObserver | null>(null);
 
   useEffect(() => {
-    const update = () => {
+    const updateScale = () => {
       const s = Math.min(1, window.innerWidth / DESIGN_WIDTH);
       setScale(s);
-      if (contentRef.current) {
-        setContentHeight(contentRef.current.scrollHeight * s);
-      }
     };
-    update();
-    window.addEventListener("resize", update);
-    // Re-measure after content renders
-    const t = setTimeout(update, 500);
-    return () => { window.removeEventListener("resize", update); clearTimeout(t); };
+    updateScale();
+    window.addEventListener("resize", updateScale);
+    return () => window.removeEventListener("resize", updateScale);
   }, []);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const el = contentRef.current;
+      if (!el) return;
+
+      // Measure full unscaled height first, then apply scale
+      const fullHeight = el.scrollHeight;
+      setHeight(fullHeight * scale);
+
+      // Set up fade-in on sections
+      const root = el.querySelector('[data-name="Main content"]');
+      if (!root) return;
+      const sections = Array.from(root.children) as HTMLElement[];
+
+      sections.forEach((section) => {
+        section.style.opacity = "0";
+        section.style.transform = "translateY(50px)";
+        section.style.transition = "opacity 0.8s ease-out, transform 0.8s ease-out";
+        section.style.willChange = "opacity, transform";
+      });
+
+      observerRef.current?.disconnect();
+      observerRef.current = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const s = entry.target as HTMLElement;
+              s.style.opacity = "1";
+              s.style.transform = "translateY(0)";
+              observerRef.current?.unobserve(s);
+            }
+          });
+        },
+        { threshold: 0.06, rootMargin: "0px 0px -30px 0px" }
+      );
+
+      sections.forEach((s) => observerRef.current?.observe(s));
+    }, 500);
+
+    return () => {
+      clearTimeout(timer);
+      observerRef.current?.disconnect();
+    };
+  }, [scale]);
+
   return (
-    <div style={{ width: "100%", overflowX: "hidden", background: "white", position: "relative", height: contentHeight || "auto" }}>
+    <div style={{ width: "100%", overflowX: "hidden", background: "white", position: "relative", height: height || "auto" }}>
       <button
         onClick={() => onNavigate("home")}
         style={{
