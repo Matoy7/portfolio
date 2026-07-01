@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import CaseStudyDesktop from "@/imports/CaseStudyDesktop-1/index";
+import MobileAlmaPage from "./MobileAlmaPage";
 
 const DESIGN_WIDTH = 1920;
 
@@ -88,6 +89,6 @@ export default function AlmaPage({ onNavigate }: { onNavigate: (page: string) =>
     return () => window.removeEventListener("resize", check);
   }, []);
 
-  // Alma has no dedicated mobile design yet — show desktop scaled down on mobile too
+  if (isMobile) return <MobileAlmaPage onNavigate={onNavigate} />;
   return <DesktopAlma onNavigate={onNavigate} />;
 }
