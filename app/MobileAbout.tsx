@@ -120,6 +120,10 @@ export default function MobileAbout({ onNavigate }: { onNavigate: (page: string)
           </button>
         </div>
         <button
+          onClick={() => {
+            onNavigate("home");
+            setTimeout(() => document.getElementById("contact-mobile")?.scrollIntoView({ behavior: "smooth" }), 100);
+          }}
           className="bg-[#0e1d2b] text-white font-semibold text-[14px] rounded-full px-5 h-[44px] border-none cursor-pointer transition-all duration-200 active:scale-95"
         >
           Let's Talk

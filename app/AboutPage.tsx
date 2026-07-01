@@ -212,6 +212,10 @@ export default function AboutPage({ onNavigate }: { onNavigate: (page: string) =
 
             {/* Let's Talk button */}
             <button
+              onClick={() => {
+                onNavigate("home");
+                setTimeout(() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" }), 100);
+              }}
               className={[
                 "bg-[#1a1a2e] rounded-[27486380px] px-[27.032px] py-[13.516px] cursor-pointer border-none",
                 "transition-all duration-[220ms] ease-out",
