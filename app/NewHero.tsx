@@ -152,12 +152,12 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
           {/* Hero text parallax */}
           <div style={{ position:"absolute", inset:0, transform:`translate(${mx*-1.5}px,${my*-1.5}px)`, transition:"transform 700ms ease-out", pointerEvents:"none" }}>
             <p className="[word-break:break-word] absolute font-['Inter',sans-serif] font-semibold leading-[0] left-[65px] not-italic text-[0px] text-black top-[210px] tracking-[-2.16px] w-[665px]" dir="auto">
-              <span className="font-['Inter',sans-serif] font-bold leading-[72px] text-[72px]">{`Product `}</span>
-              <span className="font-['Inter',sans-serif] font-bold leading-[72px] text-[#1c72bd] text-[72px]">Designer</span>
-              <span className="font-['Inter',sans-serif] font-bold leading-[72px] text-[72px]">{` with an engineering background`}</span>
+              <span className="font-['Inter',sans-serif] font-bold leading-[80px] text-[72px]">{`Product `}</span>
+              <span className="font-['Inter',sans-serif] font-bold leading-[80px] text-[#2c79bd] text-[72px]">Designer</span>
+              <span className="font-['Inter',sans-serif] font-bold leading-[80px] text-[72px]">{` with an engineering background`}</span>
             </p>
-            <p className="[word-break:break-word] absolute font-['Inter',sans-serif] font-normal leading-[normal] left-[66px] not-italic text-[22px] text-black top-[449px] w-[544px]">
-              Product Designer with 12 years of engineering experience, creating intuitive digital products through user centered design.
+            <p className="[word-break:break-word] absolute font-['Inter',sans-serif] font-normal left-[66px] not-italic text-[20px] top-[473px] w-[460px]" style={{ lineHeight: "1.5", color: "#3a3a3a" }}>
+              Turning complex technology into intuitive digital experiences — where engineering precision meets human-centred design.
             </p>
           </div>
 
@@ -167,7 +167,7 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
           <p className="[word-break:break-word] absolute font-['Patrick Hand',cursive] leading-[normal] left-[100px] not-italic text-[#1e1e1d] text-[26px] top-[681px] whitespace-nowrap pointer-events-none">{"Let's Talk"}</p>
 
           {/* Arrows */}
-          <div className="absolute flex inset-[71.86%_84.31%_18.29%_9.73%] items-center justify-center pointer-events-none" style={{ containerType:"size" }}>
+          <div className="absolute flex inset-[71.86%_84.31%_18.29%_9.73%] items-center justify-center pointer-events-none" style={{ containerType:"size", transform:"scale(0.7)", transformOrigin:"center" }}>
             <div className="flex-none h-[hypot(80.6777cqw,12.9756cqh)] rotate-[-79.3deg] w-[hypot(19.3223cqw,-87.0244cqh)]">
               <div className="relative size-full">
                 <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 89.3729 70.5175">
@@ -176,7 +176,7 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
               </div>
             </div>
           </div>
-          <div className="absolute flex inset-[70.82%_5.2%_13.4%_82.73%] items-center justify-center pointer-events-none" style={{ containerType:"size" }}>
+          <div className="absolute flex inset-[70.82%_5.2%_13.4%_82.73%] items-center justify-center pointer-events-none" style={{ containerType:"size", transform:"scale(0.7)", transformOrigin:"center" }}>
             <div className="-scale-x-100 flex-none h-[hypot(70.4432cqw,-59.682cqh)] rotate-[-128.24deg] w-[hypot(29.5568cqw,40.318cqh)]">
               <div className="relative size-full">
                 <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 82.9668 155.836">
@@ -185,7 +185,7 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
               </div>
             </div>
           </div>
-          <div className="absolute flex inset-[26.08%_7.54%_65.69%_84.57%] items-center justify-center pointer-events-none" style={{ containerType:"size" }}>
+          <div className="absolute flex inset-[26.08%_7.54%_65.69%_84.57%] items-center justify-center pointer-events-none" style={{ containerType:"size", transform:"scale(0.7)", transformOrigin:"center" }}>
             <div className="flex-none h-[hypot(-16.1149cqw,-56.6644cqh)] rotate-[159.03deg] w-[hypot(-83.8851cqw,43.3356cqh)]">
               <div className="relative size-full">
                 <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 102.029 51.136">
@@ -201,7 +201,7 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
           </div>
 
           {/* INTERACTIVE: Framed picture → About */}
-          <div style={{ position:"absolute", left:820, top:172, width:390, height:254, transform:`translate(${mx*-4}px,${my*-4}px)`, transition:"transform 700ms ease-out", zIndex:20 }}>
+          <div style={{ position:"absolute", left:820, top:172, width:409, height:267, transform:`translate(${mx*-4}px,${my*-4}px)`, transition:"transform 700ms ease-out", zIndex:20 }}>
             <div
               style={{ width:"100%", height:"100%", cursor:"pointer", opacity:dim("frame"), transition:"opacity 250ms ease, transform 250ms ease, filter 250ms ease, box-shadow 250ms ease", transform:`scale(${frameHover ? 1.03*cs("frame") : cs("frame")})`, filter:frameHover?"saturate(1.08) contrast(1.05)":"saturate(1) contrast(1)", boxShadow:frameHover?"0px 12px 36px rgba(0,0,0,0.22), 0px 4px 8px rgba(0,0,0,0.15)":"0px 4px 4px 0px rgba(0,0,0,0.25)", position:"relative" }}
               onMouseEnter={() => { setHovered("frame"); triggerFrameSwing(); }}
@@ -220,7 +220,7 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
           </div>
 
           {/* INTERACTIVE: Laptop → Case Studies / My Work */}
-          <div style={{ position:"absolute", left:466, top:489, width:786.048, height:535, transform:`translate(${mx*-8}px,${my*-8}px)`, transition:"transform 700ms ease-out", zIndex:15 }}>
+          <div style={{ position:"absolute", left:466, top:489, width:723, height:492, transform:`translate(${mx*-8}px,${my*-8}px)`, transition:"transform 700ms ease-out", zIndex:15 }}>
             <div
               style={{ width:"100%", height:"100%", cursor:"pointer", opacity:dim("laptop"), transition:"opacity 250ms ease, transform 250ms ease, filter 250ms ease", transform:`scale(${laptopHover ? 1.015*cs("laptop") : cs("laptop")}) translateY(${laptopHover?-3:0}px)`, filter:laptopHover?"brightness(1.03)":"brightness(1)", boxShadow:"none", position:"relative", overflow:"hidden", background:"transparent" }}
               onMouseEnter={() => setHovered("laptop")}
@@ -240,7 +240,7 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
           </div>
 
           {/* INTERACTIVE: Coffee mug → Let's Talk / Contact */}
-          <div style={{ position:"absolute", left:236, top:756, width:205, height:263, transform:`translate(${mx*-12}px,${my*-12}px)`, transition:"transform 700ms ease-out", zIndex:20 }}>
+          <div style={{ position:"absolute", left:276, top:756, width:205, height:263, transform:`translate(${mx*-12}px,${my*-12}px)`, transition:"transform 700ms ease-out", zIndex:20 }}>
             <div style={{ position:"absolute", top:-48, left:28, width:110, height:55, pointerEvents:"none" }}>
               {[{left:18,w:9,h:15,delay:"0s"},{left:40,w:7,h:12,delay:"0.9s"},{left:60,w:9,h:14,delay:"1.8s"}].map((s,i) => (
                 <div key={i} className="steam" style={{ position:"absolute", bottom:0, left:s.left, width:s.w, height:s.h, borderRadius:"50% 50% 50% 50% / 60% 60% 40% 40%", background:"rgba(255,255,255,0.6)", filter:"blur(2.5px)", animationDelay:s.delay, opacity:mugHover?1:0.45, transition:"opacity 250ms ease" }} />
