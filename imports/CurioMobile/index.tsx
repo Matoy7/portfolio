@@ -466,7 +466,7 @@ function FeatureCard2() {
 
 function Trust1() {
   return (
-    <div className="content-start flex flex-wrap gap-[0px_32px] items-start relative shrink-0" data-name="Trust">
+    <div className="content-start flex flex-wrap gap-[0px_32px] items-start justify-center relative shrink-0" data-name="Trust">
       <FeatureCard />
       <FeatureCard1 />
       <FeatureCard2 />
@@ -515,8 +515,8 @@ function Paragraph4() {
 
 function Paragraph5() {
   return (
-    <div className="h-[56px] relative shrink-0 w-full" data-name="Paragraph">
-      <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start overflow-clip relative rounded-[inherit] size-full">
+    <div className="relative shrink-0 w-full pb-2" data-name="Paragraph">
+      <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start relative size-full">
         <p className="[word-break:break-word] font-['Quicksand',sans-serif] font-bold leading-[56px] relative shrink-0 text-[#0d1b3d] text-[56px] tracking-[-2px] whitespace-nowrap">Quicksand</p>
       </div>
     </div>
@@ -2190,7 +2190,7 @@ function Group() {
 
 function BuildingTrust() {
   return (
-    <div className="absolute bg-[#d2e1ff] content-stretch flex flex-col h-[485px] items-start left-0 px-[24px] py-[48px] top-0 w-[375px]" data-name="BuildingTrust">
+    <div className="relative bg-[#d2e1ff] content-stretch flex flex-col h-[485px] items-start px-[24px] py-[48px] w-full" data-name="BuildingTrust">
       <Frame43 />
       <Frame34 />
       <Group />
@@ -2890,7 +2890,7 @@ function Frame33() {
 
 function BuildingTrust1() {
   return (
-    <div className="absolute bg-[#d2e1ff] content-stretch flex flex-col h-[545px] items-start left-0 px-[24px] py-[48px] top-[485px] w-[375px]" data-name="BuildingTrust">
+    <div className="relative bg-[#d2e1ff] content-stretch flex flex-col h-[545px] items-start px-[24px] py-[48px] w-full" data-name="BuildingTrust">
       <Frame44 />
       <Frame33 />
     </div>
@@ -2899,7 +2899,7 @@ function BuildingTrust1() {
 
 function Frame50() {
   return (
-    <div className="h-[1030px] relative shrink-0 w-[375px]">
+    <div className="relative shrink-0 w-full flex flex-col">
       <img alt="" className="absolute bg-clip-padding border-0 border-[transparent] border-solid inset-0 max-w-none object-cover pointer-events-none size-full" src={imgFrame145} />
       <div className="bg-clip-padding border-0 border-[transparent] border-solid relative size-full">
         <BuildingTrust />
