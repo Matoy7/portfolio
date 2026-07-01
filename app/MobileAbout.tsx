@@ -124,17 +124,14 @@ export default function MobileAbout({ onNavigate }: { onNavigate: (page: string)
           <div
             className="-rotate-2"
             style={{
-              background: "white",
-              padding: "12px 12px 40px 12px",
               boxShadow: "0 8px 32px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06)",
-              borderRadius: "4px",
               width: "260px",
             }}
           >
             <img
               src={imgPhoto}
               alt="Yotam Eliraz"
-              style={{ width: "100%", height: "220px", objectFit: "cover", display: "block", borderRadius: "2px" }}
+              style={{ width: "100%", height: "auto", display: "block" }}
             />
           </div>
         </div>

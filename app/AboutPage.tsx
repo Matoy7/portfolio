@@ -213,7 +213,7 @@ export default function AboutPage({ onNavigate }: { onNavigate: (page: string) =
                   <img
                     alt="Yotam Eliraz"
                     src={imgPhoto}
-                    className="absolute inset-0 w-full h-full object-contain pointer-events-none"
+                    className="absolute inset-0 w-full h-full object-cover pointer-events-none"
                   />
                 </div>
               </div>

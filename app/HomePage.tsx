@@ -343,6 +343,7 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
 
             {/* Let's Talk button */}
             <button
+              onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
               className={[
                 "bg-[#1a1a2e] rounded-[27486380px] px-[27.032px] py-[13.516px] cursor-pointer border-none",
                 "transition-all duration-[220ms] ease-out",
@@ -478,6 +479,91 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
               hasGradient
               onClick={() => onNavigate("curio")}
             />
+          </div>
+        </section>
+
+        {/* ── Contact Section ─────────────────────────────── */}
+        <section
+          id="contact"
+          className="w-full flex flex-col items-center justify-center px-[45.054px] py-[90px] gap-[36px]"
+          style={{ borderTop: "1px solid #e8e4df" }}
+        >
+          {/* Headline */}
+          <div className="flex flex-col items-center gap-[14px] text-center max-w-[580px]">
+            <p className="font-['Inter',sans-serif] font-bold text-[48px] leading-[1.1] text-[#0e1d2b]">
+              Let's Talk
+            </p>
+            <p className="font-['Inter',sans-serif] font-normal text-[18px] leading-[1.6] text-[#0e1d2b]/60">
+              Looking for a Product Designer? I'd love to hear about your project, product or opportunity.
+            </p>
+          </div>
+
+          {/* Primary action buttons */}
+          <div className="flex gap-[18px] items-center flex-wrap justify-center">
+            {/* Message Me */}
+            <a
+              href="mailto:yotam.eliraz@gmail.com"
+              className={[
+                "flex items-center justify-center gap-[10px]",
+                "bg-[#0e1d2b] text-white no-underline",
+                "font-['Inter',sans-serif] font-semibold text-[17px] whitespace-nowrap",
+                "rounded-[14px] px-[40px] h-[56px]",
+                "transition-all duration-[220ms] ease-out",
+                "hover:scale-[1.02] hover:shadow-[0_8px_28px_rgba(14,29,43,0.18)] hover:brightness-[1.08]",
+                "active:scale-[0.98]",
+              ].join(" ")}
+            >
+              <svg width="18" height="18" fill="none" viewBox="0 0 20.2742 20.2742">
+                <path d={svgPaths.p2c708800} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
+                <path d={svgPaths.p4272980} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
+              </svg>
+              Message Me
+            </a>
+
+            {/* Call Me */}
+            <a
+              href="tel:0505795099"
+              className={[
+                "flex items-center justify-center gap-[10px]",
+                "bg-white text-[#0e1d2b] no-underline",
+                "font-['Inter',sans-serif] font-semibold text-[17px] whitespace-nowrap",
+                "border border-[#0e1d2b]/20 rounded-[14px] px-[40px] h-[56px]",
+                "transition-all duration-[220ms] ease-out",
+                "hover:scale-[1.02] hover:shadow-[0_8px_28px_rgba(14,29,43,0.10)] hover:border-[#0e1d2b]/40",
+                "active:scale-[0.98]",
+              ].join(" ")}
+            >
+              <svg width="18" height="18" fill="none" viewBox="0 0 20.2742 20.2742">
+                <path d={svgPaths.p2be78800} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
+              </svg>
+              Call Me
+            </a>
+          </div>
+
+          {/* Secondary links */}
+          <div className="flex gap-[32px] items-center flex-wrap justify-center">
+            <a
+              href="mailto:yotam.eliraz@gmail.com"
+              className="font-['Inter',sans-serif] font-normal text-[14px] text-[#0e1d2b]/50 no-underline transition-colors duration-[220ms] hover:text-[#4793d6]"
+            >
+              yotam.eliraz@gmail.com
+            </a>
+            <a
+              href="https://www.linkedin.com/in/yotam-eliraz-977b0450/"
+              target="_blank"
+              rel="noopener"
+              className="font-['Inter',sans-serif] font-normal text-[14px] text-[#0e1d2b]/50 no-underline transition-colors duration-[220ms] hover:text-[#4793d6]"
+            >
+              LinkedIn
+            </a>
+            <a
+              href="https://www.behance.net/yotame"
+              target="_blank"
+              rel="noopener"
+              className="font-['Inter',sans-serif] font-normal text-[14px] text-[#0e1d2b]/50 no-underline transition-colors duration-[220ms] hover:text-[#4793d6]"
+            >
+              Behance
+            </a>
           </div>
         </section>
 

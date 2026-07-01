@@ -108,7 +108,7 @@ export default function MobileHome({ onNavigate }: { onNavigate: (page: string) 
         <p className="font-bold text-[20px] text-[#0e1d2b]">Yotam Eliraz</p>
         <div className="flex items-center gap-3">
           <button
-            onClick={() => onNavigate("about")}
+            onClick={() => document.getElementById("contact-mobile")?.scrollIntoView({ behavior: "smooth" })}
             className="bg-[#0e1d2b] text-white font-semibold text-[14px] rounded-full px-5 h-[44px] border-none cursor-pointer whitespace-nowrap transition-all duration-200 active:scale-95"
           >
             Let's Talk
@@ -199,7 +199,55 @@ export default function MobileHome({ onNavigate }: { onNavigate: (page: string) 
         </div>
       </section>
 
-      {/* ── Footer / Contact ──────────────────────────────── */}
+      {/* ── Contact Section ──────────────────────────────── */}
+      <section
+        id="contact-mobile"
+        className="px-6 py-14 flex flex-col items-center gap-8"
+        style={{ borderTop: "1px solid #e8e4df" }}
+      >
+        {/* Headline */}
+        <div className="flex flex-col items-center gap-3 text-center">
+          <p className="font-['Inter',sans-serif] font-bold text-[32px] leading-[1.15] text-[#0e1d2b]">
+            Let's Talk
+          </p>
+          <p className="font-['Inter',sans-serif] font-normal text-[14px] leading-[1.6] text-[#0e1d2b]/60">
+            Looking for a Product Designer? I'd love to hear about your project, product or opportunity.
+          </p>
+        </div>
+
+        {/* Primary buttons */}
+        <div className="flex flex-col gap-3 w-full">
+          <a
+            href="mailto:yotam.eliraz@gmail.com"
+            className="flex items-center justify-center gap-3 bg-[#0e1d2b] text-white no-underline font-['Inter',sans-serif] font-semibold text-[15px] rounded-[14px] h-[52px] w-full transition-all duration-[220ms] ease-out active:scale-[0.98]"
+          >
+            <EmailIcon />
+            Message Me
+          </a>
+          <a
+            href="tel:0505795099"
+            className="flex items-center justify-center gap-3 bg-white text-[#0e1d2b] no-underline font-['Inter',sans-serif] font-semibold text-[15px] rounded-[14px] h-[52px] w-full border border-[#0e1d2b]/20 transition-all duration-[220ms] ease-out active:scale-[0.98]"
+          >
+            <PhoneIcon />
+            Call Me
+          </a>
+        </div>
+
+        {/* Secondary links */}
+        <div className="flex gap-6 items-center flex-wrap justify-center">
+          <a href="mailto:yotam.eliraz@gmail.com" className="font-['Inter',sans-serif] text-[13px] text-[#0e1d2b]/50 no-underline">
+            Email
+          </a>
+          <a href="https://www.linkedin.com/in/yotam-eliraz-977b0450/" target="_blank" rel="noopener" className="font-['Inter',sans-serif] text-[13px] text-[#0e1d2b]/50 no-underline">
+            LinkedIn
+          </a>
+          <a href="https://www.behance.net/yotame" target="_blank" rel="noopener" className="font-['Inter',sans-serif] text-[13px] text-[#0e1d2b]/50 no-underline">
+            Behance
+          </a>
+        </div>
+      </section>
+
+      {/* ── Footer / icons ───────────────────────────────── */}
       <footer className="px-6 pb-12">
         <div className="border-t border-[#e8e4df] pt-4 flex justify-center gap-2">
           <ContactRow icon={<PhoneIcon />} href="tel:0505795099" title="050-5795099" />
