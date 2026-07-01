@@ -329,6 +329,7 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
           <div className="flex gap-[27.032px] items-center shrink-0">
             {/* Case Studies link */}
             <button
+              onClick={() => document.getElementById("case-studies")?.scrollIntoView({ behavior: "smooth" })}
               className={[
                 "cursor-pointer bg-transparent border-none p-0",
                 "transition-all duration-[240ms] ease-out",
@@ -432,7 +433,7 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
         </section>
 
         {/* ── Case Studies Section ────────────────────────── */}
-        <section className="relative w-[1014px] flex flex-col items-center justify-center pb-[22.428px] pt-[5.607px] px-[28.034px] self-center">
+        <section id="case-studies" className="relative w-[1014px] flex flex-col items-center justify-center pb-[22.428px] pt-[5.607px] px-[28.034px] self-center">
           {/* Section heading */}
           <div className="w-full flex items-center mb-0">
             <p className="font-['Inter',sans-serif] font-medium text-[18px] leading-[33.641px] text-black whitespace-nowrap">

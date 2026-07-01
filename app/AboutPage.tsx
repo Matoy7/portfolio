@@ -194,6 +194,10 @@ export default function AboutPage({ onNavigate }: { onNavigate: (page: string) =
           <div className="flex gap-[27.032px] items-center shrink-0">
             {/* Case Studies link */}
             <button
+              onClick={() => {
+                onNavigate("home");
+                setTimeout(() => document.getElementById("case-studies")?.scrollIntoView({ behavior: "smooth" }), 100);
+              }}
               className={[
                 "cursor-pointer bg-transparent border-none p-0",
                 "transition-all duration-[240ms] ease-out",
