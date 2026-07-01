@@ -92,7 +92,7 @@ function ContactRow({ icon, href, title }: { icon: React.ReactNode; href?: strin
     </div>
   );
   return href
-    ? <a href={href} title={title} target="_blank" rel="noopener noreferrer" className="text-[#0e1d2b] no-underline">{content}</a>
+    ? <a href={href} title={title} target="_blank" rel="noopener" className="text-[#0e1d2b] no-underline">{content}</a>
     : <div title={title} className="cursor-default">{content}</div>;
 }
 
@@ -205,7 +205,7 @@ export default function MobileHome({ onNavigate }: { onNavigate: (page: string) 
           <ContactRow icon={<PhoneIcon />} href="tel:0505795099" title="050-5795099" />
           <ContactRow icon={<WhatsAppIcon />} href="https://wa.me/972505795099?text=Hi%20Yotam%2C%20I%20came%20across%20your%20portfolio%20and%20I'd%20love%20to%20chat." title="WhatsApp" />
           <ContactRow icon={<EmailIcon />} href="mailto:yotam.eliraz@gmail.com" title="yotam.eliraz@gmail.com" />
-          <ContactRow icon={<LinkedInIcon />} href="https://linkedin.com/in/yotameliraz" title="LinkedIn" />
+          <ContactRow icon={<LinkedInIcon />} href="https://www.linkedin.com/in/yotam-eliraz-977b0450/" title="LinkedIn" />
           <ContactRow icon={<BehanceIcon />} href="https://www.behance.net/yotame" title="Behance" />
         </div>
       </footer>

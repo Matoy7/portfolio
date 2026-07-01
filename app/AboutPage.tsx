@@ -86,7 +86,7 @@ function FooterItem({ icon, href, title }: { icon: React.ReactNode; href?: strin
       {icon}
     </div>
   );
-  if (href) return <a href={href} target="_blank" rel="noopener noreferrer" className="text-black no-underline">{inner}</a>;
+  if (href) return <a href={href} target="_blank" rel="noopener" className="text-black no-underline">{inner}</a>;
   return inner;
 }
 
@@ -269,7 +269,7 @@ export default function AboutPage({ onNavigate }: { onNavigate: (page: string) =
             <FooterItem icon={<PhoneIcon />} title="050-5795099" />
             <FooterItem icon={<WhatsAppIcon />} href={`https://web.whatsapp.com/send?phone=972505795099&text=${WA_MSG}`} />
             <FooterItem icon={<EmailIcon />} href="mailto:yotam.eliraz@gmail.com" />
-            <FooterItem icon={<LinkedInIcon />} href="https://linkedin.com/in/yotameliraz" />
+            <FooterItem icon={<LinkedInIcon />} href="https://www.linkedin.com/in/yotam-eliraz-977b0450/" />
             <FooterItem icon={<BehanceIcon />} href="https://www.behance.net/yotame" />
           </div>
         </footer>
