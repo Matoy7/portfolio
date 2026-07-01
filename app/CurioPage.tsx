@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import MainContent from "@/imports/MainContent/index";
+import MobileCurioPage from "./MobileCurioPage";
 
 const DESIGN_WIDTH = 1920;
 
@@ -88,5 +89,6 @@ export default function CurioPage({ onNavigate }: { onNavigate: (page: string) =
     return () => window.removeEventListener("resize", check);
   }, []);
 
+  if (isMobile) return <MobileCurioPage onNavigate={onNavigate} />;
   return <DesktopCurio onNavigate={onNavigate} />;
 }
