@@ -101,8 +101,28 @@ export default function MobileAbout({ onNavigate }: { onNavigate: (page: string)
     <div className="bg-[#f5f1ec] min-h-screen w-full font-['Inter',sans-serif]">
 
       {/* ── Nav ──────────────────────────────────────────── */}
-      <nav className="flex items-center justify-between px-6 pt-14 pb-6">
-        <div className="flex items-center gap-3">
+      <nav className="flex flex-col px-6 pt-14 pb-4 gap-3">
+        {/* Row 1: Logo + Let's Talk */}
+        <div className="flex items-center justify-between">
+          <button
+            onClick={() => onNavigate("home")}
+            className="font-bold text-[20px] text-[#0e1d2b] bg-transparent border-none cursor-pointer p-0"
+          >
+            Yotam Eliraz
+          </button>
+          <button
+            onClick={() => {
+              onNavigate("home");
+              setTimeout(() => document.getElementById("contact-mobile")?.scrollIntoView({ behavior: "smooth" }), 100);
+            }}
+            className="bg-[#0e1d2b] text-white font-semibold text-[14px] rounded-full px-5 h-[44px] border-none cursor-pointer transition-all duration-200 active:scale-95"
+          >
+            Let's Talk
+          </button>
+        </div>
+
+        {/* Row 2: Back home button */}
+        <div>
           <button
             onClick={() => onNavigate("home")}
             className="flex items-center gap-2 bg-white border border-[#e8e4df] rounded-full px-4 py-2 cursor-pointer shadow-[0_2px_8px_rgba(0,0,0,0.06)] transition-all duration-[200ms] active:scale-95"
@@ -110,24 +130,9 @@ export default function MobileAbout({ onNavigate }: { onNavigate: (page: string)
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
               <path d="M10 12.5L5.5 8L10 3.5" stroke="#0e1d2b" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-            <span className="font-['Inter',sans-serif] font-medium text-[13px] text-[#0e1d2b] whitespace-nowrap">Home</span>
-          </button>
-          <button
-            onClick={() => onNavigate("home")}
-            className="font-bold text-[18px] text-[#0e1d2b] bg-transparent border-none cursor-pointer p-0"
-          >
-            Yotam Eliraz
+            <span className="font-['Inter',sans-serif] font-medium text-[13px] text-[#0e1d2b] whitespace-nowrap">← Back home</span>
           </button>
         </div>
-        <button
-          onClick={() => {
-            onNavigate("home");
-            setTimeout(() => document.getElementById("contact-mobile")?.scrollIntoView({ behavior: "smooth" }), 100);
-          }}
-          className="bg-[#0e1d2b] text-white font-semibold text-[14px] rounded-full px-5 h-[44px] border-none cursor-pointer transition-all duration-200 active:scale-95"
-        >
-          Let's Talk
-        </button>
       </nav>
 
       {/* ── Photo + Intro ─────────────────────────────────── */}
