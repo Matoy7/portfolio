@@ -2,7 +2,7 @@ import CaseStudyDesktop from "@/imports/CaseStudyDesktop-1/index";
 
 export default function AlmaPage({ onNavigate }: { onNavigate: (page: string) => void }) {
   return (
-    <div className="relative w-full bg-white overflow-x-clip flex justify-center">
+    <div className="relative w-full bg-white overflow-x-auto flex justify-center">
       {/* Floating back-to-home control */}
       <button
         onClick={() => onNavigate("home")}

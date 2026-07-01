@@ -2,7 +2,7 @@ import Desktop1 from "@/imports/Desktop-1/index";
 
 export default function PulsePage({ onNavigate }: { onNavigate: (page: string) => void }) {
   return (
-    <div className="relative w-full bg-white overflow-x-clip flex justify-center">
+    <div className="relative w-full bg-white overflow-x-auto flex justify-center">
       {/* Floating back-to-home button */}
       <button
         onClick={() => onNavigate("home")}
