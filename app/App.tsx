@@ -1,0 +1,43 @@
+import { useEffect, useState } from "react";
+import HomePage from "./HomePage";
+import AboutPage from "./AboutPage";
+import AlmaPage from "./AlmaPage";
+import PulsePage from "./PulsePage";
+import CurioPage from "./CurioPage";
+
+function routeFromHash(): string {
+  const h = window.location.hash.replace(/^#\/?/, "");
+  if (h === "about") return "about";
+  if (h === "alma")  return "alma";
+  if (h === "pulse") return "pulse";
+  if (h === "curio") return "curio";
+  return "home";
+}
+
+export default function App() {
+  const [route, setRoute] = useState<string>(routeFromHash());
+
+  // Keep state in sync with the URL hash (handles browser back/forward).
+  useEffect(() => {
+    const onHashChange = () => setRoute(routeFromHash());
+    window.addEventListener("hashchange", onHashChange);
+    return () => window.removeEventListener("hashchange", onHashChange);
+  }, []);
+
+  // Scroll to top whenever the page changes.
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [route]);
+
+  const navigate = (page: string) => {
+    const target = page === "about" ? "about" : page === "alma" ? "alma" : page === "pulse" ? "pulse" : page === "curio" ? "curio" : "home";
+    window.location.hash = target;
+    setRoute(target);
+  };
+
+  if (route === "about") return <AboutPage onNavigate={navigate} />;
+  if (route === "alma")  return <AlmaPage  onNavigate={navigate} />;
+  if (route === "pulse") return <PulsePage onNavigate={navigate} />;
+  if (route === "curio") return <CurioPage onNavigate={navigate} />;
+  return <HomePage onNavigate={navigate} />;
+}
