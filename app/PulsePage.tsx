@@ -7,60 +7,52 @@ export default function PulsePage({ onNavigate }: { onNavigate: (page: string) =
   const [scale, setScale] = useState(1);
   const [height, setHeight] = useState(0);
   const contentRef = useRef<HTMLDivElement>(null);
-  const observerRef = useRef<IntersectionObserver | null>(null);
 
   useEffect(() => {
-    const updateScale = () => {
-      const s = Math.min(1, window.innerWidth / DESIGN_WIDTH);
-      setScale(s);
-    };
+    const updateScale = () => setScale(Math.min(1, window.innerWidth / DESIGN_WIDTH));
     updateScale();
     window.addEventListener("resize", updateScale);
     return () => window.removeEventListener("resize", updateScale);
   }, []);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      const el = contentRef.current;
-      if (!el) return;
+    const t = setTimeout(() => {
+      if (contentRef.current) setHeight(contentRef.current.scrollHeight * scale);
+    }, 600);
+    return () => clearTimeout(t);
+  }, [scale]);
 
-      setHeight(el.scrollHeight * scale);
-
-      // Pulse uses data-name="Main content" inside data-name="Desktop"
-      const root = el.querySelector('[data-name="Main content"]') || el.querySelector('[data-name="Desktop"] > div');
+  useEffect(() => {
+    const t = setTimeout(() => {
+      const root = contentRef.current?.querySelector('[data-name="Main content"]')
+        ?? contentRef.current?.querySelector('[data-name="Desktop"] > div');
       if (!root) return;
       const sections = Array.from(root.children) as HTMLElement[];
 
-      sections.forEach((section) => {
-        section.style.opacity = "0";
-        section.style.transform = "translateY(50px)";
-        section.style.transition = "opacity 0.8s ease-out, transform 0.8s ease-out";
-        section.style.willChange = "opacity, transform";
+      sections.forEach((el, i) => {
+        if (i === 0) return;
+        el.style.opacity = "0";
+        el.style.transform = "translateY(40px)";
+        el.style.transition = "opacity 0.75s ease-out, transform 0.75s ease-out";
       });
 
-      observerRef.current?.disconnect();
-      observerRef.current = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              const s = entry.target as HTMLElement;
-              s.style.opacity = "1";
-              s.style.transform = "translateY(0)";
-              observerRef.current?.unobserve(s);
-            }
-          });
-        },
-        { threshold: 0.06, rootMargin: "0px 0px -30px 0px" }
-      );
+      const check = () => {
+        const trigger = window.innerHeight * 0.92;
+        sections.forEach((el) => {
+          if (el.style.opacity === "1" || el.style.opacity === "") return;
+          if (el.getBoundingClientRect().top < trigger) {
+            el.style.opacity = "1";
+            el.style.transform = "translateY(0)";
+          }
+        });
+      };
 
-      sections.forEach((s) => observerRef.current?.observe(s));
-    }, 500);
-
-    return () => {
-      clearTimeout(timer);
-      observerRef.current?.disconnect();
-    };
-  }, [scale]);
+      check();
+      window.addEventListener("scroll", check, { passive: true });
+      return () => window.removeEventListener("scroll", check);
+    }, 600);
+    return () => clearTimeout(t);
+  }, []);
 
   return (
     <div style={{ width: "100%", overflowX: "hidden", background: "white", position: "relative", height: height || "auto" }}>
@@ -85,14 +77,7 @@ export default function PulsePage({ onNavigate }: { onNavigate: (page: string) =
 
       <div
         ref={contentRef}
-        style={{
-          width: DESIGN_WIDTH,
-          transformOrigin: "top left",
-          transform: `scale(${scale})`,
-          position: "absolute",
-          top: 0,
-          left: 0,
-        }}
+        style={{ width: DESIGN_WIDTH, transformOrigin: "top left", transform: `scale(${scale})`, position: "absolute", top: 0, left: 0 }}
       >
         <Desktop1 />
       </div>
