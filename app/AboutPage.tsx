@@ -161,14 +161,35 @@ export default function AboutPage({ onNavigate }: { onNavigate: (page: string) =
 
         {/* ── Navigation ───────────────────────────────────── */}
         <nav className="h-[108.129px] w-full shrink-0 flex items-center px-[45.054px] py-[27.032px] justify-between">
-          <button
-            onClick={() => onNavigate("home")}
-            className="bg-transparent border-none p-0 cursor-pointer transition-opacity duration-[200ms] hover:opacity-70"
-          >
-            <p className="font-['Inter',sans-serif] font-bold text-[27.032px] leading-[40.548px] text-black whitespace-nowrap">
-              Yotam Eliraz
-            </p>
-          </button>
+          <div className="flex items-center gap-[18px]">
+            {/* Back arrow */}
+            <button
+              onClick={() => onNavigate("home")}
+              className={[
+                "flex items-center gap-[8px]",
+                "bg-white border border-[#e8e4df] rounded-full px-[18px] py-[10px]",
+                "cursor-pointer shadow-[0_2px_10px_rgba(0,0,0,0.06)]",
+                "transition-all duration-[200ms] ease-out",
+                "hover:shadow-[0_4px_16px_rgba(0,0,0,0.10)] hover:-translate-x-0.5",
+              ].join(" ")}
+            >
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M10 12.5L5.5 8L10 3.5" stroke="#0e1d2b" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              <span className="font-['Inter',sans-serif] font-medium text-[14px] text-[#0e1d2b] whitespace-nowrap">
+                Back home
+              </span>
+            </button>
+
+            <button
+              onClick={() => onNavigate("home")}
+              className="bg-transparent border-none p-0 cursor-pointer transition-opacity duration-[200ms] hover:opacity-70"
+            >
+              <p className="font-['Inter',sans-serif] font-bold text-[27.032px] leading-[40.548px] text-black whitespace-nowrap">
+                Yotam Eliraz
+              </p>
+            </button>
+          </div>
 
           <div className="flex gap-[27.032px] items-center shrink-0">
             {/* Case Studies link */}
