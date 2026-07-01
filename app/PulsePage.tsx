@@ -1,9 +1,18 @@
 import { useEffect, useState, useRef } from "react";
 import Desktop1 from "@/imports/Desktop-1/index";
+import MobilePulsePage from "./MobilePulsePage";
 
 const DESIGN_WIDTH = 1920;
 
 export default function PulsePage({ onNavigate }: { onNavigate: (page: string) => void }) {
+  const [isMobile, setIsMobile] = useState(() => typeof window !== "undefined" && window.innerWidth < 768);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  if (isMobile) return <MobilePulsePage onNavigate={onNavigate} />;
   const [scale, setScale] = useState(1);
   const [height, setHeight] = useState(0);
   const contentRef = useRef<HTMLDivElement>(null);
