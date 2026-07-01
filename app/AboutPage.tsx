@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+import MobileAbout from "./MobileAbout";
 import svgPaths from "@/imports/Desktop/svg-z1fzy8b8m6";
 import imgPhoto from "@/imports/Desktop/dec8dd9c600d936d8dc18f074452f6e0171a0b9b.png";
 
@@ -191,6 +193,16 @@ function SectionBlock({
 /* ─── Main App ───────────────────────────────────────────── */
 
 export default function AboutPage({ onNavigate }: { onNavigate: (page: string) => void }) {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  if (isMobile) return <MobileAbout onNavigate={onNavigate} />;
+
   return (
     <div className="bg-[#f5f1ec] min-h-screen w-full flex flex-col items-center">
       <div className="w-full max-w-[1294px] flex flex-col">

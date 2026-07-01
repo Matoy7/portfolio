@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import MobileHome from "./MobileHome";
 import svgPaths from "@/imports/Frame11/svg-o0xaf2ie0h";
 import imgHero from "@/imports/Frame11/376b4ff69c76e4c7548a2d9016b80b772b65dbee.png";
 import imgHeroDashboard from "@/imports/Frame11/hero_dashboard.png";
@@ -347,6 +348,16 @@ function HeroSlideshow() {
 }
 
 export default function HomePage({ onNavigate }: { onNavigate: (page: string) => void }) {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  if (isMobile) return <MobileHome onNavigate={onNavigate} />;
+
   return (
     <div className="bg-[#f5f1ec] min-h-screen w-full flex flex-col items-center">
       <div className="w-[1145.25px] flex flex-col">
