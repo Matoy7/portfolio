@@ -312,62 +312,17 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
 
   return (
     <div className="bg-[#f5f1ec] min-h-screen w-full flex flex-col items-center">
-      <div className="w-[1145.25px] flex flex-col">
 
-        {/* ── Navigation ─────────────────────────────────── */}
-        <nav className="h-[108.129px] w-full shrink-0 flex items-center px-[45.054px] py-[27.032px] justify-between">
-          {/* Logo / Name */}
-          <button
-            onClick={() => onNavigate("home")}
-            className="shrink-0 bg-transparent border-none p-0 cursor-pointer transition-opacity duration-[200ms] hover:opacity-70"
-          >
-            <p className="font-['Inter',sans-serif] font-bold text-[27.032px] leading-[40.548px] text-black whitespace-nowrap">
-              Yotam Eliraz
-            </p>
-          </button>
-
-          {/* Nav actions */}
-          <div className="flex gap-[27.032px] items-center shrink-0">
-            {/* Case Studies link */}
-            <button
-              onClick={() => document.getElementById("case-studies")?.scrollIntoView({ behavior: "smooth" })}
-              className={[
-                "cursor-pointer bg-transparent border-none p-0",
-                "transition-all duration-[240ms] ease-out",
-                "opacity-100 hover:opacity-80 hover:translate-y-px hover:text-[#0a121c]",
-                "motion-reduce:transition-none motion-reduce:hover:transform-none",
-              ].join(" ")}
-            >
-              <p className="font-['Inter',sans-serif] font-medium text-[20.274px] leading-[27.032px] text-black whitespace-nowrap">
-                Case Studies
-              </p>
-            </button>
-
-            {/* Let's Talk button */}
-            <button
-              onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-              className={[
-                "bg-[#1a1a2e] rounded-[27486380px] px-[27.032px] py-[13.516px] cursor-pointer border-none",
-                "transition-all duration-[220ms] ease-out",
-                "hover:brightness-[1.08] hover:scale-[1.02]",
-                "hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)]",
-                "active:scale-[0.98]",
-                "motion-reduce:transition-none motion-reduce:hover:transform-none",
-              ].join(" ")}
-            >
-              <p className="font-['Inter',sans-serif] font-semibold text-[20.274px] leading-[27.032px] text-white whitespace-nowrap">
-                {"Let's Talk"}
-              </p>
-            </button>
-          </div>
-        </nav>
-
-        {/* ── Hero Section ───────────────────────────────── */}
+      {/* ── New Full-width Hero (outside constrained container) ─── */}
+      <div className="w-full">
         <NewHero
           onNavigateAbout={() => onNavigate("about")}
           onScrollContact={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
           onScrollWork={() => document.getElementById("case-studies")?.scrollIntoView({ behavior: "smooth" })}
         />
+      </div>
+
+      <div className="w-[1145.25px] flex flex-col">
 
         {/* ── Case Studies Section ────────────────────────── */}
         <section id="case-studies" className="relative w-[1014px] flex flex-col items-center justify-center pb-[22.428px] pt-[5.607px] px-[28.034px] self-center">

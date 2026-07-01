@@ -31,7 +31,7 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
   const idleRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   useEffect(() => {
-    const onResize = () => setViewportScale(Math.min(1, window.innerWidth / CANVAS_W));
+    const onResize = () => setViewportScale(window.innerWidth / CANVAS_W);
     onResize();
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
