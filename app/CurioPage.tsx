@@ -3,16 +3,16 @@ import MainContent from "@/imports/MainContent/index";
 
 const DESIGN_WIDTH = 1920;
 
-export default function CurioPage({ onNavigate }: { onNavigate: (page: string) => void }) {
+function DesktopCurio({ onNavigate }: { onNavigate: (page: string) => void }) {
   const [scale, setScale] = useState(1);
   const [height, setHeight] = useState(0);
   const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const updateScale = () => setScale(Math.min(1, window.innerWidth / DESIGN_WIDTH));
-    updateScale();
-    window.addEventListener("resize", updateScale);
-    return () => window.removeEventListener("resize", updateScale);
+    const update = () => setScale(Math.min(1, window.innerWidth / DESIGN_WIDTH));
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
   }, []);
 
   useEffect(() => {
@@ -27,14 +27,12 @@ export default function CurioPage({ onNavigate }: { onNavigate: (page: string) =
       const root = contentRef.current?.querySelector('[data-name="Main content"]');
       if (!root) return;
       const sections = Array.from(root.children) as HTMLElement[];
-
       sections.forEach((el, i) => {
         if (i === 0) return;
         el.style.opacity = "0";
         el.style.transform = "translateY(40px)";
         el.style.transition = "opacity 0.75s ease-out, transform 0.75s ease-out";
       });
-
       const check = () => {
         const trigger = window.innerHeight * 0.92;
         sections.forEach((el) => {
@@ -45,7 +43,6 @@ export default function CurioPage({ onNavigate }: { onNavigate: (page: string) =
           }
         });
       };
-
       check();
       window.addEventListener("scroll", check, { passive: true });
       return () => window.removeEventListener("scroll", check);
@@ -73,7 +70,6 @@ export default function CurioPage({ onNavigate }: { onNavigate: (page: string) =
         </svg>
         Back home
       </button>
-
       <div
         ref={contentRef}
         style={{ width: DESIGN_WIDTH, transformOrigin: "top left", transform: `scale(${scale})`, position: "absolute", top: 0, left: 0 }}
@@ -82,4 +78,15 @@ export default function CurioPage({ onNavigate }: { onNavigate: (page: string) =
       </div>
     </div>
   );
+}
+
+export default function CurioPage({ onNavigate }: { onNavigate: (page: string) => void }) {
+  const [isMobile, setIsMobile] = useState(() => typeof window !== "undefined" && window.innerWidth < 768);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  return <DesktopCurio onNavigate={onNavigate} />;
 }

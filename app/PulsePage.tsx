@@ -4,24 +4,17 @@ import MobilePulsePage from "./MobilePulsePage";
 
 const DESIGN_WIDTH = 1920;
 
-export default function PulsePage({ onNavigate }: { onNavigate: (page: string) => void }) {
-  const [isMobile, setIsMobile] = useState(() => typeof window !== "undefined" && window.innerWidth < 768);
-  useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 768);
-    window.addEventListener("resize", check);
-    return () => window.removeEventListener("resize", check);
-  }, []);
-
-  if (isMobile) return <MobilePulsePage onNavigate={onNavigate} />;
+// Desktop-only inner component — all hooks run unconditionally
+function DesktopPulse({ onNavigate }: { onNavigate: (page: string) => void }) {
   const [scale, setScale] = useState(1);
   const [height, setHeight] = useState(0);
   const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const updateScale = () => setScale(Math.min(1, window.innerWidth / DESIGN_WIDTH));
-    updateScale();
-    window.addEventListener("resize", updateScale);
-    return () => window.removeEventListener("resize", updateScale);
+    const update = () => setScale(Math.min(1, window.innerWidth / DESIGN_WIDTH));
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
   }, []);
 
   useEffect(() => {
@@ -37,14 +30,12 @@ export default function PulsePage({ onNavigate }: { onNavigate: (page: string) =
         ?? contentRef.current?.querySelector('[data-name="Desktop"] > div');
       if (!root) return;
       const sections = Array.from(root.children) as HTMLElement[];
-
       sections.forEach((el, i) => {
         if (i === 0) return;
         el.style.opacity = "0";
         el.style.transform = "translateY(40px)";
         el.style.transition = "opacity 0.75s ease-out, transform 0.75s ease-out";
       });
-
       const check = () => {
         const trigger = window.innerHeight * 0.92;
         sections.forEach((el) => {
@@ -55,7 +46,6 @@ export default function PulsePage({ onNavigate }: { onNavigate: (page: string) =
           }
         });
       };
-
       check();
       window.addEventListener("scroll", check, { passive: true });
       return () => window.removeEventListener("scroll", check);
@@ -92,4 +82,17 @@ export default function PulsePage({ onNavigate }: { onNavigate: (page: string) =
       </div>
     </div>
   );
+}
+
+export default function PulsePage({ onNavigate }: { onNavigate: (page: string) => void }) {
+  const [isMobile, setIsMobile] = useState(() => typeof window !== "undefined" && window.innerWidth < 768);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  if (isMobile) return <MobilePulsePage onNavigate={onNavigate} />;
+  return <DesktopPulse onNavigate={onNavigate} />;
 }

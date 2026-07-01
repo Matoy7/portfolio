@@ -3,19 +3,18 @@ import CaseStudyDesktop from "@/imports/CaseStudyDesktop-1/index";
 
 const DESIGN_WIDTH = 1920;
 
-export default function AlmaPage({ onNavigate }: { onNavigate: (page: string) => void }) {
+function DesktopAlma({ onNavigate }: { onNavigate: (page: string) => void }) {
   const [scale, setScale] = useState(1);
   const [height, setHeight] = useState(0);
   const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const updateScale = () => setScale(Math.min(1, window.innerWidth / DESIGN_WIDTH));
-    updateScale();
-    window.addEventListener("resize", updateScale);
-    return () => window.removeEventListener("resize", updateScale);
+    const update = () => setScale(Math.min(1, window.innerWidth / DESIGN_WIDTH));
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
   }, []);
 
-  // Measure height after scale is known
   useEffect(() => {
     const t = setTimeout(() => {
       if (contentRef.current) setHeight(contentRef.current.scrollHeight * scale);
@@ -23,34 +22,28 @@ export default function AlmaPage({ onNavigate }: { onNavigate: (page: string) =>
     return () => clearTimeout(t);
   }, [scale]);
 
-  // Scroll fade-in using getBoundingClientRect (works with CSS transforms)
   useEffect(() => {
     const t = setTimeout(() => {
       const root = contentRef.current?.querySelector('[data-name="Main content"]');
       if (!root) return;
       const sections = Array.from(root.children) as HTMLElement[];
-
-      // Start all hidden except the first (already visible on load)
       sections.forEach((el, i) => {
-        if (i === 0) return; // hero always visible
+        if (i === 0) return;
         el.style.opacity = "0";
         el.style.transform = "translateY(40px)";
         el.style.transition = "opacity 0.75s ease-out, transform 0.75s ease-out";
       });
-
       const check = () => {
         const trigger = window.innerHeight * 0.92;
         sections.forEach((el) => {
           if (el.style.opacity === "1" || el.style.opacity === "") return;
-          const rect = el.getBoundingClientRect();
-          if (rect.top < trigger) {
+          if (el.getBoundingClientRect().top < trigger) {
             el.style.opacity = "1";
             el.style.transform = "translateY(0)";
           }
         });
       };
-
-      check(); // run once on load
+      check();
       window.addEventListener("scroll", check, { passive: true });
       return () => window.removeEventListener("scroll", check);
     }, 600);
@@ -77,7 +70,6 @@ export default function AlmaPage({ onNavigate }: { onNavigate: (page: string) =>
         </svg>
         Back home
       </button>
-
       <div
         ref={contentRef}
         style={{ width: DESIGN_WIDTH, transformOrigin: "top left", transform: `scale(${scale})`, position: "absolute", top: 0, left: 0 }}
@@ -86,4 +78,16 @@ export default function AlmaPage({ onNavigate }: { onNavigate: (page: string) =>
       </div>
     </div>
   );
+}
+
+export default function AlmaPage({ onNavigate }: { onNavigate: (page: string) => void }) {
+  const [isMobile, setIsMobile] = useState(() => typeof window !== "undefined" && window.innerWidth < 768);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  // Alma has no dedicated mobile design yet — show desktop scaled down on mobile too
+  return <DesktopAlma onNavigate={onNavigate} />;
 }
