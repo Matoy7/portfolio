@@ -222,7 +222,7 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
           {/* INTERACTIVE: Laptop → Case Studies / My Work */}
           <div style={{ position:"absolute", left:466, top:489, width:786.048, height:535, transform:`translate(${mx*-8}px,${my*-8}px)`, transition:"transform 700ms ease-out", zIndex:15 }}>
             <div
-              style={{ width:"100%", height:"100%", cursor:"pointer", opacity:dim("laptop"), transition:"opacity 250ms ease, transform 250ms ease, box-shadow 250ms ease, filter 250ms ease", transform:`scale(${laptopHover ? 1.015*cs("laptop") : cs("laptop")}) translateY(${laptopHover?-3:0}px)`, filter:laptopHover?"brightness(1.03)":"brightness(1)", boxShadow:laptopHover?"0px 24px 48px rgba(0,0,0,0.22), 0px 8px 16px rgba(0,0,0,0.12)":"none", position:"relative", overflow:"hidden", background:"transparent" }}
+              style={{ width:"100%", height:"100%", cursor:"pointer", opacity:dim("laptop"), transition:"opacity 250ms ease, transform 250ms ease, filter 250ms ease", transform:`scale(${laptopHover ? 1.015*cs("laptop") : cs("laptop")}) translateY(${laptopHover?-3:0}px)`, filter:laptopHover?"brightness(1.03)":"brightness(1)", boxShadow:"none", position:"relative", overflow:"hidden", background:"transparent" }}
               onMouseEnter={() => setHovered("laptop")}
               onMouseLeave={() => setHovered(null)}
               onClick={() => handleClick("laptop")}
@@ -247,7 +247,7 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
               ))}
             </div>
             <div
-              style={{ width:"100%", height:"100%", cursor:"pointer", opacity:dim("mug"), transition:"opacity 250ms ease, transform 250ms ease, box-shadow 250ms ease, filter 250ms ease", transform:`translateY(${mugHover?-4:0}px) scale(${cs("mug")})`, filter:mugHover?"brightness(1.04)":"brightness(1)", boxShadow:mugHover?"0px 16px 40px rgba(0,0,0,0.22), 0px 6px 12px rgba(0,0,0,0.14)":"none", position:"relative" }}
+              style={{ width:"100%", height:"100%", cursor:"pointer", opacity:dim("mug"), transition:"opacity 250ms ease, transform 250ms ease, filter 250ms ease", transform:`translateY(${mugHover?-4:0}px) scale(${cs("mug")})`, filter:mugHover?"brightness(1.04)":"brightness(1)", boxShadow:"none", position:"relative" }}
               onMouseEnter={() => setHovered("mug")}
               onMouseLeave={() => setHovered(null)}
               onClick={() => handleClick("mug")}
