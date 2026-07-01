@@ -9,9 +9,9 @@ const EducationIcon = () => (
   </svg>
 );
 const WorkIcon = () => (
-  <svg width="22" height="22" fill="none" viewBox="0 0 31.0176 31.0176">
-    <path d={svgPaths.p3d9e1000} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.07" />
-    <path d={svgPaths.p3aaefe00} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.07" />
+  <svg width="22" height="22" fill="none" viewBox="0 0 24.8141 24.8141">
+    <path d={svgPaths.p2bde4380} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.07" />
+    <path d={svgPaths.p1d032e00} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.07" />
   </svg>
 );
 
