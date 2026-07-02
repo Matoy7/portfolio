@@ -442,245 +442,230 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
           </div>
         </section>
 
-      {/* ── About Me + Let's Talk — Side by Side ─────────────── */}
+      {/* ── About Me + Let's Talk — Figma design ─────────────── */}
       <section
         id="about-contact"
-        className="relative w-full overflow-hidden"
-        style={{
-          padding: "100px 24px",
-          background: "#0e0b1e",
-        }}
+        className="relative w-full"
+        style={{ background: "#0d0b1e" }}
       >
-        {/* Glow blob — left (Let's Talk) */}
         <div
-          className="absolute pointer-events-none"
-          style={{
-            top: "50%",
-            left: "20%",
-            transform: "translate(-50%, -50%)",
-            width: "560px",
-            height: "480px",
-            background:
-              "radial-gradient(ellipse at center, rgba(90, 60, 200, 0.32) 0%, rgba(60, 30, 160, 0.16) 45%, transparent 70%)",
-            filter: "blur(40px)",
-          }}
-        />
-        {/* Glow blob — right (About Me) */}
-        <div
-          className="absolute pointer-events-none"
-          style={{
-            top: "15%",
-            right: "8%",
-            width: "460px",
-            height: "460px",
-            background:
-              "radial-gradient(ellipse at center, rgba(90, 60, 200, 0.22) 0%, transparent 70%)",
-            filter: "blur(48px)",
-          }}
-        />
-
-        <div
-          className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-20 w-full mx-auto"
-          style={{ maxWidth: 1400 }}
+          className="mx-auto w-full flex flex-col items-center justify-center"
+          style={{ maxWidth: 1280, padding: "64px 80px" }}
         >
-          {/* ── LEFT: Let's Talk ─────────────────────────── */}
-          <div id="contact" className="flex flex-col items-center text-center" style={{ flex: "1 1 0", maxWidth: 560 }}>
-            {/* Eyebrow */}
-            <span
-              className="mb-5 tracking-widest uppercase font-semibold"
-              style={{ color: "#7c6ef0", letterSpacing: "0.18em", fontSize: "14px" }}
-            >
-              Let's Connect
-            </span>
-
-            {/* Heading */}
-            <h1
-              className="font-extrabold text-white leading-none mb-5"
-              style={{ fontSize: "clamp(2.75rem, 5.5vw, 4rem)", letterSpacing: "-0.02em" }}
-            >
-              Let's Talk
-            </h1>
-
-            {/* Subtitle */}
-            <p
-              className="mb-8 leading-relaxed"
-              style={{ color: "#a09ec4", fontFamily: "'Inter', sans-serif", fontSize: "20px", lineHeight: 1.7, maxWidth: 440 }}
-            >
-              Looking for a Product Designer? I'd love to hear about your project, product or opportunity.
-            </p>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-wrap items-center justify-center gap-4 mb-10">
-              {/* Message Me — Primary (matches View Case Studies) */}
-              <a
-                href="mailto:yotam.eliraz@gmail.com"
-                className="cursor-pointer hero-btn-primary cta-btn-primary flex items-center justify-center gap-[10px] no-underline"
-                style={{ background: "#7c3aed", borderRadius: 999, padding: "16px 32px" }}
+          {/* ── About Me row ── */}
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-16 w-full" style={{ paddingBottom: 80 }}>
+            {/* Polaroid photo with glow */}
+            <div className="relative flex-shrink-0" style={{ width: 220, height: 242 }}>
+              {/* Glow blob */}
+              <div
+                className="absolute pointer-events-none"
+                style={{
+                  width: 400,
+                  height: 422,
+                  left: -90,
+                  top: -90,
+                  filter: "blur(40px)",
+                  background:
+                    "radial-gradient(ellipse at 50% 50%, rgba(120,50,255,0.4) 0%, rgba(90,30,200,0.15) 55%, rgba(0,0,0,0) 75%)",
+                }}
+              />
+              {/* Polaroid frame */}
+              <div
+                className="absolute flex items-center justify-center"
+                style={{ left: 2, top: -7, width: 216, height: 255 }}
               >
-                <svg width="18" height="18" fill="none" viewBox="0 0 20.2742 20.2742">
-                  <path d={svgPaths.p2c708800} stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
-                  <path d={svgPaths.p4272980} stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
-                </svg>
-                <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, fontSize: 18, color: "#fff", whiteSpace: "nowrap" }}>
-                  Message Me
-                </span>
-              </a>
-
-              {/* Call Me — Secondary (matches About Me) */}
-              <a
-                href="tel:0505795099"
-                className="cursor-pointer hero-btn-ghost cta-btn-ghost flex items-center justify-center gap-[10px] no-underline"
-                style={{ background: "rgba(124,58,237,0.06)", borderRadius: 999, padding: "17px 33px", border: "1.103px solid rgba(124,58,237,0.45)" }}
-              >
-                <svg width="18" height="18" fill="none" viewBox="0 0 20.2742 20.2742">
-                  <path d={svgPaths.p2be78800} stroke="#c4b8ff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
-                </svg>
-                <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, fontSize: 18, color: "#c4b8ff", whiteSpace: "nowrap" }}>
-                  Call Me
-                </span>
-              </a>
+                <div
+                  className="bg-white"
+                  style={{
+                    transform: "rotate(-4deg)",
+                    borderRadius: 4,
+                    width: 200,
+                    padding: "10px 10px 32px 10px",
+                    boxShadow: "0px 12px 24px rgba(0,0,0,0.55)",
+                  }}
+                >
+                  <img
+                    src={aboutPhoto}
+                    alt="Yotam in Venice"
+                    className="w-full object-cover"
+                    style={{ height: 200, objectPosition: "35% center" }}
+                  />
+                </div>
+              </div>
             </div>
 
-            {/* Social Links */}
-            <div className="flex flex-wrap items-center justify-center gap-8">
-              {/* Email */}
-              <a
-                href="mailto:yotam.eliraz@gmail.com"
-                className="flex items-center gap-3 transition-opacity hover:opacity-70"
-                style={{ color: "#a09ec4", fontSize: "0.9375rem" }}
+            {/* Text column */}
+            <div className="flex flex-col items-start" style={{ width: 564, gap: 20 }}>
+              <span
+                style={{
+                  fontFamily: "'Inter', sans-serif",
+                  fontWeight: 600,
+                  fontSize: 12,
+                  lineHeight: "16px",
+                  letterSpacing: "2.16px",
+                  textTransform: "uppercase",
+                  color: "#8b8fa8",
+                }}
               >
-                <span
-                  className="flex items-center justify-center rounded"
-                  style={{ width: 34, height: 34, background: "rgba(255,255,255,0.07)", borderRadius: 8 }}
-                >
-                  <svg width="16" height="16" fill="none" viewBox="0 0 20.2742 20.2742">
-                    <path d={svgPaths.p2c708800} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
-                    <path d={svgPaths.p4272980} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
-                  </svg>
-                </span>
-                yotam.eliraz@gmail.com
-              </a>
+                About Me
+              </span>
+              <h2
+                style={{
+                  fontFamily: "'Inter', sans-serif",
+                  fontWeight: 700,
+                  fontSize: 44.8,
+                  lineHeight: "49.28px",
+                  color: "#ffffff",
+                  margin: 0,
+                }}
+              >
+                Hi, I'm Yotam
+              </h2>
+              <div className="flex flex-col" style={{ gap: 16, width: "100%" }}>
+                <p style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: 14.4, lineHeight: "24.48px", color: "#b0b5cc", margin: 0 }}>
+                  I design digital experiences that are intuitive, meaningful, and user-centered. With a background in computer science and over a decade in software development, I bring a unique blend of technical understanding and creative thinking to every project.
+                </p>
+                <p style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: 14.4, lineHeight: "24.48px", color: "#b0b5cc", margin: 0 }}>
+                  I care deeply about solving real problems and creating products that make people's lives easier and better.
+                </p>
+                <p style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: 14.4, lineHeight: "24.48px", color: "#b0b5cc", margin: 0 }}>
+                  When I'm not designing, you'll find me traveling, exploring new places, and getting inspired by the world around me.
+                </p>
+              </div>
+            </div>
+          </div>
 
-              {/* LinkedIn */}
-              <a
-                href="https://www.linkedin.com/in/yotam-eliraz-977b0450/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 transition-opacity hover:opacity-70"
-                style={{ color: "#a09ec4", fontSize: "0.9375rem" }}
-              >
-                <span
-                  className="flex items-center justify-center rounded"
-                  style={{ width: 34, height: 34, background: "rgba(255,255,255,0.07)", borderRadius: 8 }}
-                >
-                  <svg width="16" height="16" fill="none" viewBox="0 0 20.2742 20.2742">
-                    <path d={svgPaths.p31aa100} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
-                    <path d={svgPaths.p271a7a80} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
-                    <path d={svgPaths.p1833ee00} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
-                  </svg>
-                </span>
-                LinkedIn
-              </a>
+          {/* ── Divider ── */}
+          <div className="w-full" style={{ borderTop: "0.889px solid rgba(255,255,255,0.07)", paddingBottom: 32 }} />
 
-              {/* Behance */}
-              <a
-                href="https://www.behance.net/yotame"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 transition-opacity hover:opacity-70"
-                style={{ color: "#a09ec4", fontSize: "0.9375rem" }}
+          {/* ── Let's Talk row ── */}
+          <div id="contact" className="flex flex-col lg:flex-row items-center w-full" style={{ gap: 24 }}>
+            {/* Eyebrow + heading */}
+            <div className="flex flex-col flex-shrink-0" style={{ width: 162, gap: 4 }}>
+              <span
+                style={{
+                  fontFamily: "'Inter', sans-serif",
+                  fontWeight: 600,
+                  fontSize: 12,
+                  lineHeight: "16px",
+                  letterSpacing: "2.16px",
+                  textTransform: "uppercase",
+                  color: "#8b8fa8",
+                }}
               >
-                <span
-                  className="flex items-center justify-center rounded"
-                  style={{ width: 34, height: 34, background: "rgba(255,255,255,0.07)", borderRadius: 8 }}
+                Let's Connect
+              </span>
+              <h2
+                style={{
+                  fontFamily: "'Inter', sans-serif",
+                  fontWeight: 700,
+                  fontSize: 35.2,
+                  lineHeight: "38.72px",
+                  color: "#ffffff",
+                  margin: 0,
+                  whiteSpace: "nowrap",
+                }}
+              >
+                Let's Talk
+              </h2>
+            </div>
+
+            {/* Subtitle + social links */}
+            <div className="flex-1 flex flex-col items-start" style={{ gap: 12, padding: "0 32px", minWidth: 0 }}>
+              <p style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: 13.12, lineHeight: "20.99px", color: "#b0b5cc", margin: 0 }}>
+                Looking for a Product Designer? I'd love to hear about your project, product or opportunity.
+              </p>
+              <div className="flex flex-wrap items-center" style={{ gap: 24 }}>
+                <a
+                  href="mailto:yotam.eliraz@gmail.com"
+                  className="flex items-center hover:opacity-70 transition-opacity"
+                  style={{ gap: 8, textDecoration: "none" }}
                 >
-                  <svg width="16" height="16" fill="none" viewBox="0 0 20.2742 20.2742">
-                    <g clipPath="url(#behance-clip-contact2)">
-                      <path d={svgPaths.p12b43500} fill="currentColor" />
+                  <svg width="14" height="14" fill="none" viewBox="0 0 20.2742 20.2742">
+                    <path d={svgPaths.p2c708800} stroke="#6B70A8" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
+                    <path d={svgPaths.p4272980} stroke="#6B70A8" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
+                  </svg>
+                  <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: 12, lineHeight: "16px", color: "#b0b5cc", whiteSpace: "nowrap" }}>
+                    yotam.eliraz@gmail.com
+                  </span>
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/yotam-eliraz-977b0450/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center hover:opacity-70 transition-opacity"
+                  style={{ gap: 8, textDecoration: "none" }}
+                >
+                  <svg width="14" height="14" fill="none" viewBox="0 0 20.2742 20.2742">
+                    <path d={svgPaths.p31aa100} stroke="#6B70A8" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
+                    <path d={svgPaths.p271a7a80} stroke="#6B70A8" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
+                    <path d={svgPaths.p1833ee00} stroke="#6B70A8" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
+                  </svg>
+                  <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: 12, lineHeight: "16px", color: "#b0b5cc", whiteSpace: "nowrap" }}>
+                    LinkedIn
+                  </span>
+                </a>
+                <a
+                  href="https://www.behance.net/yotame"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center hover:opacity-70 transition-opacity"
+                  style={{ gap: 8, textDecoration: "none" }}
+                >
+                  <svg width="14" height="14" fill="none" viewBox="0 0 20.2742 20.2742">
+                    <g clipPath="url(#behance-clip-figma)">
+                      <path d={svgPaths.p12b43500} fill="#6B70A8" />
                     </g>
                     <defs>
-                      <clipPath id="behance-clip-contact2">
+                      <clipPath id="behance-clip-figma">
                         <rect fill="white" height="20.2742" width="20.2742" />
                       </clipPath>
                     </defs>
                   </svg>
-                </span>
-                Behance
-              </a>
-            </div>
-          </div>
-
-          {/* ── Divider ──────────────────────────────────── */}
-          <div
-            className="hidden lg:block flex-shrink-0"
-            style={{ width: "1px", alignSelf: "stretch", background: "rgba(255,255,255,0.08)" }}
-          />
-
-          {/* ── RIGHT: About Me ──────────────────────────── */}
-          <div className="flex flex-col md:flex-row items-center gap-10" style={{ flex: "1 1 0", maxWidth: 620 }}>
-            {/* Polaroid photo */}
-            <div
-              className="flex-shrink-0"
-              style={{
-                transform: "rotate(-4deg)",
-                filter: "drop-shadow(0 8px 32px rgba(0,0,0,0.55))",
-              }}
-            >
-              <div
-                className="bg-white p-2.5 pb-8"
-                style={{ borderRadius: 4, width: 200 }}
-              >
-                <img
-                  src={aboutPhoto}
-                  alt="Yotam in Venice"
-                  className="w-full object-cover"
-                  style={{ height: 230, borderRadius: 2, objectPosition: "35% center" }}
-                />
+                  <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: 12, lineHeight: "16px", color: "#b0b5cc", whiteSpace: "nowrap" }}>
+                    Behance
+                  </span>
+                </a>
               </div>
             </div>
 
-            {/* Text content */}
-            <div className="flex flex-col text-center md:text-left" style={{ maxWidth: 380 }}>
-              {/* Eyebrow */}
-              <span
-                className="mb-4 tracking-widest uppercase font-semibold"
-                style={{ color: "#7c6ef0", letterSpacing: "0.18em", fontSize: "14px" }}
+            {/* Buttons */}
+            <div className="flex flex-shrink-0 items-center" style={{ gap: 12 }}>
+              <a
+                href="mailto:yotam.eliraz@gmail.com"
+                className="cursor-pointer cta-btn-primary flex items-center no-underline"
+                style={{
+                  gap: 8,
+                  borderRadius: 999,
+                  padding: "10px 20px",
+                  backgroundImage: "linear-gradient(164.973deg, rgb(79,99,231) 0%, rgb(107,70,230) 100%)",
+                }}
               >
-                About Me
-              </span>
-
-              {/* Heading */}
-              <h1
-                className="font-extrabold text-white leading-tight mb-5"
-                style={{ fontSize: "clamp(2rem, 4vw, 2.75rem)", letterSpacing: "-0.02em" }}
+                <svg width="15" height="15" fill="none" viewBox="0 0 20.2742 20.2742">
+                  <path d={svgPaths.p2c708800} stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
+                  <path d={svgPaths.p4272980} stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
+                </svg>
+                <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 500, fontSize: 14, lineHeight: "20px", color: "#fff", whiteSpace: "nowrap" }}>
+                  Message Me
+                </span>
+              </a>
+              <a
+                href="tel:0505795099"
+                className="cursor-pointer cta-btn-ghost flex items-center no-underline"
+                style={{
+                  gap: 8,
+                  borderRadius: 999,
+                  padding: "10px 20px",
+                  border: "0.889px solid rgba(160,165,210,0.35)",
+                }}
               >
-                Hi, I'm Yotam
-              </h1>
-
-              {/* Body */}
-              <p
-                className="leading-relaxed mb-4"
-                style={{ color: "#a09ec4", fontFamily: "'Inter', sans-serif", fontSize: "20px", lineHeight: 1.7 }}
-              >
-                I design digital experiences that are intuitive, meaningful, and
-                user-centered. With a background in computer science and over a decade
-                in software development, I bring a unique blend of technical
-                understanding and creative thinking to every project.
-              </p>
-              <p
-                className="leading-relaxed mb-4"
-                style={{ color: "#a09ec4", fontFamily: "'Inter', sans-serif", fontSize: "20px", lineHeight: 1.7 }}
-              >
-                I also care about solving real problems and creating products that
-                make people's lives easier and better.
-              </p>
-              <p
-                className="leading-relaxed"
-                style={{ color: "#a09ec4", fontFamily: "'Inter', sans-serif", fontSize: "20px", lineHeight: 1.7 }}
-              >
-                When I'm not designing, you'll find me traveling, exploring new
-                places, and getting inspired by the world around me.
-              </p>
+                <svg width="15" height="15" fill="none" viewBox="0 0 20.2742 20.2742">
+                  <path d={svgPaths.p2be78800} stroke="#c0c4dd" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
+                </svg>
+                <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 500, fontSize: 14, lineHeight: "20px", color: "#c0c4dd", whiteSpace: "nowrap" }}>
+                  Call Me
+                </span>
+              </a>
             </div>
           </div>
         </div>
