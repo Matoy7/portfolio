@@ -99,9 +99,10 @@ function FloatingNav({ scale, heroRef, onScrollWork, onNavigateAbout, onScrollCo
     <div
       style={{
         position: "fixed",
-        top: 0,
-        left: 0,
-        right: 0,
+        top: 28,
+        left: 40,
+        right: 40,
+        borderRadius: 16,
         transform: visible ? "translateY(0px)" : "translateY(-8px)",
         zIndex: 1000,
         opacity: visible ? 1 : 0,
@@ -214,15 +215,16 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
         <nav
           style={{
             position: "absolute",
-            top: 0,
-            left: 0,
-            right: 0,
+            top: `${scale * 28}px`,
+            left: `${scale * 40}px`,
+            right: `${scale * 40}px`,
             zIndex: 20,
             height: `${scale * 68}px`,
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            padding: `0 ${scale * 48}px`,
+            padding: `0 ${scale * 32}px`,
+            borderRadius: `${scale * 16}px`,
           }}
         >
           <div style={{ width: scale*32, height: scale*32, borderRadius: scale*8, background: "linear-gradient(135deg, #7c3aed 0%, #a855f7 100%)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
