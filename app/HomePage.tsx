@@ -107,6 +107,7 @@ interface CardProps {
   dimTags?: boolean;
   hasGradient?: boolean;
   onClick?: () => void;
+  featured?: boolean;
 }
 
 function CaseStudyCard({
@@ -120,111 +121,118 @@ function CaseStudyCard({
   dimTags = false,
   hasGradient = true,
   onClick,
+  featured = false,
 }: CardProps) {
   return (
     <div
       onClick={onClick}
       className={[
-        "group relative rounded-[16.821px] w-full h-[200px] cursor-pointer overflow-hidden",
-        "transition-all duration-[250ms] ease-out",
-        "hover:-translate-y-1 hover:scale-[1.01] hover:brightness-105",
-        "hover:shadow-[0_12px_32px_rgba(0,0,0,0.2)]",
-        "hover:ring-1 hover:ring-white/20",
-        "active:scale-[0.99]",
+        "group relative rounded-[20px] w-full cursor-pointer overflow-hidden",
+        "transition-all duration-[280ms] ease-out",
+        "hover:-translate-y-[3px] hover:shadow-[0_20px_48px_rgba(0,0,0,0.14)]",
+        "active:scale-[0.995]",
         "motion-reduce:transition-none motion-reduce:hover:transform-none",
       ].join(" ")}
+      style={{
+        height: featured ? 172 : 150,
+        background: "#fff",
+        border: "1px solid rgba(0,0,0,0.07)",
+        boxShadow: "0 2px 12px rgba(0,0,0,0.06)",
+        display: "flex",
+        flexDirection: "row",
+      }}
     >
-      {/* Background image */}
-      <div className="absolute inset-0 rounded-[16.821px] overflow-hidden">
-        <img
-          alt=""
-          src={image}
-          className={[
-            "absolute inset-0 w-full h-full object-cover rounded-[16.821px]",
-            "transition-transform duration-[250ms] ease-out",
-            "group-hover:scale-[1.03]",
-            "motion-reduce:transition-none motion-reduce:group-hover:scale-100",
-          ].join(" ")}
-        />
-        {/* Gradient overlay */}
-        {hasGradient && (
-          <div
-            className={[
-              "absolute inset-0 rounded-[16.821px]",
-              "bg-gradient-to-r from-[rgba(0,0,0,0.7)] to-[rgba(102,102,102,0)]",
-              "transition-opacity duration-[250ms] ease-out",
-              "opacity-100 group-hover:opacity-[0.78]",
-              "motion-reduce:transition-none",
-            ].join(" ")}
-          />
-        )}
-        {/* Flat overlay for cards without gradient (Pulse) */}
-        {!hasGradient && (
-          <div
-            className={[
-              "absolute inset-0 rounded-[16.821px] bg-black/45",
-              "transition-opacity duration-[250ms] ease-out",
-              "group-hover:bg-black/35",
-              "motion-reduce:transition-none",
-            ].join(" ")}
-          />
-        )}
-      </div>
-
-      {/* Content */}
-      <div className="relative z-10 flex flex-col justify-between h-full p-[36px]">
-        {/* Top: category + title + description */}
-        <div className="flex flex-col w-full">
+      {/* Left: text content */}
+      <div style={{ flex: "0 0 42%", padding: "22px 24px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+        {/* Top: badge + title + desc */}
+        <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
           {/* Category badge */}
-          <div className="h-[26.856px] relative w-full mb-0">
-            <div
-              className="absolute left-0 top-[1.27px] px-[8.41px] py-[2.803px] rounded-[5.607px] flex items-center justify-center"
-              style={{ backgroundColor: categoryColor }}
+          <div style={{ display: "inline-flex", width: "fit-content" }}>
+            <span
+              style={{
+                background: categoryColor,
+                color: categoryTextColor,
+                fontSize: 10,
+                fontFamily: "'Inter', sans-serif",
+                fontWeight: 700,
+                letterSpacing: "0.5px",
+                padding: "3px 8px",
+                borderRadius: 6,
+              }}
             >
-              <p
-                className="font-['Inter',sans-serif] font-bold text-[12px] leading-[14px] tracking-[0.4px] whitespace-nowrap"
-                style={{ color: categoryTextColor }}
-              >
-                {categoryLabel}
-              </p>
-            </div>
+              {categoryLabel}
+            </span>
           </div>
 
           {/* Title */}
           <p
-            className={[
-              "font-['Inter',sans-serif] font-bold text-[28px] leading-[38px] text-white whitespace-nowrap",
-              "transition-transform duration-[250ms] ease-out",
-              "group-hover:translate-x-0.5",
-              "motion-reduce:transition-none motion-reduce:group-hover:translate-x-0",
-            ].join(" ")}
+            style={{
+              fontFamily: "'Inter', sans-serif",
+              fontWeight: 700,
+              fontSize: featured ? 17 : 15,
+              lineHeight: 1.3,
+              color: "#0e1d2b",
+              margin: 0,
+            }}
           >
             {title}
           </p>
 
           {/* Description */}
-          <p className="font-['Inter',sans-serif] font-normal text-[19px] leading-[26px] text-white whitespace-nowrap pt-[8px] pb-[14px]">
+          <p
+            style={{
+              fontFamily: "'Inter', sans-serif",
+              fontWeight: 400,
+              fontSize: 12.5,
+              lineHeight: 1.5,
+              color: "rgba(14,29,43,0.55)",
+              margin: 0,
+            }}
+          >
             {description}
           </p>
         </div>
 
-        {/* Bottom: Tags */}
-        <div
-          className={[
-            "flex gap-[8px] items-start h-[28px]",
-            "opacity-85 transition-opacity duration-[250ms] ease-out",
-            "group-hover:opacity-100",
-            "motion-reduce:transition-none",
-          ].join(" ")}
-        >
+        {/* Tags */}
+        <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
           {tags.map((tag) => (
-            <Tag key={tag} label={tag} dim={dimTags} />
+            <span
+              key={tag}
+              style={{
+                fontFamily: "'Inter', sans-serif",
+                fontWeight: 600,
+                fontSize: 10,
+                letterSpacing: "0.4px",
+                color: dimTags ? "rgba(14,29,43,0.35)" : "rgba(14,29,43,0.55)",
+                background: dimTags ? "rgba(14,29,43,0.06)" : "rgba(14,29,43,0.07)",
+                borderRadius: 100,
+                padding: "3px 9px",
+              }}
+            >
+              {tag}
+            </span>
           ))}
         </div>
+      </div>
+
+      {/* Right: image */}
+      <div style={{ flex: 1, overflow: "hidden", borderRadius: "0 20px 20px 0", position: "relative" }}>
+        <img
+          alt=""
+          src={image}
+          className={[
+            "absolute inset-0 w-full h-full object-cover",
+            "transition-transform duration-[400ms] ease-out",
+            "group-hover:scale-[1.04]",
+            "motion-reduce:transition-none motion-reduce:group-hover:scale-100",
+          ].join(" ")}
+          style={{ objectPosition: "center" }}
+        />
       </div>
     </div>
   );
 }
+
 
 /* ── Footer contact item ────────────────────────────────── */
 
@@ -323,19 +331,31 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
       </div>
 
       <div className="w-[1145.25px] flex flex-col">
+        {/* placeholder — case studies moved to full-width below */}
+      </div>
 
-        {/* ── Case Studies Section ────────────────────────── */}
-        {/* ── Case Studies — Editorial Layout ─────────────── */}
-        <section
-          id="case-studies"
-          className="relative w-full self-center"
-          style={{ padding: "80px 0 100px", maxWidth: 1145 }}
-        >
-          {/* Two-column grid: left = cards, right = editorial title */}
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 0, alignItems: "start", position: "relative" }}>
+      {/* ── Case Studies — Full-width editorial layout ────── */}
+      {/* ── Case Studies — Editorial Layout ─────────────── */}
+      <section
+        id="case-studies"
+        className="relative w-full"
+        style={{ padding: "80px 0 100px" }}
+      >
+        {/* Two-column grid: cards fill left, title anchored right */}
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 540px",
+          gap: 0,
+          alignItems: "start",
+          position: "relative",
+          maxWidth: 1800,
+          margin: "0 auto",
+          paddingLeft: 80,
+          paddingRight: 80,
+        }}>
 
             {/* ── Left column: stacked cards ── */}
-            <div style={{ display: "flex", flexDirection: "column", gap: 32, paddingTop: 16, paddingLeft: 8 }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 32, paddingTop: 16, paddingRight: 48 }}>
 
               {/* Card 1: Alma */}
               <CaseStudyCard
@@ -349,51 +369,20 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
                 onClick={() => onNavigate("alma")}
               />
 
-              {/* Card 2: Pulse — featured, offset right, slightly taller */}
+              {/* Card 2: Pulse — featured, offset right */}
               <div style={{ marginLeft: 48, position: "relative", zIndex: 2 }}>
-                <div
-                  className={[
-                    "group relative rounded-[16.821px] w-full cursor-pointer overflow-hidden",
-                    "transition-all duration-[250ms] ease-out",
-                    "hover:-translate-y-1 hover:scale-[1.01] hover:brightness-105",
-                    "hover:shadow-[0_12px_32px_rgba(0,0,0,0.2)]",
-                    "hover:ring-1 hover:ring-white/20",
-                    "active:scale-[0.99]",
-                    "motion-reduce:transition-none motion-reduce:hover:transform-none",
-                  ].join(" ")}
-                  style={{ height: 220 }}
+                <CaseStudyCard
+                  image={imgPulse}
+                  categoryLabel="DASHBOARD"
+                  categoryColor="rgba(88,86,214,0.9)"
+                  title="Pulse – Gaming Analytics"
+                  description="A real time dashboard for game product managers."
+                  tags={["DATA", "DASHBOARD", "SAAS"]}
+                  dimTags
+                  hasGradient={false}
+                  featured
                   onClick={() => onNavigate("pulse")}
-                >
-                  <div className="absolute inset-0 rounded-[16.821px] overflow-hidden">
-                    <img
-                      alt=""
-                      src={imgPulse}
-                      className={[
-                        "absolute inset-0 w-full h-full object-cover rounded-[16.821px]",
-                        "transition-transform duration-[250ms] ease-out",
-                        "group-hover:scale-[1.03]",
-                        "motion-reduce:transition-none motion-reduce:group-hover:scale-100",
-                      ].join(" ")}
-                    />
-                    <div className={["absolute inset-0 rounded-[16.821px] bg-black/45", "transition-opacity duration-[250ms] ease-out", "group-hover:bg-black/35", "motion-reduce:transition-none"].join(" ")} />
-                  </div>
-                  <div className="relative z-10 flex flex-col justify-between h-full p-[36px]">
-                    <div className="flex flex-col w-full">
-                      <div className="h-[26.856px] relative w-full mb-0">
-                        <div className="absolute left-0 top-[1.27px] px-[8.41px] py-[2.803px] rounded-[5.607px] flex items-center justify-center" style={{ backgroundColor: "rgba(88,86,214,0.9)" }}>
-                          <p className="font-['Inter',sans-serif] font-bold text-[12px] leading-[14px] tracking-[0.4px] whitespace-nowrap" style={{ color: "#fff" }}>DASHBOARD</p>
-                        </div>
-                      </div>
-                      <p className={["font-['Inter',sans-serif] font-bold text-[28px] leading-[38px] text-white whitespace-nowrap", "transition-transform duration-[250ms] ease-out", "group-hover:translate-x-0.5", "motion-reduce:transition-none motion-reduce:group-hover:translate-x-0"].join(" ")}>Pulse – Gaming Analytics</p>
-                      <p className="font-['Inter',sans-serif] font-normal text-[19px] leading-[26px] text-white whitespace-nowrap pt-[8px] pb-[14px]">A real time dashboard for game product managers.</p>
-                    </div>
-                    <div className={["flex gap-[8px] items-start h-[28px]", "opacity-85 transition-opacity duration-[250ms] ease-out", "group-hover:opacity-100", "motion-reduce:transition-none"].join(" ")}>
-                      {["DATA","DASHBOARD","SAAS"].map(t => (
-                        <Tag key={t} label={t} dim />
-                      ))}
-                    </div>
-                  </div>
-                </div>
+                />
               </div>
 
               {/* Card 3: Curio */}
@@ -416,8 +405,8 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
               <div
                 style={{
                   fontFamily: "'Inter', sans-serif",
-                  fontWeight: 900,
-                  fontSize: 124,
+                  fontWeight: 800,
+                  fontSize: 110,
                   lineHeight: 0.92,
                   letterSpacing: "-3px",
                   color: "#16162B",
@@ -425,9 +414,9 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
                   pointerEvents: "none",
                 }}
               >
-                <div>SELECTED</div>
-                <div>CASE</div>
-                <div>STUDIES</div>
+                <div>Selected</div>
+                <div>Case</div>
+                <div>Studies</div>
               </div>
 
               {/* Supporting paragraph */}
@@ -448,6 +437,8 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
 
           </div>
         </section>
+
+      <div className="w-[1145.25px] flex flex-col">
 
         {/* ── Contact Section ─────────────────────────────── */}
         <section
