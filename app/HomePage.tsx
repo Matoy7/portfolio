@@ -311,6 +311,26 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
 
   return (
     <div className="bg-[#f5f1ec] min-h-screen w-full flex flex-col items-center">
+      <style>{`
+        .cta-btn-primary {
+          transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+        }
+        .cta-btn-primary:hover {
+          background: #6d28d9 !important;
+          transform: translateY(-2px);
+          box-shadow: 0 8px 28px rgba(124,58,237,0.55);
+        }
+        .cta-btn-primary:active { transform: translateY(0); }
+        .cta-btn-ghost {
+          transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease, color 0.2s ease;
+        }
+        .cta-btn-ghost:hover {
+          background: rgba(124,58,237,0.18) !important;
+          border-color: rgba(124,58,237,0.8) !important;
+          transform: translateY(-2px);
+        }
+        .cta-btn-ghost:active { transform: translateY(0); }
+      `}</style>
 
       {/* ── Separate Header (desktop only) ─── */}
       <Header
@@ -491,39 +511,33 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
 
             {/* CTA Buttons */}
             <div className="flex flex-wrap items-center justify-center gap-4 mb-10">
-              {/* Message Me */}
+              {/* Message Me — Primary (matches View Case Studies) */}
               <a
                 href="mailto:yotam.eliraz@gmail.com"
-                className="flex items-center gap-3 font-semibold rounded-full px-8 py-3.5 transition-all duration-200 hover:opacity-90 active:scale-95"
-                style={{
-                  background: "#6c5ce7",
-                  color: "#fff",
-                  fontSize: "1rem",
-                  boxShadow: "0 4px 24px rgba(108, 92, 231, 0.35)",
-                }}
+                className="cursor-pointer hero-btn-primary cta-btn-primary flex items-center justify-center gap-[10px] no-underline"
+                style={{ background: "#7c3aed", borderRadius: 999, padding: "16px 32px" }}
               >
                 <svg width="18" height="18" fill="none" viewBox="0 0 20.2742 20.2742">
-                  <path d={svgPaths.p2c708800} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
-                  <path d={svgPaths.p4272980} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
+                  <path d={svgPaths.p2c708800} stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
+                  <path d={svgPaths.p4272980} stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
                 </svg>
-                Message Me
+                <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, fontSize: 18, color: "#fff", whiteSpace: "nowrap" }}>
+                  Message Me
+                </span>
               </a>
 
-              {/* Call Me */}
+              {/* Call Me — Secondary (matches About Me) */}
               <a
                 href="tel:0505795099"
-                className="flex items-center gap-3 font-semibold rounded-full px-8 py-3.5 transition-all duration-200 hover:bg-white/10 active:scale-95"
-                style={{
-                  background: "transparent",
-                  color: "#fff",
-                  border: "1.5px solid rgba(255,255,255,0.25)",
-                  fontSize: "1rem",
-                }}
+                className="cursor-pointer hero-btn-ghost cta-btn-ghost flex items-center justify-center gap-[10px] no-underline"
+                style={{ background: "rgba(124,58,237,0.06)", borderRadius: 999, padding: "17px 33px", border: "1.103px solid rgba(124,58,237,0.45)" }}
               >
                 <svg width="18" height="18" fill="none" viewBox="0 0 20.2742 20.2742">
-                  <path d={svgPaths.p2be78800} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
+                  <path d={svgPaths.p2be78800} stroke="#c4b8ff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
                 </svg>
-                Call Me
+                <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, fontSize: 18, color: "#c4b8ff", whiteSpace: "nowrap" }}>
+                  Call Me
+                </span>
               </a>
             </div>
 
