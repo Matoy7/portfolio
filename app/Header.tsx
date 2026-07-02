@@ -9,6 +9,8 @@ export default function Header({ scale, onScrollWork, onNavigateAbout, onScrollC
   return (
     <header
       style={{
+        position: "sticky",
+        top: 0,
         width: "100%",
         height: `${scale * 68}px`,
         display: "flex",
@@ -17,6 +19,7 @@ export default function Header({ scale, onScrollWork, onNavigateAbout, onScrollC
         padding: `0 ${scale * 32}px`,
         background: "rgba(26,10,74,1)",
         borderBottom: "1px solid rgba(255,255,255,0.1)",
+        zIndex: 999,
       }}
     >
       {/* Logo mark */}
