@@ -82,11 +82,10 @@ function FloatingNav({ scale, onScrollWork, onNavigateAbout, onScrollContact }: 
     <div
       style={{
         position: "fixed",
-        top: 16,
-        left: "50%",
-        transform: visible
-          ? "translateX(-50%) translateY(0px)"
-          : "translateX(-50%) translateY(-8px)",
+        top: 0,
+        left: 0,
+        right: 0,
+        transform: visible ? "translateY(0px)" : "translateY(-8px)",
         zIndex: 1000,
         opacity: visible ? 1 : 0,
         pointerEvents: visible ? "auto" : "none",
@@ -94,33 +93,30 @@ function FloatingNav({ scale, onScrollWork, onNavigateAbout, onScrollContact }: 
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        gap: 48,
-        padding: "0 24px 0 16px",
-        height: 64,
-        borderRadius: 16,
-        background: "rgba(8,6,22,0.82)",
+        padding: "0 90px",
+        height: `${scale * 107}px`,
+        background: "rgba(8,6,22,0.88)",
         backdropFilter: "blur(12px)",
         WebkitBackdropFilter: "blur(12px)",
-        border: "1px solid rgba(124,58,237,0.2)",
-        boxShadow: "0 8px 32px rgba(0,0,0,0.4), 0 1px 0 rgba(255,255,255,0.04) inset",
-        minWidth: Math.min(600, window.innerWidth * 0.7),
+        borderBottom: "1px solid rgba(124,58,237,0.18)",
+        boxShadow: "0 4px 32px rgba(0,0,0,0.4)",
       }}
     >
       {/* Logo mark */}
-      <div style={{ width: 36, height: 36, borderRadius: 9, background: "linear-gradient(135deg, #7c3aed 0%, #a855f7 100%)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-        <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, fontSize: 15, color: "#fff" }}>YE</span>
+      <div style={{ width: scale*39.7, height: scale*39.7, borderRadius: scale*9.925, background: "linear-gradient(135deg, #7c3aed 0%, #a855f7 100%)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+        <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, fontSize: scale*17.369, color: "#fff" }}>YE</span>
       </div>
 
       {/* Links */}
-      <div style={{ display: "flex", alignItems: "center", gap: 36 }}>
-        <span className="hero-nav-link" onClick={onScrollWork} style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 500, fontSize: 15, color: "#c4b8ff", cursor: "pointer", whiteSpace: "nowrap" }}>Work</span>
-        <span className="hero-nav-link" onClick={onNavigateAbout} style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 500, fontSize: 15, color: "#c4b8ff", cursor: "pointer", whiteSpace: "nowrap" }}>About</span>
+      <div style={{ display: "flex", alignItems: "center", gap: scale*49.626 }}>
+        <span className="hero-nav-link" onClick={onScrollWork} style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 500, fontSize: scale*18, color: "#c4b8ff", cursor: "pointer", whiteSpace: "nowrap" }}>Work</span>
+        <span className="hero-nav-link" onClick={onNavigateAbout} style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 500, fontSize: scale*18, color: "#c4b8ff", cursor: "pointer", whiteSpace: "nowrap" }}>About</span>
         <div
           className="cursor-pointer hero-nav-contact"
           onClick={onScrollContact}
-          style={{ background: "#7c3aed", borderRadius: 999, padding: "9px 20px", flexShrink: 0 }}
+          style={{ background: "#7c3aed", borderRadius: 999, padding: `${scale*9.925}px ${scale*24.813}px`, flexShrink: 0 }}
         >
-          <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, fontSize: 14, color: "#fff", whiteSpace: "nowrap" }}>Contact Me</span>
+          <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, fontSize: scale*18, color: "#fff", whiteSpace: "nowrap" }}>Contact Me</span>
         </div>
       </div>
     </div>
