@@ -172,7 +172,7 @@ function CaseStudyCard({
       </div>
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col justify-between h-full p-[28.034px]">
+      <div className="relative z-10 flex flex-col justify-between h-full p-[36px]">
         {/* Top: category + title + description */}
         <div className="flex flex-col w-full">
           {/* Category badge */}
@@ -182,7 +182,7 @@ function CaseStudyCard({
               style={{ backgroundColor: categoryColor }}
             >
               <p
-                className="font-['Inter',sans-serif] font-bold text-[9.812px] leading-[11.564px] tracking-[0.3504px] whitespace-nowrap"
+                className="font-['Inter',sans-serif] font-bold text-[12px] leading-[14px] tracking-[0.4px] whitespace-nowrap"
                 style={{ color: categoryTextColor }}
               >
                 {categoryLabel}
@@ -193,7 +193,7 @@ function CaseStudyCard({
           {/* Title */}
           <p
             className={[
-              "font-['Inter',sans-serif] font-bold text-[22.428px] leading-[33.641px] text-white whitespace-nowrap",
+              "font-['Inter',sans-serif] font-bold text-[28px] leading-[38px] text-white whitespace-nowrap",
               "transition-transform duration-[250ms] ease-out",
               "group-hover:translate-x-0.5",
               "motion-reduce:transition-none motion-reduce:group-hover:translate-x-0",
@@ -203,7 +203,7 @@ function CaseStudyCard({
           </p>
 
           {/* Description */}
-          <p className="font-['Inter',sans-serif] font-normal text-[16px] leading-[16.821px] text-white whitespace-nowrap pt-[5.607px] pb-[11.214px]">
+          <p className="font-['Inter',sans-serif] font-normal text-[19px] leading-[26px] text-white whitespace-nowrap pt-[8px] pb-[14px]">
             {description}
           </p>
         </div>
@@ -211,7 +211,7 @@ function CaseStudyCard({
         {/* Bottom: Tags */}
         <div
           className={[
-            "flex gap-[8px] items-start h-[22.43px]",
+            "flex gap-[8px] items-start h-[28px]",
             "opacity-85 transition-opacity duration-[250ms] ease-out",
             "group-hover:opacity-100",
             "motion-reduce:transition-none",
@@ -328,13 +328,13 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
         <section id="case-studies" className="relative w-[1014px] flex flex-col items-center justify-center pb-[22.428px] pt-[5.607px] px-[28.034px] self-center">
           {/* Section heading */}
           <div className="w-full flex items-center mb-0">
-            <p className="font-['Inter',sans-serif] font-medium text-[18px] leading-[33.641px] text-black whitespace-nowrap">
+            <p className="font-['Inter',sans-serif] font-semibold text-[26px] leading-[36px] text-black whitespace-nowrap">
               Selected Case Studies
             </p>
           </div>
 
           {/* Cards */}
-          <div className="flex flex-col gap-[29.868px] w-full py-[16.821px]">
+          <div className="flex flex-col gap-[40px] w-full py-[24px]">
             {/* Card 1: Alma */}
             <CaseStudyCard
               image={imgAlma}
@@ -378,29 +378,29 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
         {/* ── Contact Section ─────────────────────────────── */}
         <section
           id="contact"
-          className="w-full flex flex-col items-center justify-center px-[45.054px] py-[90px] gap-[36px]"
+          className="w-full flex flex-col items-center justify-center px-[45.054px] py-[110px] gap-[48px]"
           style={{ borderTop: "1px solid #e8e4df" }}
         >
           {/* Headline */}
           <div className="flex flex-col items-center gap-[14px] text-center max-w-[580px]">
-            <p className="font-['Inter',sans-serif] font-bold text-[48px] leading-[1.1] text-[#0e1d2b]">
+            <p className="font-['Inter',sans-serif] font-bold text-[64px] leading-[1.1] text-[#0e1d2b]">
               Let's Talk
             </p>
-            <p className="font-['Inter',sans-serif] font-normal text-[18px] leading-[1.6] text-[#0e1d2b]/60">
+            <p className="font-['Inter',sans-serif] font-normal text-[22px] leading-[1.6] text-[#0e1d2b]/60">
               Looking for a Product Designer? I'd love to hear about your project, product or opportunity.
             </p>
           </div>
 
           {/* Primary action buttons */}
-          <div className="flex gap-[18px] items-center flex-wrap justify-center">
+          <div className="flex gap-[24px] items-center flex-wrap justify-center">
             {/* Message Me */}
             <a
               href="mailto:yotam.eliraz@gmail.com"
               className={[
                 "flex items-center justify-center gap-[10px]",
                 "bg-[#0e1d2b] text-white no-underline",
-                "font-['Inter',sans-serif] font-semibold text-[17px] whitespace-nowrap",
-                "rounded-[14px] px-[40px] h-[56px]",
+                "font-['Inter',sans-serif] font-semibold text-[20px] whitespace-nowrap",
+                "rounded-[16px] px-[48px] h-[64px]",
                 "transition-all duration-[220ms] ease-out",
                 "hover:scale-[1.02] hover:shadow-[0_8px_28px_rgba(14,29,43,0.18)] hover:brightness-[1.08]",
                 "active:scale-[0.98]",
@@ -434,10 +434,10 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
           </div>
 
           {/* Secondary links */}
-          <div className="flex gap-[32px] items-center flex-wrap justify-center">
+          <div className="flex gap-[40px] items-center flex-wrap justify-center">
             <a
               href="mailto:yotam.eliraz@gmail.com"
-              className="font-['Inter',sans-serif] font-normal text-[14px] text-[#0e1d2b]/50 no-underline transition-colors duration-[220ms] hover:text-[#4793d6]"
+              className="font-['Inter',sans-serif] font-normal text-[16px] text-[#0e1d2b]/50 no-underline transition-colors duration-[220ms] hover:text-[#4793d6]"
             >
               yotam.eliraz@gmail.com
             </a>
@@ -445,7 +445,7 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
               href="https://www.linkedin.com/in/yotam-eliraz-977b0450/"
               target="_blank"
               rel="noopener"
-              className="font-['Inter',sans-serif] font-normal text-[14px] text-[#0e1d2b]/50 no-underline transition-colors duration-[220ms] hover:text-[#4793d6]"
+              className="font-['Inter',sans-serif] font-normal text-[16px] text-[#0e1d2b]/50 no-underline transition-colors duration-[220ms] hover:text-[#4793d6]"
             >
               LinkedIn
             </a>
@@ -453,7 +453,7 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
               href="https://www.behance.net/yotame"
               target="_blank"
               rel="noopener"
-              className="font-['Inter',sans-serif] font-normal text-[14px] text-[#0e1d2b]/50 no-underline transition-colors duration-[220ms] hover:text-[#4793d6]"
+              className="font-['Inter',sans-serif] font-normal text-[16px] text-[#0e1d2b]/50 no-underline transition-colors duration-[220ms] hover:text-[#4793d6]"
             >
               Behance
             </a>

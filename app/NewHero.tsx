@@ -100,8 +100,7 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
             style={{
               width: 1440,
               background: "radial-gradient(ellipse 65% 60% at 65% 40%, rgba(26,10,74,1) 0%, rgba(20,9,53,1) 22.5%, rgba(13,8,32,1) 45%, rgba(8,6,22,1) 100%)",
-              clipPath: "polygon(0 0, 100% 0, 100% 85%, 38% 100%, 0 82%)",
-              paddingBottom: "12%",
+              paddingBottom: "8%",
             }}
           >
             {/* Navigation */}
