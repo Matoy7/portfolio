@@ -337,7 +337,7 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
       <section
         id="case-studies"
         className="relative w-full"
-        style={{ padding: "44px 0 100px" }}
+        style={{ padding: "120px 0 100px" }}
       >
         {/* Two-column grid: cards fill left, title anchored right */}
         <div style={{
@@ -353,7 +353,7 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
         }}>
 
             {/* ── Left column: stacked cards ── */}
-            <div style={{ display: "flex", flexDirection: "column", gap: 32, paddingTop: 16, paddingRight: 48 }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 32, paddingTop: 60, paddingRight: 48 }}>
 
               {/* Card 1: Alma */}
               <CaseStudyCard
@@ -416,21 +416,6 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
                 <div>Case</div>
                 <div>Studies</div>
               </div>
-
-              {/* Supporting paragraph */}
-              <p
-                style={{
-                  fontFamily: "'Inter', sans-serif",
-                  fontWeight: 400,
-                  fontSize: 17,
-                  lineHeight: 1.65,
-                  color: "rgba(14,29,43,0.5)",
-                  maxWidth: 280,
-                  marginTop: 40,
-                }}
-              >
-                A selection of product design work spanning mobile, SaaS, and e-commerce — each shaped by an engineering mindset.
-              </p>
             </div>
 
           </div>
