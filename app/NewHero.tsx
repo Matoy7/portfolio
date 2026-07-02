@@ -110,8 +110,8 @@ function FloatingNav({ scale, heroRef, onScrollWork, onNavigateAbout, onScrollCo
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        padding: "0 90px",
-        height: `${scale * 107}px`,
+        padding: `0 ${scale * 48}px`,
+        height: `${scale * 68}px`,
         background: "rgba(8,6,22,0.88)",
         backdropFilter: "blur(12px)",
         WebkitBackdropFilter: "blur(12px)",
@@ -126,14 +126,14 @@ function FloatingNav({ scale, heroRef, onScrollWork, onNavigateAbout, onScrollCo
 
       {/* Links */}
       <div style={{ display: "flex", alignItems: "center", gap: scale*49.626 }}>
-        <span className="hero-nav-link" onClick={onScrollWork} style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 500, fontSize: scale*18, color: "#c4b8ff", cursor: "pointer", whiteSpace: "nowrap" }}>Work</span>
-        <span className="hero-nav-link" onClick={onNavigateAbout} style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 500, fontSize: scale*18, color: "#c4b8ff", cursor: "pointer", whiteSpace: "nowrap" }}>About</span>
+        <span className="hero-nav-link" onClick={onScrollWork} style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 500, fontSize: scale*16, color: "#c4b8ff", cursor: "pointer", whiteSpace: "nowrap" }}>Work</span>
+        <span className="hero-nav-link" onClick={onNavigateAbout} style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 500, fontSize: scale*16, color: "#c4b8ff", cursor: "pointer", whiteSpace: "nowrap" }}>About</span>
         <div
           className="cursor-pointer hero-nav-contact"
           onClick={onScrollContact}
-          style={{ background: "#7c3aed", borderRadius: 999, padding: `${scale*9.925}px ${scale*24.813}px`, flexShrink: 0 }}
+          style={{ background: "#7c3aed", borderRadius: 999, padding: `${scale*12}px ${scale*22}px`, display: "flex", alignItems: "center", height: `${scale*44}px`, flexShrink: 0 }}
         >
-          <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, fontSize: scale*18, color: "#fff", whiteSpace: "nowrap" }}>Contact Me</span>
+          <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, fontSize: scale*16, color: "#fff", whiteSpace: "nowrap" }}>Contact Me</span>
         </div>
       </div>
     </div>
@@ -218,13 +218,13 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
             }}
           >
             {/* Static hero nav — always visible while hero is on screen */}
-            <nav className="relative z-10 flex items-center justify-between w-full shrink-0" style={{ padding: "39.7px 100px" }}>
+            <nav className="relative z-10 flex items-center justify-between w-full shrink-0" style={{ padding: "12px 48px", height: "68px" }}>
               <div style={{ width: 39.7, height: 39.7, borderRadius: 9.925, background: "linear-gradient(135deg, #7c3aed 0%, #a855f7 100%)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                 <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, fontSize: 17.369, color: "#fff" }}>YE</span>
               </div>
               <div style={{ display: "flex", alignItems: "center", gap: 49.626 }}>
-                <span className="hero-nav-link" onClick={onScrollWork} style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 500, fontSize: 18, color: "#c4b8ff", cursor: "pointer" }}>Work</span>
-                <span className="hero-nav-link" onClick={onNavigateAbout} style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 500, fontSize: 18, color: "#c4b8ff", cursor: "pointer" }}>About</span>
+                <span className="hero-nav-link" onClick={onScrollWork} style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 500, fontSize: 16, color: "#c4b8ff", cursor: "pointer" }}>Work</span>
+                <span className="hero-nav-link" onClick={onNavigateAbout} style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 500, fontSize: 16, color: "#c4b8ff", cursor: "pointer" }}>About</span>
                 <div className="cursor-pointer hero-nav-contact" onClick={onScrollContact} style={{ background: "#7c3aed", borderRadius: 999, padding: "9.925px 24.813px" }}>
                   <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, fontSize: 18, color: "#fff", whiteSpace: "nowrap" }}>Contact Me</span>
                 </div>
