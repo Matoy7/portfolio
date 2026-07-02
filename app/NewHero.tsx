@@ -208,36 +208,9 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
         onScrollContact={onScrollContact}
       />
 
-      {/* Scale wrapper to fill full viewport */}
+      {/* Scale wrapper to fill full viewport — NO STATIC HEADER */}
       <div ref={heroWrapperRef} style={{ width: "100%", height: `calc(${scale} * 860px)`, position: "relative", overflow: "hidden" }}>
 
-        {/* ── Static hero nav — absolute on wrapper, always on top, never clipped ── */}
-        <nav
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            right: 0,
-            zIndex: 20,
-            height: `${scale * 68}px`,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            padding: `0 ${scale * 32}px`,
-
-          }}
-        >
-          <div style={{ width: scale*32, height: scale*32, borderRadius: scale*8, background: "linear-gradient(135deg, #7c3aed 0%, #a855f7 100%)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-            <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, fontSize: scale*14, color: "#fff" }}>YE</span>
-          </div>
-          <div style={{ display: "flex", alignItems: "center", gap: scale*40 }}>
-            <span className="hero-nav-link" onClick={onScrollWork} style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 500, fontSize: scale*16, color: "#c4b8ff", cursor: "pointer" }}>Work</span>
-            <span className="hero-nav-link" onClick={onNavigateAbout} style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 500, fontSize: scale*16, color: "#c4b8ff", cursor: "pointer" }}>About</span>
-            <div className="cursor-pointer hero-nav-contact" onClick={onScrollContact} style={{ background: "#7c3aed", borderRadius: 999, padding: `${scale*12}px ${scale*22}px`, display: "flex", alignItems: "center" }}>
-              <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, fontSize: scale*16, color: "#fff", whiteSpace: "nowrap" }}>Contact Me</span>
-            </div>
-          </div>
-        </nav>
         <div style={{ width: 1440, position: "absolute", top: 0, left: 0, transform: `scale(${scale})`, transformOrigin: "top left" }}>
 
           <div
