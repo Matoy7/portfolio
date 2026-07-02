@@ -339,7 +339,7 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
       <section
         id="case-studies"
         className="relative w-full"
-        style={{ padding: "80px 0 100px" }}
+        style={{ padding: "44px 0 100px" }}
       >
         {/* Two-column grid: cards fill left, title anchored right */}
         <div style={{
