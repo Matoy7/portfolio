@@ -404,22 +404,24 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
                 />
               </div>
 
-              {/* Card 3: Curio */}
-              <CaseStudyCard
-                image={imgCurio}
-                categoryLabel="E-COMMERCE"
-                categoryColor="#fec66e"
-                categoryTextColor="#1f2937"
-                title="Curio – Online Toys Store"
-                description="An online marketplace for educational toys for kids."
-                tags={["AI", "HEALTH", "MOBILE"]}
-                hasGradient
-                onClick={() => onNavigate("curio")}
-              />
+              {/* Card 3: Curio — widened, extends right for staggered composition */}
+              <div style={{ marginRight: -48 }}>
+                <CaseStudyCard
+                  image={imgCurio}
+                  categoryLabel="E-COMMERCE"
+                  categoryColor="#fec66e"
+                  categoryTextColor="#1f2937"
+                  title="Curio – Online Toys Store"
+                  description="An online marketplace for educational toys for kids."
+                  tags={["AI", "HEALTH", "MOBILE"]}
+                  hasGradient
+                  onClick={() => onNavigate("curio")}
+                />
+              </div>
             </div>
 
             {/* ── Right column: editorial title ── */}
-            <div style={{ paddingLeft: 48, paddingTop: 8, position: "sticky", top: 120 }}>
+            <div style={{ paddingLeft: 48, paddingTop: 60, position: "sticky", top: 120 }}>
               {/* Large editorial headline */}
               <div
                 style={{
