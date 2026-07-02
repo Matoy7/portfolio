@@ -421,93 +421,313 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
           </div>
         </section>
 
-      <div className="w-[1145.25px] flex flex-col">
+      {/* ── Contact Section — Full-width with hero background ────── */}
+      <section
+        id="contact"
+        className="w-full flex flex-col items-center justify-center relative overflow-hidden"
+        style={{
+          minHeight: "780px",
+          background: "radial-gradient(ellipse 70% 50% at 50% 30%, rgba(124,58,237,0.25) 0%, rgba(26,10,74,0.8) 25%, rgba(13,8,32,1) 60%, rgba(8,6,22,1) 100%)",
+          paddingTop: "100px",
+          paddingBottom: "100px",
+        }}
+      >
+        {/* Subtle noise/texture overlay */}
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background: "radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.3) 100%)",
+            pointerEvents: "none",
+          }}
+        />
 
-        {/* ── Contact Section ─────────────────────────────── */}
-        <section
-          id="contact"
-          className="w-full flex flex-col items-center justify-center px-[45.054px] py-[110px] gap-[48px]"
-          style={{ borderTop: "1px solid #e8e4df" }}
+        {/* Content container */}
+        <div
+          className="relative z-10 flex flex-col items-center justify-center w-full max-w-[900px] px-[48px]"
+          style={{ gap: "48px" }}
         >
-          {/* Headline */}
-          <div className="flex flex-col items-center gap-[14px] text-center max-w-[580px]">
-            <p className="font-['Inter',sans-serif] font-bold text-[64px] leading-[1.1] text-[#0e1d2b]">
-              Let's Talk
-            </p>
-            <p className="font-['Inter',sans-serif] font-normal text-[22px] leading-[1.6] text-[#0e1d2b]/60">
-              Looking for a Product Designer? I'd love to hear about your project, product or opportunity.
-            </p>
+          {/* Eyebrow label */}
+          <div
+            style={{
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
+              fontWeight: 600,
+              fontSize: "14px",
+              lineHeight: "18px",
+              color: "#a78bfa",
+              letterSpacing: "2px",
+              textTransform: "uppercase",
+            }}
+          >
+            Let's Connect
           </div>
 
-          {/* Primary action buttons */}
-          <div className="flex gap-[24px] items-center flex-wrap justify-center">
-            {/* Message Me */}
+          {/* Main heading */}
+          <div
+            style={{
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
+              fontWeight: 700,
+              fontSize: "72px",
+              lineHeight: "1.1",
+              letterSpacing: "-1.2px",
+              color: "#ffffff",
+              textAlign: "center",
+              margin: 0,
+            }}
+          >
+            Let's Talk
+          </div>
+
+          {/* Description */}
+          <p
+            style={{
+              fontFamily: "'Inter', sans-serif",
+              fontWeight: 400,
+              fontSize: "18px",
+              lineHeight: "1.6",
+              color: "rgba(255,255,255,0.75)",
+              textAlign: "center",
+              maxWidth: "620px",
+              margin: 0,
+            }}
+          >
+            Looking for a Product Designer? I'd love to hear about your project, product or opportunity.
+          </p>
+
+          {/* CTA Buttons */}
+          <div
+            className="flex gap-[24px] items-center flex-wrap justify-center"
+            style={{ marginTop: "16px" }}
+          >
+            {/* Message Me — Primary */}
             <a
               href="mailto:yotam.eliraz@gmail.com"
-              className={[
-                "flex items-center justify-center gap-[10px]",
-                "bg-[#0e1d2b] text-white no-underline",
-                "font-['Inter',sans-serif] font-semibold text-[20px] whitespace-nowrap",
-                "rounded-[16px] px-[48px] h-[64px]",
-                "transition-all duration-[220ms] ease-out",
-                "hover:scale-[1.02] hover:shadow-[0_8px_28px_rgba(14,29,43,0.18)] hover:brightness-[1.08]",
-                "active:scale-[0.98]",
-              ].join(" ")}
+              className="cursor-pointer hero-btn-primary no-underline"
+              style={{
+                background: "#7c3aed",
+                borderRadius: 999,
+                padding: "16px 40px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "10px",
+                transition: "all 0.2s ease",
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLElement).style.background = "#6d28d9";
+                (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)";
+                (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 28px rgba(124,58,237,0.55)";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLElement).style.background = "#7c3aed";
+                (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
+                (e.currentTarget as HTMLElement).style.boxShadow = "none";
+              }}
             >
               <svg width="18" height="18" fill="none" viewBox="0 0 20.2742 20.2742">
                 <path d={svgPaths.p2c708800} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
                 <path d={svgPaths.p4272980} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
               </svg>
-              Message Me
+              <span
+                style={{
+                  fontFamily: "'Plus Jakarta Sans', sans-serif",
+                  fontWeight: 600,
+                  fontSize: "16px",
+                  color: "#fff",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                Message Me
+              </span>
             </a>
 
-            {/* Call Me */}
+            {/* Call Me — Secondary */}
             <a
               href="tel:0505795099"
-              className={[
-                "flex items-center justify-center gap-[10px]",
-                "bg-white text-[#0e1d2b] no-underline",
-                "font-['Inter',sans-serif] font-semibold text-[17px] whitespace-nowrap",
-                "border border-[#0e1d2b]/20 rounded-[14px] px-[40px] h-[56px]",
-                "transition-all duration-[220ms] ease-out",
-                "hover:scale-[1.02] hover:shadow-[0_8px_28px_rgba(14,29,43,0.10)] hover:border-[#0e1d2b]/40",
-                "active:scale-[0.98]",
-              ].join(" ")}
+              className="cursor-pointer hero-btn-ghost no-underline"
+              style={{
+                background: "rgba(124,58,237,0.08)",
+                border: "1.5px solid rgba(124,58,237,0.5)",
+                borderRadius: 999,
+                padding: "16px 40px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "10px",
+                transition: "all 0.2s ease",
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLElement).style.background = "rgba(124,58,237,0.15)";
+                (e.currentTarget as HTMLElement).style.borderColor = "rgba(124,58,237,0.8)";
+                (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLElement).style.background = "rgba(124,58,237,0.08)";
+                (e.currentTarget as HTMLElement).style.borderColor = "rgba(124,58,237,0.5)";
+                (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
+              }}
             >
               <svg width="18" height="18" fill="none" viewBox="0 0 20.2742 20.2742">
                 <path d={svgPaths.p2be78800} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
               </svg>
-              Call Me
+              <span
+                style={{
+                  fontFamily: "'Plus Jakarta Sans', sans-serif",
+                  fontWeight: 600,
+                  fontSize: "16px",
+                  color: "#c4b8ff",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                Call Me
+              </span>
             </a>
           </div>
 
-          {/* Secondary links */}
-          <div className="flex gap-[40px] items-center flex-wrap justify-center">
+          {/* Subtle Divider */}
+          <div
+            style={{
+              width: "80px",
+              height: "1px",
+              background: "rgba(124,58,237,0.2)",
+              margin: "24px 0",
+            }}
+          />
+
+          {/* Contact Info Row */}
+          <div
+            className="flex gap-[48px] items-center flex-wrap justify-center"
+            style={{ marginTop: "12px" }}
+          >
+            {/* Email */}
             <a
               href="mailto:yotam.eliraz@gmail.com"
-              className="font-['Inter',sans-serif] font-normal text-[16px] text-[#0e1d2b]/50 no-underline transition-colors duration-[220ms] hover:text-[#4793d6]"
+              className="flex items-center gap-[12px] no-underline transition-all duration-[220ms] hover:gap-[14px]"
+              style={{ textDecoration: "none" }}
             >
-              yotam.eliraz@gmail.com
+              <div
+                style={{
+                  width: "44px",
+                  height: "44px",
+                  borderRadius: "10px",
+                  background: "rgba(124,58,237,0.15)",
+                  border: "1.5px solid rgba(124,58,237,0.3)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  flexShrink: 0,
+                  transition: "all 0.2s ease",
+                }}
+              >
+                <svg width="20" height="20" fill="none" viewBox="0 0 20.2742 20.2742">
+                  <path d={svgPaths.p2c708800} stroke="#a78bfa" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
+                  <path d={svgPaths.p4272980} stroke="#a78bfa" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
+                </svg>
+              </div>
+              <span
+                style={{
+                  fontFamily: "'Inter', sans-serif",
+                  fontWeight: 400,
+                  fontSize: "16px",
+                  color: "rgba(255,255,255,0.8)",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                yotam.eliraz@gmail.com
+              </span>
             </a>
+
+            {/* LinkedIn */}
             <a
               href="https://www.linkedin.com/in/yotam-eliraz-977b0450/"
               target="_blank"
               rel="noopener"
-              className="font-['Inter',sans-serif] font-normal text-[16px] text-[#0e1d2b]/50 no-underline transition-colors duration-[220ms] hover:text-[#4793d6]"
+              className="flex items-center gap-[12px] no-underline transition-all duration-[220ms] hover:gap-[14px]"
+              style={{ textDecoration: "none" }}
             >
-              LinkedIn
+              <div
+                style={{
+                  width: "44px",
+                  height: "44px",
+                  borderRadius: "10px",
+                  background: "rgba(124,58,237,0.15)",
+                  border: "1.5px solid rgba(124,58,237,0.3)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  flexShrink: 0,
+                  transition: "all 0.2s ease",
+                }}
+              >
+                <svg width="20" height="20" fill="none" viewBox="0 0 20.2742 20.2742">
+                  <path d={svgPaths.p31aa100} stroke="#a78bfa" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
+                  <path d={svgPaths.p271a7a80} stroke="#a78bfa" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
+                  <path d={svgPaths.p1833ee00} stroke="#a78bfa" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
+                </svg>
+              </div>
+              <span
+                style={{
+                  fontFamily: "'Inter', sans-serif",
+                  fontWeight: 400,
+                  fontSize: "16px",
+                  color: "rgba(255,255,255,0.8)",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                LinkedIn
+              </span>
             </a>
+
+            {/* Behance */}
             <a
               href="https://www.behance.net/yotame"
               target="_blank"
               rel="noopener"
-              className="font-['Inter',sans-serif] font-normal text-[16px] text-[#0e1d2b]/50 no-underline transition-colors duration-[220ms] hover:text-[#4793d6]"
+              className="flex items-center gap-[12px] no-underline transition-all duration-[220ms] hover:gap-[14px]"
+              style={{ textDecoration: "none" }}
             >
-              Behance
+              <div
+                style={{
+                  width: "44px",
+                  height: "44px",
+                  borderRadius: "10px",
+                  background: "rgba(124,58,237,0.15)",
+                  border: "1.5px solid rgba(124,58,237,0.3)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  flexShrink: 0,
+                  transition: "all 0.2s ease",
+                }}
+              >
+                <svg width="20" height="20" fill="none" viewBox="0 0 20.2742 20.2742">
+                  <g clipPath="url(#behance-clip-contact)">
+                    <path d={svgPaths.p12b43500} fill="#a78bfa" />
+                  </g>
+                  <defs>
+                    <clipPath id="behance-clip-contact">
+                      <rect fill="white" height="20.2742" width="20.2742" />
+                    </clipPath>
+                  </defs>
+                </svg>
+              </div>
+              <span
+                style={{
+                  fontFamily: "'Inter', sans-serif",
+                  fontWeight: 400,
+                  fontSize: "16px",
+                  color: "rgba(255,255,255,0.8)",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                Behance
+              </span>
             </a>
           </div>
-        </section>
+        </div>
+      </section>
 
+      <div className="w-[1145.25px] flex flex-col">
         {/* ── Footer ─────────────────────────────────────── */}
         <footer className="h-[95.739px] w-full shrink-0 flex items-center px-[45.054px] py-[36.043px] justify-center">
           <div className="flex gap-[36.043px] items-center justify-center flex-1">
