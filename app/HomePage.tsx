@@ -426,7 +426,7 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
         id="contact"
         className="relative w-full flex flex-col items-center justify-center overflow-hidden"
         style={{
-          minHeight: "100vh",
+          padding: "100px 24px",
           background: "#0e0b1e",
         }}
       >
@@ -446,19 +446,19 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
         />
 
         {/* Content */}
-        <div className="relative z-10 flex flex-col items-center text-center px-6" style={{ maxWidth: 700 }}>
+        <div className="relative z-10 flex flex-col items-center text-center px-6" style={{ maxWidth: 760 }}>
           {/* Eyebrow */}
           <span
-            className="mb-5 tracking-widest uppercase text-xs font-semibold"
-            style={{ color: "#7c6ef0", letterSpacing: "0.18em" }}
+            className="mb-6 tracking-widest uppercase font-semibold"
+            style={{ color: "#7c6ef0", letterSpacing: "0.18em", fontSize: "15px" }}
           >
             Let's Connect
           </span>
 
           {/* Heading */}
           <h1
-            className="font-extrabold text-white leading-none mb-5"
-            style={{ fontSize: "clamp(3rem, 8vw, 5.5rem)", letterSpacing: "-0.02em" }}
+            className="font-extrabold text-white leading-none mb-6"
+            style={{ fontSize: "clamp(3.5rem, 9vw, 6.5rem)", letterSpacing: "-0.02em" }}
           >
             Let's Talk
           </h1>
@@ -466,25 +466,25 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
           {/* Subtitle */}
           <p
             className="mb-10 leading-relaxed"
-            style={{ color: "#a09ec4", fontSize: "1rem", maxWidth: 420 }}
+            style={{ color: "#a09ec4", fontSize: "1.25rem", maxWidth: 500 }}
           >
             Looking for a Product Designer? I'd love to hear about your project, product or opportunity.
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-wrap items-center justify-center gap-4 mb-16">
+          <div className="flex flex-wrap items-center justify-center gap-4 mb-14">
             {/* Message Me */}
             <a
               href="mailto:yotam.eliraz@gmail.com"
-              className="flex items-center gap-2 font-semibold rounded-full px-7 py-3 transition-all duration-200 hover:opacity-90 active:scale-95"
+              className="flex items-center gap-3 font-semibold rounded-full px-9 py-4 transition-all duration-200 hover:opacity-90 active:scale-95"
               style={{
                 background: "#6c5ce7",
                 color: "#fff",
-                fontSize: "0.9375rem",
+                fontSize: "1.125rem",
                 boxShadow: "0 4px 24px rgba(108, 92, 231, 0.35)",
               }}
             >
-              <svg width="16" height="16" fill="none" viewBox="0 0 20.2742 20.2742">
+              <svg width="20" height="20" fill="none" viewBox="0 0 20.2742 20.2742">
                 <path d={svgPaths.p2c708800} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
                 <path d={svgPaths.p4272980} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
               </svg>
@@ -494,15 +494,15 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
             {/* Call Me */}
             <a
               href="tel:0505795099"
-              className="flex items-center gap-2 font-semibold rounded-full px-7 py-3 transition-all duration-200 hover:bg-white/10 active:scale-95"
+              className="flex items-center gap-3 font-semibold rounded-full px-9 py-4 transition-all duration-200 hover:bg-white/10 active:scale-95"
               style={{
                 background: "transparent",
                 color: "#fff",
                 border: "1.5px solid rgba(255,255,255,0.25)",
-                fontSize: "0.9375rem",
+                fontSize: "1.125rem",
               }}
             >
-              <svg width="16" height="16" fill="none" viewBox="0 0 20.2742 20.2742">
+              <svg width="20" height="20" fill="none" viewBox="0 0 20.2742 20.2742">
                 <path d={svgPaths.p2be78800} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
               </svg>
               Call Me
@@ -510,18 +510,18 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
           </div>
 
           {/* Social Links */}
-          <div className="flex flex-wrap items-center justify-center gap-8">
+          <div className="flex flex-wrap items-center justify-center gap-10">
             {/* Email */}
             <a
               href="mailto:yotam.eliraz@gmail.com"
-              className="flex items-center gap-2 transition-opacity hover:opacity-70"
-              style={{ color: "#a09ec4", fontSize: "0.8125rem" }}
+              className="flex items-center gap-3 transition-opacity hover:opacity-70"
+              style={{ color: "#a09ec4", fontSize: "1rem" }}
             >
               <span
                 className="flex items-center justify-center rounded"
-                style={{ width: 28, height: 28, background: "rgba(255,255,255,0.07)", borderRadius: 6 }}
+                style={{ width: 38, height: 38, background: "rgba(255,255,255,0.07)", borderRadius: 8 }}
               >
-                <svg width="13" height="13" fill="none" viewBox="0 0 20.2742 20.2742">
+                <svg width="18" height="18" fill="none" viewBox="0 0 20.2742 20.2742">
                   <path d={svgPaths.p2c708800} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
                   <path d={svgPaths.p4272980} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
                 </svg>
@@ -534,14 +534,14 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
               href="https://www.linkedin.com/in/yotam-eliraz-977b0450/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 transition-opacity hover:opacity-70"
-              style={{ color: "#a09ec4", fontSize: "0.8125rem" }}
+              className="flex items-center gap-3 transition-opacity hover:opacity-70"
+              style={{ color: "#a09ec4", fontSize: "1rem" }}
             >
               <span
                 className="flex items-center justify-center rounded"
-                style={{ width: 28, height: 28, background: "rgba(255,255,255,0.07)", borderRadius: 6 }}
+                style={{ width: 38, height: 38, background: "rgba(255,255,255,0.07)", borderRadius: 8 }}
               >
-                <svg width="13" height="13" fill="none" viewBox="0 0 20.2742 20.2742">
+                <svg width="18" height="18" fill="none" viewBox="0 0 20.2742 20.2742">
                   <path d={svgPaths.p31aa100} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
                   <path d={svgPaths.p271a7a80} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
                   <path d={svgPaths.p1833ee00} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
@@ -555,14 +555,14 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
               href="https://www.behance.net/yotame"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 transition-opacity hover:opacity-70"
-              style={{ color: "#a09ec4", fontSize: "0.8125rem" }}
+              className="flex items-center gap-3 transition-opacity hover:opacity-70"
+              style={{ color: "#a09ec4", fontSize: "1rem" }}
             >
               <span
                 className="flex items-center justify-center rounded"
-                style={{ width: 28, height: 28, background: "rgba(255,255,255,0.07)", borderRadius: 6 }}
+                style={{ width: 38, height: 38, background: "rgba(255,255,255,0.07)", borderRadius: 8 }}
               >
-                <svg width="13" height="13" fill="none" viewBox="0 0 20.2742 20.2742">
+                <svg width="18" height="18" fill="none" viewBox="0 0 20.2742 20.2742">
                   <g clipPath="url(#behance-clip-contact2)">
                     <path d={svgPaths.p12b43500} fill="currentColor" />
                   </g>
