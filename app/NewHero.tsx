@@ -91,6 +91,41 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
         }
       `}</style>
 
+      {/* ── Sticky nav — outside scaled canvas so fixed positioning works ── */}
+      <nav
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 1000,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          padding: "0 100px",
+          height: `${scale * 119.1}px`,
+          background: "rgba(8,6,22,0.85)",
+          backdropFilter: "blur(16px)",
+          WebkitBackdropFilter: "blur(16px)",
+          borderBottom: "1px solid rgba(124,58,237,0.15)",
+          boxShadow: "0 1px 32px rgba(0,0,0,0.35)",
+          transition: "background 0.3s ease",
+        }}
+      >
+        <div
+          style={{ width: scale*39.7, height: scale*39.7, borderRadius: scale*9.925, background: "linear-gradient(135deg, #7c3aed 0%, #a855f7 100%)", display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0 }}
+        >
+          <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, fontSize: scale*17.369, color: "#fff" }}>YE</span>
+        </div>
+        <div style={{ display: "flex", alignItems: "center", gap: scale*49.626 }}>
+          <span className="hero-nav-link" onClick={onScrollWork} style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 500, fontSize: scale*18, color: "#c4b8ff", cursor:"pointer" }}>Work</span>
+          <span className="hero-nav-link" onClick={onNavigateAbout} style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 500, fontSize: scale*18, color: "#c4b8ff", cursor:"pointer" }}>About</span>
+          <div className="cursor-pointer hero-nav-contact" onClick={onScrollContact} style={{ background: "#7c3aed", borderRadius: 999, padding: `${scale*9.925}px ${scale*24.813}px` }}>
+            <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, fontSize: scale*18, color: "#fff", whiteSpace: "nowrap" }}>Contact Me</span>
+          </div>
+        </div>
+      </nav>
+
       {/* Scale wrapper to fill full viewport */}
       <div style={{ width: "100%", height: `calc(${scale} * 860px)`, position: "relative", overflow: "hidden" }}>
         <div style={{ width: 1440, position: "absolute", top: 0, left: 0, transform: `scale(${scale})`, transformOrigin: "top left" }}>
@@ -103,23 +138,6 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
               paddingBottom: "8%",
             }}
           >
-            {/* Navigation */}
-            <nav className="relative z-10 flex items-center justify-between w-full shrink-0" style={{ padding: "39.7px 100px" }}>
-              <div
-                className="flex items-center justify-center shrink-0"
-                style={{ width: 39.7, height: 39.7, borderRadius: 9.925, background: "linear-gradient(135deg, #7c3aed 0%, #a855f7 100%)" }}
-              >
-                <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, fontSize: 17.369, color: "#fff" }}>YE</span>
-              </div>
-              <div className="flex items-center" style={{ gap: 49.626 }}>
-                <span className="hero-nav-link" onClick={onScrollWork} style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 500, fontSize: 18, color: "#c4b8ff" }}>Work</span>
-                <span className="hero-nav-link" onClick={onNavigateAbout} style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 500, fontSize: 18, color: "#c4b8ff" }}>About</span>
-                <div className="cursor-pointer hero-nav-contact" onClick={onScrollContact} style={{ background: "#7c3aed", borderRadius: 999, padding: "9.925px 24.813px" }}>
-                  <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, fontSize: 18, color: "#fff", whiteSpace: "nowrap" }}>Contact Me</span>
-                </div>
-              </div>
-            </nav>
-
             {/* Hero body */}
             <div className="relative z-10 flex-1 flex items-center w-full" style={{ paddingLeft: 152, paddingRight: 60, gap: 48 }}>
               {/* Left text */}
