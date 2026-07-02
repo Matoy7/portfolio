@@ -36,6 +36,97 @@ interface Props {
   onScrollWork: () => void;
 }
 
+/* ── Floating navigation ─────────────────────────────────── */
+
+function FloatingNav({ scale, onScrollWork, onNavigateAbout, onScrollContact }: {
+  scale: number;
+  onScrollWork: () => void;
+  onNavigateAbout: () => void;
+  onScrollContact: () => void;
+}) {
+  const [visible, setVisible] = useState(false);
+  const [rendered, setRendered] = useState(false);
+  const hideTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    const SCROLL_THRESHOLD = 100;
+    const HIDE_DELAY = 1000;
+
+    const showNav = () => {
+      if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
+      if (!rendered) setRendered(true);
+      // Small rAF to let element mount before triggering transition
+      requestAnimationFrame(() => requestAnimationFrame(() => setVisible(true)));
+      hideTimerRef.current = setTimeout(() => setVisible(false), HIDE_DELAY);
+    };
+
+    const onScroll = () => {
+      if (window.scrollY > SCROLL_THRESHOLD) {
+        showNav();
+      } else {
+        if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
+        setVisible(false);
+      }
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
+    };
+  }, [rendered]);
+
+  if (!rendered) return null;
+
+  return (
+    <div
+      style={{
+        position: "fixed",
+        top: 16,
+        left: "50%",
+        transform: visible
+          ? "translateX(-50%) translateY(0px)"
+          : "translateX(-50%) translateY(-8px)",
+        zIndex: 1000,
+        opacity: visible ? 1 : 0,
+        pointerEvents: visible ? "auto" : "none",
+        transition: "opacity 280ms ease, transform 280ms ease",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        gap: 48,
+        padding: "0 24px 0 16px",
+        height: 64,
+        borderRadius: 16,
+        background: "rgba(8,6,22,0.82)",
+        backdropFilter: "blur(12px)",
+        WebkitBackdropFilter: "blur(12px)",
+        border: "1px solid rgba(124,58,237,0.2)",
+        boxShadow: "0 8px 32px rgba(0,0,0,0.4), 0 1px 0 rgba(255,255,255,0.04) inset",
+        minWidth: Math.min(600, window.innerWidth * 0.7),
+      }}
+    >
+      {/* Logo mark */}
+      <div style={{ width: 36, height: 36, borderRadius: 9, background: "linear-gradient(135deg, #7c3aed 0%, #a855f7 100%)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+        <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, fontSize: 15, color: "#fff" }}>YE</span>
+      </div>
+
+      {/* Links */}
+      <div style={{ display: "flex", alignItems: "center", gap: 36 }}>
+        <span className="hero-nav-link" onClick={onScrollWork} style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 500, fontSize: 15, color: "#c4b8ff", cursor: "pointer", whiteSpace: "nowrap" }}>Work</span>
+        <span className="hero-nav-link" onClick={onNavigateAbout} style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 500, fontSize: 15, color: "#c4b8ff", cursor: "pointer", whiteSpace: "nowrap" }}>About</span>
+        <div
+          className="cursor-pointer hero-nav-contact"
+          onClick={onScrollContact}
+          style={{ background: "#7c3aed", borderRadius: 999, padding: "9px 20px", flexShrink: 0 }}
+        >
+          <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, fontSize: 14, color: "#fff", whiteSpace: "nowrap" }}>Contact Me</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork }: Props) {
   const [scale, setScale] = useState(1);
 
@@ -91,40 +182,13 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
         }
       `}</style>
 
-      {/* ── Sticky nav — outside scaled canvas so fixed positioning works ── */}
-      <nav
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          right: 0,
-          zIndex: 1000,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          padding: "0 100px",
-          height: `${scale * 119.1}px`,
-          background: "rgba(8,6,22,0.85)",
-          backdropFilter: "blur(16px)",
-          WebkitBackdropFilter: "blur(16px)",
-          borderBottom: "1px solid rgba(124,58,237,0.15)",
-          boxShadow: "0 1px 32px rgba(0,0,0,0.35)",
-          transition: "background 0.3s ease",
-        }}
-      >
-        <div
-          style={{ width: scale*39.7, height: scale*39.7, borderRadius: scale*9.925, background: "linear-gradient(135deg, #7c3aed 0%, #a855f7 100%)", display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0 }}
-        >
-          <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, fontSize: scale*17.369, color: "#fff" }}>YE</span>
-        </div>
-        <div style={{ display: "flex", alignItems: "center", gap: scale*49.626 }}>
-          <span className="hero-nav-link" onClick={onScrollWork} style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 500, fontSize: scale*18, color: "#c4b8ff", cursor:"pointer" }}>Work</span>
-          <span className="hero-nav-link" onClick={onNavigateAbout} style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 500, fontSize: scale*18, color: "#c4b8ff", cursor:"pointer" }}>About</span>
-          <div className="cursor-pointer hero-nav-contact" onClick={onScrollContact} style={{ background: "#7c3aed", borderRadius: 999, padding: `${scale*9.925}px ${scale*24.813}px` }}>
-            <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, fontSize: scale*18, color: "#fff", whiteSpace: "nowrap" }}>Contact Me</span>
-          </div>
-        </div>
-      </nav>
+      {/* ── Floating nav — transparent on load, appears on scroll, auto-hides ── */}
+      <FloatingNav
+        scale={scale}
+        onScrollWork={onScrollWork}
+        onNavigateAbout={onNavigateAbout}
+        onScrollContact={onScrollContact}
+      />
 
       {/* Scale wrapper to fill full viewport */}
       <div style={{ width: "100%", height: `calc(${scale} * 860px)`, position: "relative", overflow: "hidden" }}>
