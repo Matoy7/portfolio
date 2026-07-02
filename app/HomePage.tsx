@@ -133,7 +133,7 @@ function CaseStudyCard({
         "active:scale-[0.995]",
         "motion-reduce:transition-none motion-reduce:hover:transform-none",
       ].join(" ")}
-      style={{ height: featured ? 210 : 185 }}
+      style={{ height: featured ? 273 : 240 }}
     >
       {/* Full-bleed background image */}
       <img
@@ -158,15 +158,15 @@ function CaseStudyCard({
       {/* Content */}
       <div
         className="relative z-10 flex flex-col justify-between h-full"
-        style={{ padding: "24px 28px" }}
+        style={{ padding: "28px 32px" }}
       >
         <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
           {/* Badge */}
           <div style={{ display: "inline-flex", width: "fit-content" }}>
             <span style={{
               background: categoryColor, color: categoryTextColor,
-              fontSize: 11, fontFamily: "'Inter', sans-serif", fontWeight: 700,
-              letterSpacing: "0.6px", padding: "4px 10px", borderRadius: 6,
+              fontSize: 13, fontFamily: "'Inter', sans-serif", fontWeight: 700,
+              letterSpacing: "0.6px", padding: "5px 12px", borderRadius: 7,
             }}>
               {categoryLabel}
             </span>
@@ -175,7 +175,7 @@ function CaseStudyCard({
           {/* Title */}
           <p style={{
             fontFamily: "'Inter', sans-serif", fontWeight: 700,
-            fontSize: featured ? 24 : 22, lineHeight: 1.25,
+            fontSize: featured ? 32 : 28, lineHeight: 1.2,
             color: "#ffffff", margin: 0,
           }}>
             {title}
@@ -184,7 +184,7 @@ function CaseStudyCard({
           {/* Description */}
           <p style={{
             fontFamily: "'Inter', sans-serif", fontWeight: 400,
-            fontSize: 14, lineHeight: 1.5,
+            fontSize: 17, lineHeight: 1.5,
             color: "rgba(255,255,255,0.72)", margin: 0,
           }}>
             {description}
@@ -196,11 +196,11 @@ function CaseStudyCard({
           {tags.map((tag) => (
             <span key={tag} style={{
               fontFamily: "'Inter', sans-serif", fontWeight: 600,
-              fontSize: 11, letterSpacing: "0.4px",
+              fontSize: 13, letterSpacing: "0.4px",
               color: dimTags ? "rgba(255,255,255,0.55)" : "rgba(255,255,255,0.75)",
               background: dimTags ? "rgba(255,255,255,0.10)" : "rgba(255,255,255,0.14)",
               border: "1px solid rgba(255,255,255,0.15)",
-              borderRadius: 100, padding: "4px 10px",
+              borderRadius: 100, padding: "5px 12px",
             }}>
               {tag}
             </span>
