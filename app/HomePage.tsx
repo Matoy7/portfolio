@@ -388,8 +388,8 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
                 onClick={() => onNavigate("alma")}
               />
 
-              {/* Card 2: Pulse — featured, offset right */}
-              <div style={{ marginLeft: 48, position: "relative", zIndex: 2 }}>
+              {/* Card 2: Pulse — featured, offset right, widened for staggered composition */}
+              <div style={{ marginLeft: 48, marginRight: -48, position: "relative", zIndex: 2 }}>
                 <CaseStudyCard
                   image={imgPulse}
                   categoryLabel="DASHBOARD"
@@ -404,20 +404,18 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
                 />
               </div>
 
-              {/* Card 3: Curio — widened, extends right for staggered composition */}
-              <div style={{ marginRight: -48 }}>
-                <CaseStudyCard
-                  image={imgCurio}
-                  categoryLabel="E-COMMERCE"
-                  categoryColor="#fec66e"
-                  categoryTextColor="#1f2937"
-                  title="Curio – Online Toys Store"
-                  description="An online marketplace for educational toys for kids."
-                  tags={["AI", "HEALTH", "MOBILE"]}
-                  hasGradient
-                  onClick={() => onNavigate("curio")}
-                />
-              </div>
+              {/* Card 3: Curio */}
+              <CaseStudyCard
+                image={imgCurio}
+                categoryLabel="E-COMMERCE"
+                categoryColor="#fec66e"
+                categoryTextColor="#1f2937"
+                title="Curio – Online Toys Store"
+                description="An online marketplace for educational toys for kids."
+                tags={["AI", "HEALTH", "MOBILE"]}
+                hasGradient
+                onClick={() => onNavigate("curio")}
+              />
             </div>
 
             {/* ── Right column: editorial title ── */}
@@ -452,10 +450,10 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
       >
         <div
           className="mx-auto w-full flex flex-col items-center justify-center"
-          style={{ maxWidth: 1280, padding: "64px 80px" }}
+          style={{ maxWidth: 1320, padding: "80px" }}
         >
           {/* ── About Me row ── */}
-          <div className="flex flex-col lg:flex-row items-center justify-center gap-16 w-full" style={{ paddingBottom: 80 }}>
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-16 w-full" style={{ paddingBottom: 88 }}>
             {/* Polaroid photo with glow */}
             <div className="relative flex-shrink-0" style={{ width: 220, height: 242 }}>
               {/* Glow blob */}
@@ -497,14 +495,14 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
             </div>
 
             {/* Text column */}
-            <div className="flex flex-col items-start" style={{ width: 564, gap: 20 }}>
+            <div className="flex flex-col items-start" style={{ width: 620, gap: 24 }}>
               <span
                 style={{
                   fontFamily: "'Inter', sans-serif",
                   fontWeight: 600,
-                  fontSize: 12,
-                  lineHeight: "16px",
-                  letterSpacing: "2.16px",
+                  fontSize: 14,
+                  lineHeight: "18px",
+                  letterSpacing: "2px",
                   textTransform: "uppercase",
                   color: "#8b8fa8",
                 }}
@@ -515,22 +513,22 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
                 style={{
                   fontFamily: "'Inter', sans-serif",
                   fontWeight: 700,
-                  fontSize: 44.8,
-                  lineHeight: "49.28px",
+                  fontSize: 56,
+                  lineHeight: "1.1",
                   color: "#ffffff",
                   margin: 0,
                 }}
               >
                 Hi, I'm Yotam
               </h2>
-              <div className="flex flex-col" style={{ gap: 16, width: "100%" }}>
-                <p style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: 14.4, lineHeight: "24.48px", color: "#b0b5cc", margin: 0 }}>
+              <div className="flex flex-col" style={{ gap: 20, width: "100%" }}>
+                <p style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: 20, lineHeight: 1.7, color: "#b0b5cc", margin: 0 }}>
                   I design digital experiences that are intuitive, meaningful, and user-centered. With a background in computer science and over a decade in software development, I bring a unique blend of technical understanding and creative thinking to every project.
                 </p>
-                <p style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: 14.4, lineHeight: "24.48px", color: "#b0b5cc", margin: 0 }}>
+                <p style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: 20, lineHeight: 1.7, color: "#b0b5cc", margin: 0 }}>
                   I care deeply about solving real problems and creating products that make people's lives easier and better.
                 </p>
-                <p style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: 14.4, lineHeight: "24.48px", color: "#b0b5cc", margin: 0 }}>
+                <p style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: 20, lineHeight: 1.7, color: "#b0b5cc", margin: 0 }}>
                   When I'm not designing, you'll find me traveling, exploring new places, and getting inspired by the world around me.
                 </p>
               </div>
@@ -538,19 +536,19 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
           </div>
 
           {/* ── Divider ── */}
-          <div className="w-full" style={{ borderTop: "0.889px solid rgba(255,255,255,0.07)", paddingBottom: 32 }} />
+          <div className="w-full" style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingBottom: 48 }} />
 
           {/* ── Let's Talk row ── */}
-          <div id="contact" className="flex flex-col lg:flex-row items-center w-full" style={{ gap: 24 }}>
+          <div id="contact" className="flex flex-col lg:flex-row items-center w-full" style={{ gap: 32 }}>
             {/* Eyebrow + heading */}
-            <div className="flex flex-col flex-shrink-0" style={{ width: 162, gap: 4 }}>
+            <div className="flex flex-col flex-shrink-0" style={{ width: 260, gap: 8 }}>
               <span
                 style={{
                   fontFamily: "'Inter', sans-serif",
                   fontWeight: 600,
-                  fontSize: 12,
-                  lineHeight: "16px",
-                  letterSpacing: "2.16px",
+                  fontSize: 14,
+                  lineHeight: "18px",
+                  letterSpacing: "2px",
                   textTransform: "uppercase",
                   color: "#8b8fa8",
                 }}
@@ -561,8 +559,8 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
                 style={{
                   fontFamily: "'Inter', sans-serif",
                   fontWeight: 700,
-                  fontSize: 35.2,
-                  lineHeight: "38.72px",
+                  fontSize: 48,
+                  lineHeight: "1.1",
                   color: "#ffffff",
                   margin: 0,
                   whiteSpace: "nowrap",
@@ -573,21 +571,21 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
             </div>
 
             {/* Subtitle + social links */}
-            <div className="flex-1 flex flex-col items-start" style={{ gap: 12, padding: "0 32px", minWidth: 0 }}>
-              <p style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: 13.12, lineHeight: "20.99px", color: "#b0b5cc", margin: 0 }}>
+            <div className="flex-1 flex flex-col items-start" style={{ gap: 20, padding: "0 40px", minWidth: 0 }}>
+              <p style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: 20, lineHeight: 1.6, color: "#b0b5cc", margin: 0 }}>
                 Looking for a Product Designer? I'd love to hear about your project, product or opportunity.
               </p>
-              <div className="flex flex-wrap items-center" style={{ gap: 24 }}>
+              <div className="flex flex-wrap items-center" style={{ gap: 32 }}>
                 <a
                   href="mailto:yotam.eliraz@gmail.com"
                   className="flex items-center hover:opacity-70 transition-opacity"
-                  style={{ gap: 8, textDecoration: "none" }}
+                  style={{ gap: 10, textDecoration: "none" }}
                 >
-                  <svg width="14" height="14" fill="none" viewBox="0 0 20.2742 20.2742">
-                    <path d={svgPaths.p2c708800} stroke="#6B70A8" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
-                    <path d={svgPaths.p4272980} stroke="#6B70A8" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
+                  <svg width="20" height="20" fill="none" viewBox="0 0 20.2742 20.2742">
+                    <path d={svgPaths.p2c708800} stroke="#8b90b8" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
+                    <path d={svgPaths.p4272980} stroke="#8b90b8" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
                   </svg>
-                  <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: 12, lineHeight: "16px", color: "#b0b5cc", whiteSpace: "nowrap" }}>
+                  <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: 16, lineHeight: "20px", color: "#b0b5cc", whiteSpace: "nowrap" }}>
                     yotam.eliraz@gmail.com
                   </span>
                 </a>
@@ -596,14 +594,14 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center hover:opacity-70 transition-opacity"
-                  style={{ gap: 8, textDecoration: "none" }}
+                  style={{ gap: 10, textDecoration: "none" }}
                 >
-                  <svg width="14" height="14" fill="none" viewBox="0 0 20.2742 20.2742">
-                    <path d={svgPaths.p31aa100} stroke="#6B70A8" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
-                    <path d={svgPaths.p271a7a80} stroke="#6B70A8" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
-                    <path d={svgPaths.p1833ee00} stroke="#6B70A8" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
+                  <svg width="20" height="20" fill="none" viewBox="0 0 20.2742 20.2742">
+                    <path d={svgPaths.p31aa100} stroke="#8b90b8" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
+                    <path d={svgPaths.p271a7a80} stroke="#8b90b8" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
+                    <path d={svgPaths.p1833ee00} stroke="#8b90b8" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
                   </svg>
-                  <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: 12, lineHeight: "16px", color: "#b0b5cc", whiteSpace: "nowrap" }}>
+                  <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: 16, lineHeight: "20px", color: "#b0b5cc", whiteSpace: "nowrap" }}>
                     LinkedIn
                   </span>
                 </a>
@@ -612,11 +610,11 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center hover:opacity-70 transition-opacity"
-                  style={{ gap: 8, textDecoration: "none" }}
+                  style={{ gap: 10, textDecoration: "none" }}
                 >
-                  <svg width="14" height="14" fill="none" viewBox="0 0 20.2742 20.2742">
+                  <svg width="20" height="20" fill="none" viewBox="0 0 20.2742 20.2742">
                     <g clipPath="url(#behance-clip-figma)">
-                      <path d={svgPaths.p12b43500} fill="#6B70A8" />
+                      <path d={svgPaths.p12b43500} fill="#8b90b8" />
                     </g>
                     <defs>
                       <clipPath id="behance-clip-figma">
@@ -624,7 +622,7 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
                       </clipPath>
                     </defs>
                   </svg>
-                  <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: 12, lineHeight: "16px", color: "#b0b5cc", whiteSpace: "nowrap" }}>
+                  <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: 16, lineHeight: "20px", color: "#b0b5cc", whiteSpace: "nowrap" }}>
                     Behance
                   </span>
                 </a>
@@ -632,22 +630,22 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
             </div>
 
             {/* Buttons */}
-            <div className="flex flex-shrink-0 items-center" style={{ gap: 12 }}>
+            <div className="flex flex-shrink-0 items-center" style={{ gap: 16 }}>
               <a
                 href="mailto:yotam.eliraz@gmail.com"
                 className="cursor-pointer cta-btn-primary flex items-center no-underline"
                 style={{
-                  gap: 8,
+                  gap: 10,
                   borderRadius: 999,
-                  padding: "10px 20px",
+                  padding: "15px 28px",
                   backgroundImage: "linear-gradient(164.973deg, rgb(79,99,231) 0%, rgb(107,70,230) 100%)",
                 }}
               >
-                <svg width="15" height="15" fill="none" viewBox="0 0 20.2742 20.2742">
+                <svg width="20" height="20" fill="none" viewBox="0 0 20.2742 20.2742">
                   <path d={svgPaths.p2c708800} stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
                   <path d={svgPaths.p4272980} stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
                 </svg>
-                <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 500, fontSize: 14, lineHeight: "20px", color: "#fff", whiteSpace: "nowrap" }}>
+                <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 600, fontSize: 18, lineHeight: "24px", color: "#fff", whiteSpace: "nowrap" }}>
                   Message Me
                 </span>
               </a>
@@ -655,16 +653,16 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
                 href="tel:0505795099"
                 className="cursor-pointer cta-btn-ghost flex items-center no-underline"
                 style={{
-                  gap: 8,
+                  gap: 10,
                   borderRadius: 999,
-                  padding: "10px 20px",
-                  border: "0.889px solid rgba(160,165,210,0.35)",
+                  padding: "15px 28px",
+                  border: "1.5px solid rgba(160,165,210,0.35)",
                 }}
               >
-                <svg width="15" height="15" fill="none" viewBox="0 0 20.2742 20.2742">
+                <svg width="20" height="20" fill="none" viewBox="0 0 20.2742 20.2742">
                   <path d={svgPaths.p2be78800} stroke="#c0c4dd" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
                 </svg>
-                <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 500, fontSize: 14, lineHeight: "20px", color: "#c0c4dd", whiteSpace: "nowrap" }}>
+                <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 600, fontSize: 18, lineHeight: "24px", color: "#c0c4dd", whiteSpace: "nowrap" }}>
                   Call Me
                 </span>
               </a>
