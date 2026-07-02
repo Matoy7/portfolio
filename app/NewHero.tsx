@@ -129,15 +129,15 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
                   Product Designer
                 </p>
                 <div style={{ marginBottom: 16 }}>
-                  <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, fontSize: 80, color: "#f0eeff", letterSpacing: "-1.5265px", lineHeight: "79px", marginBottom: 16 }}>
+                  <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, fontSize: 76, color: "#f0eeff", letterSpacing: "-1.45px", lineHeight: "80px", marginBottom: 28 }}>
                     <p style={{ margin: 0 }}>From Engineering</p>
                     <p style={{ margin: 0 }}>to Product Design</p>
                   </div>
-                  <p style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: 21.091, lineHeight: "34.273px", color: "#e2daff", maxWidth: 666, margin: 0 }}>
+                  <p style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: 22, lineHeight: "34px", color: "#e2daff", maxWidth: 666, margin: 0 }}>
                     Product Designer with 12 years of engineering experience, creating intuitive digital products through user centered design.
                   </p>
                 </div>
-                <div className="flex items-center" style={{ gap: 19.851, marginTop: 48 }}>
+                <div className="flex items-center" style={{ gap: 19.851, marginTop: 64 }}>
                   <div className="cursor-pointer hero-btn-primary" onClick={onScrollWork} style={{ background: "#7c3aed", borderRadius: 999, padding: "17.369px 34.738px" }}>
                     <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, fontSize: 20, color: "#fff", whiteSpace: "nowrap" }}>View Case Studies</span>
                   </div>
