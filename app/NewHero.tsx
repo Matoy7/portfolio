@@ -209,15 +209,16 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
       />
 
       {/* Scale wrapper to fill full viewport — NO STATIC HEADER */}
-      <div ref={heroWrapperRef} style={{ width: "100%", height: `calc(${scale} * 860px)`, position: "relative", overflow: "hidden" }}>
+      <div ref={heroWrapperRef} style={{ width: "100%", height: `calc(${scale} * 688px)`, position: "relative", overflow: "hidden" }}>
 
-        <div style={{ width: 1440, position: "absolute", top: 0, left: 0, transform: `scale(${scale})`, transformOrigin: "top left", height: 860 }}>
+        <div style={{ width: 1440, position: "absolute", top: 0, left: 0, transform: `scale(${scale})`, transformOrigin: "top left", height: 688 }}>
 
           <div
-            className="relative flex flex-col mx-auto justify-center"
+            className="relative flex flex-col mx-auto"
             style={{
               width: 1440,
-              height: 860,
+              height: 688,
+              paddingTop: 60,
               background: "radial-gradient(ellipse 65% 60% at 65% 40%, rgba(26,10,74,1) 0%, rgba(20,9,53,1) 22.5%, rgba(13,8,32,1) 45%, rgba(8,6,22,1) 100%)",
             }}
           >
