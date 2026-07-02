@@ -129,66 +129,64 @@ function CaseStudyCard({
       className={[
         "group relative rounded-[20px] w-full cursor-pointer overflow-hidden",
         "transition-all duration-[280ms] ease-out",
-        "hover:-translate-y-[3px] hover:shadow-[0_20px_48px_rgba(0,0,0,0.14)]",
+        "hover:-translate-y-[4px] hover:shadow-[0_24px_56px_rgba(0,0,0,0.22)]",
         "active:scale-[0.995]",
         "motion-reduce:transition-none motion-reduce:hover:transform-none",
       ].join(" ")}
-      style={{
-        height: featured ? 172 : 150,
-        background: "#fff",
-        border: "1px solid rgba(0,0,0,0.07)",
-        boxShadow: "0 2px 12px rgba(0,0,0,0.06)",
-        display: "flex",
-        flexDirection: "row",
-      }}
+      style={{ height: featured ? 210 : 185 }}
     >
-      {/* Left: text content */}
-      <div style={{ flex: "0 0 42%", padding: "22px 24px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
-        {/* Top: badge + title + desc */}
-        <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-          {/* Category badge */}
+      {/* Full-bleed background image */}
+      <img
+        alt=""
+        src={image}
+        className={[
+          "absolute inset-0 w-full h-full object-cover",
+          "transition-transform duration-[500ms] ease-out",
+          "group-hover:scale-[1.04]",
+          "motion-reduce:transition-none motion-reduce:group-hover:scale-100",
+        ].join(" ")}
+      />
+
+      {/* Dark gradient overlay */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: "linear-gradient(105deg, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.55) 45%, rgba(0,0,0,0.15) 100%)",
+        }}
+      />
+
+      {/* Content */}
+      <div
+        className="relative z-10 flex flex-col justify-between h-full"
+        style={{ padding: "24px 28px" }}
+      >
+        <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+          {/* Badge */}
           <div style={{ display: "inline-flex", width: "fit-content" }}>
-            <span
-              style={{
-                background: categoryColor,
-                color: categoryTextColor,
-                fontSize: 10,
-                fontFamily: "'Inter', sans-serif",
-                fontWeight: 700,
-                letterSpacing: "0.5px",
-                padding: "3px 8px",
-                borderRadius: 6,
-              }}
-            >
+            <span style={{
+              background: categoryColor, color: categoryTextColor,
+              fontSize: 11, fontFamily: "'Inter', sans-serif", fontWeight: 700,
+              letterSpacing: "0.6px", padding: "4px 10px", borderRadius: 6,
+            }}>
               {categoryLabel}
             </span>
           </div>
 
           {/* Title */}
-          <p
-            style={{
-              fontFamily: "'Inter', sans-serif",
-              fontWeight: 700,
-              fontSize: featured ? 17 : 15,
-              lineHeight: 1.3,
-              color: "#0e1d2b",
-              margin: 0,
-            }}
-          >
+          <p style={{
+            fontFamily: "'Inter', sans-serif", fontWeight: 700,
+            fontSize: featured ? 24 : 22, lineHeight: 1.25,
+            color: "#ffffff", margin: 0,
+          }}>
             {title}
           </p>
 
           {/* Description */}
-          <p
-            style={{
-              fontFamily: "'Inter', sans-serif",
-              fontWeight: 400,
-              fontSize: 12.5,
-              lineHeight: 1.5,
-              color: "rgba(14,29,43,0.55)",
-              margin: 0,
-            }}
-          >
+          <p style={{
+            fontFamily: "'Inter', sans-serif", fontWeight: 400,
+            fontSize: 14, lineHeight: 1.5,
+            color: "rgba(255,255,255,0.72)", margin: 0,
+          }}>
             {description}
           </p>
         </div>
@@ -196,38 +194,18 @@ function CaseStudyCard({
         {/* Tags */}
         <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
           {tags.map((tag) => (
-            <span
-              key={tag}
-              style={{
-                fontFamily: "'Inter', sans-serif",
-                fontWeight: 600,
-                fontSize: 10,
-                letterSpacing: "0.4px",
-                color: dimTags ? "rgba(14,29,43,0.35)" : "rgba(14,29,43,0.55)",
-                background: dimTags ? "rgba(14,29,43,0.06)" : "rgba(14,29,43,0.07)",
-                borderRadius: 100,
-                padding: "3px 9px",
-              }}
-            >
+            <span key={tag} style={{
+              fontFamily: "'Inter', sans-serif", fontWeight: 600,
+              fontSize: 11, letterSpacing: "0.4px",
+              color: dimTags ? "rgba(255,255,255,0.55)" : "rgba(255,255,255,0.75)",
+              background: dimTags ? "rgba(255,255,255,0.10)" : "rgba(255,255,255,0.14)",
+              border: "1px solid rgba(255,255,255,0.15)",
+              borderRadius: 100, padding: "4px 10px",
+            }}>
               {tag}
             </span>
           ))}
         </div>
-      </div>
-
-      {/* Right: image */}
-      <div style={{ flex: 1, overflow: "hidden", borderRadius: "0 20px 20px 0", position: "relative" }}>
-        <img
-          alt=""
-          src={image}
-          className={[
-            "absolute inset-0 w-full h-full object-cover",
-            "transition-transform duration-[400ms] ease-out",
-            "group-hover:scale-[1.04]",
-            "motion-reduce:transition-none motion-reduce:group-hover:scale-100",
-          ].join(" ")}
-          style={{ objectPosition: "center" }}
-        />
       </div>
     </div>
   );

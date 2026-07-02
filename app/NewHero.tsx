@@ -215,7 +215,7 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
         <nav
           style={{
             position: "absolute",
-            top: `${scale * 28}px`,
+            top: `${scale * 8}px`,
             left: `${scale * 40}px`,
             right: `${scale * 40}px`,
             zIndex: 20,
