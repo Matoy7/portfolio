@@ -9,6 +9,7 @@ import imgHeroCurio from "@/imports/Frame11/hero_curio.png";
 import imgAlma from "@/imports/Frame11/0ff53a7574fe5ddd7893ea066c3a9fa41eb680ff.png";
 import imgPulse from "@/imports/Frame11/257c6ffc3188a1eaa8ed81ab7cbbf0f290627b4f.png";
 import imgCurio from "@/imports/Frame11/9dce77c3753db7b26f478f524ee1a15c07c28a59.png";
+import aboutPhoto from "@/imports/PIC_5444.jpg";
 
 /* ── SVG Icons ─────────────────────────────────────────── */
 
@@ -420,6 +421,100 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
 
           </div>
         </section>
+
+      {/* ── About Me Section ─────────────────────────────── */}
+      <section
+        id="about-me"
+        className="relative w-full flex items-center justify-center overflow-hidden"
+        style={{
+          padding: "100px 24px",
+          background: "#0e0b1e",
+        }}
+      >
+        {/* Subtle glow top-right */}
+        <div
+          className="absolute pointer-events-none"
+          style={{
+            top: "10%",
+            right: "10%",
+            width: "480px",
+            height: "480px",
+            background:
+              "radial-gradient(ellipse at center, rgba(90, 60, 200, 0.22) 0%, transparent 70%)",
+            filter: "blur(48px)",
+          }}
+        />
+
+        <div
+          className="relative z-10 flex flex-col md:flex-row items-center gap-16 w-full"
+          style={{ maxWidth: 1100 }}
+        >
+          {/* Polaroid photo */}
+          <div
+            className="flex-shrink-0"
+            style={{
+              transform: "rotate(-4deg)",
+              filter: "drop-shadow(0 8px 32px rgba(0,0,0,0.55))",
+            }}
+          >
+            <div
+              className="bg-white p-3 pb-10"
+              style={{ borderRadius: 4, width: 280 }}
+            >
+              <img
+                src={aboutPhoto}
+                alt="Yotam in Venice"
+                className="w-full object-cover"
+                style={{ height: 320, borderRadius: 2, objectPosition: "35% center" }}
+              />
+            </div>
+          </div>
+
+          {/* Text content */}
+          <div className="flex flex-col" style={{ maxWidth: 560 }}>
+            {/* Eyebrow */}
+            <span
+              className="mb-4 tracking-widest uppercase font-semibold"
+              style={{ color: "#7c6ef0", letterSpacing: "0.18em", fontSize: "15px" }}
+            >
+              About Me
+            </span>
+
+            {/* Heading */}
+            <h1
+              className="font-extrabold text-white leading-tight mb-6"
+              style={{ fontSize: "clamp(2.75rem, 5.5vw, 4.5rem)", letterSpacing: "-0.02em" }}
+            >
+              Hi, I'm Yotam
+            </h1>
+
+            {/* Body */}
+            <p
+              className="leading-relaxed mb-4"
+              style={{ color: "#a09ec4", fontSize: "1.0625rem", lineHeight: 1.75 }}
+            >
+              I design digital experiences that are intuitive, meaningful, and
+              user-centered. With a background in computer science and over a decade
+              in software development, I bring a unique blend of technical
+              understanding and creative thinking to every project.
+            </p>
+            <p
+              className="leading-relaxed mb-4"
+              style={{ color: "#a09ec4", fontSize: "1.0625rem", lineHeight: 1.75 }}
+            >
+              I also care about solving real problems and creating products that
+              make people's lives easier and better.
+            </p>
+            <p
+              className="leading-relaxed"
+              style={{ color: "#a09ec4", fontSize: "1.0625rem", lineHeight: 1.75 }}
+            >
+              When I'm not designing, you'll find me traveling, exploring new
+              places, and getting inspired by the world around me.
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* ── Contact Section — "Let's Talk" (embedded design) ────── */}
       <section
