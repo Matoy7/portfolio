@@ -325,53 +325,127 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
       <div className="w-[1145.25px] flex flex-col">
 
         {/* ── Case Studies Section ────────────────────────── */}
-        <section id="case-studies" className="relative w-[1014px] flex flex-col items-center justify-center pb-[22.428px] pt-[5.607px] px-[28.034px] self-center">
-          {/* Section heading */}
-          <div className="w-full flex items-center mb-0">
-            <p className="font-['Inter',sans-serif] font-semibold text-[26px] leading-[36px] text-black whitespace-nowrap">
-              Selected Case Studies
-            </p>
-          </div>
+        {/* ── Case Studies — Editorial Layout ─────────────── */}
+        <section
+          id="case-studies"
+          className="relative w-full self-center"
+          style={{ padding: "80px 0 100px", maxWidth: 1145 }}
+        >
+          {/* Two-column grid: left = cards, right = editorial title */}
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 0, alignItems: "start", position: "relative" }}>
 
-          {/* Cards */}
-          <div className="flex flex-col gap-[40px] w-full py-[24px]">
-            {/* Card 1: Alma */}
-            <CaseStudyCard
-              image={imgAlma}
-              categoryLabel="MOBILE APP"
-              categoryColor="#d2684a"
-              title="Alma – Pregnancy App"
-              description="AI powered pregnancy food safety assistant."
-              tags={["AI", "HEALTH", "MOBILE"]}
-              hasGradient
-              onClick={() => onNavigate("alma")}
-            />
+            {/* ── Left column: stacked cards ── */}
+            <div style={{ display: "flex", flexDirection: "column", gap: 32, paddingTop: 16, paddingLeft: 8 }}>
 
-            {/* Card 2: Pulse */}
-            <CaseStudyCard
-              image={imgPulse}
-              categoryLabel="DASHBOARD"
-              categoryColor="rgba(88,86,214,0.9)"
-              title="Pulse – Gaming Analytics"
-              description="A real time dashboard for game product managers."
-              tags={["DATA", "DASHBOARD", "SAAS"]}
-              dimTags
-              hasGradient={false}
-              onClick={() => onNavigate("pulse")}
-            />
+              {/* Card 1: Alma */}
+              <CaseStudyCard
+                image={imgAlma}
+                categoryLabel="MOBILE APP"
+                categoryColor="#d2684a"
+                title="Alma – Pregnancy App"
+                description="AI powered pregnancy food safety assistant."
+                tags={["AI", "HEALTH", "MOBILE"]}
+                hasGradient
+                onClick={() => onNavigate("alma")}
+              />
 
-            {/* Card 3: Curio */}
-            <CaseStudyCard
-              image={imgCurio}
-              categoryLabel="E-COMMERCE"
-              categoryColor="#fec66e"
-              categoryTextColor="#1f2937"
-              title="Curio – Online Toys Store"
-              description="An online marketplace for educational toys for kids."
-              tags={["AI", "HEALTH", "MOBILE"]}
-              hasGradient
-              onClick={() => onNavigate("curio")}
-            />
+              {/* Card 2: Pulse — featured, offset right, slightly taller */}
+              <div style={{ marginLeft: 48, position: "relative", zIndex: 2 }}>
+                <div
+                  className={[
+                    "group relative rounded-[16.821px] w-full cursor-pointer overflow-hidden",
+                    "transition-all duration-[250ms] ease-out",
+                    "hover:-translate-y-1 hover:scale-[1.01] hover:brightness-105",
+                    "hover:shadow-[0_12px_32px_rgba(0,0,0,0.2)]",
+                    "hover:ring-1 hover:ring-white/20",
+                    "active:scale-[0.99]",
+                    "motion-reduce:transition-none motion-reduce:hover:transform-none",
+                  ].join(" ")}
+                  style={{ height: 220 }}
+                  onClick={() => onNavigate("pulse")}
+                >
+                  <div className="absolute inset-0 rounded-[16.821px] overflow-hidden">
+                    <img
+                      alt=""
+                      src={imgPulse}
+                      className={[
+                        "absolute inset-0 w-full h-full object-cover rounded-[16.821px]",
+                        "transition-transform duration-[250ms] ease-out",
+                        "group-hover:scale-[1.03]",
+                        "motion-reduce:transition-none motion-reduce:group-hover:scale-100",
+                      ].join(" ")}
+                    />
+                    <div className={["absolute inset-0 rounded-[16.821px] bg-black/45", "transition-opacity duration-[250ms] ease-out", "group-hover:bg-black/35", "motion-reduce:transition-none"].join(" ")} />
+                  </div>
+                  <div className="relative z-10 flex flex-col justify-between h-full p-[36px]">
+                    <div className="flex flex-col w-full">
+                      <div className="h-[26.856px] relative w-full mb-0">
+                        <div className="absolute left-0 top-[1.27px] px-[8.41px] py-[2.803px] rounded-[5.607px] flex items-center justify-center" style={{ backgroundColor: "rgba(88,86,214,0.9)" }}>
+                          <p className="font-['Inter',sans-serif] font-bold text-[12px] leading-[14px] tracking-[0.4px] whitespace-nowrap" style={{ color: "#fff" }}>DASHBOARD</p>
+                        </div>
+                      </div>
+                      <p className={["font-['Inter',sans-serif] font-bold text-[28px] leading-[38px] text-white whitespace-nowrap", "transition-transform duration-[250ms] ease-out", "group-hover:translate-x-0.5", "motion-reduce:transition-none motion-reduce:group-hover:translate-x-0"].join(" ")}>Pulse – Gaming Analytics</p>
+                      <p className="font-['Inter',sans-serif] font-normal text-[19px] leading-[26px] text-white whitespace-nowrap pt-[8px] pb-[14px]">A real time dashboard for game product managers.</p>
+                    </div>
+                    <div className={["flex gap-[8px] items-start h-[28px]", "opacity-85 transition-opacity duration-[250ms] ease-out", "group-hover:opacity-100", "motion-reduce:transition-none"].join(" ")}>
+                      {["DATA","DASHBOARD","SAAS"].map(t => (
+                        <Tag key={t} label={t} dim />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 3: Curio */}
+              <CaseStudyCard
+                image={imgCurio}
+                categoryLabel="E-COMMERCE"
+                categoryColor="#fec66e"
+                categoryTextColor="#1f2937"
+                title="Curio – Online Toys Store"
+                description="An online marketplace for educational toys for kids."
+                tags={["AI", "HEALTH", "MOBILE"]}
+                hasGradient
+                onClick={() => onNavigate("curio")}
+              />
+            </div>
+
+            {/* ── Right column: editorial title ── */}
+            <div style={{ paddingLeft: 48, paddingTop: 8, position: "sticky", top: 120 }}>
+              {/* Large editorial headline */}
+              <div
+                style={{
+                  fontFamily: "'Inter', sans-serif",
+                  fontWeight: 900,
+                  fontSize: 124,
+                  lineHeight: 0.92,
+                  letterSpacing: "-3px",
+                  color: "#16162B",
+                  userSelect: "none",
+                  pointerEvents: "none",
+                }}
+              >
+                <div>SELECTED</div>
+                <div>CASE</div>
+                <div>STUDIES</div>
+              </div>
+
+              {/* Supporting paragraph */}
+              <p
+                style={{
+                  fontFamily: "'Inter', sans-serif",
+                  fontWeight: 400,
+                  fontSize: 17,
+                  lineHeight: 1.65,
+                  color: "rgba(14,29,43,0.5)",
+                  maxWidth: 280,
+                  marginTop: 40,
+                }}
+              >
+                A selection of product design work spanning mobile, SaaS, and e-commerce — each shaped by an engineering mindset.
+              </p>
+            </div>
+
           </div>
         </section>
 
