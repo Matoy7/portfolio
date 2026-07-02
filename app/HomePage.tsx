@@ -421,307 +421,159 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
           </div>
         </section>
 
-      {/* ── Contact Section — Full-width with hero background ────── */}
+      {/* ── Contact Section — "Let's Talk" (embedded design) ────── */}
       <section
         id="contact"
-        className="w-full flex flex-col items-center justify-center relative overflow-hidden"
+        className="relative w-full flex flex-col items-center justify-center overflow-hidden"
         style={{
-          minHeight: "780px",
-          background: "radial-gradient(ellipse 70% 50% at 50% 30%, rgba(124,58,237,0.25) 0%, rgba(26,10,74,0.8) 25%, rgba(13,8,32,1) 60%, rgba(8,6,22,1) 100%)",
-          paddingTop: "100px",
-          paddingBottom: "100px",
+          minHeight: "100vh",
+          background: "#0e0b1e",
         }}
       >
-        {/* Subtle noise/texture overlay */}
+        {/* Glow blob */}
         <div
+          className="absolute pointer-events-none"
           style={{
-            position: "absolute",
-            inset: 0,
-            background: "radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.3) 100%)",
-            pointerEvents: "none",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-60%, -50%)",
+            width: "600px",
+            height: "500px",
+            background:
+              "radial-gradient(ellipse at center, rgba(90, 60, 200, 0.35) 0%, rgba(60, 30, 160, 0.18) 45%, transparent 70%)",
+            filter: "blur(40px)",
           }}
         />
 
-        {/* Content container */}
-        <div
-          className="relative z-10 flex flex-col items-center justify-center w-full max-w-[900px] px-[48px]"
-          style={{ gap: "48px" }}
-        >
-          {/* Eyebrow label */}
-          <div
-            style={{
-              fontFamily: "'Plus Jakarta Sans', sans-serif",
-              fontWeight: 600,
-              fontSize: "14px",
-              lineHeight: "18px",
-              color: "#a78bfa",
-              letterSpacing: "2px",
-              textTransform: "uppercase",
-            }}
+        {/* Content */}
+        <div className="relative z-10 flex flex-col items-center text-center px-6" style={{ maxWidth: 700 }}>
+          {/* Eyebrow */}
+          <span
+            className="mb-5 tracking-widest uppercase text-xs font-semibold"
+            style={{ color: "#7c6ef0", letterSpacing: "0.18em" }}
           >
             Let's Connect
-          </div>
+          </span>
 
-          {/* Main heading */}
-          <div
-            style={{
-              fontFamily: "'Plus Jakarta Sans', sans-serif",
-              fontWeight: 700,
-              fontSize: "72px",
-              lineHeight: "1.1",
-              letterSpacing: "-1.2px",
-              color: "#ffffff",
-              textAlign: "center",
-              margin: 0,
-            }}
+          {/* Heading */}
+          <h1
+            className="font-extrabold text-white leading-none mb-5"
+            style={{ fontSize: "clamp(3rem, 8vw, 5.5rem)", letterSpacing: "-0.02em" }}
           >
             Let's Talk
-          </div>
+          </h1>
 
-          {/* Description */}
+          {/* Subtitle */}
           <p
-            style={{
-              fontFamily: "'Inter', sans-serif",
-              fontWeight: 400,
-              fontSize: "18px",
-              lineHeight: "1.6",
-              color: "rgba(255,255,255,0.75)",
-              textAlign: "center",
-              maxWidth: "620px",
-              margin: 0,
-            }}
+            className="mb-10 leading-relaxed"
+            style={{ color: "#a09ec4", fontSize: "1rem", maxWidth: 420 }}
           >
             Looking for a Product Designer? I'd love to hear about your project, product or opportunity.
           </p>
 
           {/* CTA Buttons */}
-          <div
-            className="flex gap-[24px] items-center flex-wrap justify-center"
-            style={{ marginTop: "16px" }}
-          >
-            {/* Message Me — Primary */}
+          <div className="flex flex-wrap items-center justify-center gap-4 mb-16">
+            {/* Message Me */}
             <a
               href="mailto:yotam.eliraz@gmail.com"
-              className="cursor-pointer hero-btn-primary no-underline"
+              className="flex items-center gap-2 font-semibold rounded-full px-7 py-3 transition-all duration-200 hover:opacity-90 active:scale-95"
               style={{
-                background: "#7c3aed",
-                borderRadius: 999,
-                padding: "16px 40px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "10px",
-                transition: "all 0.2s ease",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.background = "#6d28d9";
-                (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)";
-                (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 28px rgba(124,58,237,0.55)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.background = "#7c3aed";
-                (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
-                (e.currentTarget as HTMLElement).style.boxShadow = "none";
+                background: "#6c5ce7",
+                color: "#fff",
+                fontSize: "0.9375rem",
+                boxShadow: "0 4px 24px rgba(108, 92, 231, 0.35)",
               }}
             >
-              <svg width="18" height="18" fill="none" viewBox="0 0 20.2742 20.2742">
+              <svg width="16" height="16" fill="none" viewBox="0 0 20.2742 20.2742">
                 <path d={svgPaths.p2c708800} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
                 <path d={svgPaths.p4272980} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
               </svg>
-              <span
-                style={{
-                  fontFamily: "'Plus Jakarta Sans', sans-serif",
-                  fontWeight: 600,
-                  fontSize: "16px",
-                  color: "#fff",
-                  whiteSpace: "nowrap",
-                }}
-              >
-                Message Me
-              </span>
+              Message Me
             </a>
 
-            {/* Call Me — Secondary */}
+            {/* Call Me */}
             <a
               href="tel:0505795099"
-              className="cursor-pointer hero-btn-ghost no-underline"
+              className="flex items-center gap-2 font-semibold rounded-full px-7 py-3 transition-all duration-200 hover:bg-white/10 active:scale-95"
               style={{
-                background: "rgba(124,58,237,0.08)",
-                border: "1.5px solid rgba(124,58,237,0.5)",
-                borderRadius: 999,
-                padding: "16px 40px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "10px",
-                transition: "all 0.2s ease",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.background = "rgba(124,58,237,0.15)";
-                (e.currentTarget as HTMLElement).style.borderColor = "rgba(124,58,237,0.8)";
-                (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.background = "rgba(124,58,237,0.08)";
-                (e.currentTarget as HTMLElement).style.borderColor = "rgba(124,58,237,0.5)";
-                (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
+                background: "transparent",
+                color: "#fff",
+                border: "1.5px solid rgba(255,255,255,0.25)",
+                fontSize: "0.9375rem",
               }}
             >
-              <svg width="18" height="18" fill="none" viewBox="0 0 20.2742 20.2742">
+              <svg width="16" height="16" fill="none" viewBox="0 0 20.2742 20.2742">
                 <path d={svgPaths.p2be78800} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
               </svg>
-              <span
-                style={{
-                  fontFamily: "'Plus Jakarta Sans', sans-serif",
-                  fontWeight: 600,
-                  fontSize: "16px",
-                  color: "#c4b8ff",
-                  whiteSpace: "nowrap",
-                }}
-              >
-                Call Me
-              </span>
+              Call Me
             </a>
           </div>
 
-          {/* Subtle Divider */}
-          <div
-            style={{
-              width: "80px",
-              height: "1px",
-              background: "rgba(124,58,237,0.2)",
-              margin: "24px 0",
-            }}
-          />
-
-          {/* Contact Info Row */}
-          <div
-            className="flex gap-[48px] items-center flex-wrap justify-center"
-            style={{ marginTop: "12px" }}
-          >
+          {/* Social Links */}
+          <div className="flex flex-wrap items-center justify-center gap-8">
             {/* Email */}
             <a
               href="mailto:yotam.eliraz@gmail.com"
-              className="flex items-center gap-[12px] no-underline transition-all duration-[220ms] hover:gap-[14px]"
-              style={{ textDecoration: "none" }}
+              className="flex items-center gap-2 transition-opacity hover:opacity-70"
+              style={{ color: "#a09ec4", fontSize: "0.8125rem" }}
             >
-              <div
-                style={{
-                  width: "44px",
-                  height: "44px",
-                  borderRadius: "10px",
-                  background: "rgba(124,58,237,0.15)",
-                  border: "1.5px solid rgba(124,58,237,0.3)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexShrink: 0,
-                  transition: "all 0.2s ease",
-                }}
-              >
-                <svg width="20" height="20" fill="none" viewBox="0 0 20.2742 20.2742">
-                  <path d={svgPaths.p2c708800} stroke="#a78bfa" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
-                  <path d={svgPaths.p4272980} stroke="#a78bfa" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
-                </svg>
-              </div>
               <span
-                style={{
-                  fontFamily: "'Inter', sans-serif",
-                  fontWeight: 400,
-                  fontSize: "16px",
-                  color: "rgba(255,255,255,0.8)",
-                  whiteSpace: "nowrap",
-                }}
+                className="flex items-center justify-center rounded"
+                style={{ width: 28, height: 28, background: "rgba(255,255,255,0.07)", borderRadius: 6 }}
               >
-                yotam.eliraz@gmail.com
+                <svg width="13" height="13" fill="none" viewBox="0 0 20.2742 20.2742">
+                  <path d={svgPaths.p2c708800} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
+                  <path d={svgPaths.p4272980} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
+                </svg>
               </span>
+              yotam.eliraz@gmail.com
             </a>
 
             {/* LinkedIn */}
             <a
               href="https://www.linkedin.com/in/yotam-eliraz-977b0450/"
               target="_blank"
-              rel="noopener"
-              className="flex items-center gap-[12px] no-underline transition-all duration-[220ms] hover:gap-[14px]"
-              style={{ textDecoration: "none" }}
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 transition-opacity hover:opacity-70"
+              style={{ color: "#a09ec4", fontSize: "0.8125rem" }}
             >
-              <div
-                style={{
-                  width: "44px",
-                  height: "44px",
-                  borderRadius: "10px",
-                  background: "rgba(124,58,237,0.15)",
-                  border: "1.5px solid rgba(124,58,237,0.3)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexShrink: 0,
-                  transition: "all 0.2s ease",
-                }}
-              >
-                <svg width="20" height="20" fill="none" viewBox="0 0 20.2742 20.2742">
-                  <path d={svgPaths.p31aa100} stroke="#a78bfa" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
-                  <path d={svgPaths.p271a7a80} stroke="#a78bfa" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
-                  <path d={svgPaths.p1833ee00} stroke="#a78bfa" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
-                </svg>
-              </div>
               <span
-                style={{
-                  fontFamily: "'Inter', sans-serif",
-                  fontWeight: 400,
-                  fontSize: "16px",
-                  color: "rgba(255,255,255,0.8)",
-                  whiteSpace: "nowrap",
-                }}
+                className="flex items-center justify-center rounded"
+                style={{ width: 28, height: 28, background: "rgba(255,255,255,0.07)", borderRadius: 6 }}
               >
-                LinkedIn
+                <svg width="13" height="13" fill="none" viewBox="0 0 20.2742 20.2742">
+                  <path d={svgPaths.p31aa100} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
+                  <path d={svgPaths.p271a7a80} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
+                  <path d={svgPaths.p1833ee00} stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.69" />
+                </svg>
               </span>
+              LinkedIn
             </a>
 
             {/* Behance */}
             <a
               href="https://www.behance.net/yotame"
               target="_blank"
-              rel="noopener"
-              className="flex items-center gap-[12px] no-underline transition-all duration-[220ms] hover:gap-[14px]"
-              style={{ textDecoration: "none" }}
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 transition-opacity hover:opacity-70"
+              style={{ color: "#a09ec4", fontSize: "0.8125rem" }}
             >
-              <div
-                style={{
-                  width: "44px",
-                  height: "44px",
-                  borderRadius: "10px",
-                  background: "rgba(124,58,237,0.15)",
-                  border: "1.5px solid rgba(124,58,237,0.3)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexShrink: 0,
-                  transition: "all 0.2s ease",
-                }}
+              <span
+                className="flex items-center justify-center rounded"
+                style={{ width: 28, height: 28, background: "rgba(255,255,255,0.07)", borderRadius: 6 }}
               >
-                <svg width="20" height="20" fill="none" viewBox="0 0 20.2742 20.2742">
-                  <g clipPath="url(#behance-clip-contact)">
-                    <path d={svgPaths.p12b43500} fill="#a78bfa" />
+                <svg width="13" height="13" fill="none" viewBox="0 0 20.2742 20.2742">
+                  <g clipPath="url(#behance-clip-contact2)">
+                    <path d={svgPaths.p12b43500} fill="currentColor" />
                   </g>
                   <defs>
-                    <clipPath id="behance-clip-contact">
+                    <clipPath id="behance-clip-contact2">
                       <rect fill="white" height="20.2742" width="20.2742" />
                     </clipPath>
                   </defs>
                 </svg>
-              </div>
-              <span
-                style={{
-                  fontFamily: "'Inter', sans-serif",
-                  fontWeight: 400,
-                  fontSize: "16px",
-                  color: "rgba(255,255,255,0.8)",
-                  whiteSpace: "nowrap",
-                }}
-              >
-                Behance
               </span>
+              Behance
             </a>
           </div>
         </div>
