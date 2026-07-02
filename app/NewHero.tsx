@@ -211,20 +211,20 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
       {/* Scale wrapper to fill full viewport — NO STATIC HEADER */}
       <div ref={heroWrapperRef} style={{ width: "100%", height: `calc(${scale} * 860px)`, position: "relative", overflow: "hidden" }}>
 
-        <div style={{ width: 1440, position: "absolute", top: 0, left: 0, transform: `scale(${scale})`, transformOrigin: "top left" }}>
+        <div style={{ width: 1440, position: "absolute", top: 0, left: 0, transform: `scale(${scale})`, transformOrigin: "top left", height: 860 }}>
 
           <div
-            className="relative flex flex-col mx-auto"
+            className="relative flex flex-col mx-auto justify-center"
             style={{
               width: 1440,
+              height: 860,
               background: "radial-gradient(ellipse 65% 60% at 65% 40%, rgba(26,10,74,1) 0%, rgba(20,9,53,1) 22.5%, rgba(13,8,32,1) 45%, rgba(8,6,22,1) 100%)",
-              paddingBottom: "8%",
             }}
           >
             {/* Hero body */}
-            <div className="relative z-10 flex-1 flex items-center w-full" style={{ paddingLeft: 152, paddingRight: 60, gap: 48 }}>
+            <div className="relative z-10 flex items-center w-full" style={{ paddingLeft: 152, paddingRight: 60, gap: 48 }}>
               {/* Left text */}
-              <div style={{ flex: "0 0 auto", maxWidth: 706, paddingBottom: 80 }}>
+              <div style={{ flex: "0 0 auto", maxWidth: 706 }}>
                 <p style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, fontSize: 14.888, lineHeight: "19.851px", color: "#fff", letterSpacing: "1.4888px", textTransform: "uppercase", marginBottom: 32, whiteSpace: "nowrap" }}>
                   Product Designer
                 </p>
@@ -248,7 +248,7 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
               </div>
 
               {/* Right — computer with pulse + floating AI symbols */}
-              <div className="flex-1 flex items-center justify-center relative" style={{ paddingBottom: 40 }}>
+              <div className="flex-1 flex items-center justify-center relative">
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                   <div style={{ width: 380, height: 380, borderRadius: "50%", border: "1px solid rgba(124,58,237,0.4)", animation: "ringPulse 3.2s ease-out 0s infinite" }} />
                 </div>
