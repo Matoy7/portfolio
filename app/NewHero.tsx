@@ -38,30 +38,41 @@ interface Props {
 
 /* ── Floating navigation ─────────────────────────────────── */
 
-function FloatingNav({ scale, onScrollWork, onNavigateAbout, onScrollContact }: {
+function FloatingNav({ scale, heroRef, onScrollWork, onNavigateAbout, onScrollContact }: {
   scale: number;
+  heroRef: React.RefObject<HTMLDivElement | null>;
   onScrollWork: () => void;
   onNavigateAbout: () => void;
   onScrollContact: () => void;
 }) {
   const [visible, setVisible] = useState(false);
-  const [rendered, setRendered] = useState(false);
+  const [heroGone, setHeroGone] = useState(false);
   const hideTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  // Track when the hero scrolls out of view
   useEffect(() => {
-    const SCROLL_THRESHOLD = 100;
+    const el = heroRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([entry]) => setHeroGone(!entry.isIntersecting),
+      { threshold: 0, rootMargin: "0px 0px 0px 0px" }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [heroRef]);
+
+  // Show floating nav when hero is gone + user scrolls; auto-hide after 1s idle
+  useEffect(() => {
     const HIDE_DELAY = 1000;
 
     const showNav = () => {
       if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
-      if (!rendered) setRendered(true);
-      // Small rAF to let element mount before triggering transition
       requestAnimationFrame(() => requestAnimationFrame(() => setVisible(true)));
       hideTimerRef.current = setTimeout(() => setVisible(false), HIDE_DELAY);
     };
 
     const onScroll = () => {
-      if (window.scrollY > SCROLL_THRESHOLD) {
+      if (heroGone) {
         showNav();
       } else {
         if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
@@ -74,9 +85,15 @@ function FloatingNav({ scale, onScrollWork, onNavigateAbout, onScrollContact }: 
       window.removeEventListener("scroll", onScroll);
       if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
     };
-  }, [rendered]);
+  }, [heroGone]);
 
-  if (!rendered) return null;
+  // Hide immediately when hero comes back into view
+  useEffect(() => {
+    if (!heroGone) {
+      if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
+      setVisible(false);
+    }
+  }, [heroGone]);
 
   return (
     <div
@@ -125,6 +142,7 @@ function FloatingNav({ scale, onScrollWork, onNavigateAbout, onScrollContact }: 
 
 export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork }: Props) {
   const [scale, setScale] = useState(1);
+  const heroWrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const update = () => setScale(window.innerWidth / 1440);
@@ -181,13 +199,14 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
       {/* ── Floating nav — transparent on load, appears on scroll, auto-hides ── */}
       <FloatingNav
         scale={scale}
+        heroRef={heroWrapperRef}
         onScrollWork={onScrollWork}
         onNavigateAbout={onNavigateAbout}
         onScrollContact={onScrollContact}
       />
 
       {/* Scale wrapper to fill full viewport */}
-      <div style={{ width: "100%", height: `calc(${scale} * 860px)`, position: "relative", overflow: "hidden" }}>
+      <div ref={heroWrapperRef} style={{ width: "100%", height: `calc(${scale} * 860px)`, position: "relative", overflow: "hidden" }}>
         <div style={{ width: 1440, position: "absolute", top: 0, left: 0, transform: `scale(${scale})`, transformOrigin: "top left" }}>
 
           <div
@@ -198,6 +217,20 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
               paddingBottom: "8%",
             }}
           >
+            {/* Static hero nav — always visible while hero is on screen */}
+            <nav className="relative z-10 flex items-center justify-between w-full shrink-0" style={{ padding: "39.7px 100px" }}>
+              <div style={{ width: 39.7, height: 39.7, borderRadius: 9.925, background: "linear-gradient(135deg, #7c3aed 0%, #a855f7 100%)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, fontSize: 17.369, color: "#fff" }}>YE</span>
+              </div>
+              <div style={{ display: "flex", alignItems: "center", gap: 49.626 }}>
+                <span className="hero-nav-link" onClick={onScrollWork} style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 500, fontSize: 18, color: "#c4b8ff", cursor: "pointer" }}>Work</span>
+                <span className="hero-nav-link" onClick={onNavigateAbout} style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 500, fontSize: 18, color: "#c4b8ff", cursor: "pointer" }}>About</span>
+                <div className="cursor-pointer hero-nav-contact" onClick={onScrollContact} style={{ background: "#7c3aed", borderRadius: 999, padding: "9.925px 24.813px" }}>
+                  <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, fontSize: 18, color: "#fff", whiteSpace: "nowrap" }}>Contact Me</span>
+                </div>
+              </div>
+            </nav>
+
             {/* Hero body */}
             <div className="relative z-10 flex-1 flex items-center w-full" style={{ paddingLeft: 152, paddingRight: 60, gap: 48 }}>
               {/* Left text */}
