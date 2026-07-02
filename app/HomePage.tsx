@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import MobileHome from "./MobileHome";
+import NewHero from "./NewHero";
 import svgPaths from "@/imports/Frame11/svg-o0xaf2ie0h";
 import imgHero from "@/imports/Frame11/376b4ff69c76e4c7548a2d9016b80b772b65dbee.png";
 import imgHeroDashboard from "@/imports/Frame11/hero_dashboard.png";
@@ -311,85 +312,17 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
 
   return (
     <div className="bg-[#f5f1ec] min-h-screen w-full flex flex-col items-center">
+
+      {/* ── New Hero (desktop only, full width) ─── */}
+      <div className="w-full">
+        <NewHero
+          onNavigateAbout={() => onNavigate("about")}
+          onScrollContact={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+          onScrollWork={() => document.getElementById("case-studies")?.scrollIntoView({ behavior: "smooth" })}
+        />
+      </div>
+
       <div className="w-[1145.25px] flex flex-col">
-
-        {/* ── Navigation ─────────────────────────────────── */}
-        <nav className="h-[108.129px] w-full shrink-0 flex items-center px-[45.054px] py-[27.032px] justify-between">
-          <button
-            onClick={() => onNavigate("home")}
-            className="shrink-0 bg-transparent border-none p-0 cursor-pointer transition-opacity duration-[200ms] hover:opacity-70"
-          >
-            <p className="font-['Inter',sans-serif] font-bold text-[27.032px] leading-[40.548px] text-black whitespace-nowrap">
-              Yotam Eliraz
-            </p>
-          </button>
-          <div className="flex gap-[27.032px] items-center shrink-0">
-            <button
-              onClick={() => document.getElementById("case-studies")?.scrollIntoView({ behavior: "smooth" })}
-              className="cursor-pointer bg-transparent border-none p-0 transition-all duration-[240ms] ease-out opacity-100 hover:opacity-80 hover:translate-y-px motion-reduce:transition-none motion-reduce:hover:transform-none"
-            >
-              <p className="font-['Inter',sans-serif] font-medium text-[20.274px] leading-[27.032px] text-black whitespace-nowrap">
-                Case Studies
-              </p>
-            </button>
-            <button
-              onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-              className="bg-[#1a1a2e] rounded-[27486380px] px-[27.032px] py-[13.516px] cursor-pointer border-none transition-all duration-[220ms] ease-out hover:brightness-[1.08] hover:scale-[1.02] hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)] active:scale-[0.98] motion-reduce:transition-none motion-reduce:hover:transform-none"
-            >
-              <p className="font-['Inter',sans-serif] font-semibold text-[20.274px] leading-[27.032px] text-white whitespace-nowrap">
-                {"Let's Talk"}
-              </p>
-            </button>
-          </div>
-        </nav>
-
-        {/* ── Hero Section ───────────────────────────────── */}
-        <section className="h-[551.908px] w-full shrink-0 flex flex-col items-start pt-[18.021px] px-[45.054px]">
-          <div className="flex items-center justify-between w-full h-full">
-            {/* Left: text content */}
-            <div className="flex flex-col h-[508.634px] items-start justify-center w-[506.24px] shrink-0">
-              <div className="flex flex-col gap-[27.032px] items-start">
-                <div className="flex flex-col gap-[27.032px] items-start">
-                  <div className="flex flex-col gap-[18.021px] items-start">
-                    <p className="font-['Inter',sans-serif] font-bold text-[20.274px] leading-[20.274px] text-[#4793d6] tracking-[1.1263px] whitespace-nowrap">
-                      PRODUCT DESIGNER
-                    </p>
-                    <div className="flex flex-col gap-[18.021px] items-start">
-                      <div className="w-[551.908px]">
-                        <p className="font-['Inter',sans-serif] font-bold text-[54.064px] leading-[1.15] text-[#0e1d2b] w-[530.508px]" dir="auto">
-                          <span>{"Product "}</span>
-                          <span className="text-[#4793d6]">Designer</span>
-                          <span>{" with an engineering background"}</span>
-                        </p>
-                      </div>
-                      <div className="max-w-[540.644px] w-[506.24px]">
-                        <p className="font-['Inter',sans-serif] font-normal text-[20.274px] text-[#0e1d2b] h-[75px] w-[506.854px]" dir="auto">
-                          Product Designer with 12 years of engineering experience, creating intuitive digital products through user centered design.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <button
-                  onClick={() => onNavigate("about")}
-                  className="bg-[#0e1d2b] h-[63.075px] flex items-center px-[36.043px] py-[18.021px] rounded-[16.895px] shrink-0 cursor-pointer border-none transition-all duration-[240ms] ease-out hover:brightness-[1.10] hover:scale-[1.02] hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)] active:scale-[0.98] motion-reduce:transition-none motion-reduce:hover:transform-none"
-                  dir="auto"
-                >
-                  <p className="font-['Inter',sans-serif] font-semibold text-[18.021px] leading-[27.032px] text-white whitespace-nowrap">
-                    About me
-                  </p>
-                </button>
-              </div>
-            </div>
-
-            {/* Right: hero slideshow */}
-            <div className="h-[399.199px] relative rounded-[21.214px] shrink-0 w-[498.03px]">
-              <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-[21.214px]">
-                <HeroSlideshow />
-              </div>
-            </div>
-          </div>
-        </section>
 
         {/* ── Case Studies Section ────────────────────────── */}
         <section id="case-studies" className="relative w-[1014px] flex flex-col items-center justify-center pb-[22.428px] pt-[5.607px] px-[28.034px] self-center">
