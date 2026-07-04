@@ -7,8 +7,9 @@ interface Props {
   onScrollWork: () => void;
 }
 
+// Measured directly from the approved reference screenshot (1512px wide export).
 const DESIGN_WIDTH = 1512;
-const DESIGN_HEIGHT = 980;
+const DESIGN_HEIGHT = 520;
 
 export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork }: Props) {
   const [scale, setScale] = useState(1);
@@ -26,15 +27,13 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
         className="absolute top-0 left-0"
         style={{ width: DESIGN_WIDTH, height: DESIGN_HEIGHT, transform: `scale(${scale})`, transformOrigin: "top left" }}
       >
-        {/* Hero portrait — fades smoothly into the white background via a mask
-            applied directly to the image itself (no separate overlay box, so
-            there is no hard edge/seam anywhere in the transition). The mask
-            uses many stops on an ease-out curve: it holds fully opaque for the
-            top ~62%, then dissolves progressively more softly toward 0%,
-            covering roughly the bottom 35% of the photo. */}
+        {/* Hero portrait — smaller/shorter box matching the reference, still
+            using object-fit: cover so the source photo is never stretched or
+            distorted, only cropped to fill this box. Fade mask unchanged in
+            approach, re-tuned to the new height. */}
         <div
           className="absolute"
-          style={{ left: "273px", top: "66px", width: "1158px", height: "837px" }}
+          style={{ left: "300px", top: "30px", width: "700px", height: "430px" }}
         >
           <img
             alt=""
@@ -102,21 +101,22 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
           </div>
         </div>
 
-        {/* Headline */}
+        {/* Headline — natural wrap (no forced line breaks) at the measured
+            column width so it wraps to 5 lines exactly like the reference. */}
         <p
-          className="absolute not-italic text-[#161616] whitespace-pre-wrap"
+          className="absolute not-italic text-[#161616]"
           style={{
             fontFamily: "Inter, sans-serif",
             fontWeight: 500,
-            fontSize: "62px",
-            lineHeight: "66px",
-            letterSpacing: "-2px",
-            left: "104px",
-            top: "304px",
-            width: "507px",
+            fontSize: "44px",
+            lineHeight: "48px",
+            letterSpacing: "-1.5px",
+            left: "60px",
+            top: "225px",
+            width: "410px",
           }}
         >
-          {"A product designer\nwith a development \nbackground"}
+          A product designer with a development background
         </p>
 
         {/* Body copy */}
@@ -127,7 +127,7 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
             fontSize: "18px",
             lineHeight: "28px",
             left: "1114px",
-            top: "359px",
+            top: "305px",
             width: "308px",
           }}
         >
@@ -139,6 +139,12 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
             {", I design intuitive digital products that balance user needs, business goals, and technical feasibility."}
           </span>
         </p>
+
+        {/* Divider — thin rule beneath the hero, matching the reference */}
+        <div
+          className="absolute"
+          style={{ left: "270px", top: "500px", width: "970px", height: "1px", background: "#e5e5e5" }}
+        />
       </div>
     </div>
   );

@@ -74,8 +74,8 @@ function Tag({ label, dim }: { label: string; dim?: boolean }) {
 
 function CaseStudyTag({ label }: { label: string }) {
   return (
-    <div className="flex h-[58px] items-center justify-center px-[24px] relative rounded-[20px] shrink-0 border border-white">
-      <p className="font-['Inter',sans-serif] font-bold leading-[72.26px] not-italic relative shrink-0 text-[32px] text-white tracking-[-2.1896px] whitespace-nowrap">
+    <div className="flex h-[32px] items-center justify-center px-[14px] relative rounded-[10px] shrink-0 border border-white">
+      <p className="font-['Inter',sans-serif] font-bold leading-[20px] not-italic relative shrink-0 text-[14px] text-white tracking-[-0.5px] whitespace-nowrap">
         {label}
       </p>
     </div>
@@ -85,13 +85,13 @@ function CaseStudyTag({ label }: { label: string }) {
 function CaseStudyCardOverlay({ title, tags, top }: { title: string; tags: string[]; top: string }) {
   return (
     <div
-      className="absolute flex flex-col gap-[16px] items-start justify-center left-[52px] w-[404.802px]"
+      className="absolute flex flex-col gap-[10px] items-start justify-center left-[28px] w-[280px]"
       style={{ top }}
     >
-      <p className="font-['Inter',sans-serif] font-extrabold leading-[72.26px] not-italic relative shrink-0 text-[48px] text-white tracking-[-2.1896px] w-full">
+      <p className="font-['Inter',sans-serif] font-extrabold leading-[38px] not-italic relative shrink-0 text-[28px] text-white tracking-[-1px] w-full">
         {title}
       </p>
-      <div className="flex gap-[16px] items-center relative shrink-0 w-full">
+      <div className="flex gap-[10px] items-center relative shrink-0 w-full">
         {tags.map((tag) => (
           <CaseStudyTag key={tag} label={tag} />
         ))}
@@ -104,7 +104,7 @@ function CaseStudyGridCard({ children, onClick }: { children: React.ReactNode; o
   return (
     <div
       onClick={onClick}
-      className="h-[633.506px] overflow-clip relative rounded-[48.912px] shrink-0 w-[798.218px] cursor-pointer transition-transform duration-200 ease-out hover:scale-[1.03] active:scale-[0.97]"
+      className="h-[300px] overflow-clip relative rounded-[20px] shrink-0 w-[535px] cursor-pointer transition-transform duration-200 ease-out hover:scale-[1.03] active:scale-[0.97]"
       style={{ boxShadow: "0 0 0 0 rgba(0,0,0,0)", backgroundColor: "#111214" }}
     >
       {children}
@@ -163,7 +163,7 @@ function GlanceStat({
 
 function AtAGlanceSection() {
   const GLANCE_DESIGN_WIDTH = 1512.02;
-  const GLANCE_SIDE_PADDING = 32; // matches the section's own px-8
+  const GLANCE_SIDE_PADDING = 16; // reference shows the box nearly edge-to-edge
 
   const [scale, setScale] = useState(1);
   const [designHeight, setDesignHeight] = useState<number | null>(null);
@@ -190,7 +190,7 @@ function AtAGlanceSection() {
   }, []);
 
   return (
-    <section id="at-a-glance" className="w-full flex flex-col items-center px-8" style={{ marginTop: "96px" }}>
+    <section id="at-a-glance" className="w-full flex flex-col items-center" style={{ marginTop: "96px", paddingLeft: 16, paddingRight: 16 }}>
       <div className="w-full flex flex-col items-center gap-[24px]">
         {/* Eyebrow label — stays at its original literal size, not scaled */}
         <p className="font-['Inter',sans-serif] font-semibold leading-[29.01px] not-italic text-[#121111] text-[22px] tracking-[5.8019px] uppercase whitespace-nowrap">
@@ -329,7 +329,7 @@ function FaqAccordionItem({
   const buttonId = `faq-btn-${item.id}`;
 
   return (
-    <div className="border-b border-[#e5e5e5] last:border-b-0">
+    <div className="border border-[#ebebeb] rounded-2xl px-8 mb-4 last:mb-0">
       <button
         id={buttonId}
         aria-expanded={isOpen}
@@ -390,7 +390,7 @@ function FaqSection() {
 
   return (
     <section id="faq" className="w-full flex justify-center px-8" style={{ marginTop: "96px" }}>
-      <div className="w-full" style={{ maxWidth: "820px" }}>
+      <div className="w-full" style={{ maxWidth: "1369px" }}>
         {faqs.map((item) => (
           <FaqAccordionItem
             key={item.id}
@@ -700,51 +700,51 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
             style={{
               gridTemplateColumns: "repeat(2, fit-content(100%))",
               gridTemplateRows: "repeat(2, fit-content(100%))",
-              gap: "19.564847946166992px",
+              gap: "16px",
             }}
           >
             {/* Pulse */}
             <CaseStudyGridCard onClick={() => onNavigate("pulse")}>
               <img
                 alt=""
-                className="absolute inset-0 max-w-none object-contain pointer-events-none rounded-[48.912px] size-full"
+                className="absolute inset-0 max-w-none object-contain pointer-events-none rounded-[20px] size-full"
                 src={imgPulseCard}
               />
-              <CaseStudyCardOverlay title="Pulse" tags={["Dashboard", "Analytics"]} top="450px" />
+              <CaseStudyCardOverlay title="Pulse" tags={["Dashboard", "Analytics"]} top="212px" />
             </CaseStudyGridCard>
 
             {/* Alma */}
             <CaseStudyGridCard onClick={() => onNavigate("alma")}>
               <img
                 alt=""
-                className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[48.912px] size-full"
+                className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[20px] size-full"
                 src={imgAlmaCard}
               />
-              <CaseStudyCardOverlay title="Alma" tags={["Mobile App", "Health"]} top="450px" />
+              <CaseStudyCardOverlay title="Alma" tags={["Mobile App", "Health"]} top="212px" />
             </CaseStudyGridCard>
 
             {/* Curio */}
             <CaseStudyGridCard onClick={() => onNavigate("curio")}>
               <img
                 alt=""
-                className="absolute inset-0 max-w-none object-contain pointer-events-none rounded-[48.912px] size-full"
+                className="absolute inset-0 max-w-none object-contain pointer-events-none rounded-[20px] size-full"
                 src={imgCurioCard}
               />
-              <CaseStudyCardOverlay title="Curio" tags={["E-Commerce", "Kids"]} top="450.92px" />
+              <CaseStudyCardOverlay title="Curio" tags={["E-Commerce", "Kids"]} top="212px" />
             </CaseStudyGridCard>
 
             {/* Coming soon */}
             <CaseStudyGridCard>
-              <div className="bg-[#161616] absolute inset-0 rounded-[48.912px]" />
-              <div className="absolute flex flex-col gap-[19.564px] items-start left-[140.62px] top-[221.24px] w-[577.162px] text-white not-italic">
+              <div className="bg-[#161616] absolute inset-0 rounded-[20px]" />
+              <div className="absolute flex flex-col gap-[10px] items-start left-[28px] top-[100px] w-[400px] text-white not-italic">
                 <p
-                  className="font-['Inter',sans-serif] font-extrabold leading-[90.604px] min-w-full relative shrink-0 text-[68.476px] tracking-[-2.7456px] w-[min-content]"
+                  className="font-['Inter',sans-serif] font-extrabold leading-[38px] min-w-full relative shrink-0 text-[28px] tracking-[-1px] w-[min-content]"
                   dir="auto"
                 >
                   Coming soon...
                 </p>
                 <p
-                  className="font-['Inter',sans-serif] font-medium leading-[39.13px] relative shrink-0 text-[24.456px] w-[560.044px]"
+                  className="font-['Inter',sans-serif] font-medium leading-[22px] relative shrink-0 text-[14px] w-[280px]"
                   dir="auto"
                 >
                   {"I'm currently working on my next projects."}
