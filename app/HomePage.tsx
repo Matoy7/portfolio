@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import MobileHome from "./MobileHome";
 import NewHero from "./NewHero";
 import svgPaths from "@/imports/Frame11/svg-o0xaf2ie0h";
@@ -279,6 +279,126 @@ function AtAGlanceSection() {
   );
 }
 
+/* ── FAQ — accordion section (Figma Make) ─────────────────── */
+
+const faqs = [
+  {
+    id: "background",
+    question: "What's your background?",
+    answer:
+      "I spent 13 years as a software engineer before transitioning into Product Design. This technical background helps me design products that are not only intuitive for users but also realistic to build. I understand both user needs and engineering constraints, making collaboration with development teams more effective.",
+  },
+  {
+    id: "projects",
+    question: "What kind of projects do you design?",
+    answer:
+      "I focus on digital products, from mobile apps to SaaS platforms. My process covers the entire journey, including UX research, user flows, wireframes, high fidelity UI, interactive prototypes, and developer ready designs in Figma.",
+  },
+  {
+    id: "opportunities",
+    question: "Are you available for new opportunities?",
+    answer:
+      "Yes. I'm open to Product Designer and UX/UI Designer opportunities, as well as freelance collaborations. If you think we'd be a good fit, feel free to get in touch.",
+  },
+];
+
+function FaqAccordionItem({
+  item,
+  isOpen,
+  onToggle,
+}: {
+  item: (typeof faqs)[0];
+  isOpen: boolean;
+  onToggle: () => void;
+}) {
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [height, setHeight] = useState(0);
+
+  useEffect(() => {
+    if (contentRef.current) {
+      setHeight(isOpen ? contentRef.current.scrollHeight : 0);
+    }
+  }, [isOpen]);
+
+  const panelId = `faq-panel-${item.id}`;
+  const buttonId = `faq-btn-${item.id}`;
+
+  return (
+    <div className="border-b border-[#e5e5e5] last:border-b-0">
+      <button
+        id={buttonId}
+        aria-expanded={isOpen}
+        aria-controls={panelId}
+        onClick={onToggle}
+        className="w-full flex items-center justify-between text-left py-[28px] px-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#333] rounded-sm"
+      >
+        <span
+          className="text-[20px] font-semibold text-[#1a1a1a] leading-snug pr-6"
+          style={{ fontFamily: "'Inter', sans-serif" }}
+        >
+          {item.question}
+        </span>
+        <span
+          className="flex-shrink-0 w-6 h-6 flex items-center justify-center text-[#1a1a1a]"
+          aria-hidden="true"
+        >
+          <svg width="18" height="18" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            {isOpen ? (
+              <path d="M2 8H14" stroke="#1a1a1a" strokeWidth="1.75" strokeLinecap="round" />
+            ) : (
+              <path d="M8 2V14M2 8H14" stroke="#1a1a1a" strokeWidth="1.75" strokeLinecap="round" />
+            )}
+          </svg>
+        </span>
+      </button>
+
+      <div
+        id={panelId}
+        role="region"
+        aria-labelledby={buttonId}
+        style={{
+          height: `${height}px`,
+          overflow: "hidden",
+          transition: "height 280ms ease, opacity 280ms ease",
+          opacity: isOpen ? 1 : 0,
+        }}
+      >
+        <div ref={contentRef} className="pb-[28px]">
+          <p
+            className="text-[17px] leading-[1.65] text-[#5a5a6e]"
+            style={{ fontFamily: "'Inter', sans-serif" }}
+          >
+            {item.answer}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function FaqSection() {
+  const [openId, setOpenId] = useState<string | null>(null);
+
+  const toggle = (id: string) => {
+    setOpenId((prev) => (prev === id ? null : id));
+  };
+
+  return (
+    <section id="faq" className="w-full flex justify-center px-8" style={{ marginTop: "96px" }}>
+      <div className="w-full" style={{ maxWidth: "820px" }}>
+        {faqs.map((item) => (
+          <FaqAccordionItem
+            key={item.id}
+            item={item}
+            isOpen={openId === item.id}
+            onToggle={() => toggle(item.id)}
+          />
+        ))}
+      </div>
+    </section>
+  );
+}
+
 /* ── Footer contact item ────────────────────────────────── */
 
 const WA_MSG = encodeURIComponent("Hi Yotam, I came across your portfolio and I'd love to chat.");
@@ -365,7 +485,7 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
   if (isMobile) return <MobileHome onNavigate={onNavigate} />;
 
   return (
-    <div className="bg-[#f5f1ec] min-h-screen w-full flex flex-col items-center">
+    <div className="bg-white min-h-screen w-full flex flex-col items-center">
       <style>{`
         .cta-btn-primary {
           transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
@@ -481,6 +601,8 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
       </section>
 
       <AtAGlanceSection />
+
+      <FaqSection />
 
       {/* ── About Me + Let's Talk — Figma design ─────────────── */}
       <section
