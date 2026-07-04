@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import heroPhoto from "@/imports/Frame_19__3_.png";
+import mobilePortrait from "@/imports/mobile-portrait.png";
 import imgPulseCard from "@/imports/Frame13/b408d64d475512d56275485cd8a85bf540ac8e83.png";
 import imgAlmaCard from "@/imports/Frame13/fde8b98f3f8528432f9f6c69d09f5bccf388e844.png";
 import imgCurioCard from "@/imports/Frame13/c51554de7237f51893371d0ee285af660281af21.png";
@@ -312,7 +312,7 @@ function MobileHero({ onContact }: { onContact: () => void }) {
           style={{ marginTop: "20px", borderRadius: "24px", background: "#f5f4f2", aspectRatio: "1 / 1.05" }}
         >
           <img
-            src={heroPhoto}
+            src={mobilePortrait}
             alt="Yotam Eliraz"
             className="absolute inset-0"
             style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }}
