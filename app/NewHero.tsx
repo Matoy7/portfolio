@@ -26,7 +26,12 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
         className="absolute top-0 left-0"
         style={{ width: DESIGN_WIDTH, height: DESIGN_HEIGHT, transform: `scale(${scale})`, transformOrigin: "top left" }}
       >
-        {/* Hero portrait */}
+        {/* Hero portrait — fades smoothly into the white background via a mask
+            applied directly to the image itself (no separate overlay box, so
+            there is no hard edge/seam anywhere in the transition). The mask
+            uses many stops on an ease-out curve: it holds fully opaque for the
+            top ~62%, then dissolves progressively more softly toward 0%,
+            covering roughly the bottom 35% of the photo. */}
         <div
           className="absolute"
           style={{ left: "273px", top: "66px", width: "1158px", height: "837px" }}
@@ -35,22 +40,19 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
             alt=""
             src={heroPhoto}
             className="absolute inset-0 pointer-events-none"
-            style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "bottom" }}
-          />
-        </div>
-
-        {/* Fade-to-white overlay at the bottom of the portrait */}
-        {/* Photo's real bottom edge sits at 66+837=903px — gradient must be fully opaque
-            well before that point so the hard PNG edge never shows through. */}
-        <div
-          className="absolute pointer-events-none"
-          style={{ left: 0, top: "660px", width: "1498px", height: "320px", filter: "blur(40px)" }}
-        >
-          <div
-            aria-hidden
-            className="absolute inset-0"
             style={{
-              background: "linear-gradient(to bottom, rgba(255,255,255,0) 25%, rgba(255,255,255,1) 55%)",
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              objectPosition: "bottom",
+              maskImage:
+                "linear-gradient(to bottom, #000 0%, #000 62%, rgba(0,0,0,0.96) 68%, rgba(0,0,0,0.88) 73%, rgba(0,0,0,0.74) 78%, rgba(0,0,0,0.56) 83%, rgba(0,0,0,0.38) 87.5%, rgba(0,0,0,0.22) 91.5%, rgba(0,0,0,0.10) 95%, rgba(0,0,0,0.03) 98%, rgba(0,0,0,0) 100%)",
+              WebkitMaskImage:
+                "linear-gradient(to bottom, #000 0%, #000 62%, rgba(0,0,0,0.96) 68%, rgba(0,0,0,0.88) 73%, rgba(0,0,0,0.74) 78%, rgba(0,0,0,0.56) 83%, rgba(0,0,0,0.38) 87.5%, rgba(0,0,0,0.22) 91.5%, rgba(0,0,0,0.10) 95%, rgba(0,0,0,0.03) 98%, rgba(0,0,0,0) 100%)",
+              maskSize: "100% 100%",
+              WebkitMaskSize: "100% 100%",
+              maskRepeat: "no-repeat",
+              WebkitMaskRepeat: "no-repeat",
             }}
           />
         </div>
