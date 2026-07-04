@@ -8,7 +8,7 @@ interface Props {
 }
 
 const DESIGN_WIDTH = 1512;
-const DESIGN_HEIGHT = 1038;
+const DESIGN_HEIGHT = 908;
 const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
 
 export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork }: Props) {
@@ -67,12 +67,15 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
         className="absolute top-0 left-0"
         style={{ width: DESIGN_WIDTH, height: DESIGN_HEIGHT, transform: `scale(${scale})`, transformOrigin: "top left" }}
       >
-        {/* Hero portrait — fades smoothly into the white background via a mask
-            applied directly to the image itself (no separate overlay box, so
-            there is no hard edge/seam anywhere in the transition). The mask
-            uses many stops on an ease-out curve: it holds fully opaque for the
-            top ~62%, then dissolves progressively more softly toward 0%,
-            covering roughly the bottom 35% of the photo. */}
+        {/* Hero portrait — dissolves smoothly into the white background via a
+            mask applied directly to the image itself (no separate overlay
+            box, so there is no hard edge/seam anywhere in the transition).
+            The mask uses a 17-stop smoothstep curve (zero slope at both
+            ends, so there's no visible band or cutoff): fully opaque only
+            for the top 48% (ending around the upper chest, showing much
+            less of the shirt), then eases out gradually and gently across
+            the remaining 52% of the image until it reaches full
+            transparency exactly at the bottom edge. */}
         <div
           className="absolute"
           style={{
@@ -103,9 +106,9 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
               objectFit: "cover",
               objectPosition: "bottom",
               maskImage:
-                "linear-gradient(to bottom, #000 0%, #000 62%, rgba(0,0,0,0.96) 68%, rgba(0,0,0,0.88) 73%, rgba(0,0,0,0.74) 78%, rgba(0,0,0,0.56) 83%, rgba(0,0,0,0.38) 87.5%, rgba(0,0,0,0.22) 91.5%, rgba(0,0,0,0.10) 95%, rgba(0,0,0,0.03) 98%, rgba(0,0,0,0) 100%)",
+                "linear-gradient(to bottom, #000 0%, #000 48%, rgba(0,0,0,0.9888) 51.25%, rgba(0,0,0,0.957) 54.5%, rgba(0,0,0,0.9077) 57.75%, rgba(0,0,0,0.8438) 61%, rgba(0,0,0,0.7681) 64.25%, rgba(0,0,0,0.6836) 67.5%, rgba(0,0,0,0.5933) 70.75%, rgba(0,0,0,0.5) 74%, rgba(0,0,0,0.4067) 77.25%, rgba(0,0,0,0.3164) 80.5%, rgba(0,0,0,0.2319) 83.75%, rgba(0,0,0,0.1562) 87%, rgba(0,0,0,0.0923) 90.25%, rgba(0,0,0,0.043) 93.5%, rgba(0,0,0,0.0112) 96.75%, rgba(0,0,0,0) 100%)",
               WebkitMaskImage:
-                "linear-gradient(to bottom, #000 0%, #000 62%, rgba(0,0,0,0.96) 68%, rgba(0,0,0,0.88) 73%, rgba(0,0,0,0.74) 78%, rgba(0,0,0,0.56) 83%, rgba(0,0,0,0.38) 87.5%, rgba(0,0,0,0.22) 91.5%, rgba(0,0,0,0.10) 95%, rgba(0,0,0,0.03) 98%, rgba(0,0,0,0) 100%)",
+                "linear-gradient(to bottom, #000 0%, #000 48%, rgba(0,0,0,0.9888) 51.25%, rgba(0,0,0,0.957) 54.5%, rgba(0,0,0,0.9077) 57.75%, rgba(0,0,0,0.8438) 61%, rgba(0,0,0,0.7681) 64.25%, rgba(0,0,0,0.6836) 67.5%, rgba(0,0,0,0.5933) 70.75%, rgba(0,0,0,0.5) 74%, rgba(0,0,0,0.4067) 77.25%, rgba(0,0,0,0.3164) 80.5%, rgba(0,0,0,0.2319) 83.75%, rgba(0,0,0,0.1562) 87%, rgba(0,0,0,0.0923) 90.25%, rgba(0,0,0,0.043) 93.5%, rgba(0,0,0,0.0112) 96.75%, rgba(0,0,0,0) 100%)",
               maskSize: "100% 100%",
               WebkitMaskSize: "100% 100%",
               maskRepeat: "no-repeat",
