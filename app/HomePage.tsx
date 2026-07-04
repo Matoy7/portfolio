@@ -717,6 +717,13 @@ function FtrMailIcon() {
 }
 
 function SiteFooter() {
+  const socialLinks = [
+    { label: "LinkedIn", icon: <FtrLinkedInIcon />, href: "https://www.linkedin.com/in/yotam-eliraz-977b0450/", external: true },
+    { label: "Behance", icon: <FtrBehanceIcon />, href: "https://www.behance.net/yotame", external: true },
+    { label: "WhatsApp", icon: <FtrWhatsAppIcon />, href: `https://web.whatsapp.com/send?phone=972505795099&text=${WA_MSG}`, external: true },
+    { label: "Mail", icon: <FtrMailIcon />, href: "mailto:yotam.eliraz@gmail.com", external: false },
+  ];
+
   return (
     <div className="w-full bg-[#0f0f0f] flex items-end" style={{ marginTop: "96px" }}>
       <footer
@@ -724,11 +731,21 @@ function SiteFooter() {
         className="bg-[#161616] rounded-tl-[50px] rounded-tr-[50px] w-full flex flex-col items-start"
         style={{ fontFamily: "'Inter', sans-serif" }}
       >
-        {/* Top section – heading + CTA */}
-        <div className="w-full flex flex-col items-center pb-[56px] pt-[64px] px-6">
-          <div className="flex flex-col gap-[24px] items-center">
+        {/* Top section – eyebrow + heading + CTA */}
+        <div className="w-full flex flex-col items-center pb-[48px] pt-[64px] px-6">
+          <div className="flex flex-col gap-[20px] items-center">
+            {/* Eyebrow */}
+            <Reveal delay={0}>
+              <p
+                className="text-[#9ca3af] text-[13px] text-center uppercase"
+                style={{ fontWeight: 600, letterSpacing: "2.6px" }}
+              >
+                Let's Connect
+              </p>
+            </Reveal>
+
             {/* Heading */}
-            <Reveal delay={0} className="flex flex-col items-center max-w-[560px]">
+            <Reveal delay={80} className="flex flex-col items-center max-w-[640px]">
               <div className="text-[#f5f5f5] text-[44px] text-center tracking-[-0.88px] leading-[1.2]" style={{ fontWeight: 500 }}>
                 <p className="mb-0">
                   <span style={{ fontWeight: 500 }}>{"Let's "}</span>
@@ -740,14 +757,14 @@ function SiteFooter() {
             </Reveal>
 
             {/* Subtitle */}
-            <Reveal delay={100} className="pb-[6px]">
+            <Reveal delay={160} className="pb-[6px]">
               <p className="text-[#9ca3af] text-[14px] text-center leading-[22.4px]" style={{ fontWeight: 400, width: 392 }}>
                 Currently open to new opportunities.
               </p>
             </Reveal>
 
             {/* Call Me button */}
-            <Reveal delay={200}>
+            <Reveal delay={240}>
               <a
                 href="tel:0505795099"
                 className="relative group flex gap-[8px] items-center bg-[#fefefe] hover:bg-white px-[23.2px] py-[11.2px] rounded-[6px] transition-all duration-200 hover:shadow-[0_0_0_3px_rgba(255,255,255,0.15)] hover:-translate-y-[2px] active:scale-95 active:translate-y-0 cursor-pointer no-underline inline-flex"
@@ -762,61 +779,43 @@ function SiteFooter() {
           </div>
         </div>
 
-        {/* Social links */}
-        <Reveal delay={300} duration={600} className="w-full flex gap-[48px] items-center justify-center pb-[64px] pt-[4px]">
-          <a
-            href="https://www.linkedin.com/in/yotam-eliraz-977b0450/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex flex-col gap-[8px] items-center group cursor-pointer no-underline transition-transform duration-200 hover:-translate-y-[2px]"
-          >
-            <span className="opacity-85 group-hover:opacity-100 transition-opacity duration-200 group-hover:scale-110 transform transition-transform">
-              <FtrLinkedInIcon />
-            </span>
-            <span className="text-[#9ca3af] text-[12px] leading-[18px] tracking-[0.12px] whitespace-nowrap group-hover:text-[#e5e7eb] transition-colors duration-200" style={{ fontWeight: 400 }}>
-              LinkedIn
-            </span>
-          </a>
+        {/* Thin divider before the social row */}
+        <div className="w-full flex justify-center px-6">
+          <div className="w-full" style={{ maxWidth: "1200px", borderTop: "1px solid rgba(255,255,255,0.08)" }} />
+        </div>
 
-          <a
-            href="https://www.behance.net/yotame"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex flex-col gap-[8px] items-center group cursor-pointer no-underline transition-transform duration-200 hover:-translate-y-[2px]"
-          >
-            <span className="opacity-85 group-hover:opacity-100 transition-opacity duration-200 group-hover:scale-110 transform transition-transform">
-              <FtrBehanceIcon />
-            </span>
-            <span className="text-[#9ca3af] text-[12px] leading-[18px] tracking-[0.12px] whitespace-nowrap group-hover:text-[#e5e7eb] transition-colors duration-200" style={{ fontWeight: 400 }}>
-              Behance
-            </span>
-          </a>
-
-          <a
-            href={`https://web.whatsapp.com/send?phone=972505795099&text=${WA_MSG}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex flex-col gap-[8px] items-center group cursor-pointer no-underline transition-transform duration-200 hover:-translate-y-[2px]"
-          >
-            <span className="opacity-85 group-hover:opacity-100 transition-opacity duration-200 group-hover:scale-110 transform transition-transform">
-              <FtrWhatsAppIcon />
-            </span>
-            <span className="text-[#9ca3af] text-[12px] leading-[18px] tracking-[0.12px] whitespace-nowrap group-hover:text-[#e5e7eb] transition-colors duration-200" style={{ fontWeight: 400 }}>
-              WhatsApp
-            </span>
-          </a>
-
-          <a
-            href="mailto:yotam.eliraz@gmail.com"
-            className="flex flex-col gap-[8px] items-center group cursor-pointer no-underline transition-transform duration-200 hover:-translate-y-[2px]"
-          >
-            <span className="opacity-85 group-hover:opacity-100 transition-opacity duration-200 group-hover:scale-110 transform transition-transform">
-              <FtrMailIcon />
-            </span>
-            <span className="text-[#9ca3af] text-[12px] leading-[18px] tracking-[0.12px] whitespace-nowrap group-hover:text-[#e5e7eb] transition-colors duration-200" style={{ fontWeight: 400 }}>
-              Mail
-            </span>
-          </a>
+        {/* Social links — single horizontal row, icon + label side by side,
+            separated by thin vertical dividers, evenly spaced */}
+        <Reveal delay={0} duration={600} className="w-full flex items-center justify-center py-[32px] px-6">
+          <div className="flex items-center">
+            {socialLinks.map((item, i) => (
+              <div key={item.label} className="flex items-center">
+                {i > 0 && (
+                  <div
+                    aria-hidden
+                    className="mx-[28px]"
+                    style={{ width: "1px", height: "16px", background: "rgba(255,255,255,0.14)" }}
+                  />
+                )}
+                <a
+                  href={item.href}
+                  target={item.external ? "_blank" : undefined}
+                  rel={item.external ? "noopener noreferrer" : undefined}
+                  className="flex items-center gap-[10px] group cursor-pointer no-underline transition-transform duration-200 hover:-translate-y-[2px]"
+                >
+                  <span className="opacity-85 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
+                    {item.icon}
+                  </span>
+                  <span
+                    className="text-[#9ca3af] text-[14px] leading-[18px] whitespace-nowrap group-hover:text-[#e5e7eb] transition-colors duration-200"
+                    style={{ fontWeight: 400 }}
+                  >
+                    {item.label}
+                  </span>
+                </a>
+              </div>
+            ))}
+          </div>
         </Reveal>
 
         {/* Bottom bar */}
