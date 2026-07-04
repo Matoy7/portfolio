@@ -707,7 +707,7 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
             <CaseStudyGridCard onClick={() => onNavigate("pulse")}>
               <img
                 alt=""
-                className="absolute inset-0 max-w-none object-contain pointer-events-none rounded-[20px] size-full"
+                className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[20px] size-full"
                 src={imgPulseCard}
               />
               <CaseStudyCardOverlay title="Pulse" tags={["Dashboard", "Analytics"]} top="212px" />
@@ -727,7 +727,7 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
             <CaseStudyGridCard onClick={() => onNavigate("curio")}>
               <img
                 alt=""
-                className="absolute inset-0 max-w-none object-contain pointer-events-none rounded-[20px] size-full"
+                className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[20px] size-full"
                 src={imgCurioCard}
               />
               <CaseStudyCardOverlay title="Curio" tags={["E-Commerce", "Kids"]} top="212px" />
