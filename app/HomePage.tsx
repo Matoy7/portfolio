@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useLayoutEffect } from "react";
 import MobileHome from "./MobileHome";
 import NewHero from "./NewHero";
 import svgPaths from "@/imports/Frame11/svg-o0xaf2ie0h";
@@ -202,76 +202,121 @@ function GlanceStat({
 }
 
 function AtAGlanceSection() {
+  const GLANCE_DESIGN_WIDTH = 1512.02;
+  const GLANCE_SIDE_PADDING = 32; // matches the section's own px-8
+
+  const [scale, setScale] = useState(1);
+  const [designHeight, setDesignHeight] = useState<number | null>(null);
+  const glanceContentRef = useRef<HTMLDivElement>(null);
+
+  // Measure the card's natural (unscaled) height once — it's fixed regardless
+  // of viewport since every value inside it is a fixed pixel value.
+  useLayoutEffect(() => {
+    if (glanceContentRef.current) {
+      setDesignHeight(glanceContentRef.current.offsetHeight);
+    }
+  }, []);
+
+  // Recompute scale so the card's rendered width always exactly fills the
+  // available space (viewport minus the section's side padding).
+  useEffect(() => {
+    const update = () => {
+      const available = window.innerWidth - GLANCE_SIDE_PADDING * 2;
+      setScale(available / GLANCE_DESIGN_WIDTH);
+    };
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
   return (
     <section id="at-a-glance" className="w-full flex flex-col items-center px-8" style={{ marginTop: "96px" }}>
-      <div className="w-full flex flex-col items-center gap-[24px]" style={{ maxWidth: 1512 }}>
-        {/* Eyebrow label */}
+      <div className="w-full flex flex-col items-center gap-[24px]">
+        {/* Eyebrow label — stays at its original literal size, not scaled */}
         <p className="font-['Inter',sans-serif] font-semibold leading-[29.01px] not-italic text-[#121111] text-[22px] tracking-[5.8019px] uppercase whitespace-nowrap">
           At a Glance
         </p>
 
-        {/* Black stats card */}
+        {/* Scaled wrapper — reserves exactly the right amount of vertical
+            space in normal document flow for the scaled card beneath it */}
         <div
-          className="bg-[#161616] flex flex-col items-start overflow-clip relative rounded-[50px] w-full"
-          style={{ maxWidth: "1512.02px" }}
+          className="relative w-full"
+          style={{ height: designHeight !== null ? `${designHeight * scale}px` : undefined }}
         >
-          <div className="grid grid-cols-2 grid-rows-2 relative w-full">
-            {/* UI UX certification */}
-            <GlanceStat
-              borderRight
-              borderBottom
-              icon={
-                <svg className="size-[54.78px]" fill="none" viewBox="0 0 54.78 54.78">
-                  <path d={glanceSvgPaths.award2} stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeOpacity="0.8" strokeWidth="4.00687" />
-                  <path d={glanceSvgPaths.award1} stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeOpacity="0.8" strokeWidth="4.00687" />
-                </svg>
-              }
-              label="Hold a Certification in"
-              value="UI UX"
-              caption={<>Over 140 hours at<br aria-hidden />Graphitech College</>}
-            />
+          {/* Black stats card — always rendered at its fixed native design
+              width (1512.02px) with every padding/font/icon/border untouched,
+              then scaled as a single unit to exactly fill the available
+              width. Nothing inside is stretched or resized independently. */}
+          <div
+            ref={glanceContentRef}
+            className="bg-[#161616] flex flex-col items-start overflow-clip rounded-[50px]"
+            style={{
+              width: `${GLANCE_DESIGN_WIDTH}px`,
+              position: "absolute",
+              top: 0,
+              left: 0,
+              transform: `scale(${scale})`,
+              transformOrigin: "top left",
+            }}
+          >
+            <div className="grid grid-cols-2 grid-rows-2 relative w-full">
+              {/* UI UX certification */}
+              <GlanceStat
+                borderRight
+                borderBottom
+                icon={
+                  <svg className="size-[54.78px]" fill="none" viewBox="0 0 54.78 54.78">
+                    <path d={glanceSvgPaths.award2} stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeOpacity="0.8" strokeWidth="4.00687" />
+                    <path d={glanceSvgPaths.award1} stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeOpacity="0.8" strokeWidth="4.00687" />
+                  </svg>
+                }
+                label="Hold a Certification in"
+                value="UI UX"
+                caption={<>Over 140 hours at<br aria-hidden />Graphitech College</>}
+              />
 
-            {/* B.Sc Computer Science */}
-            <GlanceStat
-              borderBottom
-              icon={
-                <svg className="size-[54.785px]" fill="none" viewBox="0 0 54.7847 54.7847">
-                  <path d={glanceSvgPaths.book1} stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeOpacity="0.8" strokeWidth="3.42404" />
-                  <path d={glanceSvgPaths.book2} stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeOpacity="0.8" strokeWidth="3.42404" />
-                </svg>
-              }
-              label="Hold Computer Science"
-              value="B.Sc."
-              caption="Tel Aviv University"
-              captionWidth="357px"
-            />
+              {/* B.Sc Computer Science */}
+              <GlanceStat
+                borderBottom
+                icon={
+                  <svg className="size-[54.785px]" fill="none" viewBox="0 0 54.7847 54.7847">
+                    <path d={glanceSvgPaths.book1} stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeOpacity="0.8" strokeWidth="3.42404" />
+                    <path d={glanceSvgPaths.book2} stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeOpacity="0.8" strokeWidth="3.42404" />
+                  </svg>
+                }
+                label="Hold Computer Science"
+                value="B.Sc."
+                caption="Tel Aviv University"
+                captionWidth="357px"
+              />
 
-            {/* Products designed */}
-            <GlanceStat
-              borderRight
-              icon={
-                <svg className="w-[51.2px] h-[48.1px]" fill="none" viewBox="0 0 51.1999 48.0999">
-                  <path d={glanceSvgPaths.folder} stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeOpacity="0.8" strokeWidth="3.12783" />
-                </svg>
-              }
-              label="Products Designed"
-              value="5"
-              caption="End-to-end UX and UI, Product design projects"
-            />
+              {/* Products designed */}
+              <GlanceStat
+                borderRight
+                icon={
+                  <svg className="w-[51.2px] h-[48.1px]" fill="none" viewBox="0 0 51.1999 48.0999">
+                    <path d={glanceSvgPaths.folder} stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeOpacity="0.8" strokeWidth="3.12783" />
+                  </svg>
+                }
+                label="Products Designed"
+                value="5"
+                caption="End-to-end UX and UI, Product design projects"
+              />
 
-            {/* Years in development */}
-            <GlanceStat
-              icon={
-                <svg className="w-[62.059px] h-[61.919px]" fill="none" viewBox="0 0 62.0591 61.9189">
-                  <path d={glanceSvgPaths.code1} stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeOpacity="0.8" strokeWidth="3.9299" />
-                  <path d={glanceSvgPaths.code2} stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeOpacity="0.8" strokeWidth="3.9299" />
-                  <path d={glanceSvgPaths.code3} stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeOpacity="0.8" strokeWidth="3.9299" />
-                </svg>
-              }
-              label="Years in Development"
-              value="13+"
-              caption="Building scalable software across multiple industries"
-            />
+              {/* Years in development */}
+              <GlanceStat
+                icon={
+                  <svg className="w-[62.059px] h-[61.919px]" fill="none" viewBox="0 0 62.0591 61.9189">
+                    <path d={glanceSvgPaths.code1} stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeOpacity="0.8" strokeWidth="3.9299" />
+                    <path d={glanceSvgPaths.code2} stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeOpacity="0.8" strokeWidth="3.9299" />
+                    <path d={glanceSvgPaths.code3} stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeOpacity="0.8" strokeWidth="3.9299" />
+                  </svg>
+                }
+                label="Years in Development"
+                value="13+"
+                caption="Building scalable software across multiple industries"
+              />
+            </div>
           </div>
         </div>
       </div>
