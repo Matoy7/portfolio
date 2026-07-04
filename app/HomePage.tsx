@@ -8,6 +8,167 @@ import imgPulseCard from "@/imports/Frame13/b408d64d475512d56275485cd8a85bf540ac
 import imgAlmaCard from "@/imports/Frame13/fde8b98f3f8528432f9f6c69d09f5bccf388e844.png";
 import imgCurioCard from "@/imports/Frame13/c51554de7237f51893371d0ee285af660281af21.png";
 
+/* ── Global motion system ──────────────────────────────────
+   One consistent set of durations/easing used everywhere on the page.
+   Reveal: fades + translates an element up into place, once, the first
+   time it enters the viewport. CountUp: animates a numeric stat from 0
+   to its target once, on first view. */
+
+const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
+
+function useInViewOnce<T extends HTMLElement>(threshold = 0.2) {
+  const ref = useRef<T>(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          io.disconnect();
+        }
+      },
+      { threshold }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [threshold]);
+
+  return [ref, inView] as const;
+}
+
+function Reveal({
+  children,
+  delay = 0,
+  y = 28,
+  duration = 650,
+  className,
+  style,
+}: {
+  children: React.ReactNode;
+  delay?: number;
+  y?: number;
+  duration?: number;
+  className?: string;
+  style?: React.CSSProperties;
+}) {
+  const [ref, inView] = useInViewOnce<HTMLDivElement>(0.15);
+  return (
+    <div
+      ref={ref}
+      className={className}
+      style={{
+        ...style,
+        opacity: inView ? 1 : 0,
+        transform: inView ? "translateY(0px)" : `translateY(${y}px)`,
+        transition: `opacity ${duration}ms ${EASE} ${delay}ms, transform ${duration}ms ${EASE} ${delay}ms`,
+        willChange: "opacity, transform",
+      }}
+    >
+      {children}
+    </div>
+  );
+}
+
+function CountUp({
+  target,
+  suffix = "",
+  duration = 1400,
+}: {
+  target: number;
+  suffix?: string;
+  className?: string;
+  duration?: number;
+}) {
+  const [ref, inView] = useInViewOnce<HTMLSpanElement>(0.4);
+  const [value, setValue] = useState(0);
+
+  useEffect(() => {
+    if (!inView) return;
+    let raf: number;
+    const start = performance.now();
+    const easeOutQuint = (t: number) => 1 - Math.pow(1 - t, 5);
+    const tick = (now: number) => {
+      const progress = Math.min((now - start) / duration, 1);
+      setValue(Math.round(easeOutQuint(progress) * target));
+      if (progress < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [inView, target, duration]);
+
+  return (
+    <span ref={ref}>
+      {value}
+      {suffix}
+    </span>
+  );
+}
+
+/* ── Sticky nav — appears with a blurred glass background once the
+   user scrolls past the hero; invisible at the top since the hero
+   already shows its own nav there. ─────────────────────────────── */
+
+function StickyNav({
+  onScrollWork,
+  onNavigateAbout,
+  onScrollContact,
+}: {
+  onScrollWork: () => void;
+  onNavigateAbout: () => void;
+  onScrollContact: () => void;
+}) {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setVisible(window.scrollY > 420);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return (
+    <div
+      className="fixed top-0 left-0 w-full z-50 flex items-center justify-between"
+      style={{
+        padding: "18px 56px",
+        background: visible ? "rgba(255,255,255,0.75)" : "rgba(255,255,255,0)",
+        backdropFilter: visible ? "blur(14px)" : "blur(0px)",
+        WebkitBackdropFilter: visible ? "blur(14px)" : "blur(0px)",
+        borderBottom: visible ? "1px solid rgba(0,0,0,0.06)" : "1px solid rgba(0,0,0,0)",
+        opacity: visible ? 1 : 0,
+        transform: visible ? "translateY(0px)" : "translateY(-8px)",
+        pointerEvents: visible ? "auto" : "none",
+        transition: `background 350ms ${EASE}, backdrop-filter 350ms ${EASE}, border-color 350ms ${EASE}, opacity 300ms ${EASE}, transform 300ms ${EASE}`,
+      }}
+    >
+      <p
+        className="font-bold text-[#161616]"
+        style={{ fontFamily: "Inter, sans-serif", fontSize: "18px" }}
+      >
+        Yotam Eliraz
+      </p>
+      <div className="flex items-center gap-8" style={{ fontFamily: "Inter, sans-serif", fontWeight: 600, fontSize: "15px" }}>
+        {[
+          { label: "Work", onClick: onScrollWork },
+          { label: "About", onClick: onNavigateAbout },
+          { label: "Contact", onClick: onScrollContact },
+        ].map((item) => (
+          <span
+            key={item.label}
+            onClick={item.onClick}
+            className="cursor-pointer text-[#161616] transition-all duration-200 hover:opacity-60 hover:-translate-y-0.5 inline-block"
+          >
+            {item.label}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 /* ── At a Glance icon paths ────────────────────────────────── */
 const glanceSvgPaths = {
   award1: "M35.3263 29.4529L38.7843 48.9135C38.823 49.1426 38.7908 49.3781 38.6921 49.5885C38.5934 49.7989 38.4328 49.9741 38.2317 50.0908C38.0307 50.2074 37.7989 50.2599 37.5672 50.2412C37.3356 50.2225 37.1152 50.1336 36.9354 49.9862L28.7641 43.8532C28.3696 43.5585 27.8904 43.3992 27.398 43.3992C26.9056 43.3992 26.4264 43.5585 26.0319 43.8532L17.8469 49.984C17.6673 50.131 17.4471 50.2199 17.2158 50.2386C16.9844 50.2573 16.7528 50.205 16.5519 50.0887C16.3511 49.9723 16.1904 49.7975 16.0915 49.5876C15.9925 49.3776 15.9599 49.1424 15.9981 48.9135L19.4538 29.4529",
@@ -105,10 +266,10 @@ function CaseStudyGridCard({ children, onClick }: { children: React.ReactNode; o
     <div
       onClick={onClick}
       className={[
-        "h-[300px] overflow-clip relative rounded-[20px] shrink-0 w-[535px]",
-        onClick ? "cursor-pointer transition-transform duration-200 ease-out hover:scale-[1.03] active:scale-[0.97]" : "",
+        "group h-[300px] overflow-clip relative rounded-[20px] shrink-0 w-[535px]",
+        onClick ? "cursor-pointer transition-all duration-250 ease-out hover:-translate-y-[6px] hover:shadow-[0_20px_40px_rgba(0,0,0,0.18)] active:translate-y-0" : "",
       ].join(" ")}
-      style={{ boxShadow: "0 0 0 0 rgba(0,0,0,0)", backgroundColor: "#111214" }}
+      style={{ boxShadow: "0 0 0 0 rgba(0,0,0,0)", backgroundColor: "#111214", transitionDuration: "250ms" }}
     >
       {children}
     </div>
@@ -128,7 +289,7 @@ function GlanceStat({
 }: {
   icon: React.ReactNode;
   label: string;
-  value: string;
+  value: React.ReactNode;
   caption: React.ReactNode;
   captionWidth?: string;
   borderRight?: boolean;
@@ -194,7 +355,7 @@ function AtAGlanceSection() {
 
   return (
     <section id="at-a-glance" className="w-full flex flex-col items-center" style={{ marginTop: "96px" }}>
-      <div className="w-full flex flex-col items-center gap-[24px]">
+      <Reveal className="w-full flex flex-col items-center gap-[24px]">
         {/* Eyebrow label — stays at its original literal size, not scaled */}
         <p className="font-['Inter',sans-serif] font-semibold leading-[29.01px] not-italic text-[#121111] text-[22px] tracking-[5.8019px] uppercase whitespace-nowrap">
           At a Glance
@@ -262,7 +423,7 @@ function AtAGlanceSection() {
                   </svg>
                 }
                 label="Products Designed"
-                value="5"
+                value={<CountUp target={5} />}
                 caption="End-to-end UX and UI, Product design projects"
               />
 
@@ -276,13 +437,13 @@ function AtAGlanceSection() {
                   </svg>
                 }
                 label="Years in Development"
-                value="13+"
+                value={<CountUp target={13} suffix="+" />}
                 caption="Building scalable software across multiple industries"
               />
             </div>
           </div>
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }
@@ -338,7 +499,7 @@ function FaqAccordionItem({
         aria-expanded={isOpen}
         aria-controls={panelId}
         onClick={onToggle}
-        className="w-full flex items-center justify-between text-left py-[34px] px-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#333] rounded-sm"
+        className="w-full flex items-center justify-between text-left py-[34px] px-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#333] rounded-sm group"
       >
         <span
           className="text-[26px] font-semibold text-[#1a1a1a] leading-snug pr-6"
@@ -347,15 +508,23 @@ function FaqAccordionItem({
           {item.question}
         </span>
         <span
-          className="flex-shrink-0 w-8 h-8 flex items-center justify-center text-[#1a1a1a]"
+          className="flex-shrink-0 w-8 h-8 flex items-center justify-center text-[#1a1a1a] transition-opacity duration-200 group-hover:opacity-60"
           aria-hidden="true"
         >
           <svg width="24" height="24" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            {isOpen ? (
-              <path d="M2 8H14" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" />
-            ) : (
-              <path d="M8 2V14M2 8H14" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" />
-            )}
+            <path d="M2 8H14" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" />
+            <path
+              d="M8 2V14"
+              stroke="#1a1a1a"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              style={{
+                transformOrigin: "8px 8px",
+                transform: isOpen ? "scaleY(0)" : "scaleY(1)",
+                opacity: isOpen ? 0 : 1,
+                transition: `transform 280ms ${EASE}, opacity 280ms ${EASE}`,
+              }}
+            />
           </svg>
         </span>
       </button>
@@ -393,7 +562,7 @@ function FaqSection() {
 
   return (
     <section id="faq" className="w-full flex justify-center px-8" style={{ marginTop: "96px" }}>
-      <div className="w-full" style={{ maxWidth: "1369px" }}>
+      <Reveal className="w-full" style={{ maxWidth: "1369px" }}>
         {faqs.map((item) => (
           <FaqAccordionItem
             key={item.id}
@@ -402,7 +571,7 @@ function FaqSection() {
             onToggle={() => toggle(item.id)}
           />
         ))}
-      </div>
+      </Reveal>
     </section>
   );
 }
@@ -473,7 +642,7 @@ function SiteFooter() {
         <div className="w-full flex flex-col items-center pb-[56px] pt-[64px] px-6">
           <div className="flex flex-col gap-[24px] items-center">
             {/* Heading */}
-            <div className="flex flex-col items-center max-w-[560px]">
+            <Reveal delay={0} className="flex flex-col items-center max-w-[560px]">
               <div className="text-[#f5f5f5] text-[44px] text-center tracking-[-0.88px] leading-[1.2]" style={{ fontWeight: 500 }}>
                 <p className="mb-0">
                   <span style={{ fontWeight: 500 }}>{"Let's "}</span>
@@ -482,36 +651,38 @@ function SiteFooter() {
                 </p>
                 <p>great together</p>
               </div>
-            </div>
+            </Reveal>
 
             {/* Subtitle */}
-            <div className="pb-[6px]">
+            <Reveal delay={100} className="pb-[6px]">
               <p className="text-[#9ca3af] text-[14px] text-center leading-[22.4px]" style={{ fontWeight: 400, width: 392 }}>
                 Currently open to new opportunities.
               </p>
-            </div>
+            </Reveal>
 
             {/* Call Me button */}
-            <a
-              href="tel:0505795099"
-              className="relative group flex gap-[8px] items-center bg-[#fefefe] hover:bg-white px-[23.2px] py-[11.2px] rounded-[6px] transition-all duration-200 hover:shadow-[0_0_0_3px_rgba(255,255,255,0.15)] active:scale-95 cursor-pointer no-underline"
-            >
-              <span aria-hidden className="absolute inset-0 rounded-[6px] border-[1.2px] border-[rgba(255,255,255,0.25)] pointer-events-none" />
-              <FtrPhoneIcon />
-              <span className="text-[#161616] text-[14px] leading-[21px] tracking-[0.14px] whitespace-nowrap" style={{ fontWeight: 700 }}>
-                Call Me
-              </span>
-            </a>
+            <Reveal delay={200}>
+              <a
+                href="tel:0505795099"
+                className="relative group flex gap-[8px] items-center bg-[#fefefe] hover:bg-white px-[23.2px] py-[11.2px] rounded-[6px] transition-all duration-200 hover:shadow-[0_0_0_3px_rgba(255,255,255,0.15)] hover:-translate-y-[2px] active:scale-95 active:translate-y-0 cursor-pointer no-underline inline-flex"
+              >
+                <span aria-hidden className="absolute inset-0 rounded-[6px] border-[1.2px] border-[rgba(255,255,255,0.25)] pointer-events-none" />
+                <FtrPhoneIcon />
+                <span className="text-[#161616] text-[14px] leading-[21px] tracking-[0.14px] whitespace-nowrap" style={{ fontWeight: 700 }}>
+                  Call Me
+                </span>
+              </a>
+            </Reveal>
           </div>
         </div>
 
         {/* Social links */}
-        <div className="w-full flex gap-[48px] items-center justify-center pb-[64px] pt-[4px]">
+        <Reveal delay={300} duration={600} className="w-full flex gap-[48px] items-center justify-center pb-[64px] pt-[4px]">
           <a
             href="https://www.linkedin.com/in/yotam-eliraz-977b0450/"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex flex-col gap-[8px] items-center group cursor-pointer no-underline"
+            className="flex flex-col gap-[8px] items-center group cursor-pointer no-underline transition-transform duration-200 hover:-translate-y-[2px]"
           >
             <span className="opacity-85 group-hover:opacity-100 transition-opacity duration-200 group-hover:scale-110 transform transition-transform">
               <FtrLinkedInIcon />
@@ -525,7 +696,7 @@ function SiteFooter() {
             href="https://www.behance.net/yotame"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex flex-col gap-[8px] items-center group cursor-pointer no-underline"
+            className="flex flex-col gap-[8px] items-center group cursor-pointer no-underline transition-transform duration-200 hover:-translate-y-[2px]"
           >
             <span className="opacity-85 group-hover:opacity-100 transition-opacity duration-200 group-hover:scale-110 transform transition-transform">
               <FtrBehanceIcon />
@@ -539,7 +710,7 @@ function SiteFooter() {
             href={`https://web.whatsapp.com/send?phone=972505795099&text=${WA_MSG}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex flex-col gap-[8px] items-center group cursor-pointer no-underline"
+            className="flex flex-col gap-[8px] items-center group cursor-pointer no-underline transition-transform duration-200 hover:-translate-y-[2px]"
           >
             <span className="opacity-85 group-hover:opacity-100 transition-opacity duration-200 group-hover:scale-110 transform transition-transform">
               <FtrWhatsAppIcon />
@@ -551,7 +722,7 @@ function SiteFooter() {
 
           <a
             href="mailto:yotam.eliraz@gmail.com"
-            className="flex flex-col gap-[8px] items-center group cursor-pointer no-underline"
+            className="flex flex-col gap-[8px] items-center group cursor-pointer no-underline transition-transform duration-200 hover:-translate-y-[2px]"
           >
             <span className="opacity-85 group-hover:opacity-100 transition-opacity duration-200 group-hover:scale-110 transform transition-transform">
               <FtrMailIcon />
@@ -560,7 +731,7 @@ function SiteFooter() {
               Mail
             </span>
           </a>
-        </div>
+        </Reveal>
 
         {/* Bottom bar */}
         <div className="relative w-full">
@@ -667,6 +838,12 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
         .cta-btn-ghost:active { transform: translateY(0); }
       `}</style>
 
+      <StickyNav
+        onNavigateAbout={() => document.getElementById("at-a-glance")?.scrollIntoView({ behavior: "smooth" })}
+        onScrollContact={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+        onScrollWork={() => document.getElementById("case-studies")?.scrollIntoView({ behavior: "smooth" })}
+      />
+
       {/* ── New Hero (desktop only, full width, includes its own nav) ─── */}
       <div className="w-full">
         <NewHero
@@ -675,6 +852,7 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
           onScrollWork={() => document.getElementById("case-studies")?.scrollIntoView({ behavior: "smooth" })}
         />
       </div>
+
 
       <div className="w-[1145.25px] flex flex-col">
         {/* placeholder — case studies moved to full-width below */}
@@ -687,14 +865,14 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
         style={{ padding: "10px 52px 48px", marginTop: "20px" }}
       >
         {/* Title */}
-        <div className="flex items-center justify-center relative shrink-0 w-full">
+        <Reveal className="flex items-center justify-center relative shrink-0 w-full">
           <p
             className="flex-[1_0_0] font-['Inter',sans-serif] font-medium leading-[59.093px] min-w-px not-italic relative text-[#161616] text-[44px] tracking-[-1.7907px]"
             dir="auto"
           >
             Selected Case Studies
           </p>
-        </div>
+        </Reveal>
 
         {/* Grid */}
         <div className="flex items-center justify-center relative shrink-0 w-full">
@@ -707,55 +885,63 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
             }}
           >
             {/* Pulse */}
-            <CaseStudyGridCard onClick={() => onNavigate("pulse")}>
-              <img
-                alt=""
-                className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[20px] size-full"
-                src={imgPulseCard}
-              />
-              <CaseStudyCardOverlay title="Pulse" tags={["Dashboard", "Analytics"]} top="212px" />
-            </CaseStudyGridCard>
+            <Reveal delay={0} duration={600}>
+              <CaseStudyGridCard onClick={() => onNavigate("pulse")}>
+                <img
+                  alt=""
+                  className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[20px] size-full transition-transform duration-[400ms] ease-out group-hover:scale-[1.04]"
+                  src={imgPulseCard}
+                />
+                <CaseStudyCardOverlay title="Pulse" tags={["Dashboard", "Analytics"]} top="212px" />
+              </CaseStudyGridCard>
+            </Reveal>
 
             {/* Alma */}
-            <CaseStudyGridCard onClick={() => onNavigate("alma")}>
-              <img
-                alt=""
-                className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[20px] size-full"
-                src={imgAlmaCard}
-              />
-              <CaseStudyCardOverlay title="Alma" tags={["Mobile App", "Health"]} top="212px" />
-            </CaseStudyGridCard>
+            <Reveal delay={90} duration={600}>
+              <CaseStudyGridCard onClick={() => onNavigate("alma")}>
+                <img
+                  alt=""
+                  className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[20px] size-full transition-transform duration-[400ms] ease-out group-hover:scale-[1.04]"
+                  src={imgAlmaCard}
+                />
+                <CaseStudyCardOverlay title="Alma" tags={["Mobile App", "Health"]} top="212px" />
+              </CaseStudyGridCard>
+            </Reveal>
 
             {/* Curio */}
-            <CaseStudyGridCard onClick={() => onNavigate("curio")}>
-              <img
-                alt=""
-                className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[20px] size-full"
-                src={imgCurioCard}
-              />
-              <CaseStudyCardOverlay title="Curio" tags={["E-Commerce", "Kids"]} top="212px" />
-            </CaseStudyGridCard>
+            <Reveal delay={180} duration={600}>
+              <CaseStudyGridCard onClick={() => onNavigate("curio")}>
+                <img
+                  alt=""
+                  className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[20px] size-full transition-transform duration-[400ms] ease-out group-hover:scale-[1.04]"
+                  src={imgCurioCard}
+                />
+                <CaseStudyCardOverlay title="Curio" tags={["E-Commerce", "Kids"]} top="212px" />
+              </CaseStudyGridCard>
+            </Reveal>
 
             {/* Coming soon */}
-            <CaseStudyGridCard>
-              <div className="bg-[#161616] absolute inset-0 rounded-[20px]" />
-              <div className="absolute flex flex-col gap-[10px] items-start left-[28px] top-[100px] w-[400px] text-white not-italic">
-                <p
-                  className="font-['Inter',sans-serif] font-extrabold leading-[38px] min-w-full relative shrink-0 text-[28px] tracking-[-1px] w-[min-content]"
-                  dir="auto"
-                >
-                  Coming soon...
-                </p>
-                <p
-                  className="font-['Inter',sans-serif] font-medium leading-[22px] relative shrink-0 text-[14px] w-[280px]"
-                  dir="auto"
-                >
-                  {"I'm currently working on my next projects."}
-                  <br aria-hidden />
-                  Stay tuned.
-                </p>
-              </div>
-            </CaseStudyGridCard>
+            <Reveal delay={270} duration={600}>
+              <CaseStudyGridCard>
+                <div className="bg-[#161616] absolute inset-0 rounded-[20px]" />
+                <div className="absolute flex flex-col gap-[10px] items-start left-[28px] top-[100px] w-[400px] text-white not-italic">
+                  <p
+                    className="font-['Inter',sans-serif] font-extrabold leading-[38px] min-w-full relative shrink-0 text-[28px] tracking-[-1px] w-[min-content]"
+                    dir="auto"
+                  >
+                    Coming soon...
+                  </p>
+                  <p
+                    className="font-['Inter',sans-serif] font-medium leading-[22px] relative shrink-0 text-[14px] w-[280px]"
+                    dir="auto"
+                  >
+                    {"I'm currently working on my next projects."}
+                    <br aria-hidden />
+                    Stay tuned.
+                  </p>
+                </div>
+              </CaseStudyGridCard>
+            </Reveal>
           </div>
         </div>
       </section>

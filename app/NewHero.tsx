@@ -9,15 +9,24 @@ interface Props {
 
 const DESIGN_WIDTH = 1512;
 const DESIGN_HEIGHT = 980;
+const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
 
 export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork }: Props) {
   const [scale, setScale] = useState(1);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     const update = () => setScale(window.innerWidth / DESIGN_WIDTH);
     update();
     window.addEventListener("resize", update);
     return () => window.removeEventListener("resize", update);
+  }, []);
+
+  // Entrance animation — triggers once on mount, one frame after first paint
+  // so the initial (pre-animation) styles are guaranteed to have rendered.
+  useEffect(() => {
+    const raf = requestAnimationFrame(() => requestAnimationFrame(() => setMounted(true)));
+    return () => cancelAnimationFrame(raf);
   }, []);
 
   return (
@@ -34,7 +43,16 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
             covering roughly the bottom 35% of the photo. */}
         <div
           className="absolute"
-          style={{ left: "273px", top: "66px", width: "1158px", height: "837px" }}
+          style={{
+            left: "273px",
+            top: "66px",
+            width: "1158px",
+            height: "837px",
+            opacity: mounted ? 1 : 0,
+            transform: mounted ? "scale(1)" : "scale(0.96)",
+            transformOrigin: "center",
+            transition: `opacity 800ms ${EASE} 120ms, transform 800ms ${EASE} 120ms`,
+          }}
         >
           <img
             alt=""
@@ -68,6 +86,9 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
             paddingTop: "10px",
             paddingBottom: "10px",
             lineHeight: "66px",
+            opacity: mounted ? 1 : 0,
+            transform: mounted ? "translateY(0px)" : "translateY(-16px)",
+            transition: `opacity 600ms ${EASE}, transform 600ms ${EASE}`,
           }}
         >
           <p
@@ -83,19 +104,19 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
           >
             <span
               onClick={onScrollWork}
-              className="relative shrink-0 text-[#161616] cursor-pointer transition-opacity duration-150 hover:opacity-60"
+              className="relative shrink-0 text-[#161616] cursor-pointer transition-all duration-200 hover:opacity-60 hover:-translate-y-0.5 inline-block"
             >
               Work
             </span>
             <span
               onClick={onNavigateAbout}
-              className="relative shrink-0 text-[#161616] cursor-pointer transition-opacity duration-150 hover:opacity-60"
+              className="relative shrink-0 text-[#161616] cursor-pointer transition-all duration-200 hover:opacity-60 hover:-translate-y-0.5 inline-block"
             >
               About
             </span>
             <span
               onClick={onScrollContact}
-              className="relative shrink-0 text-[#161616] cursor-pointer transition-opacity duration-150 hover:opacity-60"
+              className="relative shrink-0 text-[#161616] cursor-pointer transition-all duration-200 hover:opacity-60 hover:-translate-y-0.5 inline-block"
             >
               Contact
             </span>
@@ -114,6 +135,9 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
             left: "104px",
             top: "304px",
             width: "507px",
+            opacity: mounted ? 1 : 0,
+            transform: mounted ? "translateY(0px)" : "translateY(24px)",
+            transition: `opacity 750ms ${EASE} 80ms, transform 750ms ${EASE} 80ms`,
           }}
         >
           {"A product designer\nwith a development \nbackground"}
@@ -129,6 +153,9 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
             left: "1114px",
             top: "359px",
             width: "308px",
+            opacity: mounted ? 1 : 0,
+            transform: mounted ? "translateY(0px)" : "translateY(20px)",
+            transition: `opacity 700ms ${EASE} 260ms, transform 700ms ${EASE} 260ms`,
           }}
         >
           <span style={{ fontWeight: 400 }}>{"As a digital "}</span>
