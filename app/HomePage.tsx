@@ -10,6 +10,18 @@ import imgPulseCard from "@/imports/Frame13/b408d64d475512d56275485cd8a85bf540ac
 import imgAlmaCard from "@/imports/Frame13/fde8b98f3f8528432f9f6c69d09f5bccf388e844.png";
 import imgCurioCard from "@/imports/Frame13/c51554de7237f51893371d0ee285af660281af21.png";
 
+/* ── At a Glance icon paths ────────────────────────────────── */
+const glanceSvgPaths = {
+  award1: "M35.3263 29.4529L38.7843 48.9135C38.823 49.1426 38.7908 49.3781 38.6921 49.5885C38.5934 49.7989 38.4328 49.9741 38.2317 50.0908C38.0307 50.2074 37.7989 50.2599 37.5672 50.2412C37.3356 50.2225 37.1152 50.1336 36.9354 49.9862L28.7641 43.8532C28.3696 43.5585 27.8904 43.3992 27.398 43.3992C26.9056 43.3992 26.4264 43.5585 26.0319 43.8532L17.8469 49.984C17.6673 50.131 17.4471 50.2199 17.2158 50.2386C16.9844 50.2573 16.7528 50.205 16.5519 50.0887C16.3511 49.9723 16.1904 49.7975 16.0915 49.5876C15.9925 49.3776 15.9599 49.1424 15.9981 48.9135L19.4538 29.4529",
+  award2: "M27.3899 31.9872C34.9535 31.9872 41.0849 25.8557 41.0849 18.2922C41.0849 10.7286 34.9535 4.59717 27.3899 4.59717C19.8264 4.59717 13.6949 10.7286 13.6949 18.2922C13.6949 25.8557 19.8264 31.9872 27.3899 31.9872Z",
+  book1: "M27.3921 15.7441V47.7019",
+  book2: "M6.84788 40.8539C6.24247 40.8539 5.66186 40.6134 5.23377 40.1854C4.80568 39.7573 4.56519 39.1767 4.56519 38.5712V8.89622C4.56519 8.29081 4.80568 7.7102 5.23377 7.28211C5.66186 6.85402 6.24247 6.61353 6.84788 6.61353H18.2614C20.683 6.61353 23.0054 7.57551 24.7178 9.28787C26.4301 11.0002 27.3921 13.3227 27.3921 15.7443C27.3921 13.3227 28.3541 11.0002 30.0665 9.28787C31.7788 7.57551 34.1013 6.61353 36.5229 6.61353H47.9364C48.5418 6.61353 49.1224 6.85402 49.5505 7.28211C49.9786 7.7102 50.2191 8.29081 50.2191 8.89622V38.5712C50.2191 39.1767 49.9786 39.7573 49.5505 40.1854C49.1224 40.6134 48.5418 40.8539 47.9364 40.8539H34.2402C32.424 40.8539 30.6821 41.5754 29.3979 42.8597C28.1136 44.144 27.3921 45.8858 27.3921 47.702C27.3921 45.8858 26.6706 44.144 25.3864 42.8597C24.1021 41.5754 22.3603 40.8539 20.544 40.8539H6.84788Z",
+  folder: "M13.085 29.2631L16.2128 23.216C16.5529 22.5407 17.0701 21.9705 17.7092 21.5665C18.3483 21.1624 19.0852 20.9397 19.8411 20.9222H42.2781M42.2781 20.9222C42.9152 20.9211 43.5441 21.066 44.1165 21.3457C44.6889 21.6254 45.1896 22.0326 45.5802 22.5359C45.9708 23.0392 46.2409 23.6254 46.3697 24.2493C46.4985 24.8732 46.4827 25.5184 46.3234 26.1353L43.1122 38.6466C42.8799 39.5465 42.3536 40.343 41.6169 40.9097C40.8802 41.4763 39.9754 41.7807 39.046 41.7744H8.91458C7.80851 41.7744 6.74774 41.335 5.96563 40.5529C5.18352 39.7708 4.74414 38.7101 4.74414 37.604V10.4961C4.74414 9.39006 5.18352 8.32929 5.96563 7.54718C6.74774 6.76507 7.80851 6.32569 8.91458 6.32569H17.0469C17.7444 6.31885 18.4325 6.48706 19.0481 6.81492C19.6638 7.14279 20.1874 7.61983 20.571 8.20239L22.26 10.7046C22.6397 11.2813 23.1567 11.7546 23.7645 12.0822C24.3723 12.4097 25.0519 12.5812 25.7423 12.5813H38.1077C39.2137 12.5813 40.2745 13.0207 41.0566 13.8028C41.8387 14.585 42.2781 15.6457 42.2781 16.7518V20.9222Z",
+  code1: "M15.4797 20.4797L5 30.9595L15.4797 41.4392",
+  code2: "M37.5794 10L24.4797 51.9189",
+  code3: "M46.5794 41.4392L57.0591 30.9595L46.5794 20.4797",
+};
+
 /* ── SVG Icons ─────────────────────────────────────────── */
 
 function PhoneIcon({ className }: { className?: string }) {
@@ -134,6 +146,133 @@ function CaseStudyGridCard({ children, onClick }: { children: React.ReactNode; o
     >
       {children}
     </div>
+  );
+}
+
+/* ── At a Glance — stats section (Figma Make) ─────────────── */
+
+function GlanceStat({
+  icon,
+  label,
+  value,
+  caption,
+  captionWidth = "316.47px",
+  borderRight = false,
+  borderBottom = false,
+}: {
+  icon: React.ReactNode;
+  label: string;
+  value: string;
+  caption: React.ReactNode;
+  captionWidth?: string;
+  borderRight?: boolean;
+  borderBottom?: boolean;
+}) {
+  return (
+    <div
+      className="relative flex flex-col items-center justify-center"
+      style={{
+        borderRight: borderRight ? "2.11px solid rgba(255,255,255,0.12)" : undefined,
+        borderBottom: borderBottom ? "2.11px solid rgba(255,255,255,0.12)" : undefined,
+      }}
+    >
+      <div
+        className="flex flex-col items-center justify-center gap-[21px] size-full"
+        style={{ padding: "70.327px" }}
+      >
+        {icon}
+        <p className="font-['Inter',sans-serif] font-medium leading-[26.372px] not-italic text-[18px] text-[rgba(255,255,255,0.8)] tracking-[3.5163px] uppercase whitespace-nowrap">
+          {label}
+        </p>
+        <p className="font-['Inter',sans-serif] font-bold leading-[98.457px] not-italic text-[98.457px] text-white whitespace-nowrap">
+          {value}
+        </p>
+        <p
+          className="font-['Inter',sans-serif] font-light leading-[31.427px] not-italic text-[20px] text-[rgba(255,255,255,0.8)] text-center"
+          style={{ width: captionWidth }}
+        >
+          {caption}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function AtAGlanceSection() {
+  return (
+    <section id="at-a-glance" className="w-full flex flex-col items-center px-8" style={{ marginTop: "96px" }}>
+      <div className="w-full flex flex-col items-center gap-[24px]" style={{ maxWidth: 1512 }}>
+        {/* Eyebrow label */}
+        <p className="font-['Inter',sans-serif] font-semibold leading-[29.01px] not-italic text-[#121111] text-[22px] tracking-[5.8019px] uppercase whitespace-nowrap">
+          At a Glance
+        </p>
+
+        {/* Black stats card */}
+        <div
+          className="bg-[#161616] flex flex-col items-start overflow-clip relative rounded-[50px] w-full"
+          style={{ maxWidth: "1512.02px" }}
+        >
+          <div className="grid grid-cols-2 grid-rows-2 relative w-full">
+            {/* UI UX certification */}
+            <GlanceStat
+              borderRight
+              borderBottom
+              icon={
+                <svg className="size-[54.78px]" fill="none" viewBox="0 0 54.78 54.78">
+                  <path d={glanceSvgPaths.award2} stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeOpacity="0.8" strokeWidth="4.00687" />
+                  <path d={glanceSvgPaths.award1} stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeOpacity="0.8" strokeWidth="4.00687" />
+                </svg>
+              }
+              label="Hold a Certification in"
+              value="UI UX"
+              caption={<>Over 140 hours at<br aria-hidden />Graphitech College</>}
+            />
+
+            {/* B.Sc Computer Science */}
+            <GlanceStat
+              borderBottom
+              icon={
+                <svg className="size-[54.785px]" fill="none" viewBox="0 0 54.7847 54.7847">
+                  <path d={glanceSvgPaths.book1} stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeOpacity="0.8" strokeWidth="3.42404" />
+                  <path d={glanceSvgPaths.book2} stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeOpacity="0.8" strokeWidth="3.42404" />
+                </svg>
+              }
+              label="Hold Computer Science"
+              value="B.Sc."
+              caption="Tel Aviv University"
+              captionWidth="357px"
+            />
+
+            {/* Products designed */}
+            <GlanceStat
+              borderRight
+              icon={
+                <svg className="w-[51.2px] h-[48.1px]" fill="none" viewBox="0 0 51.1999 48.0999">
+                  <path d={glanceSvgPaths.folder} stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeOpacity="0.8" strokeWidth="3.12783" />
+                </svg>
+              }
+              label="Products Designed"
+              value="5"
+              caption="End-to-end UX and UI, Product design projects"
+            />
+
+            {/* Years in development */}
+            <GlanceStat
+              icon={
+                <svg className="w-[62.059px] h-[61.919px]" fill="none" viewBox="0 0 62.0591 61.9189">
+                  <path d={glanceSvgPaths.code1} stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeOpacity="0.8" strokeWidth="3.9299" />
+                  <path d={glanceSvgPaths.code2} stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeOpacity="0.8" strokeWidth="3.9299" />
+                  <path d={glanceSvgPaths.code3} stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeOpacity="0.8" strokeWidth="3.9299" />
+                </svg>
+              }
+              label="Years in Development"
+              value="13+"
+              caption="Building scalable software across multiple industries"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -337,6 +476,8 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
           </div>
         </div>
       </section>
+
+      <AtAGlanceSection />
 
       {/* ── About Me + Let's Talk — Figma design ─────────────── */}
       <section
