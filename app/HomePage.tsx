@@ -162,80 +162,6 @@ function ScrollProgressBar() {
   );
 }
 
-/* ── Custom floating cursor over the case study grid ───────────────
-   Tracks the mouse with a smooth lerp (so it trails rather than snaps),
-   shows only while hovering the grid, and hides the system cursor for
-   that area only. ──────────────────────────────────────────────── */
-
-function CaseStudyCursorArea({ children }: { children: React.ReactNode }) {
-  const areaRef = useRef<HTMLDivElement>(null);
-  const targetRef = useRef({ x: 0, y: 0 });
-  const [pos, setPos] = useState({ x: 0, y: 0 });
-  const [visible, setVisible] = useState(false);
-  const reducedMotion = usePrefersReducedMotion();
-
-  useEffect(() => {
-    if (reducedMotion) return;
-    let raf: number;
-    const tick = () => {
-      setPos((prev) => ({
-        x: prev.x + (targetRef.current.x - prev.x) * 0.18,
-        y: prev.y + (targetRef.current.y - prev.y) * 0.18,
-      }));
-      raf = requestAnimationFrame(tick);
-    };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, [reducedMotion]);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = areaRef.current?.getBoundingClientRect();
-    if (!rect) return;
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    targetRef.current = { x, y };
-    if (reducedMotion) setPos({ x, y });
-  };
-
-  return (
-    <div
-      ref={areaRef}
-      className="relative"
-      onMouseEnter={() => setVisible(true)}
-      onMouseLeave={() => setVisible(false)}
-      onMouseMove={handleMouseMove}
-      style={{ cursor: visible && !reducedMotion ? "none" : undefined }}
-    >
-      {children}
-
-      {!reducedMotion && (
-        <div
-          aria-hidden
-          className="absolute pointer-events-none flex items-center justify-center rounded-full bg-white"
-          style={{
-            width: "100px",
-            height: "100px",
-            left: pos.x,
-            top: pos.y,
-            transform: `translate(-50%, -50%) scale(${visible ? 1 : 0.6})`,
-            opacity: visible ? 1 : 0,
-            boxShadow: "0 8px 30px rgba(0,0,0,0.2)",
-            transition: "opacity 220ms ease-out, transform 220ms ease-out",
-            zIndex: 40,
-          }}
-        >
-          <span
-            className="text-[#111214] text-[14px] font-semibold text-center leading-tight"
-            style={{ fontFamily: "'Inter', sans-serif" }}
-          >
-            View Project →
-          </span>
-        </div>
-      )}
-    </div>
-  );
-}
-
 
 
 function StickyNav({
@@ -396,10 +322,10 @@ function CaseStudyGridCard({ children, onClick }: { children: React.ReactNode; o
     <div
       onClick={onClick}
       className={[
-        "group h-[300px] overflow-hidden relative rounded-[20px] shrink-0 w-[535px]",
-        onClick ? "cursor-pointer" : "",
+        "group h-[300px] overflow-clip relative rounded-[20px] shrink-0 w-[535px]",
+        onClick ? "cursor-pointer transition-all duration-250 ease-out hover:-translate-y-[6px] hover:shadow-[0_20px_40px_rgba(0,0,0,0.18)] active:translate-y-0" : "",
       ].join(" ")}
-      style={{ backgroundColor: "#111214" }}
+      style={{ boxShadow: "0 0 0 0 rgba(0,0,0,0)", backgroundColor: "#111214", transitionDuration: "250ms" }}
     >
       {children}
     </div>
@@ -1037,7 +963,6 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
         </Reveal>
 
         {/* Grid */}
-        <CaseStudyCursorArea>
         <div className="flex items-center justify-center relative shrink-0 w-full">
           <div
             className="inline-grid relative shrink-0"
@@ -1052,7 +977,7 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
               <CaseStudyGridCard onClick={() => onNavigate("pulse")}>
                 <img
                   alt=""
-                  className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[20px] size-full transition-transform duration-[250ms] ease-out group-hover:scale-[1.04]"
+                  className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[20px] size-full transition-transform duration-[400ms] ease-out group-hover:scale-[1.04]"
                   src={imgPulseCard}
                 />
                 <CaseStudyCardOverlay title="Pulse" tags={["Dashboard", "Analytics"]} top="212px" />
@@ -1064,7 +989,7 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
               <CaseStudyGridCard onClick={() => onNavigate("alma")}>
                 <img
                   alt=""
-                  className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[20px] size-full transition-transform duration-[250ms] ease-out group-hover:scale-[1.04]"
+                  className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[20px] size-full transition-transform duration-[400ms] ease-out group-hover:scale-[1.04]"
                   src={imgAlmaCard}
                 />
                 <CaseStudyCardOverlay title="Alma" tags={["Mobile App", "Health"]} top="212px" />
@@ -1076,7 +1001,7 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
               <CaseStudyGridCard onClick={() => onNavigate("curio")}>
                 <img
                   alt=""
-                  className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[20px] size-full transition-transform duration-[250ms] ease-out group-hover:scale-[1.04]"
+                  className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[20px] size-full transition-transform duration-[400ms] ease-out group-hover:scale-[1.04]"
                   src={imgCurioCard}
                 />
                 <CaseStudyCardOverlay title="Curio" tags={["E-Commerce", "Kids"]} top="212px" />
@@ -1107,7 +1032,6 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
             </Reveal>
           </div>
         </div>
-        </CaseStudyCursorArea>
       </section>
 
       <AtAGlanceSection />
