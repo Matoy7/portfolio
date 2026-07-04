@@ -108,11 +108,14 @@ function Tag({ label, dim }: { label: string; dim?: boolean }) {
 }
 
 /* ── Featured Works — Case Study Cards (Figma Make) ───────── */
+/* Scaled 2× from the original Figma Make export (399.109×316.753 → 798.218×633.506)
+   — every pixel value below is exactly double the source, so all proportions
+   (text, tags, icons, spacing, radius) are preserved identically. */
 
 function CaseStudyTag({ label }: { label: string }) {
   return (
-    <div className="flex h-[29px] items-center justify-center px-[12px] relative rounded-[10px] shrink-0 border border-white">
-      <p className="font-['Inter',sans-serif] font-bold leading-[36.13px] not-italic relative shrink-0 text-[16px] text-white tracking-[-1.0948px] whitespace-nowrap">
+    <div className="flex h-[58px] items-center justify-center px-[24px] relative rounded-[20px] shrink-0 border border-white">
+      <p className="font-['Inter',sans-serif] font-bold leading-[72.26px] not-italic relative shrink-0 text-[32px] text-white tracking-[-2.1896px] whitespace-nowrap">
         {label}
       </p>
     </div>
@@ -122,13 +125,13 @@ function CaseStudyTag({ label }: { label: string }) {
 function CaseStudyCardOverlay({ title, tags, top }: { title: string; tags: string[]; top: string }) {
   return (
     <div
-      className="absolute flex flex-col gap-[8px] items-start justify-center left-[26px] w-[202.401px]"
+      className="absolute flex flex-col gap-[16px] items-start justify-center left-[52px] w-[404.802px]"
       style={{ top }}
     >
-      <p className="font-['Inter',sans-serif] font-extrabold leading-[36.13px] not-italic relative shrink-0 text-[24px] text-white tracking-[-1.0948px] w-full">
+      <p className="font-['Inter',sans-serif] font-extrabold leading-[72.26px] not-italic relative shrink-0 text-[48px] text-white tracking-[-2.1896px] w-full">
         {title}
       </p>
-      <div className="flex gap-[8px] items-center relative shrink-0 w-full">
+      <div className="flex gap-[16px] items-center relative shrink-0 w-full">
         {tags.map((tag) => (
           <CaseStudyTag key={tag} label={tag} />
         ))}
@@ -141,7 +144,7 @@ function CaseStudyGridCard({ children, onClick }: { children: React.ReactNode; o
   return (
     <div
       onClick={onClick}
-      className="h-[316.753px] overflow-clip relative rounded-[24.456px] shrink-0 w-[399.109px] cursor-pointer transition-transform duration-200 ease-out hover:scale-[1.03] active:scale-[0.97]"
+      className="h-[633.506px] overflow-clip relative rounded-[48.912px] shrink-0 w-[798.218px] cursor-pointer transition-transform duration-200 ease-out hover:scale-[1.03] active:scale-[0.97]"
       style={{ boxShadow: "0 0 0 0 rgba(0,0,0,0)", backgroundColor: "#111214" }}
     >
       {children}
@@ -420,51 +423,51 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
             style={{
               gridTemplateColumns: "repeat(2, fit-content(100%))",
               gridTemplateRows: "repeat(2, fit-content(100%))",
-              gap: "9.782423973083496px",
+              gap: "19.564847946166992px",
             }}
           >
             {/* Pulse */}
             <CaseStudyGridCard onClick={() => onNavigate("pulse")}>
               <img
                 alt=""
-                className="absolute inset-0 max-w-none object-contain pointer-events-none rounded-[24.456px] size-full"
+                className="absolute inset-0 max-w-none object-contain pointer-events-none rounded-[48.912px] size-full"
                 src={imgPulseCard}
               />
-              <CaseStudyCardOverlay title="Pulse" tags={["Dashboard", "Analytics"]} top="225px" />
+              <CaseStudyCardOverlay title="Pulse" tags={["Dashboard", "Analytics"]} top="450px" />
             </CaseStudyGridCard>
 
             {/* Alma */}
             <CaseStudyGridCard onClick={() => onNavigate("alma")}>
               <img
                 alt=""
-                className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[24.456px] size-full"
+                className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[48.912px] size-full"
                 src={imgAlmaCard}
               />
-              <CaseStudyCardOverlay title="Alma" tags={["Mobile App", "Health"]} top="225px" />
+              <CaseStudyCardOverlay title="Alma" tags={["Mobile App", "Health"]} top="450px" />
             </CaseStudyGridCard>
 
             {/* Curio */}
             <CaseStudyGridCard onClick={() => onNavigate("curio")}>
               <img
                 alt=""
-                className="absolute inset-0 max-w-none object-contain pointer-events-none rounded-[24.456px] size-full"
+                className="absolute inset-0 max-w-none object-contain pointer-events-none rounded-[48.912px] size-full"
                 src={imgCurioCard}
               />
-              <CaseStudyCardOverlay title="Curio" tags={["E-Commerce", "Kids"]} top="225.46px" />
+              <CaseStudyCardOverlay title="Curio" tags={["E-Commerce", "Kids"]} top="450.92px" />
             </CaseStudyGridCard>
 
             {/* Coming soon */}
             <CaseStudyGridCard>
-              <div className="bg-[#161616] absolute inset-0 rounded-[24.456px]" />
-              <div className="absolute flex flex-col gap-[9.782px] items-start left-[70.31px] top-[110.62px] w-[288.581px] text-white not-italic">
+              <div className="bg-[#161616] absolute inset-0 rounded-[48.912px]" />
+              <div className="absolute flex flex-col gap-[19.564px] items-start left-[140.62px] top-[221.24px] w-[577.162px] text-white not-italic">
                 <p
-                  className="font-['Inter',sans-serif] font-extrabold leading-[45.302px] min-w-full relative shrink-0 text-[34.238px] tracking-[-1.3728px] w-[min-content]"
+                  className="font-['Inter',sans-serif] font-extrabold leading-[90.604px] min-w-full relative shrink-0 text-[68.476px] tracking-[-2.7456px] w-[min-content]"
                   dir="auto"
                 >
                   Coming soon...
                 </p>
                 <p
-                  className="font-['Inter',sans-serif] font-medium leading-[19.565px] relative shrink-0 text-[12.228px] w-[280.022px]"
+                  className="font-['Inter',sans-serif] font-medium leading-[39.13px] relative shrink-0 text-[24.456px] w-[560.044px]"
                   dir="auto"
                 >
                   {"I'm currently working on my next projects."}
