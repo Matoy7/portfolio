@@ -77,7 +77,7 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
           className="absolute"
           style={{
             left: "273px",
-            top: "124px",
+            top: "104px",
             width: "1158px",
             height: "837px",
             opacity: mounted ? 1 : 0,
