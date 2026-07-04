@@ -104,7 +104,10 @@ function CaseStudyGridCard({ children, onClick }: { children: React.ReactNode; o
   return (
     <div
       onClick={onClick}
-      className="h-[300px] overflow-clip relative rounded-[20px] shrink-0 w-[535px] cursor-pointer transition-transform duration-200 ease-out hover:scale-[1.03] active:scale-[0.97]"
+      className={[
+        "h-[300px] overflow-clip relative rounded-[20px] shrink-0 w-[535px]",
+        onClick ? "cursor-pointer transition-transform duration-200 ease-out hover:scale-[1.03] active:scale-[0.97]" : "",
+      ].join(" ")}
       style={{ boxShadow: "0 0 0 0 rgba(0,0,0,0)", backgroundColor: "#111214" }}
     >
       {children}
