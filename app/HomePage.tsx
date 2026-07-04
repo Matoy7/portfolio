@@ -329,7 +329,7 @@ function FaqAccordionItem({
   const buttonId = `faq-btn-${item.id}`;
 
   return (
-    <div className="border border-[#ebebeb] rounded-2xl px-10 mb-5 last:mb-0">
+    <div className="border border-[#ebebeb] rounded-2xl px-10 mb-6 last:mb-0">
       <button
         id={buttonId}
         aria-expanded={isOpen}
@@ -680,7 +680,7 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
       {/* ── Featured Works — Case Studies grid (Figma Make) ────── */}
       <section
         id="case-studies"
-        className="relative w-full bg-white flex flex-col gap-[47px] items-start justify-center"
+        className="relative w-full bg-white flex flex-col gap-[48px] items-start justify-center"
         style={{ padding: "48px 52px", marginTop: "96px" }}
       >
         {/* Title */}
