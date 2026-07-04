@@ -163,7 +163,6 @@ function GlanceStat({
 
 function AtAGlanceSection() {
   const GLANCE_DESIGN_WIDTH = 1512.02;
-  const GLANCE_SIDE_PADDING = 16; // reference shows the box nearly edge-to-edge
 
   const [scale, setScale] = useState(1);
   const [designHeight, setDesignHeight] = useState<number | null>(null);
@@ -177,12 +176,13 @@ function AtAGlanceSection() {
     }
   }, []);
 
-  // Recompute scale so the card's rendered width always exactly fills the
-  // available space (viewport minus the section's side padding).
+  // Scale so the grid renders smaller than the viewport width, then center it
+  // inside a black background that spans the full screen edge-to-edge width
+  // (same treatment as the footer — no white gaps on the sides).
   useEffect(() => {
     const update = () => {
-      const available = window.innerWidth - GLANCE_SIDE_PADDING * 2;
-      setScale(available / GLANCE_DESIGN_WIDTH);
+      const available = window.innerWidth;
+      setScale((available / GLANCE_DESIGN_WIDTH) * 0.4);
     };
     update();
     window.addEventListener("resize", update);
@@ -190,33 +190,33 @@ function AtAGlanceSection() {
   }, []);
 
   return (
-    <section id="at-a-glance" className="w-full flex flex-col items-center" style={{ marginTop: "96px", paddingLeft: 16, paddingRight: 16 }}>
+    <section id="at-a-glance" className="w-full flex flex-col items-center" style={{ marginTop: "96px" }}>
       <div className="w-full flex flex-col items-center gap-[24px]">
         {/* Eyebrow label — stays at its original literal size, not scaled */}
         <p className="font-['Inter',sans-serif] font-semibold leading-[29.01px] not-italic text-[#121111] text-[22px] tracking-[5.8019px] uppercase whitespace-nowrap">
           At a Glance
         </p>
 
-        {/* Scaled wrapper — reserves exactly the right amount of vertical
-            space in normal document flow for the scaled card beneath it */}
+        {/* Full-width black background — spans edge-to-edge like the footer */}
         <div
-          className="relative w-full"
+          className="relative w-full bg-[#161616]"
           style={{ height: designHeight !== null ? `${designHeight * scale}px` : undefined }}
         >
           {/* Black stats card — always rendered at its fixed native design
               width (1512.02px) with every padding/font/icon/border untouched,
-              then scaled as a single unit to exactly fill the available
-              width. Nothing inside is stretched or resized independently. */}
+              then scaled down as a single unit and centered within the
+              full-width black background. Nothing inside is stretched or
+              resized independently. */}
           <div
             ref={glanceContentRef}
-            className="bg-[#161616] flex flex-col items-start overflow-clip rounded-[50px]"
+            className="flex flex-col items-start overflow-clip"
             style={{
               width: `${GLANCE_DESIGN_WIDTH}px`,
               position: "absolute",
               top: 0,
-              left: 0,
-              transform: `scale(${scale})`,
-              transformOrigin: "top left",
+              left: "50%",
+              transform: `translateX(-50%) scale(${scale})`,
+              transformOrigin: "top center",
             }}
           >
             <div className="grid grid-cols-2 grid-rows-2 relative w-full">
