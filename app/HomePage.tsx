@@ -130,7 +130,7 @@ function CaseStudyGridCard({ children, onClick }: { children: React.ReactNode; o
     <div
       onClick={onClick}
       className="h-[316.753px] overflow-clip relative rounded-[24.456px] shrink-0 w-[399.109px] cursor-pointer transition-transform duration-200 ease-out hover:scale-[1.03] active:scale-[0.97]"
-      style={{ boxShadow: "0 0 0 0 rgba(0,0,0,0)" }}
+      style={{ boxShadow: "0 0 0 0 rgba(0,0,0,0)", backgroundColor: "#111214" }}
     >
       {children}
     </div>
@@ -298,7 +298,7 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
             <CaseStudyGridCard onClick={() => onNavigate("alma")}>
               <img
                 alt=""
-                className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[24.456px] size-full"
+                className="absolute inset-0 max-w-none object-contain pointer-events-none rounded-[24.456px] size-full"
                 src={imgAlmaCard}
               />
               <CaseStudyCardOverlay title="Alma" tags={["Mobile App", "Health"]} top="225px" />
