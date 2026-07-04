@@ -4,7 +4,6 @@ import NewHero from "./NewHero";
 import imgHero from "@/imports/Frame11/376b4ff69c76e4c7548a2d9016b80b772b65dbee.png";
 import imgHeroDashboard from "@/imports/Frame11/hero_dashboard.png";
 import imgHeroCurio from "@/imports/Frame11/hero_curio.png";
-import aboutPhoto from "@/imports/PIC_5444.jpg";
 import imgPulseCard from "@/imports/Frame13/b408d64d475512d56275485cd8a85bf540ac8e83.png";
 import imgAlmaCard from "@/imports/Frame13/fde8b98f3f8528432f9f6c69d09f5bccf388e844.png";
 import imgCurioCard from "@/imports/Frame13/c51554de7237f51893371d0ee285af660281af21.png";
@@ -761,101 +760,6 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
       <AtAGlanceSection />
 
       <FaqSection />
-
-      {/* ── About Me + Let's Talk — Figma design ─────────────── */}
-      <section
-        id="about-contact"
-        className="relative w-full"
-        style={{ background: "#0d0b1e" }}
-      >
-        <div
-          className="mx-auto w-full flex flex-col items-center justify-center"
-          style={{ maxWidth: 1320, padding: "80px" }}
-        >
-          {/* ── About Me row ── */}
-          <div id="about" className="flex flex-col lg:flex-row items-center justify-center gap-16 w-full" style={{ paddingBottom: 88 }}>
-            {/* Polaroid photo with glow */}
-            <div className="relative flex-shrink-0" style={{ width: 220, height: 242 }}>
-              {/* Glow blob */}
-              <div
-                className="absolute pointer-events-none"
-                style={{
-                  width: 400,
-                  height: 422,
-                  left: -90,
-                  top: -90,
-                  filter: "blur(40px)",
-                  background:
-                    "radial-gradient(ellipse at 50% 50%, rgba(120,50,255,0.4) 0%, rgba(90,30,200,0.15) 55%, rgba(0,0,0,0) 75%)",
-                }}
-              />
-              {/* Polaroid frame */}
-              <div
-                className="absolute flex items-center justify-center"
-                style={{ left: 2, top: -7, width: 216, height: 255 }}
-              >
-                <div
-                  className="bg-white"
-                  style={{
-                    transform: "rotate(-4deg)",
-                    borderRadius: 4,
-                    width: 200,
-                    padding: "10px 10px 32px 10px",
-                    boxShadow: "0px 12px 24px rgba(0,0,0,0.55)",
-                  }}
-                >
-                  <img
-                    src={aboutPhoto}
-                    alt="Yotam in Venice"
-                    className="w-full object-cover"
-                    style={{ height: 200, objectPosition: "35% center" }}
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* Text column */}
-            <div className="flex flex-col items-start" style={{ width: 620, gap: 24 }}>
-              <span
-                style={{
-                  fontFamily: "'Inter', sans-serif",
-                  fontWeight: 600,
-                  fontSize: 14,
-                  lineHeight: "18px",
-                  letterSpacing: "2px",
-                  textTransform: "uppercase",
-                  color: "#8b8fa8",
-                }}
-              >
-                About Me
-              </span>
-              <h2
-                style={{
-                  fontFamily: "'Inter', sans-serif",
-                  fontWeight: 700,
-                  fontSize: 56,
-                  lineHeight: "1.1",
-                  color: "#ffffff",
-                  margin: 0,
-                }}
-              >
-                Hi, I'm Yotam
-              </h2>
-              <div className="flex flex-col" style={{ gap: 20, width: "100%" }}>
-                <p style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: 20, lineHeight: 1.7, color: "#b0b5cc", margin: 0 }}>
-                  I design digital experiences that are intuitive, meaningful, and user-centered. With a background in computer science and over a decade in software development, I bring a unique blend of technical understanding and creative thinking to every project.
-                </p>
-                <p style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: 20, lineHeight: 1.7, color: "#b0b5cc", margin: 0 }}>
-                  I care deeply about solving real problems and creating products that make people's lives easier and better.
-                </p>
-                <p style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: 20, lineHeight: 1.7, color: "#b0b5cc", margin: 0 }}>
-                  When I'm not designing, you'll find me traveling, exploring new places, and getting inspired by the world around me.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <SiteFooter />
     </div>
