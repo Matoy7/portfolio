@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import MobileHome from "./MobileHome";
 import NewHero from "./NewHero";
-import Header from "./Header";
 import svgPaths from "@/imports/Frame11/svg-o0xaf2ie0h";
 import imgHero from "@/imports/Frame11/376b4ff69c76e4c7548a2d9016b80b772b65dbee.png";
 import imgHeroDashboard from "@/imports/Frame11/hero_dashboard.png";
@@ -290,21 +289,11 @@ function HeroSlideshow() {
 
 export default function HomePage({ onNavigate }: { onNavigate: (page: string) => void }) {
   const [isMobile, setIsMobile] = useState(() => typeof window !== "undefined" && window.innerWidth < 768);
-  const [scale, setScale] = useState(1);
 
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth < 768);
-    const updateScale = () => setScale(window.innerWidth / 1440);
-    
     window.addEventListener("resize", check);
-    window.addEventListener("resize", updateScale);
-    
-    updateScale();
-    
-    return () => {
-      window.removeEventListener("resize", check);
-      window.removeEventListener("resize", updateScale);
-    };
+    return () => window.removeEventListener("resize", check);
   }, []);
 
   if (isMobile) return <MobileHome onNavigate={onNavigate} />;
@@ -332,15 +321,7 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
         .cta-btn-ghost:active { transform: translateY(0); }
       `}</style>
 
-      {/* ── Separate Header (desktop only) ─── */}
-      <Header
-        scale={scale}
-        onNavigateAbout={() => onNavigate("about")}
-        onScrollContact={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-        onScrollWork={() => document.getElementById("case-studies")?.scrollIntoView({ behavior: "smooth" })}
-      />
-
-      {/* ── New Hero (desktop only, full width) ─── */}
+      {/* ── New Hero (desktop only, full width, includes its own nav) ─── */}
       <div className="w-full">
         <NewHero
           onNavigateAbout={() => onNavigate("about")}

@@ -1,34 +1,5 @@
-import { useEffect, useRef, useState } from "react";
-import imgImage3 from "@/imports/Desktop1_v2/3372907fc21f8df36efc22daf2ade812539169ec.png";
-
-const AI_SYMBOLS = [
-  { id: 0, symbol: "⬡", x: 72, y: 18, size: 18, duration: 6.2, delay: 0 },
-  { id: 1, symbol: "∿", x: 88, y: 38, size: 14, duration: 7.8, delay: 1.2 },
-  { id: 2, symbol: "◈", x: 58, y: 55, size: 12, duration: 5.5, delay: 0.6 },
-  { id: 3, symbol: "⟠", x: 94, y: 62, size: 16, duration: 8.1, delay: 2.1 },
-  { id: 4, symbol: "⊹", x: 65, y: 22, size: 13, duration: 6.7, delay: 3.0 },
-  { id: 5, symbol: "⌬", x: 80, y: 72, size: 15, duration: 7.2, delay: 1.7 },
-  { id: 6, symbol: "◇", x: 54, y: 42, size: 11, duration: 9.0, delay: 0.3 },
-  { id: 7, symbol: "⟁", x: 91, y: 28, size: 17, duration: 5.9, delay: 4.1 },
-];
-
-function FloatingSymbol({ symbol, x, y, size, duration, delay }: {
-  symbol: string; x: number; y: number; size: number; duration: number; delay: number;
-}) {
-  return (
-    <div
-      className="absolute select-none pointer-events-none"
-      style={{
-        left: `${x}%`, top: `${y}%`, fontSize: size,
-        color: "rgba(196,184,255,0.55)",
-        animation: `aiFloat ${duration}s ease-in-out ${delay}s infinite`,
-        textShadow: "0 0 12px rgba(124,58,237,0.7)", fontWeight: 300,
-      }}
-    >
-      {symbol}
-    </div>
-  );
-}
+import { useEffect, useState } from "react";
+import heroPhoto from "@/imports/Frame_19__3_.png";
 
 interface Props {
   onNavigateAbout: () => void;
@@ -36,125 +7,135 @@ interface Props {
   onScrollWork: () => void;
 }
 
+const DESIGN_WIDTH = 1512;
+const DESIGN_HEIGHT = 980;
+
 export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork }: Props) {
   const [scale, setScale] = useState(1);
 
   useEffect(() => {
-    const update = () => setScale(window.innerWidth / 1440);
+    const update = () => setScale(window.innerWidth / DESIGN_WIDTH);
     update();
     window.addEventListener("resize", update);
     return () => window.removeEventListener("resize", update);
   }, []);
 
   return (
-    <>
-      <style>{`
-        @keyframes aiFloat {
-          0%   { transform: translateY(0px) rotate(0deg); opacity: 0.45; }
-          33%  { transform: translateY(-14px) rotate(6deg); opacity: 0.8; }
-          66%  { transform: translateY(-6px) rotate(-4deg); opacity: 0.6; }
-          100% { transform: translateY(0px) rotate(0deg); opacity: 0.45; }
-        }
-        @keyframes macPulse {
-          0%, 100% { filter: drop-shadow(0 0 12px rgba(124,58,237,0.35)) drop-shadow(0 0 28px rgba(124,58,237,0.15)); }
-          50%       { filter: drop-shadow(0 0 28px rgba(168,85,247,0.65)) drop-shadow(0 0 56px rgba(124,58,237,0.35)); }
-        }
-        @keyframes ringPulse {
-          0%   { transform: scale(1);   opacity: 0.55; }
-          100% { transform: scale(1.9); opacity: 0; }
-        }
-        .hero-btn-primary {
-          transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
-        }
-        .hero-btn-primary:hover {
-          background: #6d28d9 !important;
-          transform: translateY(-2px);
-          box-shadow: 0 8px 28px rgba(124,58,237,0.55);
-        }
-        .hero-btn-primary:active { transform: translateY(0); }
-        .hero-btn-ghost {
-          transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease, color 0.2s ease;
-        }
-        .hero-btn-ghost:hover {
-          background: rgba(124,58,237,0.18) !important;
-          border-color: rgba(124,58,237,0.8) !important;
-          transform: translateY(-2px);
-        }
-        .hero-btn-ghost:active { transform: translateY(0); }
-        .hero-nav-link { transition: color 0.18s ease; cursor: pointer; }
-        .hero-nav-link:hover { color: #ffffff !important; }
-        .float-nav-link { transition: color 0.18s ease; cursor: pointer; }
-        .float-nav-link:hover { color: #7c3aed !important; }
-        .hero-nav-contact { transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease; }
-        .hero-nav-contact:hover {
-          background: #6d28d9 !important;
-          transform: translateY(-1px);
-          box-shadow: 0 4px 16px rgba(124,58,237,0.5);
-        }
-      `}</style>
+    <div className="bg-white relative w-full" style={{ overflow: "hidden", height: `${scale * DESIGN_HEIGHT}px` }}>
+      <div
+        className="absolute top-0 left-0"
+        style={{ width: DESIGN_WIDTH, height: DESIGN_HEIGHT, transform: `scale(${scale})`, transformOrigin: "top left" }}
+      >
+        {/* Hero portrait */}
+        <div
+          className="absolute"
+          style={{ left: "273px", top: "66px", width: "1158px", height: "837px" }}
+        >
+          <img
+            alt=""
+            src={heroPhoto}
+            className="absolute inset-0 pointer-events-none"
+            style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "bottom" }}
+          />
+        </div>
 
-      {/* Scale wrapper to fill full viewport — NO STATIC HEADER */}
-      <div style={{ width: "100%", height: `calc(${scale} * 688px)`, position: "relative", overflow: "hidden" }}>
+        {/* Fade-to-white overlay at the bottom of the portrait */}
+        <div
+          className="absolute pointer-events-none"
+          style={{ left: 0, top: "701px", width: "1498px", height: "279px", filter: "blur(50px)" }}
+        >
+          <div
+            aria-hidden
+            className="absolute inset-0"
+            style={{
+              background: "linear-gradient(to bottom, rgba(255,255,255,0) 35.667%, rgba(255,255,255,1) 50%)",
+            }}
+          />
+        </div>
 
-        <div style={{ width: 1440, position: "absolute", top: 0, left: 0, transform: `scale(${scale})`, transformOrigin: "top left", height: 688 }}>
+        {/* Nav bar */}
+        <div
+          className="absolute left-0 flex items-center justify-between whitespace-nowrap not-italic text-[#161616]"
+          style={{
+            top: "36px",
+            width: "1512px",
+            paddingLeft: "56px",
+            paddingRight: "56px",
+            paddingTop: "10px",
+            paddingBottom: "10px",
+            lineHeight: "66px",
+          }}
+        >
+          <p
+            className="relative shrink-0 text-[#161616]"
+            style={{ fontFamily: "Inter, sans-serif", fontWeight: 700, fontSize: "24px", lineHeight: "66px" }}
+          >
+            Yotam Eliraz
+          </p>
 
           <div
-            className="relative flex flex-col mx-auto"
-            style={{
-              width: 1440,
-              height: 688,
-              paddingTop: 60,
-              background: "radial-gradient(ellipse 65% 60% at 65% 40%, rgba(26,10,74,1) 0%, rgba(20,9,53,1) 22.5%, rgba(13,8,32,1) 45%, rgba(8,6,22,1) 100%)",
-            }}
+            className="flex items-start gap-9"
+            style={{ padding: "10px", fontFamily: "Inter, sans-serif", fontWeight: 600, fontSize: "18px" }}
           >
-            {/* Hero body */}
-            <div className="relative z-10 flex items-center w-full" style={{ paddingLeft: 152, paddingRight: 60, gap: 48 }}>
-              {/* Left text */}
-              <div style={{ flex: "0 0 auto", maxWidth: 706 }}>
-                <p style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, fontSize: 14.888, lineHeight: "19.851px", color: "#fff", letterSpacing: "1.4888px", textTransform: "uppercase", marginBottom: 32, whiteSpace: "nowrap" }}>
-                  Product Designer
-                </p>
-                <div style={{ marginBottom: 16 }}>
-                  <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, fontSize: 76, color: "#f0eeff", letterSpacing: "-1.45px", lineHeight: "80px", marginBottom: 28 }}>
-                    <p style={{ margin: 0 }}>From Engineering</p>
-                    <p style={{ margin: 0 }}>to Product Design</p>
-                  </div>
-                  <p style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400, fontSize: 22, lineHeight: "34px", color: "#e2daff", maxWidth: 666, margin: 0 }}>
-                    Product Designer with 12 years of engineering experience, creating intuitive digital products through user centered design.
-                  </p>
-                </div>
-                <div className="flex items-center" style={{ gap: 19.851, marginTop: 64 }}>
-                  <div className="cursor-pointer hero-btn-primary" onClick={onScrollWork} style={{ background: "#7c3aed", borderRadius: 999, padding: "17.369px 34.738px" }}>
-                    <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, fontSize: 20, color: "#fff", whiteSpace: "nowrap" }}>View Case Studies</span>
-                  </div>
-                  <div className="cursor-pointer hero-btn-ghost" onClick={onNavigateAbout} style={{ background: "rgba(124,58,237,0.06)", borderRadius: 999, padding: "18.472px 35.841px", border: "1.103px solid rgba(124,58,237,0.45)" }}>
-                    <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, fontSize: 20, color: "#c4b8ff", whiteSpace: "nowrap" }}>About Me</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Right — computer with pulse + floating AI symbols */}
-              <div className="flex-1 flex items-center justify-center relative">
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                  <div style={{ width: 380, height: 380, borderRadius: "50%", border: "1px solid rgba(124,58,237,0.4)", animation: "ringPulse 3.2s ease-out 0s infinite" }} />
-                </div>
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                  <div style={{ width: 380, height: 380, borderRadius: "50%", border: "1px solid rgba(168,85,247,0.3)", animation: "ringPulse 3.2s ease-out 1.6s infinite" }} />
-                </div>
-                <div className="absolute inset-0 pointer-events-none">
-                  {AI_SYMBOLS.map((s) => <FloatingSymbol key={s.id} {...s} />)}
-                </div>
-                <img
-                  alt=""
-                  style={{ width: 519, height: 509.747, objectFit: "contain", pointerEvents: "none", position: "relative", zIndex: 1, animation: "macPulse 4s ease-in-out infinite" }}
-                  src={imgImage3}
-                />
-              </div>
-            </div>
+            <span
+              onClick={onScrollWork}
+              className="relative shrink-0 text-[#161616] cursor-pointer transition-opacity duration-150 hover:opacity-60"
+            >
+              Work
+            </span>
+            <span
+              onClick={onNavigateAbout}
+              className="relative shrink-0 text-[#161616] cursor-pointer transition-opacity duration-150 hover:opacity-60"
+            >
+              About
+            </span>
+            <span
+              onClick={onScrollContact}
+              className="relative shrink-0 text-[#161616] cursor-pointer transition-opacity duration-150 hover:opacity-60"
+            >
+              Contact
+            </span>
           </div>
-
         </div>
+
+        {/* Headline */}
+        <p
+          className="absolute not-italic text-[#161616] whitespace-pre-wrap"
+          style={{
+            fontFamily: "Inter, sans-serif",
+            fontWeight: 500,
+            fontSize: "62px",
+            lineHeight: "66px",
+            letterSpacing: "-2px",
+            left: "104px",
+            top: "304px",
+            width: "507px",
+          }}
+        >
+          {"A product designer\nwith a development \nbackground"}
+        </p>
+
+        {/* Body copy */}
+        <p
+          className="absolute not-italic text-[#161616] whitespace-pre-wrap"
+          style={{
+            fontFamily: "Inter, sans-serif",
+            fontSize: "18px",
+            lineHeight: "28px",
+            left: "1114px",
+            top: "359px",
+            width: "308px",
+          }}
+        >
+          <span style={{ fontWeight: 400 }}>{"As a digital "}</span>
+          <span style={{ fontWeight: 800 }}>{"product designer \n"}</span>
+          <span style={{ fontWeight: 400 }}>{"with a strong foundation in "}</span>
+          <span style={{ fontWeight: 800 }}>software development</span>
+          <span style={{ fontWeight: 400 }}>
+            {", I design intuitive digital products that balance user needs, business goals, and technical feasibility."}
+          </span>
+        </p>
       </div>
-    </>
+    </div>
   );
 }
