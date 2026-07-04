@@ -171,7 +171,7 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
             lineHeight: "66px",
             letterSpacing: "-2px",
             left: "104px",
-            top: "362px",
+            top: "199px",
             width: "507px",
             opacity: mounted ? 1 : 0,
             transform: mounted ? "translateY(0px)" : "translateY(24px)",
