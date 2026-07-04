@@ -40,15 +40,17 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
         </div>
 
         {/* Fade-to-white overlay at the bottom of the portrait */}
+        {/* Photo's real bottom edge sits at 66+837=903px — gradient must be fully opaque
+            well before that point so the hard PNG edge never shows through. */}
         <div
           className="absolute pointer-events-none"
-          style={{ left: 0, top: "701px", width: "1498px", height: "279px", filter: "blur(50px)" }}
+          style={{ left: 0, top: "660px", width: "1498px", height: "320px", filter: "blur(40px)" }}
         >
           <div
             aria-hidden
             className="absolute inset-0"
             style={{
-              background: "linear-gradient(to bottom, rgba(255,255,255,0) 35.667%, rgba(255,255,255,1) 50%)",
+              background: "linear-gradient(to bottom, rgba(255,255,255,0) 25%, rgba(255,255,255,1) 55%)",
             }}
           />
         </div>
