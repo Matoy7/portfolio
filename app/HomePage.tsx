@@ -5,10 +5,10 @@ import svgPaths from "@/imports/Frame11/svg-o0xaf2ie0h";
 import imgHero from "@/imports/Frame11/376b4ff69c76e4c7548a2d9016b80b772b65dbee.png";
 import imgHeroDashboard from "@/imports/Frame11/hero_dashboard.png";
 import imgHeroCurio from "@/imports/Frame11/hero_curio.png";
-import imgAlma from "@/imports/Frame11/0ff53a7574fe5ddd7893ea066c3a9fa41eb680ff.png";
-import imgPulse from "@/imports/Frame11/257c6ffc3188a1eaa8ed81ab7cbbf0f290627b4f.png";
-import imgCurio from "@/imports/Frame11/9dce77c3753db7b26f478f524ee1a15c07c28a59.png";
 import aboutPhoto from "@/imports/PIC_5444.jpg";
+import imgPulseCard from "@/imports/Frame13/b408d64d475512d56275485cd8a85bf540ac8e83.png";
+import imgAlmaCard from "@/imports/Frame13/fde8b98f3f8528432f9f6c69d09f5bccf388e844.png";
+import imgCurioCard from "@/imports/Frame13/c51554de7237f51893371d0ee285af660281af21.png";
 
 /* ── SVG Icons ─────────────────────────────────────────── */
 
@@ -95,123 +95,47 @@ function Tag({ label, dim }: { label: string; dim?: boolean }) {
   );
 }
 
-/* ── Case Study Card ────────────────────────────────────── */
+/* ── Featured Works — Case Study Cards (Figma Make) ───────── */
 
-interface CardProps {
-  image: string;
-  categoryLabel: string;
-  categoryColor: string;
-  categoryTextColor?: string;
-  title: string;
-  description: string;
-  tags: string[];
-  dimTags?: boolean;
-  hasGradient?: boolean;
-  onClick?: () => void;
-  featured?: boolean;
+function CaseStudyTag({ label }: { label: string }) {
+  return (
+    <div className="flex h-[29px] items-center justify-center px-[12px] relative rounded-[10px] shrink-0 border border-white">
+      <p className="font-['Inter',sans-serif] font-bold leading-[36.13px] not-italic relative shrink-0 text-[16px] text-white tracking-[-1.0948px] whitespace-nowrap">
+        {label}
+      </p>
+    </div>
+  );
 }
 
-function CaseStudyCard({
-  image,
-  categoryLabel,
-  categoryColor,
-  categoryTextColor = "white",
-  title,
-  description,
-  tags,
-  dimTags = false,
-  hasGradient = true,
-  onClick,
-  featured = false,
-}: CardProps) {
+function CaseStudyCardOverlay({ title, tags, top }: { title: string; tags: string[]; top: string }) {
   return (
     <div
-      onClick={onClick}
-      className={[
-        "group relative rounded-[20px] w-full cursor-pointer overflow-hidden",
-        "transition-all duration-[280ms] ease-out",
-        "hover:-translate-y-[4px] hover:shadow-[0_24px_56px_rgba(0,0,0,0.22)]",
-        "active:scale-[0.995]",
-        "motion-reduce:transition-none motion-reduce:hover:transform-none",
-      ].join(" ")}
-      style={{ height: featured ? 273 : 240 }}
+      className="absolute flex flex-col gap-[8px] items-start justify-center left-[26px] w-[202.401px]"
+      style={{ top }}
     >
-      {/* Full-bleed background image */}
-      <img
-        alt=""
-        src={image}
-        className={[
-          "absolute inset-0 w-full h-full object-cover",
-          "transition-transform duration-[500ms] ease-out",
-          "group-hover:scale-[1.04]",
-          "motion-reduce:transition-none motion-reduce:group-hover:scale-100",
-        ].join(" ")}
-      />
-
-      {/* Dark gradient overlay */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background: "linear-gradient(105deg, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.55) 45%, rgba(0,0,0,0.15) 100%)",
-        }}
-      />
-
-      {/* Content */}
-      <div
-        className="relative z-10 flex flex-col justify-between h-full"
-        style={{ padding: "28px 32px" }}
-      >
-        <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-          {/* Badge */}
-          <div style={{ display: "inline-flex", width: "fit-content" }}>
-            <span style={{
-              background: categoryColor, color: categoryTextColor,
-              fontSize: 13, fontFamily: "'Inter', sans-serif", fontWeight: 700,
-              letterSpacing: "0.6px", padding: "5px 12px", borderRadius: 7,
-            }}>
-              {categoryLabel}
-            </span>
-          </div>
-
-          {/* Title */}
-          <p style={{
-            fontFamily: "'Inter', sans-serif", fontWeight: 700,
-            fontSize: featured ? 32 : 28, lineHeight: 1.2,
-            color: "#ffffff", margin: 0,
-          }}>
-            {title}
-          </p>
-
-          {/* Description */}
-          <p style={{
-            fontFamily: "'Inter', sans-serif", fontWeight: 400,
-            fontSize: 17, lineHeight: 1.5,
-            color: "rgba(255,255,255,0.72)", margin: 0,
-          }}>
-            {description}
-          </p>
-        </div>
-
-        {/* Tags */}
-        <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-          {tags.map((tag) => (
-            <span key={tag} style={{
-              fontFamily: "'Inter', sans-serif", fontWeight: 600,
-              fontSize: 13, letterSpacing: "0.4px",
-              color: dimTags ? "rgba(255,255,255,0.55)" : "rgba(255,255,255,0.75)",
-              background: dimTags ? "rgba(255,255,255,0.10)" : "rgba(255,255,255,0.14)",
-              border: "1px solid rgba(255,255,255,0.15)",
-              borderRadius: 100, padding: "5px 12px",
-            }}>
-              {tag}
-            </span>
-          ))}
-        </div>
+      <p className="font-['Inter',sans-serif] font-extrabold leading-[36.13px] not-italic relative shrink-0 text-[24px] text-white tracking-[-1.0948px] w-full">
+        {title}
+      </p>
+      <div className="flex gap-[8px] items-center relative shrink-0 w-full">
+        {tags.map((tag) => (
+          <CaseStudyTag key={tag} label={tag} />
+        ))}
       </div>
     </div>
   );
 }
 
+function CaseStudyGridCard({ children, onClick }: { children: React.ReactNode; onClick?: () => void }) {
+  return (
+    <div
+      onClick={onClick}
+      className="h-[316.753px] overflow-clip relative rounded-[24.456px] shrink-0 w-[399.109px] cursor-pointer transition-transform duration-200 ease-out hover:scale-[1.03] active:scale-[0.97]"
+      style={{ boxShadow: "0 0 0 0 rgba(0,0,0,0)" }}
+    >
+      {children}
+    </div>
+  );
+}
 
 /* ── Footer contact item ────────────────────────────────── */
 
@@ -334,94 +258,85 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
         {/* placeholder — case studies moved to full-width below */}
       </div>
 
-      {/* ── Case Studies — Full-width editorial layout ────── */}
-      {/* ── Case Studies — Editorial Layout ─────────────── */}
+      {/* ── Featured Works — Case Studies grid (Figma Make) ────── */}
       <section
         id="case-studies"
-        className="relative w-full"
-        style={{ padding: "120px 0 100px" }}
+        className="relative w-full bg-white flex flex-col gap-[47px] items-start justify-center"
+        style={{ padding: "48px 52px", marginTop: "96px" }}
       >
-        {/* Two-column grid: cards fill left, title anchored right */}
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 540px",
-          gap: 0,
-          alignItems: "start",
-          position: "relative",
-          maxWidth: 1800,
-          margin: "0 auto",
-          paddingLeft: 80,
-          paddingRight: 80,
-        }}>
+        {/* Title */}
+        <div className="flex items-center justify-center relative shrink-0 w-full">
+          <p
+            className="flex-[1_0_0] font-['Inter',sans-serif] font-medium leading-[59.093px] min-w-px not-italic relative text-[#161616] text-[44px] tracking-[-1.7907px]"
+            dir="auto"
+          >
+            Selected Case Studies
+          </p>
+        </div>
 
-            {/* ── Left column: stacked cards ── */}
-            <div style={{ display: "flex", flexDirection: "column", gap: 32, paddingTop: 60, paddingRight: 48 }}>
-
-              {/* Card 1: Alma */}
-              <CaseStudyCard
-                image={imgAlma}
-                categoryLabel="MOBILE APP"
-                categoryColor="#d2684a"
-                title="Alma – Pregnancy App"
-                description="AI powered pregnancy food safety assistant."
-                tags={["AI", "HEALTH", "MOBILE"]}
-                hasGradient
-                onClick={() => onNavigate("alma")}
+        {/* Grid */}
+        <div className="flex items-center justify-center relative shrink-0 w-full">
+          <div
+            className="inline-grid relative shrink-0"
+            style={{
+              gridTemplateColumns: "repeat(2, fit-content(100%))",
+              gridTemplateRows: "repeat(2, fit-content(100%))",
+              gap: "9.782423973083496px",
+            }}
+          >
+            {/* Pulse */}
+            <CaseStudyGridCard onClick={() => onNavigate("pulse")}>
+              <img
+                alt=""
+                className="absolute inset-0 max-w-none object-contain pointer-events-none rounded-[24.456px] size-full"
+                src={imgPulseCard}
               />
+              <CaseStudyCardOverlay title="Pulse" tags={["Dashboard", "Analytics"]} top="225px" />
+            </CaseStudyGridCard>
 
-              {/* Card 2: Pulse — featured, offset right, widened for staggered composition */}
-              <div style={{ marginLeft: 48, marginRight: -48, position: "relative", zIndex: 2 }}>
-                <CaseStudyCard
-                  image={imgPulse}
-                  categoryLabel="DASHBOARD"
-                  categoryColor="rgba(88,86,214,0.9)"
-                  title="Pulse – Gaming Analytics"
-                  description="A real time dashboard for game product managers."
-                  tags={["DATA", "DASHBOARD", "SAAS"]}
-                  dimTags
-                  hasGradient={false}
-                  featured
-                  onClick={() => onNavigate("pulse")}
-                />
-              </div>
-
-              {/* Card 3: Curio */}
-              <CaseStudyCard
-                image={imgCurio}
-                categoryLabel="E-COMMERCE"
-                categoryColor="#fec66e"
-                categoryTextColor="#1f2937"
-                title="Curio – Online Toys Store"
-                description="An online marketplace for educational toys for kids."
-                tags={["AI", "HEALTH", "MOBILE"]}
-                hasGradient
-                onClick={() => onNavigate("curio")}
+            {/* Alma */}
+            <CaseStudyGridCard onClick={() => onNavigate("alma")}>
+              <img
+                alt=""
+                className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[24.456px] size-full"
+                src={imgAlmaCard}
               />
-            </div>
+              <CaseStudyCardOverlay title="Alma" tags={["Mobile App", "Health"]} top="225px" />
+            </CaseStudyGridCard>
 
-            {/* ── Right column: editorial title ── */}
-            <div style={{ paddingLeft: 48, paddingTop: 60, position: "sticky", top: 120 }}>
-              {/* Large editorial headline */}
-              <div
-                style={{
-                  fontFamily: "'Inter', sans-serif",
-                  fontWeight: 800,
-                  fontSize: 110,
-                  lineHeight: 0.92,
-                  letterSpacing: "-3px",
-                  color: "#16162B",
-                  userSelect: "none",
-                  pointerEvents: "none",
-                }}
-              >
-                <div>Selected</div>
-                <div>Case</div>
-                <div>Studies</div>
+            {/* Curio */}
+            <CaseStudyGridCard onClick={() => onNavigate("curio")}>
+              <img
+                alt=""
+                className="absolute inset-0 max-w-none object-contain pointer-events-none rounded-[24.456px] size-full"
+                src={imgCurioCard}
+              />
+              <CaseStudyCardOverlay title="Curio" tags={["E-Commerce", "Kids"]} top="225.46px" />
+            </CaseStudyGridCard>
+
+            {/* Coming soon */}
+            <CaseStudyGridCard>
+              <div className="bg-[#161616] absolute inset-0 rounded-[24.456px]" />
+              <div className="absolute flex flex-col gap-[9.782px] items-start left-[70.31px] top-[110.62px] w-[288.581px] text-white not-italic">
+                <p
+                  className="font-['Inter',sans-serif] font-extrabold leading-[45.302px] min-w-full relative shrink-0 text-[34.238px] tracking-[-1.3728px] w-[min-content]"
+                  dir="auto"
+                >
+                  Coming soon...
+                </p>
+                <p
+                  className="font-['Inter',sans-serif] font-medium leading-[19.565px] relative shrink-0 text-[12.228px] w-[280.022px]"
+                  dir="auto"
+                >
+                  {"I'm currently working on my next projects."}
+                  <br aria-hidden />
+                  Stay tuned.
+                </p>
               </div>
-            </div>
-
+            </CaseStudyGridCard>
           </div>
-        </section>
+        </div>
+      </section>
 
       {/* ── About Me + Let's Talk — Figma design ─────────────── */}
       <section
