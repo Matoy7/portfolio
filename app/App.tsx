@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
 import HomePage from "./HomePage";
-import AboutPage from "./AboutPage";
 import AlmaPage from "./AlmaPage";
 import PulsePage from "./PulsePage";
 import CurioPage from "./CurioPage";
 
 function routeFromHash(): string {
   const h = window.location.hash.replace(/^#\/?/, "");
-  if (h === "about") return "about";
   if (h === "alma")  return "alma";
   if (h === "pulse") return "pulse";
   if (h === "curio") return "curio";
@@ -30,12 +28,11 @@ export default function App() {
   }, [route]);
 
   const navigate = (page: string) => {
-    const target = page === "about" ? "about" : page === "alma" ? "alma" : page === "pulse" ? "pulse" : page === "curio" ? "curio" : "home";
+    const target = page === "alma" ? "alma" : page === "pulse" ? "pulse" : page === "curio" ? "curio" : "home";
     window.location.hash = target;
     setRoute(target);
   };
 
-  if (route === "about") return <AboutPage onNavigate={navigate} />;
   if (route === "alma")  return <AlmaPage  onNavigate={navigate} />;
   if (route === "pulse") return <PulsePage onNavigate={navigate} />;
   if (route === "curio") return <CurioPage onNavigate={navigate} />;

@@ -555,7 +555,7 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
       {/* ── New Hero (desktop only, full width, includes its own nav) ─── */}
       <div className="w-full">
         <NewHero
-          onNavigateAbout={() => onNavigate("about")}
+          onNavigateAbout={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
           onScrollContact={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
           onScrollWork={() => document.getElementById("case-studies")?.scrollIntoView({ behavior: "smooth" })}
         />
@@ -660,7 +660,7 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
           style={{ maxWidth: 1320, padding: "80px" }}
         >
           {/* ── About Me row ── */}
-          <div className="flex flex-col lg:flex-row items-center justify-center gap-16 w-full" style={{ paddingBottom: 88 }}>
+          <div id="about" className="flex flex-col lg:flex-row items-center justify-center gap-16 w-full" style={{ paddingBottom: 88 }}>
             {/* Polaroid photo with glow */}
             <div className="relative flex-shrink-0" style={{ width: 220, height: 242 }}>
               {/* Glow blob */}
