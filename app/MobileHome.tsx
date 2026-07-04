@@ -250,7 +250,7 @@ function MobileNav({
 
 /* ── Hero ───────────────────────────────────────────────────── */
 
-function MobileHero({ onWork, onContact }: { onWork: () => void; onContact: () => void }) {
+function MobileHero({ onContact }: { onContact: () => void }) {
   const [mounted, setMounted] = useState(false);
   const reducedMotion = usePrefersReducedMotion();
 
@@ -314,8 +314,8 @@ function MobileHero({ onWork, onContact }: { onWork: () => void; onContact: () =
           <img
             src={heroPhoto}
             alt="Yotam Eliraz"
-            className="absolute"
-            style={{ width: "132%", left: "-16%", bottom: 0, objectFit: "contain" }}
+            className="absolute inset-0"
+            style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }}
           />
         </div>
       </div>
@@ -337,38 +337,23 @@ function MobileHero({ onWork, onContact }: { onWork: () => void; onContact: () =
         that balance user needs, business goals, and technical feasibility.
       </p>
 
-      {/* CTAs */}
-      <div style={{ ...step(mounted, 14, 550, 260), display: "flex", gap: "12px", marginTop: "24px" }}>
+      {/* CTA */}
+      <div style={{ ...step(mounted, 14, 550, 260), display: "flex", marginTop: "24px" }}>
         <button
-          onClick={onWork}
+          onClick={onContact}
           className="flex items-center justify-center gap-[8px] transition-transform duration-150 active:scale-95"
           style={{
             background: "#161616",
             color: "#fff",
             borderRadius: "999px",
             height: "52px",
-            flex: 1,
+            padding: "0 28px",
             fontFamily: "Inter, sans-serif",
             fontWeight: 600,
             fontSize: "15px",
           }}
         >
-          View Work <IconArrowRight />
-        </button>
-        <button
-          onClick={onContact}
-          className="flex items-center justify-center transition-transform duration-150 active:scale-95"
-          style={{
-            border: "1.5px solid #dedede",
-            color: "#161616",
-            borderRadius: "999px",
-            height: "52px",
-            width: "52px",
-            flexShrink: 0,
-          }}
-          aria-label="Contact"
-        >
-          <IconPhone />
+          <IconPhone /> Call Me
         </button>
       </div>
     </div>
@@ -489,12 +474,6 @@ function MobileFeaturedWorks({ onNavigate }: { onNavigate: (page: string) => voi
         </Reveal>
         <Reveal delay={140}>
           <MobileWorkCard image={imgCurioCard} title="Curio" tags={["E-Commerce", "Kids"]} onClick={() => onNavigate("curio")} />
-        </Reveal>
-        <Reveal delay={210}>
-          <MobileWorkCard
-            isDark
-            darkContent={{ heading: "Coming soon…", body: "I'm currently working on my next projects. Stay tuned." }}
-          />
         </Reveal>
       </div>
     </section>
@@ -832,7 +811,7 @@ export default function MobileHome({ onNavigate }: { onNavigate: (page: string) 
         onContact={() => scrollTo("mobile-contact")}
       />
 
-      <MobileHero onWork={() => scrollTo("mobile-work")} onContact={() => scrollTo("mobile-contact")} />
+      <MobileHero onContact={() => scrollTo("mobile-contact")} />
 
       <MobileFeaturedWorks onNavigate={onNavigate} />
 
