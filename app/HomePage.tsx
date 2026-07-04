@@ -681,7 +681,7 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
       <section
         id="case-studies"
         className="relative w-full bg-white flex flex-col gap-[48px] items-start justify-center"
-        style={{ padding: "48px 52px", marginTop: "96px" }}
+        style={{ padding: "20px 52px 48px", marginTop: "40px" }}
       >
         {/* Title */}
         <div className="flex items-center justify-center relative shrink-0 w-full">
