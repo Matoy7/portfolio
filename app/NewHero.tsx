@@ -8,7 +8,7 @@ interface Props {
 }
 
 const DESIGN_WIDTH = 1512;
-const DESIGN_HEIGHT = 980;
+const DESIGN_HEIGHT = 1038;
 const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
 
 export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork }: Props) {
@@ -45,7 +45,7 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
           className="absolute"
           style={{
             left: "273px",
-            top: "66px",
+            top: "124px",
             width: "1158px",
             height: "837px",
             opacity: mounted ? 1 : 0,
@@ -75,17 +75,15 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
           />
         </div>
 
-        {/* Nav bar */}
+        {/* Nav bar — fixed 80px height, content vertically centered via flex
+            rather than relying on line-height, so typography is untouched */}
         <div
-          className="absolute left-0 flex items-center justify-between whitespace-nowrap not-italic text-[#161616]"
+          className="absolute left-0 top-0 flex items-center justify-between whitespace-nowrap not-italic text-[#161616]"
           style={{
-            top: "36px",
+            height: "80px",
             width: "1512px",
-            paddingLeft: "56px",
-            paddingRight: "56px",
-            paddingTop: "10px",
-            paddingBottom: "10px",
-            lineHeight: "66px",
+            paddingLeft: "40px",
+            paddingRight: "40px",
             opacity: mounted ? 1 : 0,
             transform: mounted ? "translateY(0px)" : "translateY(-16px)",
             transition: `opacity 600ms ${EASE}, transform 600ms ${EASE}`,
@@ -93,14 +91,14 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
         >
           <p
             className="relative shrink-0 text-[#161616]"
-            style={{ fontFamily: "Inter, sans-serif", fontWeight: 700, fontSize: "24px", lineHeight: "66px" }}
+            style={{ fontFamily: "Inter, sans-serif", fontWeight: 700, fontSize: "24px", lineHeight: "1.2", margin: 0 }}
           >
             Yotam Eliraz
           </p>
 
           <div
-            className="flex items-start gap-9"
-            style={{ padding: "10px", fontFamily: "Inter, sans-serif", fontWeight: 600, fontSize: "18px" }}
+            className="flex items-center gap-9"
+            style={{ fontFamily: "Inter, sans-serif", fontWeight: 600, fontSize: "18px" }}
           >
             <span
               onClick={onScrollWork}
@@ -133,7 +131,7 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
             lineHeight: "66px",
             letterSpacing: "-2px",
             left: "104px",
-            top: "304px",
+            top: "362px",
             width: "507px",
             opacity: mounted ? 1 : 0,
             transform: mounted ? "translateY(0px)" : "translateY(24px)",
@@ -151,7 +149,7 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
             fontSize: "18px",
             lineHeight: "28px",
             left: "1114px",
-            top: "359px",
+            top: "417px",
             width: "308px",
             opacity: mounted ? 1 : 0,
             transform: mounted ? "translateY(0px)" : "translateY(20px)",
