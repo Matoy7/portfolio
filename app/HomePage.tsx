@@ -16,6 +16,18 @@ import imgCurioCard from "@/imports/Frame13/c51554de7237f51893371d0ee285af660281
 
 const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
 
+function usePrefersReducedMotion() {
+  const [reduced, setReduced] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReduced(mq.matches);
+    const onChange = () => setReduced(mq.matches);
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
+  return reduced;
+}
+
 function useInViewOnce<T extends HTMLElement>(threshold = 0.2) {
   const ref = useRef<T>(null);
   const [inView, setInView] = useState(false);
@@ -107,9 +119,124 @@ function CountUp({
   );
 }
 
-/* ── Sticky nav — appears with a blurred glass background once the
-   user scrolls past the hero; invisible at the top since the hero
-   already shows its own nav there. ─────────────────────────────── */
+/* ── Scroll progress indicator — thin bar fixed above everything else ── */
+
+function ScrollProgressBar() {
+  const [progress, setProgress] = useState(0);
+  const reducedMotion = usePrefersReducedMotion();
+
+  useEffect(() => {
+    let raf = 0;
+    const onScroll = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        setProgress(docHeight > 0 ? Math.min(100, (scrollTop / docHeight) * 100) : 0);
+      });
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      cancelAnimationFrame(raf);
+    };
+  }, []);
+
+  return (
+    <div
+      className="fixed top-0 left-0 w-full z-[60] pointer-events-none"
+      style={{ height: "2px", background: "transparent" }}
+    >
+      <div
+        style={{
+          height: "100%",
+          width: `${progress}%`,
+          background: "#000000",
+          transition: reducedMotion ? "none" : "width 80ms linear",
+        }}
+      />
+    </div>
+  );
+}
+
+/* ── Custom floating cursor over the case study grid ───────────────
+   Tracks the mouse with a smooth lerp (so it trails rather than snaps),
+   shows only while hovering the grid, and hides the system cursor for
+   that area only. ──────────────────────────────────────────────── */
+
+function CaseStudyCursorArea({ children }: { children: React.ReactNode }) {
+  const areaRef = useRef<HTMLDivElement>(null);
+  const targetRef = useRef({ x: 0, y: 0 });
+  const [pos, setPos] = useState({ x: 0, y: 0 });
+  const [visible, setVisible] = useState(false);
+  const reducedMotion = usePrefersReducedMotion();
+
+  useEffect(() => {
+    if (reducedMotion) return;
+    let raf: number;
+    const tick = () => {
+      setPos((prev) => ({
+        x: prev.x + (targetRef.current.x - prev.x) * 0.18,
+        y: prev.y + (targetRef.current.y - prev.y) * 0.18,
+      }));
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [reducedMotion]);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = areaRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    targetRef.current = { x, y };
+    if (reducedMotion) setPos({ x, y });
+  };
+
+  return (
+    <div
+      ref={areaRef}
+      className="relative"
+      onMouseEnter={() => setVisible(true)}
+      onMouseLeave={() => setVisible(false)}
+      onMouseMove={handleMouseMove}
+      style={{ cursor: visible && !reducedMotion ? "none" : undefined }}
+    >
+      {children}
+
+      {!reducedMotion && (
+        <div
+          aria-hidden
+          className="absolute pointer-events-none flex items-center justify-center rounded-full bg-white"
+          style={{
+            width: "100px",
+            height: "100px",
+            left: pos.x,
+            top: pos.y,
+            transform: `translate(-50%, -50%) scale(${visible ? 1 : 0.6})`,
+            opacity: visible ? 1 : 0,
+            boxShadow: "0 8px 30px rgba(0,0,0,0.2)",
+            transition: "opacity 220ms ease-out, transform 220ms ease-out",
+            zIndex: 40,
+          }}
+        >
+          <span
+            className="text-[#111214] text-[14px] font-semibold text-center leading-tight"
+            style={{ fontFamily: "'Inter', sans-serif" }}
+          >
+            View Project →
+          </span>
+        </div>
+      )}
+    </div>
+  );
+}
+
+
 
 function StickyNav({
   onScrollWork,
@@ -121,6 +248,7 @@ function StickyNav({
   onScrollContact: () => void;
 }) {
   const [visible, setVisible] = useState(false);
+  const reducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
     const onScroll = () => setVisible(window.scrollY > 420);
@@ -135,13 +263,15 @@ function StickyNav({
       style={{
         padding: "18px 56px",
         background: visible ? "rgba(255,255,255,0.75)" : "rgba(255,255,255,0)",
-        backdropFilter: visible ? "blur(14px)" : "blur(0px)",
-        WebkitBackdropFilter: visible ? "blur(14px)" : "blur(0px)",
+        backdropFilter: visible ? "blur(12px)" : "blur(0px)",
+        WebkitBackdropFilter: visible ? "blur(12px)" : "blur(0px)",
         borderBottom: visible ? "1px solid rgba(0,0,0,0.06)" : "1px solid rgba(0,0,0,0)",
         opacity: visible ? 1 : 0,
         transform: visible ? "translateY(0px)" : "translateY(-8px)",
         pointerEvents: visible ? "auto" : "none",
-        transition: `background 350ms ${EASE}, backdrop-filter 350ms ${EASE}, border-color 350ms ${EASE}, opacity 300ms ${EASE}, transform 300ms ${EASE}`,
+        transition: reducedMotion
+          ? "none"
+          : `background 275ms ${EASE}, backdrop-filter 275ms ${EASE}, border-color 275ms ${EASE}, opacity 275ms ${EASE}, transform 275ms ${EASE}`,
       }}
     >
       <p
@@ -266,10 +396,10 @@ function CaseStudyGridCard({ children, onClick }: { children: React.ReactNode; o
     <div
       onClick={onClick}
       className={[
-        "group h-[300px] overflow-clip relative rounded-[20px] shrink-0 w-[535px]",
-        onClick ? "cursor-pointer transition-all duration-250 ease-out hover:-translate-y-[6px] hover:shadow-[0_20px_40px_rgba(0,0,0,0.18)] active:translate-y-0" : "",
+        "group h-[300px] overflow-hidden relative rounded-[20px] shrink-0 w-[535px]",
+        onClick ? "cursor-pointer" : "",
       ].join(" ")}
-      style={{ boxShadow: "0 0 0 0 rgba(0,0,0,0)", backgroundColor: "#111214", transitionDuration: "250ms" }}
+      style={{ backgroundColor: "#111214" }}
     >
       {children}
     </div>
@@ -286,6 +416,7 @@ function GlanceStat({
   captionWidth = "316.47px",
   borderRight = false,
   borderBottom = false,
+  animate = false,
 }: {
   icon: React.ReactNode;
   label: string;
@@ -294,15 +425,39 @@ function GlanceStat({
   captionWidth?: string;
   borderRight?: boolean;
   borderBottom?: boolean;
+  animate?: boolean;
 }) {
+  const reducedMotion = usePrefersReducedMotion();
   return (
-    <div
-      className="relative flex flex-col items-center justify-center"
-      style={{
-        borderRight: borderRight ? "2.11px solid rgba(255,255,255,0.12)" : undefined,
-        borderBottom: borderBottom ? "2.11px solid rgba(255,255,255,0.12)" : undefined,
-      }}
-    >
+    <div className="relative flex flex-col items-center justify-center">
+      {/* Animated divider lines — grow once from 0 when the section first
+          enters the viewport, instead of a static always-on border. */}
+      {borderRight && (
+        <div
+          aria-hidden
+          className="absolute top-0 right-0 h-full"
+          style={{
+            width: "2.11px",
+            background: "rgba(255,255,255,0.12)",
+            transform: animate || reducedMotion ? "scaleY(1)" : "scaleY(0)",
+            transformOrigin: "top",
+            transition: reducedMotion ? "none" : `transform 600ms ${EASE}`,
+          }}
+        />
+      )}
+      {borderBottom && (
+        <div
+          aria-hidden
+          className="absolute bottom-0 left-0 w-full"
+          style={{
+            height: "2.11px",
+            background: "rgba(255,255,255,0.12)",
+            transform: animate || reducedMotion ? "scaleX(1)" : "scaleX(0)",
+            transformOrigin: "left",
+            transition: reducedMotion ? "none" : `transform 600ms ${EASE}`,
+          }}
+        />
+      )}
       <div
         className="flex flex-col items-center justify-center gap-[21px] size-full"
         style={{ padding: "70.327px" }}
@@ -331,6 +486,7 @@ function AtAGlanceSection() {
   const [scale, setScale] = useState(1);
   const [designHeight, setDesignHeight] = useState<number | null>(null);
   const glanceContentRef = useRef<HTMLDivElement>(null);
+  const [boxRef, dividersVisible] = useInViewOnce<HTMLDivElement>(0.3);
 
   // Measure the card's natural (unscaled) height once — it's fixed regardless
   // of viewport since every value inside it is a fixed pixel value.
@@ -363,6 +519,7 @@ function AtAGlanceSection() {
 
         {/* Full-width black background — spans edge-to-edge like the footer */}
         <div
+          ref={boxRef}
           className="relative w-full bg-[#161616]"
           style={{ height: designHeight !== null ? `${designHeight * scale}px` : undefined }}
         >
@@ -388,6 +545,7 @@ function AtAGlanceSection() {
               <GlanceStat
                 borderRight
                 borderBottom
+                animate={dividersVisible}
                 icon={
                   <svg className="size-[54.78px]" fill="none" viewBox="0 0 54.78 54.78">
                     <path d={glanceSvgPaths.award2} stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeOpacity="0.8" strokeWidth="4.00687" />
@@ -402,6 +560,7 @@ function AtAGlanceSection() {
               {/* B.Sc Computer Science */}
               <GlanceStat
                 borderBottom
+                animate={dividersVisible}
                 icon={
                   <svg className="size-[54.785px]" fill="none" viewBox="0 0 54.7847 54.7847">
                     <path d={glanceSvgPaths.book1} stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeOpacity="0.8" strokeWidth="3.42404" />
@@ -417,6 +576,7 @@ function AtAGlanceSection() {
               {/* Products designed */}
               <GlanceStat
                 borderRight
+                animate={dividersVisible}
                 icon={
                   <svg className="w-[51.2px] h-[48.1px]" fill="none" viewBox="0 0 51.1999 48.0999">
                     <path d={glanceSvgPaths.folder} stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeOpacity="0.8" strokeWidth="3.12783" />
@@ -838,6 +998,8 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
         .cta-btn-ghost:active { transform: translateY(0); }
       `}</style>
 
+      <ScrollProgressBar />
+
       <StickyNav
         onNavigateAbout={() => document.getElementById("at-a-glance")?.scrollIntoView({ behavior: "smooth" })}
         onScrollContact={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
@@ -875,6 +1037,7 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
         </Reveal>
 
         {/* Grid */}
+        <CaseStudyCursorArea>
         <div className="flex items-center justify-center relative shrink-0 w-full">
           <div
             className="inline-grid relative shrink-0"
@@ -889,7 +1052,7 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
               <CaseStudyGridCard onClick={() => onNavigate("pulse")}>
                 <img
                   alt=""
-                  className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[20px] size-full transition-transform duration-[400ms] ease-out group-hover:scale-[1.04]"
+                  className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[20px] size-full transition-transform duration-[250ms] ease-out group-hover:scale-[1.04]"
                   src={imgPulseCard}
                 />
                 <CaseStudyCardOverlay title="Pulse" tags={["Dashboard", "Analytics"]} top="212px" />
@@ -901,7 +1064,7 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
               <CaseStudyGridCard onClick={() => onNavigate("alma")}>
                 <img
                   alt=""
-                  className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[20px] size-full transition-transform duration-[400ms] ease-out group-hover:scale-[1.04]"
+                  className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[20px] size-full transition-transform duration-[250ms] ease-out group-hover:scale-[1.04]"
                   src={imgAlmaCard}
                 />
                 <CaseStudyCardOverlay title="Alma" tags={["Mobile App", "Health"]} top="212px" />
@@ -913,7 +1076,7 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
               <CaseStudyGridCard onClick={() => onNavigate("curio")}>
                 <img
                   alt=""
-                  className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[20px] size-full transition-transform duration-[400ms] ease-out group-hover:scale-[1.04]"
+                  className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[20px] size-full transition-transform duration-[250ms] ease-out group-hover:scale-[1.04]"
                   src={imgCurioCard}
                 />
                 <CaseStudyCardOverlay title="Curio" tags={["E-Commerce", "Kids"]} top="212px" />
@@ -944,6 +1107,7 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
             </Reveal>
           </div>
         </div>
+        </CaseStudyCursorArea>
       </section>
 
       <AtAGlanceSection />

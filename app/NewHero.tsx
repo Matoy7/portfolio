@@ -14,6 +14,8 @@ const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
 export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork }: Props) {
   const [scale, setScale] = useState(1);
   const [mounted, setMounted] = useState(false);
+  const [floatY, setFloatY] = useState(0);
+  const [reducedMotion, setReducedMotion] = useState(false);
 
   useEffect(() => {
     const update = () => setScale(window.innerWidth / DESIGN_WIDTH);
@@ -22,12 +24,42 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
     return () => window.removeEventListener("resize", update);
   }, []);
 
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReducedMotion(mq.matches);
+    const onChange = () => setReducedMotion(mq.matches);
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
+
   // Entrance animation — triggers once on mount, one frame after first paint
   // so the initial (pre-animation) styles are guaranteed to have rendered.
   useEffect(() => {
+    if (reducedMotion) {
+      setMounted(true);
+      return;
+    }
     const raf = requestAnimationFrame(() => requestAnimationFrame(() => setMounted(true)));
     return () => cancelAnimationFrame(raf);
-  }, []);
+  }, [reducedMotion]);
+
+  // Subtle scroll-tied float on the portrait — vertical only, capped at 15px,
+  // no parallax exaggeration. Disabled when reduced motion is requested.
+  useEffect(() => {
+    if (reducedMotion) return;
+    let raf = 0;
+    const onScroll = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        setFloatY(-Math.min(15, window.scrollY * 0.05));
+      });
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(raf);
+    };
+  }, [reducedMotion]);
 
   return (
     <div className="bg-white relative w-full" style={{ overflow: "hidden", height: `${scale * DESIGN_HEIGHT}px` }}>
@@ -51,9 +83,16 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
             opacity: mounted ? 1 : 0,
             transform: mounted ? "scale(1)" : "scale(0.96)",
             transformOrigin: "center",
-            transition: `opacity 800ms ${EASE} 120ms, transform 800ms ${EASE} 120ms`,
+            transition: reducedMotion ? "none" : `opacity 800ms ${EASE} 120ms, transform 800ms ${EASE} 120ms`,
           }}
         >
+          {/* Inner layer carries the scroll-tied float — updated every frame,
+              so it must never share a CSS transition with the entrance
+              scale above (that would make it lag behind the scroll). */}
+          <div
+            className="w-full h-full"
+            style={{ transform: `translateY(${floatY}px)`, willChange: "transform" }}
+          >
           <img
             alt=""
             src={heroPhoto}
@@ -73,6 +112,7 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
               WebkitMaskRepeat: "no-repeat",
             }}
           />
+          </div>
         </div>
 
         {/* Nav bar — fixed 80px height, content vertically centered via flex
@@ -86,7 +126,7 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
             paddingRight: "40px",
             opacity: mounted ? 1 : 0,
             transform: mounted ? "translateY(0px)" : "translateY(-16px)",
-            transition: `opacity 600ms ${EASE}, transform 600ms ${EASE}`,
+            transition: reducedMotion ? "none" : `opacity 600ms ${EASE}, transform 600ms ${EASE}`,
           }}
         >
           <p
@@ -135,7 +175,7 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
             width: "507px",
             opacity: mounted ? 1 : 0,
             transform: mounted ? "translateY(0px)" : "translateY(24px)",
-            transition: `opacity 750ms ${EASE} 80ms, transform 750ms ${EASE} 80ms`,
+            transition: reducedMotion ? "none" : `opacity 750ms ${EASE} 80ms, transform 750ms ${EASE} 80ms`,
           }}
         >
           {"A product designer\nwith a development \nbackground"}
@@ -153,7 +193,7 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
             width: "308px",
             opacity: mounted ? 1 : 0,
             transform: mounted ? "translateY(0px)" : "translateY(20px)",
-            transition: `opacity 700ms ${EASE} 260ms, transform 700ms ${EASE} 260ms`,
+            transition: reducedMotion ? "none" : `opacity 700ms ${EASE} 260ms, transform 700ms ${EASE} 260ms`,
           }}
         >
           <span style={{ fontWeight: 400 }}>{"As a digital "}</span>
