@@ -954,7 +954,7 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
         {/* Title */}
         <Reveal className="flex items-center justify-center relative shrink-0 w-full">
           <p
-            className="flex-[1_0_0] font-['Inter',sans-serif] font-medium leading-[59.093px] min-w-px not-italic relative text-[#161616] text-[44px] tracking-[-1.7907px]"
+            className="flex-[1_0_0] font-['Inter',sans-serif] font-semibold leading-[29.01px] min-w-px not-italic relative text-[#121111] text-[22px] tracking-[5.8019px] uppercase whitespace-nowrap"
             dir="auto"
           >
             Selected Case Studies

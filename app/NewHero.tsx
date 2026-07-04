@@ -76,10 +76,10 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
         <div
           className="absolute"
           style={{
-            left: "273px",
-            top: "104px",
-            width: "1158px",
-            height: "837px",
+            left: "296px",
+            top: "84px",
+            width: "1112px",
+            height: "804px",
             opacity: mounted ? 1 : 0,
             transform: mounted ? "scale(1)" : "scale(0.96)",
             transformOrigin: "center",
@@ -171,7 +171,7 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
             lineHeight: "66px",
             letterSpacing: "-2px",
             left: "104px",
-            top: "199px",
+            top: "164px",
             width: "507px",
             opacity: mounted ? 1 : 0,
             transform: mounted ? "translateY(0px)" : "translateY(24px)",
@@ -189,7 +189,7 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
             fontSize: "18px",
             lineHeight: "28px",
             left: "1114px",
-            top: "417px",
+            top: "377px",
             width: "308px",
             opacity: mounted ? 1 : 0,
             transform: mounted ? "translateY(0px)" : "translateY(20px)",
