@@ -182,7 +182,7 @@ function AtAGlanceSection() {
   useEffect(() => {
     const update = () => {
       const available = window.innerWidth;
-      setScale((available / GLANCE_DESIGN_WIDTH) * 0.4);
+      setScale((available / GLANCE_DESIGN_WIDTH) * 0.55);
     };
     update();
     window.addEventListener("resize", update);
