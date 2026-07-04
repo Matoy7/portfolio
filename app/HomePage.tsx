@@ -437,7 +437,7 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
             <CaseStudyGridCard onClick={() => onNavigate("alma")}>
               <img
                 alt=""
-                className="absolute inset-0 max-w-none object-contain pointer-events-none rounded-[24.456px] size-full"
+                className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[24.456px] size-full"
                 src={imgAlmaCard}
               />
               <CaseStudyCardOverlay title="Alma" tags={["Mobile App", "Health"]} top="225px" />
