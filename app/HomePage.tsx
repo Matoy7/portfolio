@@ -329,29 +329,29 @@ function FaqAccordionItem({
   const buttonId = `faq-btn-${item.id}`;
 
   return (
-    <div className="border border-[#ebebeb] rounded-2xl px-8 mb-4 last:mb-0">
+    <div className="border border-[#ebebeb] rounded-2xl px-10 mb-5 last:mb-0">
       <button
         id={buttonId}
         aria-expanded={isOpen}
         aria-controls={panelId}
         onClick={onToggle}
-        className="w-full flex items-center justify-between text-left py-[28px] px-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#333] rounded-sm"
+        className="w-full flex items-center justify-between text-left py-[34px] px-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#333] rounded-sm"
       >
         <span
-          className="text-[20px] font-semibold text-[#1a1a1a] leading-snug pr-6"
+          className="text-[26px] font-semibold text-[#1a1a1a] leading-snug pr-6"
           style={{ fontFamily: "'Inter', sans-serif" }}
         >
           {item.question}
         </span>
         <span
-          className="flex-shrink-0 w-6 h-6 flex items-center justify-center text-[#1a1a1a]"
+          className="flex-shrink-0 w-8 h-8 flex items-center justify-center text-[#1a1a1a]"
           aria-hidden="true"
         >
-          <svg width="18" height="18" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg width="24" height="24" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
             {isOpen ? (
-              <path d="M2 8H14" stroke="#1a1a1a" strokeWidth="1.75" strokeLinecap="round" />
+              <path d="M2 8H14" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" />
             ) : (
-              <path d="M8 2V14M2 8H14" stroke="#1a1a1a" strokeWidth="1.75" strokeLinecap="round" />
+              <path d="M8 2V14M2 8H14" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" />
             )}
           </svg>
         </span>
@@ -368,9 +368,9 @@ function FaqAccordionItem({
           opacity: isOpen ? 1 : 0,
         }}
       >
-        <div ref={contentRef} className="pb-[28px]">
+        <div ref={contentRef} className="pb-[34px]">
           <p
-            className="text-[17px] leading-[1.65] text-[#5a5a6e]"
+            className="text-[19px] leading-[1.65] text-[#5a5a6e]"
             style={{ fontFamily: "'Inter', sans-serif" }}
           >
             {item.answer}
