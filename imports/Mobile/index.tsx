@@ -5641,22 +5641,6 @@ function ImageWireframeMockup() {
   );
 }
 
-function Paragraph97() {
-  return (
-    <div className="relative shrink-0 w-[375px]" data-name="Paragraph">
-      <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start pb-[64px] pt-[24px] px-[24px] relative size-full">
-        <p className="[word-break:break-word] font-['Inter',sans-serif] font-light leading-[0] not-italic relative shrink-0 text-[#1e293b] text-[0px] w-[327px]">
-          <span className="leading-[24.5px] text-[16px]">{`Pulse starts with a `}</span>
-          <span className="font-['Inter',sans-serif] font-medium leading-[24.5px] text-[16px]">unified overview</span>
-          <span className="leading-[24.5px] text-[16px]">{` of the game's health, allowing product teams to identify trends, anomalies, and opportunities `}</span>
-          <span className="font-['Inter',sans-serif] font-medium leading-[24.5px] text-[16px]">without switching between multiple screens</span>
-          <span className="leading-[24.5px] text-[16px]">.</span>
-        </p>
-      </div>
-    </div>
-  );
-}
-
 function ImageDashboardDetail() {
   return (
     <div className="h-[241.547px] relative rounded-[14px] shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.1),0px_4px_6px_-4px_rgba(0,0,0,0.1)] shrink-0 w-full" data-name="Image (Dashboard detail)">
@@ -5684,7 +5668,6 @@ function Section8() {
       <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start overflow-clip relative rounded-[inherit] size-full">
         <Container157 />
         <ImageWireframeMockup />
-        <Paragraph97 />
         <Container159 />
       </div>
     </div>
