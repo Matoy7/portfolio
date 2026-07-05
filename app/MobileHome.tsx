@@ -250,7 +250,7 @@ function MobileNav({
 
 /* ── Hero ───────────────────────────────────────────────────── */
 
-function MobileHero({ onContact }: { onContact: () => void }) {
+function MobileHero() {
   const [mounted, setMounted] = useState(false);
   const reducedMotion = usePrefersReducedMotion();
 
@@ -336,26 +336,6 @@ function MobileHero({ onContact }: { onContact: () => void }) {
         <strong style={{ color: "#161616" }}>software development</strong>, I design intuitive digital products
         that balance user needs, business goals, and technical feasibility.
       </p>
-
-      {/* CTA */}
-      <div style={{ ...step(mounted, 14, 550, 260), display: "flex", marginTop: "24px" }}>
-        <button
-          onClick={onContact}
-          className="flex items-center justify-center gap-[8px] transition-transform duration-150 active:scale-95"
-          style={{
-            background: "#161616",
-            color: "#fff",
-            borderRadius: "999px",
-            height: "52px",
-            padding: "0 28px",
-            fontFamily: "Inter, sans-serif",
-            fontWeight: 600,
-            fontSize: "15px",
-          }}
-        >
-          <IconPhone /> Call Me
-        </button>
-      </div>
     </div>
   );
 }
@@ -811,7 +791,7 @@ export default function MobileHome({ onNavigate }: { onNavigate: (page: string) 
         onContact={() => scrollTo("mobile-contact")}
       />
 
-      <MobileHero onContact={() => scrollTo("mobile-contact")} />
+      <MobileHero />
 
       <MobileFeaturedWorks onNavigate={onNavigate} />
 
