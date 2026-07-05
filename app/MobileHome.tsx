@@ -362,7 +362,7 @@ function MobileWorkCard({
       onClick={onClick}
       disabled={!onClick}
       className="relative w-full overflow-hidden text-left transition-transform duration-150 active:scale-[0.98]"
-      style={{ borderRadius: "20px", height: "260px", background: isDark ? "#161616" : "#111214" }}
+      style={{ borderRadius: "20px", height: "260px", background: isDark ? "#161616" : "#111214", touchAction: "pan-y" }}
     >
       {isDark ? (
         <div className="absolute inset-0 flex flex-col justify-center" style={{ padding: "28px" }}>
@@ -783,8 +783,29 @@ export default function MobileHome({ onNavigate }: { onNavigate: (page: string) 
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
+  // Lock horizontal movement at the document level. A div's own
+  // overflow-x:hidden isn't always enough on mobile browsers — the
+  // html/body can still allow elastic horizontal panning/rubber-banding
+  // if any descendant is even slightly wider than the viewport.
+  useEffect(() => {
+    const prevHtmlOverflowX = document.documentElement.style.overflowX;
+    const prevBodyOverflowX = document.body.style.overflowX;
+    const prevHtmlMaxWidth = document.documentElement.style.maxWidth;
+    const prevBodyMaxWidth = document.body.style.maxWidth;
+    document.documentElement.style.overflowX = "hidden";
+    document.body.style.overflowX = "hidden";
+    document.documentElement.style.maxWidth = "100vw";
+    document.body.style.maxWidth = "100vw";
+    return () => {
+      document.documentElement.style.overflowX = prevHtmlOverflowX;
+      document.body.style.overflowX = prevBodyOverflowX;
+      document.documentElement.style.maxWidth = prevHtmlMaxWidth;
+      document.body.style.maxWidth = prevBodyMaxWidth;
+    };
+  }, []);
+
   return (
-    <div className="bg-white min-h-screen w-full" style={{ overflowX: "hidden" }}>
+    <div className="bg-white min-h-screen w-full" style={{ overflowX: "hidden", maxWidth: "100vw", touchAction: "pan-y" }}>
       <MobileNav
         onWork={() => scrollTo("mobile-work")}
         onGlance={() => scrollTo("mobile-glance")}
