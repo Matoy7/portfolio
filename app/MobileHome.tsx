@@ -309,7 +309,7 @@ function MobileHero() {
       <div style={step(mounted, 18, 700, 140)}>
         <div
           className="relative w-full overflow-hidden"
-          style={{ marginTop: "20px", borderRadius: "24px", background: "#f5f4f2", aspectRatio: "1 / 1.05" }}
+          style={{ marginTop: "20px", borderRadius: "24px", background: "#ffffff", aspectRatio: "1 / 1.05" }}
         >
           <img
             src={mobilePortrait}
