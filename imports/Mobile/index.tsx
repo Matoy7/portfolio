@@ -4921,7 +4921,7 @@ function Text50() {
   return (
     <div className="h-[20px] relative shrink-0 w-[19.219px]" data-name="Text">
       <div className="bg-clip-padding border-0 border-[transparent] border-solid relative size-full">
-        <p className="[word-break:break-word] absolute font-['Inter',sans-serif] font-medium leading-[20px] left-0 not-italic text-[#7b5cf6] text-[16px] top-0 tracking-[0.7px] whitespace-nowrap">03</p>
+        <p className="[word-break:break-word] absolute font-['Inter',sans-serif] font-medium leading-[20px] left-0 not-italic text-[#7b5cf6] text-[16px] top-0 tracking-[0.7px] whitespace-nowrap">04</p>
       </div>
     </div>
   );
@@ -5010,7 +5010,7 @@ function Text53() {
   return (
     <div className="h-[20px] relative shrink-0 w-[19.625px]" data-name="Text">
       <div className="bg-clip-padding border-0 border-[transparent] border-solid relative size-full">
-        <p className="[word-break:break-word] absolute font-['Inter',sans-serif] font-medium leading-[20px] left-0 not-italic text-[#aa96fc] text-[16px] top-0 tracking-[0.7px] whitespace-nowrap">04</p>
+        <p className="[word-break:break-word] absolute font-['Inter',sans-serif] font-medium leading-[20px] left-0 not-italic text-[#aa96fc] text-[16px] top-0 tracking-[0.7px] whitespace-nowrap">05</p>
       </div>
     </div>
   );
@@ -5300,7 +5300,7 @@ function Text56() {
   return (
     <div className="h-[20px] relative shrink-0 w-[18.891px]" data-name="Text">
       <div className="bg-clip-padding border-0 border-[transparent] border-solid relative size-full">
-        <p className="[word-break:break-word] absolute font-['Inter',sans-serif] font-medium leading-[20px] left-0 not-italic text-[#7b5cf6] text-[14px] top-[0.5px] tracking-[0.7px] whitespace-nowrap">05</p>
+        <p className="[word-break:break-word] absolute font-['Inter',sans-serif] font-medium leading-[20px] left-0 not-italic text-[#7b5cf6] text-[16px] top-0 tracking-[0.7px] whitespace-nowrap">06</p>
       </div>
     </div>
   );
@@ -5320,7 +5320,7 @@ function Text58() {
   return (
     <div className="h-[20px] relative shrink-0 w-[106.547px]" data-name="Text">
       <div className="bg-clip-padding border-0 border-[transparent] border-solid relative size-full">
-        <p className="[word-break:break-word] absolute font-['Inter',sans-serif] font-normal leading-[20px] left-0 not-italic text-[#0c0c1a] text-[14px] top-[0.5px] tracking-[1.4px] uppercase whitespace-nowrap">Style Guide</p>
+        <p className="[word-break:break-word] absolute font-['Inter',sans-serif] font-normal leading-[20px] left-0 not-italic text-[#0c0c1a] text-[16px] top-0 tracking-[1.4px] uppercase whitespace-nowrap">Style Guide</p>
       </div>
     </div>
   );
@@ -5567,7 +5567,7 @@ function Text61() {
   return (
     <div className="h-[20px] relative shrink-0 w-[17.859px]" data-name="Text">
       <div className="bg-clip-padding border-0 border-[transparent] border-solid relative size-full">
-        <p className="[word-break:break-word] absolute font-['Inter',sans-serif] font-medium leading-[20px] left-0 not-italic text-[#7b5cf6] text-[14px] top-0 whitespace-nowrap">06</p>
+        <p className="[word-break:break-word] absolute font-['Inter',sans-serif] font-medium leading-[20px] left-0 not-italic text-[#7b5cf6] text-[16px] top-0 whitespace-nowrap">07</p>
       </div>
     </div>
   );
@@ -5585,9 +5585,9 @@ function Text62() {
 
 function Text63() {
   return (
-    <div className="h-[16px] relative shrink-0 w-[85.234px]" data-name="Text">
+    <div className="h-[20px] relative shrink-0 w-[85.234px]" data-name="Text">
       <div className="bg-clip-padding border-0 border-[transparent] border-solid relative size-full">
-        <p className="[word-break:break-word] absolute font-['Inter',sans-serif] font-normal leading-[16px] left-0 not-italic text-[#0c0c1a] text-[12px] top-0 tracking-[1.2px] uppercase whitespace-nowrap">Dashboard</p>
+        <p className="[word-break:break-word] absolute font-['Inter',sans-serif] font-normal leading-[20px] left-0 not-italic text-[#0c0c1a] text-[16px] top-0 tracking-[1.2px] uppercase whitespace-nowrap">Dashboard</p>
       </div>
     </div>
   );
@@ -5695,7 +5695,7 @@ function Text64() {
   return (
     <div className="h-[20px] relative shrink-0 w-[16.766px]" data-name="Text">
       <div className="bg-clip-padding border-0 border-[transparent] border-solid relative size-full">
-        <p className="[word-break:break-word] absolute font-['Inter',sans-serif] font-medium leading-[20px] left-0 not-italic text-[#7b5cf6] text-[16px] top-0 whitespace-nowrap">07</p>
+        <p className="[word-break:break-word] absolute font-['Inter',sans-serif] font-medium leading-[20px] left-0 not-italic text-[#7b5cf6] text-[16px] top-0 whitespace-nowrap">08</p>
       </div>
     </div>
   );
