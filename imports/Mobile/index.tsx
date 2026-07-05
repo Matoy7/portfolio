@@ -5087,10 +5087,200 @@ function Container143() {
   );
 }
 
+function PulseWireframeCard({ variant }: { variant: number }) {
+  return (
+    <div
+      className="shrink-0 rounded-[6px] overflow-hidden border border-[#2a2060] bg-[#f5f5fa]"
+      style={{ width: 220, height: 220 }}
+    >
+      {/* Browser chrome */}
+      <div className="bg-[#e0dff0] flex items-center gap-[5px] px-[8px] py-[6px]">
+        <div className="w-[6px] h-[6px] rounded-full bg-[#c8c6d8]" />
+        <div className="w-[6px] h-[6px] rounded-full bg-[#c8c6d8]" />
+        <div className="w-[6px] h-[6px] rounded-full bg-[#c8c6d8]" />
+        <div className="ml-[4px] flex-1 h-[6px] rounded-[3px] bg-[#cac8da]" />
+      </div>
+      {/* Content area */}
+      <div className="flex h-[calc(100%-24px)]">
+        {/* Sidebar */}
+        <div className="w-[36px] bg-[#e8e7f5] flex flex-col gap-[5px] px-[5px] py-[8px] shrink-0">
+          {[...Array(6)].map((_, i) => (
+            <div key={i} className="h-[5px] rounded-[2px] bg-[#b8b6d0]" />
+          ))}
+        </div>
+        {/* Main */}
+        <div className="flex-1 p-[8px] flex flex-col gap-[6px] overflow-hidden">
+          {variant === 0 && (
+            <>
+              {/* Stat row */}
+              <div className="flex gap-[4px]">
+                {[...Array(3)].map((_, i) => (
+                  <div key={i} className="flex-1 h-[24px] rounded-[3px] bg-[#dddcef]" />
+                ))}
+              </div>
+              {/* Chart */}
+              <div className="flex-1 rounded-[3px] bg-[#dddcef] flex items-end px-[4px] pb-[4px] gap-[3px]">
+                {[40, 65, 30, 80, 55, 70, 45].map((h, i) => (
+                  <div key={i} className="flex-1 rounded-[2px] bg-[#b0aed0]" style={{ height: `${h}%` }} />
+                ))}
+              </div>
+              {/* Table rows */}
+              {[...Array(3)].map((_, i) => (
+                <div key={i} className="flex gap-[3px]">
+                  <div className="w-[40px] h-[5px] rounded bg-[#c8c6da]" />
+                  <div className="flex-1 h-[5px] rounded bg-[#dddcef]" />
+                  <div className="w-[20px] h-[5px] rounded bg-[#c8c6da]" />
+                </div>
+              ))}
+            </>
+          )}
+          {variant === 1 && (
+            <>
+              {/* Big chart */}
+              <div className="flex-1 rounded-[3px] bg-[#dddcef] relative overflow-hidden flex items-end px-[4px] pb-[4px]">
+                <svg viewBox="0 0 100 50" className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
+                  <polyline points="0,45 15,30 30,38 50,15 65,25 80,10 100,20" fill="none" stroke="#9d9ac0" strokeWidth="2" />
+                  <polygon points="0,45 15,30 30,38 50,15 65,25 80,10 100,20 100,50 0,50" fill="#c5c3e0" opacity="0.5" />
+                </svg>
+              </div>
+              {/* Stat cards */}
+              <div className="flex gap-[4px]">
+                {[...Array(4)].map((_, i) => (
+                  <div key={i} className="flex-1 h-[20px] rounded-[3px] bg-[#dddcef]" />
+                ))}
+              </div>
+              {/* Rows */}
+              {[...Array(2)].map((_, i) => (
+                <div key={i} className="flex gap-[3px]">
+                  <div className="flex-1 h-[5px] rounded bg-[#dddcef]" />
+                  <div className="w-[20px] h-[5px] rounded bg-[#c8c6da]" />
+                </div>
+              ))}
+            </>
+          )}
+          {variant === 2 && (
+            <>
+              {/* Header bar */}
+              <div className="h-[10px] w-[60%] rounded bg-[#c8c6da]" />
+              {/* Table */}
+              <div className="flex flex-col gap-[4px] flex-1">
+                <div className="flex gap-[3px]">
+                  {["40%", "30%", "30%"].map((w, i) => (
+                    <div key={i} className="h-[6px] rounded bg-[#b0aed0]" style={{ width: w }} />
+                  ))}
+                </div>
+                {[...Array(5)].map((_, i) => (
+                  <div key={i} className="flex gap-[3px]">
+                    <div className="h-[5px] rounded bg-[#dddcef]" style={{ width: "40%" }} />
+                    <div className="h-[5px] rounded bg-[#dddcef]" style={{ width: "30%" }} />
+                    <div className="h-[5px] rounded bg-[#c8c6da]" style={{ width: "30%" }} />
+                  </div>
+                ))}
+              </div>
+              {/* Mini chart */}
+              <div className="h-[40px] rounded-[3px] bg-[#dddcef] flex items-end px-[3px] pb-[3px] gap-[2px]">
+                {[60, 40, 80, 55, 70, 45, 65, 50].map((h, i) => (
+                  <div key={i} className="flex-1 rounded-[1px] bg-[#b0aed0]" style={{ height: `${h}%` }} />
+                ))}
+              </div>
+            </>
+          )}
+          {variant === 3 && (
+            <>
+              {/* Donut chart area */}
+              <div className="flex gap-[6px] flex-1">
+                <div className="flex-1 rounded-[3px] bg-[#dddcef] flex items-center justify-center">
+                  <svg viewBox="0 0 40 40" width="50" height="50">
+                    <circle cx="20" cy="20" r="14" fill="none" stroke="#c5c3e0" strokeWidth="6" />
+                    <circle cx="20" cy="20" r="14" fill="none" stroke="#9d9ac0" strokeWidth="6" strokeDasharray="44 44" strokeDashoffset="11" />
+                  </svg>
+                </div>
+                <div className="flex flex-col gap-[4px] justify-center">
+                  {[...Array(4)].map((_, i) => (
+                    <div key={i} className="flex items-center gap-[3px]">
+                      <div className="w-[5px] h-[5px] rounded-full bg-[#b0aed0]" />
+                      <div className="w-[30px] h-[4px] rounded bg-[#dddcef]" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+              {/* Rows */}
+              {[...Array(3)].map((_, i) => (
+                <div key={i} className="flex gap-[3px]">
+                  <div className="flex-1 h-[5px] rounded bg-[#dddcef]" />
+                  <div className="w-[20px] h-[5px] rounded bg-[#c8c6da]" />
+                </div>
+              ))}
+            </>
+          )}
+          {variant === 4 && (
+            <>
+              {/* Line chart */}
+              <div className="rounded-[3px] bg-[#dddcef] h-[60px] relative overflow-hidden">
+                <svg viewBox="0 0 100 40" className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
+                  <polyline points="0,35 20,20 40,28 60,8 80,18 100,12" fill="none" stroke="#9d9ac0" strokeWidth="2" />
+                  <polyline points="0,38 20,30 40,35 60,22 80,28 100,25" fill="none" stroke="#c5c3e0" strokeWidth="2" strokeDasharray="3 2" />
+                </svg>
+              </div>
+              {/* Stat row */}
+              <div className="flex gap-[4px]">
+                {[...Array(3)].map((_, i) => (
+                  <div key={i} className="flex-1 h-[20px] rounded-[3px] bg-[#dddcef]" />
+                ))}
+              </div>
+              {/* Table */}
+              {[...Array(4)].map((_, i) => (
+                <div key={i} className="flex gap-[3px]">
+                  <div className="flex-1 h-[5px] rounded bg-[#dddcef]" />
+                  <div className="w-[25px] h-[5px] rounded bg-[#c8c6da]" />
+                </div>
+              ))}
+            </>
+          )}
+          {variant === 5 && (
+            <>
+              {/* Header */}
+              <div className="h-[8px] w-[50%] rounded bg-[#c8c6da]" />
+              {/* Bar chart horizontal */}
+              <div className="flex-1 flex flex-col gap-[5px] justify-center">
+                {[80, 55, 70, 40, 65].map((w, i) => (
+                  <div key={i} className="flex items-center gap-[4px]">
+                    <div className="w-[16px] h-[4px] rounded bg-[#c8c6da]" />
+                    <div className="h-[7px] rounded bg-[#b0aed0]" style={{ width: `${w}%` }} />
+                  </div>
+                ))}
+              </div>
+              {/* Stat row */}
+              <div className="flex gap-[4px]">
+                {[...Array(3)].map((_, i) => (
+                  <div key={i} className="flex-1 h-[16px] rounded-[3px] bg-[#dddcef]" />
+                ))}
+              </div>
+            </>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function Container144() {
   return (
-    <div className="h-[281.25px] relative shrink-0 w-full" data-name="Container">
-      <img alt="" className="absolute bg-clip-padding border-0 border-[transparent] border-solid inset-0 max-w-none object-cover pointer-events-none size-full" src={imgContainer} />
+    <div
+      className="w-full pb-[32px] px-[24px]"
+      style={{
+        overflowX: "auto",
+        WebkitOverflowScrolling: "touch" as any,
+        scrollbarWidth: "none" as any,
+        msOverflowStyle: "none" as any,
+      }}
+      data-name="Container"
+    >
+      <div className="flex gap-[16px]" style={{ width: "max-content" }}>
+        {[0, 1, 2, 3, 4, 5].map((v) => (
+          <PulseWireframeCard key={v} variant={v} />
+        ))}
+      </div>
     </div>
   );
 }
