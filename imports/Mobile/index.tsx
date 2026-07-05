@@ -5821,7 +5821,7 @@ function Paragraph99() {
   return (
     <div className="relative shrink-0 w-full" data-name="Paragraph">
       <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start relative size-full">
-        <p className="[word-break:break-word] font-['Inter',sans-serif] font-semibold leading-[16px] not-italic relative shrink-0 text-[#aa96fc] text-[12px] tracking-[1.2px] uppercase whitespace-nowrap">08 / Retentions</p>
+        <p className="[word-break:break-word] font-['Inter',sans-serif] font-medium leading-[20px] not-italic relative shrink-0 text-[#aa96fc] text-[16px] tracking-[1.2px] uppercase whitespace-nowrap">09 / Retentions</p>
       </div>
     </div>
   );
@@ -5890,7 +5890,7 @@ function Text67() {
   return (
     <div className="h-[20px] relative shrink-0 w-[17.859px]" data-name="Text">
       <div className="bg-clip-padding border-0 border-[transparent] border-solid relative size-full">
-        <p className="[word-break:break-word] absolute font-['Inter',sans-serif] font-medium leading-[20px] left-0 not-italic text-[#7b5cf6] text-[16px] top-[0.38px] whitespace-nowrap">09</p>
+        <p className="[word-break:break-word] absolute font-['Inter',sans-serif] font-medium leading-[20px] left-0 not-italic text-[#7b5cf6] text-[16px] top-[0.38px] whitespace-nowrap">10</p>
       </div>
     </div>
   );
@@ -6014,7 +6014,7 @@ function Paragraph100() {
   return (
     <div className="relative shrink-0 w-full" data-name="Paragraph">
       <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start relative size-full">
-        <p className="[word-break:break-word] font-['Inter',sans-serif] font-semibold leading-[16px] not-italic relative shrink-0 text-[#aa96fc] text-[12px] tracking-[1.2px] uppercase whitespace-nowrap">10 / Features</p>
+        <p className="[word-break:break-word] font-['Inter',sans-serif] font-medium leading-[20px] not-italic relative shrink-0 text-[#aa96fc] text-[16px] tracking-[1.2px] uppercase whitespace-nowrap">11 / Features</p>
       </div>
     </div>
   );
