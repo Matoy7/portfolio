@@ -1,8 +1,24 @@
+import { useEffect } from "react";
 import CurioDesign from "@/imports/CurioMobile/index";
 
 export default function MobileCurioPage({ onNavigate }: { onNavigate: (page: string) => void }) {
+  // Lock horizontal movement at the document level — a div's own
+  // overflow-x:hidden isn't always enough on mobile browsers if a
+  // descendant (this Figma export uses fixed pixel widths) is wider
+  // than the viewport.
+  useEffect(() => {
+    const prevHtml = document.documentElement.style.overflowX;
+    const prevBody = document.body.style.overflowX;
+    document.documentElement.style.overflowX = "hidden";
+    document.body.style.overflowX = "hidden";
+    return () => {
+      document.documentElement.style.overflowX = prevHtml;
+      document.body.style.overflowX = prevBody;
+    };
+  }, []);
+
   return (
-    <div style={{ width: "100%", background: "white", position: "relative" }}>
+    <div style={{ width: "100%", background: "white", position: "relative", overflowX: "hidden", maxWidth: "100vw", touchAction: "pan-y" }}>
       <button
         onClick={() => onNavigate("home")}
         style={{

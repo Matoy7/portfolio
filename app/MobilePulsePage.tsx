@@ -5,6 +5,21 @@ export default function MobilePulsePage({ onNavigate }: { onNavigate: (page: str
   const [height, setHeight] = useState(0);
   const contentRef = useRef<HTMLDivElement>(null);
 
+  // Lock horizontal movement at the document level — a div's own
+  // overflow-x:hidden isn't always enough on mobile browsers if a
+  // descendant (this Figma export uses fixed pixel widths) is wider
+  // than the viewport.
+  useEffect(() => {
+    const prevHtml = document.documentElement.style.overflowX;
+    const prevBody = document.body.style.overflowX;
+    document.documentElement.style.overflowX = "hidden";
+    document.body.style.overflowX = "hidden";
+    return () => {
+      document.documentElement.style.overflowX = prevHtml;
+      document.body.style.overflowX = prevBody;
+    };
+  }, []);
+
   // Measure true content height
   useEffect(() => {
     const t = setTimeout(() => {
@@ -46,7 +61,7 @@ export default function MobilePulsePage({ onNavigate }: { onNavigate: (page: str
   }, []);
 
   return (
-    <div style={{ width: "100%", background: "white", position: "relative", minHeight: height || "100vh" }}>
+    <div style={{ width: "100%", background: "white", position: "relative", minHeight: height || "100vh", overflowX: "hidden", maxWidth: "100vw", touchAction: "pan-y" }}>
       {/* Back home button */}
       <button
         onClick={() => onNavigate("home")}
