@@ -79,7 +79,7 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
         <div
           className="absolute"
           style={{
-            left: "296px",
+            left: "236px",
             top: "84px",
             width: "1112px",
             height: "804px",
