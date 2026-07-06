@@ -579,25 +579,25 @@ function FaqAccordionItem({
   const buttonId = `faq-btn-${item.id}`;
 
   return (
-    <div className="border border-[#ebebeb] rounded-2xl px-10 mb-6 last:mb-0">
+    <div className="border border-[#ebebeb] rounded-2xl px-6 mb-4 last:mb-0">
       <button
         id={buttonId}
         aria-expanded={isOpen}
         aria-controls={panelId}
         onClick={onToggle}
-        className="w-full flex items-center justify-between text-left py-[34px] px-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#333] rounded-sm group"
+        className="w-full flex items-center justify-between text-left py-[22px] px-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#333] rounded-sm group"
       >
         <span
-          className="text-[26px] font-semibold text-[#1a1a1a] leading-snug pr-6"
+          className="text-[17px] font-semibold text-[#1a1a1a] leading-snug pr-6"
           style={{ fontFamily: "'Inter', sans-serif" }}
         >
           {item.question}
         </span>
         <span
-          className="flex-shrink-0 w-8 h-8 flex items-center justify-center text-[#1a1a1a] transition-opacity duration-200 group-hover:opacity-60"
+          className="flex-shrink-0 w-5 h-5 flex items-center justify-center text-[#1a1a1a] transition-opacity duration-200 group-hover:opacity-60"
           aria-hidden="true"
         >
-          <svg width="24" height="24" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M2 8H14" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" />
             <path
               d="M8 2V14"
@@ -626,9 +626,9 @@ function FaqAccordionItem({
           opacity: isOpen ? 1 : 0,
         }}
       >
-        <div ref={contentRef} className="pb-[34px]">
+        <div ref={contentRef} className="pb-[22px]">
           <p
-            className="text-[19px] leading-[1.65] text-[#5a5a6e]"
+            className="text-[15px] leading-[1.65] text-[#5a5a6e]"
             style={{ fontFamily: "'Inter', sans-serif" }}
           >
             {item.answer}
@@ -648,7 +648,7 @@ function FaqSection() {
 
   return (
     <section id="faq" className="w-full flex justify-center px-8" style={{ marginTop: "96px" }}>
-      <Reveal className="w-full" style={{ maxWidth: "1369px" }}>
+      <Reveal className="w-full" style={{ maxWidth: "680px" }}>
         {faqs.map((item) => (
           <FaqAccordionItem
             key={item.id}
