@@ -181,7 +181,7 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
             transition: reducedMotion ? "none" : `opacity 750ms ${EASE} 80ms, transform 750ms ${EASE} 80ms`,
           }}
         >
-          {"A product designer\nwith a development \nbackground"}
+          {"A product\ndesigner\nwith a\ndevelopment\nbackground"}
         </p>
 
         {/* Body copy */}
