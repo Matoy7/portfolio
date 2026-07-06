@@ -170,8 +170,8 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
           style={{
             fontFamily: "Inter, sans-serif",
             fontWeight: 500,
-            fontSize: "62px",
-            lineHeight: "66px",
+            fontSize: "56px",
+            lineHeight: "60px",
             letterSpacing: "-2px",
             left: "104px",
             top: "164px",
@@ -190,7 +190,7 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
           style={{
             fontFamily: "Inter, sans-serif",
             fontSize: "18px",
-            lineHeight: "28px",
+            lineHeight: "26px",
             left: "1114px",
             top: "377px",
             width: "308px",
