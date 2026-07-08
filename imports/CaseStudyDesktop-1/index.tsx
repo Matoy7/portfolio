@@ -3216,10 +3216,10 @@ function Container36() {
 
 function NextButton() {
   return (
-    <div className="h-[34.94px] relative rounded-[15.286px] shrink-0 w-[79.706px]" data-name="Next Button">
-      <div aria-hidden className="absolute border-[#419247] border-[1.192px] border-solid inset-0 pointer-events-none rounded-[15.286px]" />
-      <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-center justify-center px-[15.286px] py-[8.735px] relative size-full">
-        <p className="[word-break:break-word] font-['Inter',sans-serif] font-bold leading-[25.035px] not-italic relative shrink-0 text-[#419247] text-[19.07px] text-center w-full">Get</p>
+    <div className="h-[34.94px] relative rounded-[17.47px] shrink-0" data-name="Next Button">
+      <div aria-hidden className="absolute border-[#419247] border-[1.192px] border-solid inset-0 pointer-events-none rounded-[17.47px]" />
+      <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-center justify-center px-[26px] py-[8.735px] relative h-full">
+        <p className="[word-break:break-word] font-['Inter',sans-serif] font-bold leading-[25.035px] not-italic relative shrink-0 text-[#419247] text-[19.07px] text-center whitespace-nowrap">Get</p>
       </div>
     </div>
   );
@@ -3233,7 +3233,7 @@ function Container31() {
         <div className="content-stretch flex flex-col gap-[17.47px] items-center justify-center p-[17.47px] relative size-full">
           <Button5 />
           <Spacer />
-          <div className="bg-[#fef0e8] content-stretch flex gap-[12px] h-[88.441px] items-center p-[9.281px] relative rounded-[21.837px] shrink-0 w-[338.477px]" data-name="Mozzarella Sticks container">
+          <div className="bg-[#fef0e8] content-stretch flex gap-[18px] h-[88.441px] items-center p-[9.281px] relative rounded-[21.837px] shrink-0 w-[338.477px]" data-name="Mozzarella Sticks container">
             <div aria-hidden className="absolute border-[#419247] border-[0.546px] border-solid inset-0 pointer-events-none rounded-[21.837px]" />
             <Container35 />
             <Container36 />
