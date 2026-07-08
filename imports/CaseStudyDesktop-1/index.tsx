@@ -3233,7 +3233,7 @@ function Container31() {
         <div className="content-stretch flex flex-col gap-[17.47px] items-center justify-center p-[17.47px] relative size-full">
           <Button5 />
           <Spacer />
-          <div className="bg-[#fef0e8] content-stretch flex h-[88.441px] items-center p-[9.281px] relative rounded-[21.837px] shrink-0 w-[338.477px]" data-name="Mozzarella Sticks container">
+          <div className="bg-[#fef0e8] content-stretch flex gap-[12px] h-[88.441px] items-center p-[9.281px] relative rounded-[21.837px] shrink-0 w-[338.477px]" data-name="Mozzarella Sticks container">
             <div aria-hidden className="absolute border-[#419247] border-[0.546px] border-solid inset-0 pointer-events-none rounded-[21.837px]" />
             <Container35 />
             <Container36 />
