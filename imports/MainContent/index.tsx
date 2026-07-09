@@ -5113,8 +5113,8 @@ function Frame57() {
 
 function Frame58() {
   return (
-    <div className="h-[29.543px] relative shrink-0 w-[44.906px]">
-      <p className="[word-break:break-word] absolute font-['Quicksand',sans-serif] font-medium leading-[18.277px] left-[4.73px] text-[#12243e] text-[5.59px] top-[-0.89px] whitespace-nowrap">Catalog</p>
+    <div className="content-stretch flex items-center justify-center relative shrink-0">
+      <p className="[word-break:break-word] font-['Quicksand',sans-serif] font-medium leading-[30.933px] relative shrink-0 text-[#12243e] text-[9.45px] whitespace-nowrap">Catalog</p>
     </div>
   );
 }
@@ -5130,7 +5130,7 @@ function Frame59() {
 function Frame60() {
   return (
     <div className="content-stretch flex items-center justify-center relative shrink-0">
-      <p className="[word-break:break-word] font-['Quicksand',sans-serif] font-medium leading-[30.933px] relative shrink-0 text-[#12243e] text-[9.83px] whitespace-nowrap">Contkact</p>
+      <p className="[word-break:break-word] font-['Quicksand',sans-serif] font-medium leading-[30.933px] relative shrink-0 text-[#12243e] text-[9.83px] whitespace-nowrap">Contact</p>
     </div>
   );
 }
