@@ -1623,120 +1623,20 @@ function MainFrame() {
   );
 }
 
-function BarcodeSection() {
+function RSBackgroundFrame1() {
   return (
-    <div className="absolute content-stretch flex flex-col gap-[25px] items-start left-[1359px] top-[111px] w-[561.363px]" data-name="Barcode Section">
-      <p className="[word-break:break-word] font-['Sura',sans-serif] font-bold leading-[0] min-w-full not-italic relative shrink-0 text-[#fef0e8] text-[0px] w-[min-content]" dir="auto">
-        <span className="leading-[85px] text-[92px]">
-          Scan the
-          <br aria-hidden />
-        </span>
-        <span className="leading-[85px] text-[#ff8a65] text-[92px]">barcode</span>
-        <span className="leading-[85px] text-[92px]">
-          <br aria-hidden />
-          to verify
-          <br aria-hidden />
-          {`its safety `}
-        </span>
-      </p>
-      <div className="h-[656.125px] relative shrink-0 w-[314.512px]" data-name="Barcode">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgBarcode} />
-      </div>
-    </div>
-  );
-}
-
-function HeaderImage() {
-  return (
-    <div className="content-stretch flex flex-col h-[900px] items-start relative shrink-0 w-full" data-name="Header Image">
-      <div aria-hidden className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 overflow-hidden">
-          <img alt="" className="absolute h-[113.39%] left-[-2.65%] max-w-none top-[-13.38%] w-[101.3%]" src={imgHeaderImage} />
-        </div>
-        <div className="absolute bg-[rgba(0,0,0,0.2)] inset-0" />
-      </div>
-      <BarcodeSection />
-    </div>
-  );
-}
-
-function OnboardingDetails2() {
-  return (
-    <div className="[word-break:break-word] content-stretch flex flex-col gap-[28px] h-[308px] items-start not-italic relative shrink-0 text-[#4f2115] w-[633px]" data-name="Onboarding details">
-      <p className="font-['Sura',sans-serif] font-bold leading-[0] min-w-full relative shrink-0 text-[92px] w-[min-content] whitespace-pre-wrap" dir="auto">
-        <span className="leading-[85px] text-[#cb654a]">Replace</span>
-        <span className="leading-[85px]">
-          {` `}
-          <br aria-hidden />
-          with a safer alternative
-        </span>
-      </p>
-      <p className="font-['Poppins',sans-serif] font-bold leading-[30.236px] relative shrink-0 text-[22px] w-[574px]" dir="auto">
-        Choose from over 1,000 safer alternative items personalized to your dietary needs and preferences.
-      </p>
-    </div>
-  );
-}
-
-function OnboardingSection() {
-  return (
-    <div className="absolute content-stretch flex items-center left-0 top-[197.5px]" data-name="Onboarding Section">
-      <OnboardingDetails2 />
-    </div>
-  );
-}
-
-function Group1() {
-  return (
-    <div className="absolute h-[54.685px] left-[14.73px] mix-blend-screen top-[0.05px] w-[307.308px]" data-name="Group">
-      <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 307.308 54.6847">
-        <g id="Group" opacity="0.7" style={{ mixBlendMode: "screen" }}>
-          <path d={svgPaths.p23f78c80} fill="var(--fill-0, #1A1A1A)" id="Vector" />
-        </g>
-      </svg>
-    </div>
-  );
-}
-
-function Group2() {
-  return (
-    <div className="absolute h-[694.225px] left-[6.84px] top-[4.39px] w-[311.984px]" data-name="Group">
-      <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 311.984 694.225">
-        <g id="Group">
-          <path d={svgPaths.p3a30960} fill="var(--fill-0, #1A1A1A)" id="Vector" />
-          <path d={svgPaths.p11316840} fill="var(--fill-0, #1A1A1A)" id="Vector_2" />
-        </g>
-      </svg>
-    </div>
-  );
-}
-
-function Group3() {
-  return (
-    <div className="absolute h-[27.451px] left-0 top-[87.2px] w-[2.645px]" data-name="Group">
-      <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 2.64495 27.4512">
-        <g id="Group">
-          <path d={svgPaths.p24649e80} fill="var(--fill-0, #1A1A1A)" id="Vector" />
-          <path d={svgPaths.p2bf8300} fill="var(--fill-0, #1A1A1A)" id="Vector_2" />
-          <path d={svgPaths.p1a112700} fill="var(--fill-0, #1A1A1A)" id="Vector_3" />
-        </g>
-      </svg>
-    </div>
-  );
-}
-
-function Camera() {
-  return (
-    <div className="absolute contents left-[2.55px] top-[2.7px]" data-name="Camera">
-      <div className="absolute h-[5.403px] left-0 top-0 w-[5.14px]" data-name="Vector">
-        <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 5.14021 5.40294">
-          <path d={svgPaths.p29785f00} fill="var(--fill-0, #1A1A1A)" id="Vector" />
-        </svg>
-      </div>
-      <div className="absolute h-[5.403px] left-0 mix-blend-multiply top-0 w-[5.14px]" data-name="Vector">
-        <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 5.14021 5.40294">
-          <g id="Vector" style={{ mixBlendMode: "multiply" }}>
-            <path d={svgPaths.p29785f00} fill="var(--fill-0, #1A1A1A)" />
+    <div className="absolute h-[1381.209px] left-[-67.7px] top-[19.65px] w-[528.463px]" data-name="Background RSFrame">
+      <div className="absolute inset-[-4.37%_0_0_0]">
+        <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 528.463 1441.52">
+          <g id="Background RSFrame">
+            <path d={svgPaths.pa866400} fill="var(--fill-0, #FEF0E8)" id="Vector" />
+            <path d={svgPaths.p20de7700} fill="var(--fill-0, #FBCBBE)" id="Vector_2" />
+            <path d={svgPaths.p36e8a980} fill="var(--fill-0, #FEE0D2)" id="Vector_3" />
+            <path d={svgPaths.p2b661200} fill="var(--fill-0, #FEEADE)" id="Vector_4" />
+            <path d={svgPaths.p3cb55e70} fill="var(--fill-0, #FEE0D2)" id="Vector_5" />
+            <path d={svgPaths.p834e030} fill="var(--fill-0, #FEF0E8)" id="Vector_6" />
+            <path d={svgPaths.p38f65700} fill="var(--fill-0, #FEF0E8)" id="Vector_7" />
+            <g id="Vector_8" />
           </g>
         </svg>
       </div>
@@ -1744,66 +1644,16 @@ function Camera() {
   );
 }
 
-function Group4() {
+function RSTime1() {
   return (
-    <div className="absolute contents left-[182.74px] top-[21.23px]" data-name="Group">
-      <div className="absolute h-[10.806px] left-0 top-0 w-[10.28px]" data-name="Vector">
-        <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 10.2804 10.8059">
-          <path d={svgPaths.p324a8d00} fill="var(--fill-0, #1A1A1A)" id="Vector" />
-        </svg>
-      </div>
-      <div className="absolute bg-[#1a1a1a] h-[10.878px] left-[0.22px] top-[0.29px] w-[10.349px]" data-name="Rectangle" />
-      <div className="absolute h-[6.164px] left-[2.2px] top-[2.32px] w-[5.865px]" data-name="Vector">
-        <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 5.86467 6.16443">
-          <path d={svgPaths.p293def00} fill="var(--fill-0, #1A1A1A)" id="Vector" />
-        </svg>
-      </div>
-      <Camera />
-      <div className="absolute h-[1.922px] left-[5.61px] mix-blend-screen top-[5.84px] w-[1.828px]" data-name="Vector">
-        <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 1.82841 1.92185">
-          <g id="Vector" style={{ mixBlendMode: "screen" }}>
-            <path d={svgPaths.p17a58880} fill="var(--fill-0, #1A1A1A)" />
-          </g>
-        </svg>
-      </div>
-    </div>
-  );
-}
-
-function Layer() {
-  return (
-    <div className="absolute contents inset-0" data-name="Layer 1">
-      <div className="absolute h-[703px] left-[2.63px] top-0 w-[320.367px]" data-name="Vector">
-        <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 320.367 703">
-          <path d={svgPaths.pd66d80} fill="var(--fill-0, #1A1A1A)" id="Vector" />
-        </svg>
-      </div>
-      <Group1 />
-      <Group2 />
-      <Group3 />
-      <Group4 />
-    </div>
-  );
-}
-
-function Group() {
-  return (
-    <div className="absolute contents inset-0" data-name="Group">
-      <Layer />
-    </div>
-  );
-}
-
-function Time1() {
-  return (
-    <div className="h-[10.024px] relative shrink-0 w-[30.842px]" data-name="Time">
-      <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 30.8418 10.0236">
-        <g clipPath="url(#clip0_5_2024)" id="Time">
-          <path d={svgPaths.p2897c200} fill="var(--fill-0, black)" id="Vector" />
+    <div className="h-[14.194px] relative shrink-0 w-[43.675px]" data-name="RSTime">
+      <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 43.6745 14.1942">
+        <g clipPath="url(#clip0_1_299)" id="RSTime">
+          <path d={svgPaths.pb6ff000} fill="var(--fill-0, #4F2115)" id="Vector" />
         </g>
         <defs>
-          <clipPath id="clip0_5_2024">
-            <rect fill="white" height="10.0236" width="30.8418" />
+          <clipPath id="clip0_1_299">
+            <rect fill="white" height="14.1942" width="43.6745" />
           </clipPath>
         </defs>
       </svg>
@@ -1811,31 +1661,31 @@ function Time1() {
   );
 }
 
-function Time() {
+function RSTime() {
   return (
-    <div className="content-stretch flex flex-[1_0_0] h-[45.492px] items-center justify-center min-w-px overflow-clip relative" data-name="Time">
-      <Time1 />
+    <div className="content-stretch flex flex-[1_0_0] h-[64.42px] items-center justify-center min-w-px overflow-clip relative" data-name="RSTime">
+      <RSTime1 />
     </div>
   );
 }
 
-function DynamicIslandFrame() {
-  return <div className="flex-[1_0_0] h-[45.492px] min-w-px relative" data-name="Dynamic Island Frame" />;
+function RSDynamicIslandFrame() {
+  return <div className="flex-[1_0_0] h-[64.42px] min-w-px relative" data-name="Dynamic Island RSFrame" />;
 }
 
-function Reception() {
+function RSReception() {
   return (
-    <div className="h-[9.253px] relative shrink-0 w-[13.879px]" data-name="Reception">
-      <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 13.8788 9.25253">
-        <g clipPath="url(#clip0_5_1938)" id="Reception">
-          <path d={svgPaths.p38926780} fill="var(--fill-0, black)" id="Vector" />
-          <path d={svgPaths.p1b628f00} fill="var(--fill-0, black)" id="Vector_2" />
-          <path d={svgPaths.p2f9f2000} fill="var(--fill-0, black)" id="Vector_3" />
-          <path d={svgPaths.p3f5b8480} fill="var(--fill-0, black)" id="Vector_4" />
+    <div className="h-[13.102px] relative shrink-0 w-[19.654px]" data-name="RSReception">
+      <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 19.6535 13.1024">
+        <g clipPath="url(#clip0_1_293)" id="RSReception">
+          <path d={svgPaths.p24d74100} fill="var(--fill-0, #4F2115)" id="Vector" />
+          <path d={svgPaths.p7568c80} fill="var(--fill-0, #4F2115)" id="Vector_2" />
+          <path d={svgPaths.p330f5e80} fill="var(--fill-0, #4F2115)" id="Vector_3" />
+          <path d={svgPaths.p79e4500} fill="var(--fill-0, #4F2115)" id="Vector_4" />
         </g>
         <defs>
-          <clipPath id="clip0_5_1938">
-            <rect fill="white" height="9.25253" width="13.8788" />
+          <clipPath id="clip0_1_293">
+            <rect fill="white" height="13.1024" width="19.6535" />
           </clipPath>
         </defs>
       </svg>
@@ -1843,16 +1693,16 @@ function Reception() {
   );
 }
 
-function WiFi() {
+function RSWiFi() {
   return (
-    <div className="h-[9.253px] relative shrink-0 w-[13.879px]" data-name="Wi-fi">
-      <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 13.8788 9.25253">
-        <g clipPath="url(#clip0_5_1946)" id="Wi-fi">
-          <path clipRule="evenodd" d={svgPaths.p7089680} fill="var(--fill-0, black)" fillRule="evenodd" id="Vector" />
+    <div className="h-[13.102px] relative shrink-0 w-[19.654px]" data-name="Wi-fi">
+      <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 19.6535 13.1024">
+        <g clipPath="url(#clip0_1_284)" id="Wi-fi">
+          <path clipRule="evenodd" d={svgPaths.p3371aa00} fill="var(--fill-0, #4F2115)" fillRule="evenodd" id="Vector" />
         </g>
         <defs>
-          <clipPath id="clip0_5_1946">
-            <rect fill="white" height="9.25253" width="13.8788" />
+          <clipPath id="clip0_1_284">
+            <rect fill="white" height="13.1024" width="19.6535" />
           </clipPath>
         </defs>
       </svg>
@@ -1860,18 +1710,18 @@ function WiFi() {
   );
 }
 
-function Battery() {
+function RSBattery() {
   return (
-    <div className="h-[10.024px] relative shrink-0 w-[21.589px]" data-name="Battery">
-      <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 21.5892 10.0236">
-        <g clipPath="url(#clip0_5_2037)" id="Battery">
-          <path d={svgPaths.p20ae9200} id="Vector" opacity="0.35" stroke="var(--stroke-0, black)" strokeWidth="0.771044" />
-          <path d={svgPaths.pa591200} fill="var(--fill-0, black)" id="Vector_2" opacity="0.4" />
-          <path d={svgPaths.pdc1b980} fill="var(--fill-0, black)" id="Vector_3" />
+    <div className="h-[14.194px] relative shrink-0 w-[30.572px]" data-name="RSBattery">
+      <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 30.5722 14.1942">
+        <g clipPath="url(#clip0_1_323)" id="RSBattery">
+          <path d={svgPaths.p197fbd00} id="Vector" opacity="0.35" stroke="var(--stroke-0, #4F2115)" strokeWidth="1.09186" />
+          <path d={svgPaths.pc4b7200} fill="var(--fill-0, #4F2115)" id="Vector_2" opacity="0.4" />
+          <path d={svgPaths.p26efa480} fill="var(--fill-0, #4F2115)" id="Vector_3" />
         </g>
         <defs>
-          <clipPath id="clip0_5_2037">
-            <rect fill="white" height="10.0236" width="21.5892" />
+          <clipPath id="clip0_1_323">
+            <rect fill="white" height="14.1942" width="30.5722" />
           </clipPath>
         </defs>
       </svg>
@@ -1879,136 +1729,327 @@ function Battery() {
   );
 }
 
-function Icons() {
+function RSIcons() {
   return (
-    <div className="content-stretch flex flex-[1_0_0] gap-[6.168px] h-[45.492px] items-center justify-center min-w-px overflow-clip relative" data-name="Icons">
-      <Reception />
-      <WiFi />
-      <Battery />
+    <div className="content-stretch flex flex-[1_0_0] gap-[8.735px] h-[64.42px] items-center justify-center min-w-px overflow-clip relative" data-name="RSIcons">
+      <RSReception />
+      <RSWiFi />
+      <RSBattery />
     </div>
   );
 }
 
-function StatusBar() {
+function RSStatusBar() {
   return (
-    <div className="bg-[#fef0e8] content-stretch flex h-[37.01px] items-center justify-center overflow-clip relative rounded-tl-[30px] rounded-tr-[35px] shrink-0 w-[303.02px]" data-name="Status Bar">
-      <Time />
-      <DynamicIslandFrame />
-      <Icons />
+    <div className="absolute bg-[#fef0e8] content-stretch flex h-[52.409px] items-center justify-center left-[2.54px] overflow-clip top-0 w-[429.102px]" data-name="Status Bar">
+      <RSTime />
+      <RSDynamicIslandFrame />
+      <RSIcons />
     </div>
   );
 }
 
-function Icon() {
+function RSIcon() {
   return (
-    <div className="relative shrink-0 size-[18.505px]" data-name="Icon">
-      <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 18.5051 18.5051">
-        <g id="Icon">
-          <path d={svgPaths.p1729f400} id="Vector" stroke="var(--stroke-0, #4F2115)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.54209" />
+    <div className="relative shrink-0 size-[26.205px]" data-name="RSIcon">
+      <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 26.2047 26.2047">
+        <g id="RSIcon">
+          <path d={svgPaths.p359a6140} id="Vector" stroke="var(--stroke-0, #4F2115)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.18373" />
         </g>
       </svg>
     </div>
   );
 }
 
-function Button2() {
+function RSButton() {
   return (
-    <div className="relative shrink-0 size-[24.673px]" data-name="Button">
-      <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center px-[3.084px] relative size-full">
-        <Icon />
+    <div className="relative shrink-0 size-[34.94px]" data-name="RSButton">
+      <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center px-[4.367px] relative size-full">
+        <RSIcon />
       </div>
     </div>
   );
 }
 
-function Heading() {
+function RSHeading() {
   return (
-    <div className="h-[20.818px] relative shrink-0 w-[77.239px]" data-name="Heading 1">
-      <div className="bg-clip-padding border-0 border-[transparent] border-solid relative size-full">
-        <p className="[word-break:break-word] absolute font-['Inter',sans-serif] font-semibold leading-[20.818px] left-0 not-italic text-[#4f2115] text-[13.879px] top-[-0.92px] whitespace-nowrap" dir="auto">
-          Replace Item
+    <div className="relative shrink-0" data-name="RSHeading 1">
+      <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
+        <p className="[word-break:break-word] font-['Inter:Semi_Bold',sans-serif] font-semibold leading-[29.48px] not-italic relative shrink-0 text-[#4f2115] text-[19.654px] whitespace-nowrap" dir="auto">
+          2 out of 6 items selected
         </p>
       </div>
     </div>
   );
 }
 
-function Container6() {
+function RSContainer1() {
   return (
-    <div className="h-[55.515px] relative shrink-0 w-full" data-name="Container">
+    <div className="relative shrink-0 w-full" data-name="RSContainer">
       <div className="flex flex-row items-center size-full">
-        <div className="content-stretch flex gap-[9.253px] items-center pb-[12.337px] pt-[18.505px] px-[18.505px] relative size-full">
-          <Button2 />
-          <Heading />
+        <div className="content-stretch flex gap-[17.47px] items-center px-[26.205px] py-[17.47px] relative size-full">
+          <RSButton />
+          <RSHeading />
         </div>
       </div>
     </div>
   );
 }
 
-function ImageEggsBenedict() {
+function RSIcon1() {
   return (
-    <div className="absolute h-[127.993px] left-[-13.05px] top-0 w-[188.562px]" data-name="Image (Eggs Benedict)">
-      <img alt="" className="absolute inset-0 max-w-none object-contain pointer-events-none size-full" src={imgImageEggsBenedict} />
-    </div>
-  );
-}
-
-function Container9() {
-  return (
-    <div className="bg-[rgba(254,245,245,0)] content-stretch flex flex-col h-[127.993px] items-start overflow-clip relative rounded-[23247120px] shrink-0 w-[162.813px]" data-name="Container">
-      <ImageEggsBenedict />
-    </div>
-  );
-}
-
-function Heading1() {
-  return (
-    <div className="h-[26.05px] relative shrink-0 w-[236.621px]" data-name="Heading 2">
-      <p className="-translate-x-1/2 [word-break:break-word] absolute font-['Inter',sans-serif] font-bold leading-[26.05px] left-[118.39px] not-italic text-[#4f2115] text-[17.367px] text-center top-[-1.74px] whitespace-nowrap">Sushi</p>
-    </div>
-  );
-}
-
-function Icon1() {
-  return (
-    <div className="relative shrink-0 size-[14.472px]" data-name="Icon">
-      <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 14.4722 14.4722">
-        <g clipPath="url(#clip0_5_1963)" id="Icon">
-          <g filter="url(#filter0_dddd_5_1963)" id="Vector">
-            <path d={svgPaths.p12b8fac0} fill="var(--fill-0, #CC7A00)" />
-            <path d={svgPaths.p12b8fac0} stroke="var(--stroke-0, #CC7A00)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.20602" />
+    <div className="relative shrink-0 size-[27.297px]" data-name="RSIcon">
+      <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 27.2966 27.2966">
+        <g id="RSIcon">
+          <path d={svgPaths.p252b5c00} fill="var(--fill-0, #419247)" id="Vector" stroke="var(--stroke-0, #419247)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.81977" />
+          <g id="Vector_2">
+            <mask fill="black" height="11" id="path-2-outside-1_1_280" maskUnits="userSpaceOnUse" width="11" x="8.41548" y="8.4288">
+              <rect fill="white" height="11" width="11" x="8.41548" y="8.4288" />
+              <path clipRule="evenodd" d={svgPaths.p25be1e40} fillRule="evenodd" />
+            </mask>
+            <path clipRule="evenodd" d={svgPaths.p25be1e40} fill="var(--fill-0, #FEF0E8)" fillRule="evenodd" />
+            <path d={svgPaths.p221488c0} fill="var(--stroke-0, #FEF0E8)" mask="url(#path-2-outside-1_1_280)" />
           </g>
-          <path d="M7.23502 5.42559V7.83763" id="Vector_2" stroke="var(--stroke-0, #FEF5F5)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.20602" />
-          <path d="M7.23502 10.2498H7.24225" id="Vector_3" stroke="var(--stroke-0, #FEF5F5)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.20602" />
+        </g>
+      </svg>
+    </div>
+  );
+}
+
+function RSText() {
+  return (
+    <div className="flex-[270_0_0] min-w-px relative" data-name="RSText">
+      <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-end relative size-full">
+        <p className="[word-break:break-word] font-['Inter:Semi_Bold',sans-serif] font-semibold leading-[26.205px] not-italic relative shrink-0 text-[#4f2115] text-[17.47px] whitespace-nowrap">Safe (1 out of 2)</p>
+      </div>
+    </div>
+  );
+}
+
+function RSIcon2() {
+  return (
+    <div className="relative shrink-0 size-[21.837px]" data-name="RSIcon">
+      <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 21.8373 21.8373">
+        <g id="RSIcon">
+          <path d={svgPaths.p1f2d6180} id="Vector" stroke="var(--stroke-0, #898989)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.81977" />
+        </g>
+      </svg>
+    </div>
+  );
+}
+
+function RSButton1() {
+  return (
+    <div className="content-stretch flex gap-[13.102px] h-[30.572px] items-center relative shrink-0 w-full" data-name="RSButton">
+      <RSIcon1 />
+      <RSText />
+      <RSIcon2 />
+    </div>
+  );
+}
+
+function RSImageChickenSalad() {
+  return (
+    <div className="h-[69.879px] relative shrink-0 w-full" data-name="Image (Chicken Salad)">
+      <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImageChickenSalad} />
+      <div className="relative size-full" />
+    </div>
+  );
+}
+
+function RSContainer4() {
+  return (
+    <div className="bg-[rgba(255,255,255,0)] relative rounded-[17.47px] shrink-0 size-[69.879px]" data-name="RSContainer">
+      <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start overflow-clip relative rounded-[inherit] size-full">
+        <RSImageChickenSalad />
+      </div>
+    </div>
+  );
+}
+
+function RSParagraph() {
+  return (
+    <div className="relative shrink-0" data-name="RSParagraph">
+      <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
+        <p className="[word-break:break-word] font-['Inter:Bold',sans-serif] font-bold leading-[26.205px] not-italic relative shrink-0 text-[#419247] text-[17.47px] whitespace-nowrap">Chicken Salad</p>
+      </div>
+    </div>
+  );
+}
+
+function RSContainer6() {
+  return (
+    <div className="content-stretch flex items-center relative shrink-0 w-full" data-name="RSContainer">
+      <RSParagraph />
+    </div>
+  );
+}
+
+function RSContainer5() {
+  return (
+    <div className="flex-[141.8_0_0] min-w-px relative" data-name="RSContainer">
+      <div className="flex flex-col justify-center size-full">
+        <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start justify-center px-[8.735px] relative size-full">
+          <RSContainer6 />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function RSMaterialSymbolsCheckRounded() {
+  return (
+    <div className="relative shrink-0 size-[26.205px]" data-name="material-symbols:check-rounded">
+      <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 26.2047 26.2047">
+        <g id="material-symbols:check-rounded">
+          <path d={svgPaths.p14488000} fill="var(--fill-0, #FEF0E8)" id="Vector" />
+        </g>
+      </svg>
+    </div>
+  );
+}
+
+function RSButton2() {
+  return (
+    <div className="bg-[#419247] h-[34.94px] relative rounded-[15.286px] shrink-0" data-name="RSButton">
+      <div aria-hidden className="absolute border-[#419247] border-[1.092px] border-solid inset-0 pointer-events-none rounded-[15.286px]" />
+      <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-center justify-center px-[15.286px] py-[8.735px] relative size-full">
+        <RSMaterialSymbolsCheckRounded />
+      </div>
+    </div>
+  );
+}
+
+function RSSpacer() {
+  return (
+    <div className="bg-[#fef0e8] content-stretch flex items-center p-[9.281px] relative rounded-[21.837px] shrink-0 w-[338.477px]" data-name="RSSpacer">
+      <div aria-hidden className="absolute border-[#419247] border-[0.546px] border-solid inset-0 pointer-events-none rounded-[21.837px]" />
+      <RSContainer4 />
+      <RSContainer5 />
+      <RSButton2 />
+    </div>
+  );
+}
+
+function RSImageChickenSalad1() {
+  return (
+    <div className="h-[69.879px] relative shrink-0 w-full" data-name="Image (Chicken Salad)">
+      <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImageChickenSalad1} />
+      <div className="relative size-full" />
+    </div>
+  );
+}
+
+function RSContainer7() {
+  return (
+    <div className="bg-[rgba(255,255,255,0)] relative rounded-[17.47px] shrink-0 size-[69.879px]" data-name="RSContainer">
+      <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start overflow-clip relative rounded-[inherit] size-full">
+        <RSImageChickenSalad1 />
+      </div>
+    </div>
+  );
+}
+
+function RSParagraph1() {
+  return (
+    <div className="relative shrink-0" data-name="RSParagraph">
+      <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
+        <p className="[word-break:break-word] font-['Inter:Bold',sans-serif] font-bold leading-[28.612px] not-italic relative shrink-0 text-[#419247] text-[19.07px] whitespace-nowrap">Mozzarella Sticks</p>
+      </div>
+    </div>
+  );
+}
+
+function RSContainer9() {
+  return (
+    <div className="content-stretch flex items-center relative shrink-0 w-full" data-name="RSContainer">
+      <RSParagraph1 />
+    </div>
+  );
+}
+
+function RSContainer8() {
+  return (
+    <div className="flex-[141.8_0_0] relative" style={{ minWidth: "175.58px" }} data-name="RSContainer">
+      <div className="flex flex-col justify-center size-full">
+        <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col gap-[4.367px] items-start justify-center px-[6px] relative size-full">
+          <RSContainer9 />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function RSNextButton() {
+  return (
+    <div className="h-[34.94px] relative rounded-[17.47px] shrink-0" data-name="Next RSButton">
+      <div aria-hidden className="absolute border-[#419247] border-[1.192px] border-solid inset-0 pointer-events-none rounded-[17.47px]" />
+      <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-center justify-center px-[7px] py-[8.735px] relative h-full">
+        <p className="[word-break:break-word] font-['Inter:Bold',sans-serif] font-bold leading-[25.035px] not-italic relative shrink-0 text-[#419247] text-[19.07px] text-center whitespace-nowrap">Get</p>
+      </div>
+    </div>
+  );
+}
+
+function RSContainer3() {
+  return (
+    <div className="bg-[#d7e8d9] relative rounded-[17.47px] shrink-0 w-full" data-name="RSContainer">
+      <div aria-hidden className="absolute border-[#419247] border-[0.546px] border-solid inset-0 pointer-events-none rounded-[17.47px]" />
+      <div className="flex flex-col items-center justify-center size-full">
+        <div className="content-stretch flex flex-col gap-[17.47px] items-center justify-center p-[17.47px] relative size-full">
+          <RSButton1 />
+          <RSSpacer />
+          <div className="bg-[#fef0e8] content-stretch flex gap-[10px] h-[88.441px] items-center p-[9.281px] relative rounded-[21.837px] shrink-0 w-[338.477px]" data-name="Mozzarella Sticks container">
+            <div aria-hidden className="absolute border-[#419247] border-[0.546px] border-solid inset-0 pointer-events-none rounded-[21.837px]" />
+            <RSContainer7 />
+            <RSContainer8 />
+            <RSNextButton />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function RSIcon3() {
+  return (
+    <div className="relative shrink-0 size-[27.297px]" data-name="RSIcon">
+      <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 27.2966 27.2966">
+        <g clipPath="url(#clip0_1_346)" id="RSIcon">
+          <g filter="url(#filter0_dddd_1_346)" id="Vector">
+            <path d={svgPaths.p336b4900} fill="var(--fill-0, #CC7A00)" />
+            <path d={svgPaths.p336b4900} stroke="var(--stroke-0, #CC7A00)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.81977" />
+          </g>
+          <path d="M13.6466 10.2377V14.7871" id="Vector_2" stroke="var(--stroke-0, #FEF0E8)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.81977" />
+          <path d="M13.6466 19.3345H13.6647" id="Vector_3" stroke="var(--stroke-0, #FEF0E8)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.81977" />
         </g>
         <defs>
-          <filter colorInterpolationFilters="sRGB" filterUnits="userSpaceOnUse" height="20.0283" id="filter0_dddd_5_1963" width="17.6175" x="-0.856061" y="0.472987">
+          <filter colorInterpolationFilters="sRGB" filterUnits="userSpaceOnUse" height="34.3186" id="filter0_dddd_1_346" width="31.1362" x="-0.836301" y="1.39663">
             <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feColorMatrix in="SourceAlpha" result="hardAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
             <feOffset />
-            <feGaussianBlur stdDeviation="0.361806" />
+            <feGaussianBlur stdDeviation="0.545932" />
             <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0" />
-            <feBlend in2="BackgroundImageFix" mode="normal" result="effect1_dropShadow_5_1963" />
+            <feBlend in2="BackgroundImageFix" mode="normal" result="effect1_dropShadow_1_346" />
             <feColorMatrix in="SourceAlpha" result="hardAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
-            <feOffset dy="1.44722" />
-            <feGaussianBlur stdDeviation="0.723611" />
+            <feOffset dy="2.18373" />
+            <feGaussianBlur stdDeviation="1.09186" />
             <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.09 0" />
-            <feBlend in2="effect1_dropShadow_5_1963" mode="normal" result="effect2_dropShadow_5_1963" />
+            <feBlend in2="effect1_dropShadow_1_346" mode="normal" result="effect2_dropShadow_1_346" />
             <feColorMatrix in="SourceAlpha" result="hardAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
-            <feOffset dx="0.723611" dy="2.89444" />
-            <feGaussianBlur stdDeviation="0.723611" />
+            <feOffset dx="1.09186" dy="4.36746" />
+            <feGaussianBlur stdDeviation="1.09186" />
             <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.05 0" />
-            <feBlend in2="effect2_dropShadow_5_1963" mode="normal" result="effect3_dropShadow_5_1963" />
+            <feBlend in2="effect2_dropShadow_1_346" mode="normal" result="effect3_dropShadow_1_346" />
             <feColorMatrix in="SourceAlpha" result="hardAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
-            <feOffset dx="0.723611" dy="5.06528" />
-            <feGaussianBlur stdDeviation="1.08542" />
+            <feOffset dx="1.09186" dy="7.64305" />
+            <feGaussianBlur stdDeviation="1.6378" />
             <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.01 0" />
-            <feBlend in2="effect3_dropShadow_5_1963" mode="normal" result="effect4_dropShadow_5_1963" />
-            <feBlend in="SourceGraphic" in2="effect4_dropShadow_5_1963" mode="normal" result="shape" />
+            <feBlend in2="effect3_dropShadow_1_346" mode="normal" result="effect4_dropShadow_1_346" />
+            <feBlend in="SourceGraphic" in2="effect4_dropShadow_1_346" mode="normal" result="shape" />
           </filter>
-          <clipPath id="clip0_5_1963">
-            <rect fill="white" height="14.4722" width="14.4722" />
+          <clipPath id="clip0_1_346">
+            <rect fill="white" height="27.2966" width="27.2966" />
           </clipPath>
         </defs>
       </svg>
@@ -2016,261 +2057,346 @@ function Icon1() {
   );
 }
 
-function Paragraph() {
+function RSText1() {
   return (
-    <div className="relative shrink-0" data-name="Paragraph">
+    <div className="flex-[270_0_0] min-w-px relative" data-name="RSText">
+      <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-end relative size-full">
+        <p className="[word-break:break-word] font-['Inter:Semi_Bold',sans-serif] font-semibold leading-[26.205px] not-italic relative shrink-0 text-[#4f2115] text-[17.47px] whitespace-nowrap">Caution (1 out of 3)</p>
+      </div>
+    </div>
+  );
+}
+
+function RSIcon4() {
+  return (
+    <div className="relative shrink-0 size-[21.837px]" data-name="RSIcon">
+      <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 21.8373 21.8373">
+        <g id="RSIcon">
+          <path d={svgPaths.p30e84d60} id="Vector" stroke="var(--stroke-0, #898989)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.81977" />
+        </g>
+      </svg>
+    </div>
+  );
+}
+
+function RSButton3() {
+  return (
+    <div className="content-stretch flex gap-[13.102px] h-[30.572px] items-center relative shrink-0 w-full" data-name="RSButton">
+      <RSIcon3 />
+      <RSText1 />
+      <RSIcon4 />
+    </div>
+  );
+}
+
+function RSImageChickenSalad2() {
+  return (
+    <div className="h-[69.879px] relative shrink-0 w-full" data-name="Image (Chicken Salad)">
+      <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImageChickenSalad2} />
+      <div className="relative size-full" />
+    </div>
+  );
+}
+
+function RSContainer11() {
+  return (
+    <div className="bg-[rgba(255,255,255,0)] relative rounded-[17.47px] shrink-0 size-[69.879px]" data-name="RSContainer">
+      <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start overflow-clip relative rounded-[inherit] size-full">
+        <RSImageChickenSalad2 />
+      </div>
+    </div>
+  );
+}
+
+function RSParagraph2() {
+  return (
+    <div className="relative shrink-0" data-name="RSParagraph">
       <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
-        <p className="[word-break:break-word] font-['Inter',sans-serif] font-bold leading-[13.025px] not-italic relative shrink-0 text-[#4f2115] text-[12.337px] whitespace-nowrap">Requires more information</p>
+        <p className="[word-break:break-word] font-['Inter:Bold',sans-serif] font-bold leading-[26.205px] not-italic relative shrink-0 text-[#cc7a00] text-[17.47px] whitespace-nowrap">Eggs Benedict</p>
       </div>
     </div>
   );
 }
 
-function Container11() {
+function RSContainer13() {
   return (
-    <div className="content-stretch flex gap-[5.789px] h-[15.196px] items-center justify-center pl-[47.026px] pr-[47.035px] relative shrink-0 w-[236.621px]" data-name="Container">
-      <Icon1 />
-      <Paragraph />
+    <div className="content-stretch flex items-center relative shrink-0 w-full" data-name="RSContainer">
+      <RSParagraph2 />
     </div>
   );
 }
 
-function Heading2() {
+function RSParagraph3() {
   return (
-    <div className="h-[17.367px] relative shrink-0 w-full" data-name="Heading 3">
-      <p className="[word-break:break-word] absolute font-['Inter',sans-serif] font-semibold leading-[17.367px] left-0 not-italic text-[#4f2115] text-[12.337px] top-[-1.59px] whitespace-nowrap">1. Does it include raw fish?</p>
+    <div className="content-stretch flex items-center relative shrink-0 w-full" data-name="RSParagraph">
+      <p className="[word-break:break-word] font-['Inter:Bold',sans-serif] font-bold leading-[22.929px] not-italic relative shrink-0 text-[#4f2115] text-[17.47px] whitespace-nowrap" dir="auto">
+        Contains raw eggs
+      </p>
     </div>
   );
 }
 
-function Text() {
+function RSContainer12() {
   return (
-    <div className="relative shrink-0" data-name="Text">
+    <div className="flex-[141.8_0_0] min-w-px relative" data-name="RSContainer">
+      <div className="flex flex-col justify-center size-full">
+        <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col gap-[4.367px] items-start justify-center px-[8.735px] relative size-full">
+          <RSContainer13 />
+          <RSParagraph3 />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function RSMaterialSymbolsCheckRounded1() {
+  return (
+    <div className="relative shrink-0 size-[26.205px]" data-name="material-symbols:check-rounded">
+      <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 26.2047 26.2047">
+        <g id="material-symbols:check-rounded">
+          <path d={svgPaths.p2b002680} fill="var(--fill-0, #FEF0E8)" id="Vector" />
+        </g>
+      </svg>
+    </div>
+  );
+}
+
+function RSButton4() {
+  return (
+    <div className="bg-[#cc7a00] h-[34.94px] relative rounded-[15.286px] shrink-0" data-name="RSButton">
+      <div aria-hidden className="absolute border-[#cc7a00] border-[1.092px] border-solid inset-0 pointer-events-none rounded-[15.286px]" />
+      <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-center justify-center px-[15.286px] py-[8.735px] relative size-full">
+        <RSMaterialSymbolsCheckRounded1 />
+      </div>
+    </div>
+  );
+}
+
+function RSMozzarellaSticksContainer() {
+  return (
+    <div className="bg-[#fef0e8] content-stretch flex items-center p-[9.281px] relative rounded-[21.837px] shrink-0 w-[338.477px]" data-name="Mozzarella Sticks container">
+      <div aria-hidden className="absolute border-[#cc7a00] border-[0.546px] border-solid inset-0 pointer-events-none rounded-[21.837px]" />
+      <RSContainer11 />
+      <RSContainer12 />
+      <RSButton4 />
+    </div>
+  );
+}
+
+function RSImageChickenSalad3() {
+  return (
+    <div className="h-[69.879px] relative shrink-0 w-full" data-name="Image (Chicken Salad)">
+      <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImageChickenSalad3} />
+      <div className="relative size-full" />
+    </div>
+  );
+}
+
+function RSContainer14() {
+  return (
+    <div className="bg-[rgba(255,255,255,0)] relative rounded-[17.47px] shrink-0 size-[69.879px]" data-name="RSContainer">
+      <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start overflow-clip relative rounded-[inherit] size-full">
+        <RSImageChickenSalad3 />
+      </div>
+    </div>
+  );
+}
+
+function RSParagraph4() {
+  return (
+    <div className="relative shrink-0" data-name="RSParagraph">
       <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
-        <p className="[word-break:break-word] font-['Inter',sans-serif] font-bold leading-[11.781px] not-italic relative shrink-0 text-[#4f2115] text-[8.38px] whitespace-nowrap">No</p>
+        <p className="[word-break:break-word] font-['Inter:Bold',sans-serif] font-bold leading-[26.205px] not-italic relative shrink-0 text-[#cc7a00] text-[17.47px] whitespace-nowrap">Pasta Alfredo</p>
       </div>
     </div>
   );
 }
 
-function Text1() {
+function RSContainer16() {
   return (
-    <div className="relative shrink-0" data-name="Text">
+    <div className="content-stretch flex items-center relative shrink-0 w-full" data-name="RSContainer">
+      <RSParagraph4 />
+    </div>
+  );
+}
+
+function RSParagraph5() {
+  return (
+    <div className="content-stretch flex items-center relative shrink-0 w-full" data-name="RSParagraph">
+      <p className="[word-break:break-word] font-['Inter:Bold',sans-serif] font-bold leading-[22.929px] not-italic relative shrink-0 text-[#4f2115] text-[17.47px] whitespace-nowrap">Contains raw eggs</p>
+    </div>
+  );
+}
+
+function RSContainer15() {
+  return (
+    <div className="flex-[141.8_0_0] min-w-px relative" data-name="RSContainer">
+      <div className="flex flex-col justify-center size-full">
+        <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col gap-[4.367px] items-start justify-center px-[8.735px] relative size-full">
+          <RSContainer16 />
+          <RSParagraph5 />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function RSNextButton1() {
+  return (
+    <div className="h-[34.94px] relative rounded-[15.286px] shrink-0 w-[79.706px]" data-name="Next RSButton">
+      <div aria-hidden className="absolute border-[#cc7a00] border-[1.092px] border-solid inset-0 pointer-events-none rounded-[15.286px]" />
+      <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-center justify-center px-[15.286px] py-[8.735px] relative size-full">
+        <p className="[word-break:break-word] font-['Inter:Bold',sans-serif] font-bold leading-[22.929px] not-italic relative shrink-0 text-[#cc7a00] text-[17.47px] text-center w-full">Fix</p>
+      </div>
+    </div>
+  );
+}
+
+function RSSpacer1() {
+  return (
+    <div className="bg-[#fef0e8] content-stretch flex h-[88.441px] items-center p-[9.281px] relative rounded-[21.837px] shrink-0 w-[338.477px]" data-name="RSSpacer">
+      <div aria-hidden className="absolute border-[#cc7a00] border-[0.546px] border-solid inset-0 pointer-events-none rounded-[21.837px]" />
+      <RSContainer14 />
+      <RSContainer15 />
+      <RSNextButton1 />
+    </div>
+  );
+}
+
+function RSImageChickenSalad4() {
+  return (
+    <div className="h-[69.879px] relative shrink-0 w-full" data-name="Image (Chicken Salad)">
+      <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImageChickenSalad4} />
+      <div className="relative size-full" />
+    </div>
+  );
+}
+
+function RSContainer17() {
+  return (
+    <div className="bg-[rgba(255,255,255,0)] relative rounded-[17.47px] shrink-0 size-[69.879px]" data-name="RSContainer">
+      <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start overflow-clip relative rounded-[inherit] size-full">
+        <RSImageChickenSalad4 />
+      </div>
+    </div>
+  );
+}
+
+function RSParagraph6() {
+  return (
+    <div className="relative shrink-0" data-name="RSParagraph">
       <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
-        <p className="[word-break:break-word] font-['Inter',sans-serif] font-bold leading-[10.996px] not-italic relative shrink-0 text-[#4f2115] text-[8.38px] whitespace-nowrap">Not sure</p>
+        <p className="[word-break:break-word] font-['Inter:Bold',sans-serif] font-bold leading-[26.205px] not-italic relative shrink-0 text-[#cc7a00] text-[17.47px] whitespace-nowrap">Sushi (Salmon)</p>
       </div>
     </div>
   );
 }
 
-function Text2() {
+function RSContainer19() {
   return (
-    <div className="relative shrink-0" data-name="Text">
-      <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
-        <p className="[word-break:break-word] font-['Inter',sans-serif] font-bold leading-[16.281px] not-italic relative shrink-0 text-[#fde5de] text-[13.03px] whitespace-nowrap">Yes</p>
+    <div className="content-stretch flex items-center relative shrink-0 w-full" data-name="RSContainer">
+      <RSParagraph6 />
+    </div>
+  );
+}
+
+function RSParagraph7() {
+  return (
+    <div className="content-stretch flex items-center relative shrink-0 w-full" data-name="RSParagraph">
+      <p className="[word-break:break-word] font-['Inter:Bold',sans-serif] font-bold leading-[22.929px] not-italic relative shrink-0 text-[#4f2115] text-[17.47px] whitespace-nowrap">Contains raw fish</p>
+    </div>
+  );
+}
+
+function RSContainer18() {
+  return (
+    <div className="flex-[141.8_0_0] min-w-px relative" data-name="RSContainer">
+      <div className="flex flex-col justify-center size-full">
+        <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col gap-[4.367px] items-start justify-center px-[8.735px] relative size-full">
+          <RSContainer19 />
+          <RSParagraph7 />
+        </div>
       </div>
     </div>
   );
 }
 
-function Container13() {
+function RSNextButton2() {
   return (
-    <div className="gap-x-[5.06527853012085px] gap-y-[5.7888898849487305px] grid grid-cols-[repeat(2,minmax(0,1fr))] grid-rows-[repeat(2,fit-content(100%))] relative shrink-0 w-full" data-name="Container">
-      <div className="bg-[#fef5f5] col-2 content-stretch flex h-[34.878px] items-center justify-center p-[11.94px] relative rounded-[16px] row-1 shrink-0 w-[109.917px]" data-name="Option 3">
-        <div aria-hidden className="absolute border-[#f47c5c] border-[0.362px] border-solid inset-0 pointer-events-none rounded-[16px]" />
-        <Text />
-      </div>
-      <div className="bg-[#fef5f5] col-1 content-stretch flex h-[34.878px] items-center justify-center p-[11.94px] relative rounded-[16px] row-2 shrink-0 w-[109.917px]" data-name="Option 2">
-        <div aria-hidden className="absolute border-[#f47c5c] border-[0.362px] border-solid inset-0 pointer-events-none rounded-[16px]" />
-        <Text1 />
-      </div>
-      <div className="bg-gradient-to-b col-1 content-stretch flex from-[#ff8a65] from-[41%] h-[34.878px] items-center justify-center p-[11.578px] relative rounded-[16px] row-1 shrink-0 to-[#ff7a59] w-[109.917px]" data-name="Question Container">
-        <Text2 />
+    <div className="h-[34.94px] relative rounded-[15.286px] shrink-0 w-[79.706px]" data-name="Next RSButton">
+      <div aria-hidden className="absolute border-[#cc7a00] border-[1.092px] border-solid inset-0 pointer-events-none rounded-[15.286px]" />
+      <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-center justify-center px-[15.286px] py-[8.735px] relative size-full">
+        <p className="[word-break:break-word] font-['Inter:Bold',sans-serif] font-bold leading-[22.929px] not-italic relative shrink-0 text-[#cc7a00] text-[17.47px] text-center w-full">Fix</p>
       </div>
     </div>
   );
 }
 
-function Container12() {
+function RSSpacer2() {
   return (
-    <div className="content-stretch flex flex-col gap-[8.683px] h-[101.595px] items-start relative shrink-0 w-[225.622px]" data-name="Container">
-      <Heading2 />
-      <Container13 />
+    <div className="bg-[#fef0e8] content-stretch flex h-[88.441px] items-center p-[9.281px] relative rounded-[21.837px] shrink-0 w-[338.477px]" data-name="RSSpacer">
+      <div aria-hidden className="absolute border-[#cc7a00] border-[0.546px] border-solid inset-0 pointer-events-none rounded-[21.837px]" />
+      <RSContainer17 />
+      <RSContainer18 />
+      <RSNextButton2 />
     </div>
   );
 }
 
-function Heading3() {
+function RSContainer10() {
   return (
-    <div className="h-[17.367px] relative shrink-0 w-full" data-name="Heading 3">
-      <p className="[word-break:break-word] absolute font-['Inter',sans-serif] font-semibold leading-[17.367px] left-0 not-italic text-[#4f2115] text-[12.337px] top-[-1.59px] whitespace-nowrap">2. Where is it from?</p>
-    </div>
-  );
-}
-
-function Text3() {
-  return (
-    <div className="relative shrink-0" data-name="Text">
-      <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
-        <p className="[word-break:break-word] font-['Inter',sans-serif] font-bold leading-[11.781px] not-italic relative shrink-0 text-[#4f2115] text-[8.38px] whitespace-nowrap">Restaurant</p>
+    <div className="bg-[#f5e1c4] relative rounded-[17.47px] shrink-0 w-full" data-name="RSContainer">
+      <div aria-hidden className="absolute border-[#cc7a00] border-[0.546px] border-solid inset-0 pointer-events-none rounded-[17.47px]" />
+      <div className="flex flex-col items-center justify-center size-full">
+        <div className="content-stretch flex flex-col gap-[17.47px] items-center justify-center p-[17.47px] relative size-full">
+          <RSButton3 />
+          <RSMozzarellaSticksContainer />
+          <RSSpacer1 />
+          <RSSpacer2 />
+        </div>
       </div>
     </div>
   );
 }
 
-function Text4() {
+function RSIcon5() {
   return (
-    <div className="relative shrink-0" data-name="Text">
-      <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
-        <p className="[word-break:break-word] font-['Inter',sans-serif] font-bold leading-[16.281px] not-italic relative shrink-0 text-[#fde5de] text-[13.03px] whitespace-nowrap">Homemade</p>
-      </div>
-    </div>
-  );
-}
-
-function Text5() {
-  return (
-    <div className="relative shrink-0" data-name="Text">
-      <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
-        <p className="[word-break:break-word] font-['Inter',sans-serif] font-bold leading-[10.996px] not-italic relative shrink-0 text-[#4f2115] text-[8.38px] whitespace-nowrap">Not sure</p>
-      </div>
-    </div>
-  );
-}
-
-function Text6() {
-  return (
-    <div className="relative shrink-0" data-name="Text">
-      <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
-        <p className="[word-break:break-word] font-['Inter',sans-serif] font-bold leading-[10.996px] not-italic relative shrink-0 text-[#4f2115] text-[8.38px] whitespace-nowrap">Supermarket</p>
-      </div>
-    </div>
-  );
-}
-
-function Container15() {
-  return (
-    <div className="gap-x-[5.06527853012085px] gap-y-[5.7888898849487305px] grid grid-cols-[repeat(2,minmax(0,1fr))] grid-rows-[repeat(2,fit-content(100%))] relative shrink-0 w-full" data-name="Container">
-      <div className="bg-[#fef5f5] col-1 content-stretch flex h-[34.878px] items-center justify-center p-[11.94px] relative rounded-[16px] row-1 shrink-0 w-[109.917px]" data-name="Option 7">
-        <div aria-hidden className="absolute border-[#f47c5c] border-[0.362px] border-solid inset-0 pointer-events-none rounded-[16px]" />
-        <Text3 />
-      </div>
-      <div className="bg-gradient-to-b col-2 content-stretch flex from-[#ff8a65] from-[41%] h-[34.878px] items-center justify-center p-[11.578px] relative rounded-[16px] row-1 shrink-0 to-[#ff7a59] w-[109.917px]" data-name="Option 6">
-        <Text4 />
-      </div>
-      <div className="bg-[#fef5f5] col-2 content-stretch flex h-[34.878px] items-center justify-center p-[11.94px] relative rounded-[16px] row-2 shrink-0 w-[109.917px]" data-name="Option 5">
-        <div aria-hidden className="absolute border-[#f47c5c] border-[0.362px] border-solid inset-0 pointer-events-none rounded-[16px]" />
-        <Text5 />
-      </div>
-      <div className="bg-[#fef5f5] col-1 content-stretch flex h-[34.878px] items-center justify-center p-[11.94px] relative rounded-[16px] row-2 shrink-0 w-[109.917px]" data-name="Option 4">
-        <div aria-hidden className="absolute border-[#f47c5c] border-[0.362px] border-solid inset-0 pointer-events-none rounded-[16px]" />
-        <Text6 />
-      </div>
-    </div>
-  );
-}
-
-function Container14() {
-  return (
-    <div className="content-stretch flex flex-col gap-[8.683px] items-start relative shrink-0 w-[225.622px]" data-name="Container">
-      <Heading3 />
-      <Container15 />
-    </div>
-  );
-}
-
-function QuestionsContainer() {
-  return (
-    <div className="content-stretch flex flex-col gap-[28.944px] items-start py-[11.578px] relative shrink-0" data-name="Questions Container">
-      <Container12 />
-      <Container14 />
-    </div>
-  );
-}
-
-function Button3() {
-  return (
-    <div className="bg-gradient-to-b content-stretch flex from-[#ff8a65] from-[41.346%] h-[39.863px] items-center justify-center relative rounded-[15.421px] shrink-0 to-[#ff7a59] to-[98.558%] w-[238.409px]" data-name="Button">
-      <p className="[word-break:break-word] font-['Inter',sans-serif] font-semibold leading-[17.367px] not-italic relative shrink-0 text-[#fef5f5] text-[14.472px] text-center text-shadow-[0px_0.724px_1.447px_rgba(0,0,0,0.1),0px_3.618px_3.618px_rgba(0,0,0,0.09),0px_7.236px_4.342px_rgba(0,0,0,0.05),0px_13.025px_5.065px_rgba(0,0,0,0.01),0px_20.261px_5.789px_rgba(0,0,0,0)] whitespace-nowrap">Check</p>
-    </div>
-  );
-}
-
-function Container10() {
-  return (
-    <div className="absolute content-stretch flex flex-col gap-[17.367px] items-center justify-center left-[-60.08px] pb-[23.156px] pt-[11.578px] px-[17.367px] top-[120.28px] w-[284.379px]" data-name="Container">
-      <Heading1 />
-      <Container11 />
-      <QuestionsContainer />
-      <Button3 />
-    </div>
-  );
-}
-
-function Container8() {
-  return (
-    <div className="content-stretch flex flex-col gap-[7.236px] items-center relative shrink-0" data-name="Container">
-      <Container9 />
-      <Container10 />
-    </div>
-  );
-}
-
-function Container7() {
-  return (
-    <div className="bg-[rgba(254,245,245,0)] content-stretch flex flex-col items-start overflow-clip relative rounded-[23247120px] shrink-0 w-[162.813px]" data-name="Container">
-      <Container8 />
-    </div>
-  );
-}
-
-function Heading4() {
-  return (
-    <div className="h-[27.758px] relative shrink-0 w-[252.131px]" data-name="Heading 2">
-      <p className="-translate-x-1/2 [word-break:break-word] absolute font-['Inter',sans-serif] font-bold leading-[27.758px] left-[126.27px] not-italic text-[#4f2115] text-[18.505px] text-center top-[-1.85px] whitespace-nowrap">{`Cap'n Crunch Chocolate`}</p>
-    </div>
-  );
-}
-
-function Icon2() {
-  return (
-    <div className="relative shrink-0 size-[15.421px]" data-name="Icon">
-      <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 15.4209 15.4209">
-        <g clipPath="url(#clip0_5_1933)" id="Icon">
-          <g filter="url(#filter0_dddd_5_1933)" id="Vector">
-            <path d={svgPaths.p2d1b9c00} fill="var(--fill-0, #CC7A00)" />
-            <path d={svgPaths.p2d1b9c00} stroke="var(--stroke-0, #CC7A00)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.28507" />
+    <div className="relative shrink-0 size-[27.297px]" data-name="RSIcon">
+      <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 27.2966 27.2966">
+        <g clipPath="url(#clip0_1_262)" id="RSIcon">
+          <g filter="url(#filter0_dddd_1_262)" id="Vector">
+            <path d={svgPaths.p5b956f0} fill="var(--fill-0, #F44336)" />
+            <path d={svgPaths.p5b956f0} stroke="var(--stroke-0, #F44336)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.81977" />
           </g>
-          <path d="M7.71218 5.78384V8.35398" id="Vector_2" stroke="var(--stroke-0, #FEF5F5)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.28507" />
-          <path d="M7.71218 10.9246H7.71941" id="Vector_3" stroke="var(--stroke-0, #FEF5F5)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.28507" />
+          <path d={svgPaths.pbf48400} id="Vector_2" stroke="var(--stroke-0, white)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.81977" />
         </g>
         <defs>
-          <filter colorInterpolationFilters="sRGB" filterUnits="userSpaceOnUse" height="21.3412" id="filter0_dddd_5_1933" width="18.7723" x="-0.909024" y="0.50684">
+          <filter colorInterpolationFilters="sRGB" filterUnits="userSpaceOnUse" height="34.3937" id="filter0_dddd_1_262" width="34.3937" x="0.274695" y="0.27535">
             <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feColorMatrix in="SourceAlpha" result="hardAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
             <feOffset />
-            <feGaussianBlur stdDeviation="0.385522" />
+            <feGaussianBlur stdDeviation="0.545932" />
             <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0" />
-            <feBlend in2="BackgroundImageFix" mode="normal" result="effect1_dropShadow_5_1933" />
+            <feBlend in2="BackgroundImageFix" mode="normal" result="effect1_dropShadow_1_262" />
             <feColorMatrix in="SourceAlpha" result="hardAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
-            <feOffset dy="1.54209" />
-            <feGaussianBlur stdDeviation="0.771044" />
+            <feOffset dx="1.09186" dy="1.09186" />
+            <feGaussianBlur stdDeviation="1.09186" />
             <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.09 0" />
-            <feBlend in2="effect1_dropShadow_5_1933" mode="normal" result="effect2_dropShadow_5_1933" />
+            <feBlend in2="effect1_dropShadow_1_262" mode="normal" result="effect2_dropShadow_1_262" />
             <feColorMatrix in="SourceAlpha" result="hardAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
-            <feOffset dx="0.771044" dy="3.08417" />
-            <feGaussianBlur stdDeviation="0.771044" />
+            <feOffset dx="3.27559" dy="3.27559" />
+            <feGaussianBlur stdDeviation="1.09186" />
             <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.05 0" />
-            <feBlend in2="effect2_dropShadow_5_1933" mode="normal" result="effect3_dropShadow_5_1933" />
+            <feBlend in2="effect2_dropShadow_1_262" mode="normal" result="effect3_dropShadow_1_262" />
             <feColorMatrix in="SourceAlpha" result="hardAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
-            <feOffset dx="0.771044" dy="5.39731" />
-            <feGaussianBlur stdDeviation="1.15657" />
+            <feOffset dx="5.45932" dy="5.45932" />
+            <feGaussianBlur stdDeviation="1.6378" />
             <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.01 0" />
-            <feBlend in2="effect3_dropShadow_5_1933" mode="normal" result="effect4_dropShadow_5_1933" />
-            <feBlend in="SourceGraphic" in2="effect4_dropShadow_5_1933" mode="normal" result="shape" />
+            <feBlend in2="effect3_dropShadow_1_262" mode="normal" result="effect4_dropShadow_1_262" />
+            <feBlend in="SourceGraphic" in2="effect4_dropShadow_1_262" mode="normal" result="shape" />
           </filter>
-          <clipPath id="clip0_5_1933">
-            <rect fill="white" height="15.4209" width="15.4209" />
+          <clipPath id="clip0_1_262">
+            <rect fill="white" height="27.2966" width="27.2966" />
           </clipPath>
         </defs>
       </svg>
@@ -2278,319 +2404,288 @@ function Icon2() {
   );
 }
 
-function Paragraph1() {
+function RSText2() {
   return (
-    <div className="relative shrink-0" data-name="Paragraph">
+    <div className="flex-[270_0_0] min-w-px relative" data-name="RSText">
+      <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-end relative size-full">
+        <p className="[word-break:break-word] font-['Inter:Semi_Bold',sans-serif] font-semibold leading-[26.205px] not-italic relative shrink-0 text-[#4f2115] text-[17.47px] whitespace-nowrap">Not Safe (1)</p>
+      </div>
+    </div>
+  );
+}
+
+function RSIcon6() {
+  return (
+    <div className="relative shrink-0 size-[21.837px]" data-name="RSIcon">
+      <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 21.8373 21.8373">
+        <g id="RSIcon">
+          <path d={svgPaths.p291d12c0} id="Vector" stroke="var(--stroke-0, #898989)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.81977" />
+        </g>
+      </svg>
+    </div>
+  );
+}
+
+function RSButton5() {
+  return (
+    <div className="content-stretch flex gap-[13.102px] h-[30.572px] items-center relative shrink-0 w-full" data-name="RSButton">
+      <RSIcon5 />
+      <RSText2 />
+      <RSIcon6 />
+    </div>
+  );
+}
+
+function RSImageChickenSalad5() {
+  return (
+    <div className="h-[69.879px] relative shrink-0 w-full" data-name="Image (Chicken Salad)">
+      <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImageChickenSalad5} />
+      <div className="relative size-full" />
+    </div>
+  );
+}
+
+function RSContainer21() {
+  return (
+    <div className="bg-[rgba(255,255,255,0)] relative rounded-[17.47px] shrink-0 size-[69.879px]" data-name="RSContainer">
+      <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start overflow-clip relative rounded-[inherit] size-full">
+        <RSImageChickenSalad5 />
+      </div>
+    </div>
+  );
+}
+
+function RSParagraph8() {
+  return (
+    <div className="relative shrink-0" data-name="RSParagraph">
       <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
-        <p className="[word-break:break-word] font-['Inter',sans-serif] font-bold leading-[18.505px] not-italic relative shrink-0 text-[#cc7a00] text-[12.337px] whitespace-nowrap">High in sugar</p>
+        <p className="[word-break:break-word] font-['Inter:Bold',sans-serif] font-bold leading-[28.612px] not-italic relative shrink-0 text-[#f44336] text-[19.07px] whitespace-nowrap">Tuna Carpaccio</p>
       </div>
     </div>
   );
 }
 
-function Container18() {
+function RSContainer23() {
   return (
-    <div className="content-stretch flex gap-[6.168px] h-[16.192px] items-center justify-center pl-[50.108px] pr-[50.118px] relative shrink-0 w-[252.131px]" data-name="Container">
-      <Icon2 />
-      <Paragraph1 />
+    <div className="content-stretch flex items-center relative shrink-0 w-full" data-name="RSContainer">
+      <RSParagraph8 />
     </div>
   );
 }
 
-function Paragraph2() {
+function RSParagraph9() {
   return (
-    <div className="content-stretch flex items-center px-[39.323px] relative shrink-0" data-name="Paragraph">
-      <p className="[word-break:break-word] font-['Inter',sans-serif] font-semibold leading-[16.192px] not-italic relative shrink-0 text-[#4f2115] text-[12.337px] whitespace-nowrap">Choose one of these options:</p>
+    <div className="content-stretch flex items-center relative shrink-0 w-full" data-name="RSParagraph">
+      <p className="[word-break:break-word] font-['Inter:Bold',sans-serif] font-bold leading-[25.035px] not-italic relative shrink-0 text-[#4f2115] text-[19.07px] whitespace-nowrap">Contains raw fish</p>
     </div>
   );
 }
 
-function ImageCapnCrunchPlainCereal() {
+function RSContainer22() {
   return (
-    <div className="h-[90.983px] relative rounded-[5.686px] shrink-0 w-[63.997px]" data-name="Image (Cap'n Crunch Plain Cereal)">
-      <img alt="" className="absolute inset-0 max-w-none object-contain pointer-events-none rounded-[5.686px] size-full" src={imgImageCapnCrunchPlainCereal} />
-    </div>
-  );
-}
-
-function OptionDescription() {
-  return (
-    <div className="[word-break:break-word] content-stretch flex flex-col font-['Inter',sans-serif] font-bold gap-[12.337px] items-start leading-[17.348px] not-italic relative shrink-0 text-[#4f2115] text-[12.337px]" data-name="Option Description">
-      <p className="min-w-full relative shrink-0 w-[min-content] whitespace-pre-wrap">
-        {`Cheerios `}
-        <br aria-hidden />
-        Original
-      </p>
-      <p className="relative shrink-0 w-[75.562px]">Lower sugar</p>
-    </div>
-  );
-}
-
-function Paragraph3() {
-  return (
-    <div className="content-stretch flex items-center justify-center relative shrink-0" data-name="Paragraph">
-      <OptionDescription />
-    </div>
-  );
-}
-
-function Container21() {
-  return (
-    <div className="content-stretch flex gap-[6.168px] items-center relative shrink-0 w-[154.209px]" data-name="Container">
-      <ImageCapnCrunchPlainCereal />
-      <Paragraph3 />
-    </div>
-  );
-}
-
-function Container20() {
-  return (
-    <div className="absolute bg-[#fef5f5] content-stretch flex flex-col h-[123.367px] items-center justify-center left-0 p-[18.505px] rounded-[12.337px] top-0 w-[174.256px]" data-name="Container">
-      <div aria-hidden className="absolute border-[#f47c5c] border-[0.386px] border-solid inset-0 pointer-events-none rounded-[12.337px]" />
-      <Container21 />
-    </div>
-  );
-}
-
-function ImageCapnCrunchPlainCereal1() {
-  return (
-    <div className="h-[90.983px] relative rounded-[5.686px] shrink-0 w-[63.997px]" data-name="Image (Cap'n Crunch Plain Cereal)">
-      <img alt="" className="absolute inset-0 max-w-none object-contain pointer-events-none rounded-[5.686px] size-full" src={imgImageCapnCrunchPlainCereal1} />
-    </div>
-  );
-}
-
-function OptionDescription1() {
-  return (
-    <div className="[word-break:break-word] content-stretch flex flex-col font-['Inter',sans-serif] font-bold gap-[12.337px] items-start leading-[17.348px] not-italic relative shrink-0 text-[#4f2115] text-[12.337px]" data-name="Option Description">
-      <p className="min-w-full relative shrink-0 w-[min-content] whitespace-pre-wrap" dir="auto">
-        {`Special K `}
-        <br aria-hidden />
-        Original
-      </p>
-      <p className="relative shrink-0 w-[75.562px]">Lower sugar</p>
-    </div>
-  );
-}
-
-function Paragraph4() {
-  return (
-    <div className="content-stretch flex items-center justify-center relative shrink-0" data-name="Paragraph">
-      <OptionDescription1 />
-    </div>
-  );
-}
-
-function Container23() {
-  return (
-    <div className="content-stretch flex gap-[6.168px] items-center relative shrink-0 w-[154.209px]" data-name="Container">
-      <ImageCapnCrunchPlainCereal1 />
-      <Paragraph4 />
-    </div>
-  );
-}
-
-function Container22() {
-  return (
-    <div className="absolute bg-[#fef5f5] content-stretch flex flex-col h-[123.367px] items-center justify-center left-[183.51px] p-[18.505px] rounded-[12.337px] top-0 w-[174.256px]" data-name="Container">
-      <div aria-hidden className="absolute border-[#f47c5c] border-[0.386px] border-solid inset-0 pointer-events-none rounded-[12.337px]" />
-      <Container23 />
-    </div>
-  );
-}
-
-function ImageCapnCrunchPlainCereal2() {
-  return (
-    <div className="h-[90.983px] relative rounded-[5.686px] shrink-0 w-[63.997px]" data-name="Image (Cap'n Crunch Plain Cereal)">
-      <img alt="" className="absolute inset-0 max-w-none object-contain pointer-events-none rounded-[5.686px] size-full" src={imgImageCapnCrunchPlainCereal2} />
-    </div>
-  );
-}
-
-function OptionDescription2() {
-  return (
-    <div className="[word-break:break-word] content-stretch flex flex-col font-['Inter',sans-serif] font-bold gap-[12.337px] items-start leading-[17.348px] not-italic relative shrink-0 text-[#4f2115] text-[12.337px]" data-name="Option Description">
-      <p className="min-w-full relative shrink-0 w-[min-content]">Shreddies</p>
-      <p className="relative shrink-0 w-[75.562px]">
-        <br aria-hidden />
-        Lower sugar
-      </p>
-    </div>
-  );
-}
-
-function Paragraph5() {
-  return (
-    <div className="content-stretch flex items-center justify-center relative shrink-0" data-name="Paragraph">
-      <OptionDescription2 />
-    </div>
-  );
-}
-
-function Container25() {
-  return (
-    <div className="content-stretch flex gap-[6.168px] items-center relative shrink-0 w-[154.209px]" data-name="Container">
-      <ImageCapnCrunchPlainCereal2 />
-      <Paragraph5 />
-    </div>
-  );
-}
-
-function Container24() {
-  return (
-    <div className="absolute bg-[#fef5f5] content-stretch flex flex-col h-[123.367px] items-center justify-center left-[367.02px] p-[18.505px] rounded-[12.337px] top-0 w-[174.256px]" data-name="Container">
-      <div aria-hidden className="absolute border-[#f47c5c] border-[0.386px] border-solid inset-0 pointer-events-none rounded-[12.337px]" />
-      <Container25 />
-    </div>
-  );
-}
-
-function ImageCapnCrunchPlainCereal3() {
-  return (
-    <div className="h-[90.983px] relative rounded-[5.686px] shrink-0 w-[63.997px]" data-name="Image (Cap'n Crunch Plain Cereal)">
-      <img alt="" className="absolute inset-0 max-w-none object-contain pointer-events-none rounded-[5.686px] size-full" src={imgImageCapnCrunchPlainCereal3} />
-    </div>
-  );
-}
-
-function OptionDescription3() {
-  return (
-    <div className="[word-break:break-word] content-stretch flex flex-col font-['Inter',sans-serif] font-bold gap-[12.337px] items-start leading-[17.348px] not-italic relative shrink-0 text-[#4f2115] text-[12.337px]" data-name="Option Description">
-      <p className="min-w-full relative shrink-0 w-[min-content]">Weetabix</p>
-      <p className="relative shrink-0 w-[75.562px]">
-        High fibre
-        <br aria-hidden />
-        Lower sugar
-      </p>
-    </div>
-  );
-}
-
-function Paragraph6() {
-  return (
-    <div className="content-stretch flex h-[64.768px] items-end justify-center relative shrink-0" data-name="Paragraph">
-      <OptionDescription3 />
-    </div>
-  );
-}
-
-function Container27() {
-  return (
-    <div className="content-stretch flex gap-[6.168px] items-center relative shrink-0 w-[154.209px]" data-name="Container">
-      <ImageCapnCrunchPlainCereal3 />
-      <Paragraph6 />
-    </div>
-  );
-}
-
-function Container26() {
-  return (
-    <div className="absolute bg-[#fef5f5] content-stretch flex flex-col h-[123.367px] items-center justify-center left-[550.53px] p-[18.505px] rounded-[12.337px] top-0 w-[174.256px]" data-name="Container">
-      <div aria-hidden className="absolute border-[#f47c5c] border-[0.386px] border-solid inset-0 pointer-events-none rounded-[12.337px]" />
-      <Container27 />
-    </div>
-  );
-}
-
-function Frame2() {
-  return (
-    <div className="h-[123.367px] relative shrink-0 w-[724.781px]">
-      <Container20 />
-      <Container22 />
-      <Container24 />
-      <Container26 />
-    </div>
-  );
-}
-
-function Heading5() {
-  return <div className="h-[20.818px] relative shrink-0 w-[309.034px]" data-name="Heading 3" />;
-}
-
-function Container19() {
-  return (
-    <div className="content-stretch flex gap-[9.253px] items-start relative shrink-0 w-[252.131px]" data-name="Container">
-      <Frame2 />
-      <Heading5 />
-    </div>
-  );
-}
-
-function Container17() {
-  return (
-    <div className="content-stretch flex flex-col gap-[18.505px] items-center justify-center pb-[24.673px] px-[18.505px] relative shrink-0 w-[303.02px]" data-name="Container">
-      <Heading4 />
-      <Container18 />
-      <Paragraph2 />
-      <Container19 />
-    </div>
-  );
-}
-
-function Container16() {
-  return (
-    <div className="absolute content-stretch flex flex-col items-center left-[-71.65px] top-[143.41px]" data-name="Container">
-      <Container17 />
-    </div>
-  );
-}
-
-function FoodItemDetails() {
-  return (
-    <div className="content-stretch flex flex-col items-center pb-[24.673px] relative shrink-0" data-name="Food Item Details">
-      <Container7 />
-      <Container16 />
-    </div>
-  );
-}
-
-function AppFrame() {
-  return (
-    <div className="absolute content-stretch flex flex-col gap-[12.337px] h-[687px] items-center left-[11px] rounded-[36px] top-[8px] w-[304px]" data-name="App Frame">
-      <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-[36px]">
-        <img alt="" className="absolute h-[111%] left-[-10.3%] max-w-none top-[4.08%] w-[120.36%]" src={imgAppFrame} />
+    <div className="flex-[141.8_0_0] min-w-px relative" data-name="RSContainer">
+      <div className="flex flex-col justify-center size-full">
+        <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col gap-[4.367px] items-start justify-center px-[8.735px] relative size-full">
+          <RSContainer23 />
+          <RSParagraph9 />
+        </div>
       </div>
-      <StatusBar />
-      <Container6 />
-      <FoodItemDetails />
     </div>
   );
 }
 
-function AppScreen() {
+function RSContainer20() {
   return (
-    <div className="absolute content-stretch flex flex-col gap-[10px] h-[703px] items-start left-[633px] p-[10px] top-0 w-[322.999px]" data-name="App Screen">
-      <Group />
-      <AppFrame />
+    <div className="bg-[#fdd9d7] relative rounded-[17.47px] shrink-0 w-full" data-name="RSContainer">
+      <div aria-hidden className="absolute border-[#f44336] border-[0.546px] border-solid inset-0 pointer-events-none rounded-[17.47px]" />
+      <div className="flex flex-col items-center justify-center size-full">
+        <div className="content-stretch flex flex-col gap-[17.47px] items-center justify-center p-[17.47px] relative size-full">
+          <RSButton5 />
+          <div className="bg-[#fef0e8] content-stretch flex h-[88.441px] items-center p-[9.281px] relative rounded-[21.837px] shrink-0 w-[338.477px]" data-name="RSSpacer">
+            <div aria-hidden className="absolute border-[#f44336] border-[0.546px] border-solid inset-0 pointer-events-none rounded-[21.837px]" />
+            <RSContainer21 />
+            <RSContainer22 />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
 
-function PhoneUi() {
+function RSBottomButtonsContainer() {
   return (
-    <div className="absolute h-[703px] left-[360px] top-[98px] w-[955.999px]" data-name="Phone UI">
-      <OnboardingSection />
-      <AppScreen />
+    <div className="content-stretch flex flex-col items-center pb-[26.205px] relative shrink-0 w-full" data-name="Bottom buttons container">
+      <RSContainer20 />
     </div>
   );
 }
 
-function MainSection() {
+function RSBottomButtons() {
   return (
-    <div className="bg-white content-stretch flex h-[900px] items-center justify-center relative shrink-0 w-full" data-name="Main Section">
-      <PhoneUi />
+    <div className="content-stretch flex gap-[26.205px] items-center relative shrink-0 w-[357.039px]" data-name="Bottom buttons">
+      <div className="bg-gradient-to-b content-stretch flex from-[#ff8a65] from-[41.346%] h-[63.328px] items-center justify-center relative rounded-[20px] shrink-0 to-[#ff7a59] to-[98.558%] w-[182.341px]" data-name="Review button">
+        <p className="[word-break:break-word] font-['Inter:Semi_Bold',sans-serif] font-semibold leading-[29.48px] not-italic relative shrink-0 text-[#fef0e8] text-[19.65px] text-center whitespace-nowrap">Review</p>
+      </div>
+      <div className="bg-gradient-to-b content-stretch flex from-[#fef0e8] h-[60.052px] items-center justify-center p-[0.546px] relative rounded-[16px] shrink-0 to-[#fde5de] w-[149.585px]" data-name="Scan more button">
+        <div aria-hidden className="absolute border-[#f47c5c] border-[0.546px] border-solid inset-0 pointer-events-none rounded-[16px]" />
+        <p className="[word-break:break-word] font-['Inter:Bold',sans-serif] font-bold leading-[28.612px] not-italic relative shrink-0 text-[#4f2115] text-[21.46px] text-center whitespace-nowrap">Scan more</p>
+      </div>
     </div>
   );
 }
 
-function Frame() {
+function RSContainer2() {
   return (
-    <div className="content-stretch flex flex-col items-start mb-[-1px] relative shrink-0 w-full" data-name="Frame">
-      <HeaderImage />
-      <MainSection />
+    <div className="content-stretch flex flex-col gap-[17.47px] items-start justify-center p-[26.205px] relative shrink-0 w-[425.827px]" data-name="RSContainer">
+      <RSContainer3 />
+      <RSContainer10 />
+      <RSBottomButtonsContainer />
+      <RSBottomButtons />
     </div>
   );
 }
+
+function RSInnerContainer() {
+  return (
+    <div className="content-stretch flex flex-col items-center justify-center relative shrink-0 w-full" data-name="Inner RSContainer">
+      <RSContainer2 />
+    </div>
+  );
+}
+
+function RSMaterialSymbolsHomeRounded() {
+  return (
+    <div className="h-[30.572px] relative shrink-0 w-[46.95px]" data-name="material-symbols:home-rounded">
+      <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 46.9501 29.8556">
+        <g clipPath="url(#clip0_1_275)" id="material-symbols:home-rounded">
+          <path d={svgPaths.pcb0500} fill="var(--fill-0, #F47C5C)" id="Vector" />
+        </g>
+        <defs>
+          <clipPath id="clip0_1_275">
+            <rect fill="white" height="29.8556" width="46.9501" />
+          </clipPath>
+        </defs>
+      </svg>
+    </div>
+  );
+}
+
+function RSHomeTab() {
+  return (
+    <div className="content-stretch flex flex-col gap-[4.367px] h-[75.339px] items-center justify-center overflow-clip px-[8.735px] py-[1.092px] relative rounded-[24px] shrink-0 w-[86.257px]" data-name="Home Tab">
+      <RSMaterialSymbolsHomeRounded />
+      <p className="[word-break:break-word] font-['Inter:Bold',sans-serif] font-bold leading-[22.651px] not-italic relative shrink-0 text-[#f47c5c] text-[16.69px] text-center whitespace-nowrap" dir="auto">
+        Home
+      </p>
+    </div>
+  );
+}
+
+function RSHistoryIcon() {
+  return (
+    <div className="relative shrink-0 size-[27.297px]" data-name="History RSIcon">
+      <div className="absolute inset-[-0.15%_0_0_0]">
+        <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 27.2966 27.2133">
+          <g id="History RSIcon">
+            <path d={svgPaths.p2e2b4e00} fill="var(--fill-0, #4F2115)" id="Vector" />
+            <path d={svgPaths.p26b76300} fill="var(--fill-0, #4F2115)" id="Vector_2" />
+          </g>
+        </svg>
+      </div>
+    </div>
+  );
+}
+
+function RSHistoryTab() {
+  return (
+    <div className="content-stretch flex flex-col gap-[4.367px] h-[75.339px] items-center justify-center overflow-clip px-[8.735px] py-[1.092px] relative rounded-[24px] shrink-0 w-[86.257px]" data-name="History Tab">
+      <RSHistoryIcon />
+      <p className="[word-break:break-word] font-['Inter:Bold',sans-serif] font-bold leading-[22.651px] not-italic relative shrink-0 text-[#4f2115] text-[16.69px] text-center whitespace-nowrap" dir="auto">
+        History
+      </p>
+    </div>
+  );
+}
+
+function RSMageUser() {
+  return (
+    <div className="relative shrink-0 size-[27.297px]" data-name="mage:user">
+      <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 27.2966 27.2966">
+        <g id="mage:user">
+          <path d={svgPaths.p3c3dd800} id="Vector" stroke="var(--stroke-0, #4F2115)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.63779" />
+        </g>
+      </svg>
+    </div>
+  );
+}
+
+function RSProfileTab() {
+  return (
+    <div className="content-stretch flex flex-col gap-[4.367px] h-[75.339px] items-center justify-center overflow-clip px-[8.735px] py-[1.092px] relative rounded-[24px] shrink-0 w-[86.257px]" data-name="Profile Tab">
+      <RSMageUser />
+      <p className="[word-break:break-word] font-['Inter:Bold',sans-serif] font-bold leading-[22.651px] not-italic relative shrink-0 text-[#4f2115] text-[16.69px] text-center whitespace-nowrap" dir="auto">
+        Profile
+      </p>
+    </div>
+  );
+}
+
+function RSProiconsSearch() {
+  return (
+    <div className="relative shrink-0 size-[27.297px]" data-name="proicons:search">
+      <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 27.2966 27.2966">
+        <g id="proicons:search">
+          <path d={svgPaths.p6538c00} id="Vector" stroke="var(--stroke-0, #4F2115)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.70604" />
+        </g>
+      </svg>
+    </div>
+  );
+}
+
+function RSSearchTab() {
+  return (
+    <div className="content-stretch flex flex-col gap-[4.367px] h-[75.339px] items-center justify-center overflow-clip px-[8.735px] py-[1.092px] relative rounded-[24px] shrink-0 w-[86.257px]" data-name="Search Tab">
+      <RSProiconsSearch />
+      <p className="[word-break:break-word] font-['Inter:Bold',sans-serif] font-bold leading-[22.651px] not-italic relative shrink-0 text-[#4f2115] text-[16.69px] text-center whitespace-nowrap" dir="auto">
+        Search
+      </p>
+    </div>
+  );
+}
+
+function RSHeader() {
+  return (
+    <div className="content-stretch flex flex-col items-center relative shrink-0 w-full" data-name="RSHeader">
+      <RSContainer1 />
+      <RSInnerContainer />
+      <div className="bg-[rgba(254,238,229,0.4)] content-stretch flex gap-[8.735px] items-center justify-center overflow-clip px-[8.735px] py-[4.367px] relative rounded-[28px] shadow-[43.675px_197.627px_56.777px_0px_rgba(0,0,0,0),27.297px_126.656px_51.318px_0px_rgba(0,0,0,0.01),15.286px_70.971px_43.675px_0px_rgba(0,0,0,0.05),6.551px_31.664px_32.756px_0px_rgba(0,0,0,0.09),2.184px_7.643px_17.47px_0px_rgba(0,0,0,0.1)] shrink-0 w-[393.071px]">
+        <RSHomeTab />
+        <RSHistoryTab />
+        <RSProfileTab />
+        <RSSearchTab />
+      </div>
+    </div>
+  );
+}
+
+function RSContainer() {
+  return (
+    <div className="absolute content-stretch flex flex-col items-center justify-center left-[3.27px] pb-[34.94px] top-[69.38px] w-[430.982px]" data-name="RSContainer">
+      <RSHeader />
+    </div>
+  );
+}
+
+function RSFrame() {
+  return (
+    <div className="absolute bg-[#fee0d2] h-[1154.184px] left-[9.8px] overflow-clip rounded-bl-[32.65px] rounded-br-[32.65px] rounded-tl-[52.31px] rounded-tr-[52.31px] shadow-[64px_529px_149px_0px_rgba(0,0,0,0),41px_339px_136px_0px_rgba(0,0,0,0.01),23px_191px_115px_0px_rgba(0,0,0,0.03),10px_85px_85px_0px_rgba(0,0,0,0.04),3px_21px_47px_0px_rgba(0,0,0,0.05)] top-[8.16px] w-[445.675px]" data-name="RSFrame">
+      <RSBackgroundFrame1 />
+      <RSStatusBar />
+      <RSContainer />
+    </div>
+  );
+}
+
 
 function FinalStatementTitle() {
   return (
@@ -3204,9 +3299,9 @@ function Container37() {
 
 function Container36() {
   return (
-    <div className="flex-[141.8_0_0] relative" style={{ minWidth: "175.58px" }} data-name="Container">
+    <div className="flex-[141.8_0_0] min-w-px relative" data-name="Container">
       <div className="flex flex-col justify-center size-full">
-        <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col gap-[4.367px] items-start justify-center px-[6px] relative size-full">
+        <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col gap-[4.367px] items-start justify-center px-[8.735px] relative size-full">
           <Container37 />
         </div>
       </div>
@@ -3216,10 +3311,10 @@ function Container36() {
 
 function NextButton() {
   return (
-    <div className="h-[34.94px] relative rounded-[17.47px] shrink-0" data-name="Next Button">
-      <div aria-hidden className="absolute border-[#419247] border-[1.192px] border-solid inset-0 pointer-events-none rounded-[17.47px]" />
-      <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-center justify-center px-[7px] py-[8.735px] relative h-full">
-        <p className="[word-break:break-word] font-['Inter',sans-serif] font-bold leading-[25.035px] not-italic relative shrink-0 text-[#419247] text-[19.07px] text-center whitespace-nowrap">Get</p>
+    <div className="h-[34.94px] relative rounded-[15.286px] shrink-0 w-[79.706px]" data-name="Next Button">
+      <div aria-hidden className="absolute border-[#419247] border-[1.192px] border-solid inset-0 pointer-events-none rounded-[15.286px]" />
+      <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-center justify-center px-[15.286px] py-[8.735px] relative size-full">
+        <p className="[word-break:break-word] font-['Inter',sans-serif] font-bold leading-[25.035px] not-italic relative shrink-0 text-[#419247] text-[19.07px] text-center w-full">Get</p>
       </div>
     </div>
   );
@@ -3233,7 +3328,7 @@ function Container31() {
         <div className="content-stretch flex flex-col gap-[17.47px] items-center justify-center p-[17.47px] relative size-full">
           <Button5 />
           <Spacer />
-          <div className="bg-[#fef0e8] content-stretch flex gap-[10px] h-[88.441px] items-center p-[9.281px] relative rounded-[21.837px] shrink-0 w-[338.477px]" data-name="Mozzarella Sticks container">
+          <div className="bg-[#fef0e8] content-stretch flex h-[88.441px] items-center p-[9.281px] relative rounded-[21.837px] shrink-0 w-[338.477px]" data-name="Mozzarella Sticks container">
             <div aria-hidden className="absolute border-[#419247] border-[0.546px] border-solid inset-0 pointer-events-none rounded-[21.837px]" />
             <Container35 />
             <Container36 />
@@ -4091,7 +4186,7 @@ function MainContent() {
       <OnboardingDescription />
       <MainContainer />
       <MainFrame />
-      <Frame />
+      <RSFrame />
       <BackgroundFrame />
       <MainImage1 />
       <DeviceImage />
