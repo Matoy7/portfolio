@@ -3188,7 +3188,7 @@ function Paragraph8() {
   return (
     <div className="relative shrink-0" data-name="Paragraph">
       <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
-        <p className="[word-break:break-word] font-['Inter',sans-serif] font-bold leading-[28.612px] not-italic relative shrink-0 text-[#419247] text-[19.07px] whitespace-nowrap">Mozzarella Sticks</p>
+        <p className="[word-break:break-word] font-['Inter',sans-serif] font-bold leading-[28.612px] not-italic relative shrink-0 text-[#419247] text-[19.07px] whitespace-nowrap">Mozza Sticks</p>
       </div>
     </div>
   );
