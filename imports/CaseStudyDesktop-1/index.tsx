@@ -3111,6 +3111,69 @@ function DeviceImage() {
   );
 }
 
+function BarcodeSection() {
+  return (
+    <div className="absolute content-stretch flex flex-col gap-[25px] items-start left-[1359px] top-[111px] w-[561.363px]" data-name="Barcode Section">
+      <p className="[word-break:break-word] font-['Sura',sans-serif] font-bold leading-[0] min-w-full not-italic relative shrink-0 text-[#fef0e8] text-[0px] w-[min-content]" dir="auto">
+        <span className="leading-[85px] text-[92px]">
+          Scan the
+          <br aria-hidden />
+        </span>
+        <span className="leading-[85px] text-[#ff8a65] text-[92px]">barcode</span>
+        <span className="leading-[85px] text-[92px]">
+          <br aria-hidden />
+          to verify
+          <br aria-hidden />
+          {`its safety `}
+        </span>
+      </p>
+      <div className="h-[656.125px] relative shrink-0 w-[314.512px]" data-name="Barcode">
+        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgBarcode} />
+      </div>
+    </div>
+  );
+}
+
+function HeaderImage() {
+  return (
+    <div className="content-stretch flex flex-col h-[900px] items-start relative shrink-0 w-full" data-name="Header Image">
+      <div aria-hidden className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 overflow-hidden">
+          <img alt="" className="absolute h-[113.39%] left-[-2.65%] max-w-none top-[-13.38%] w-[101.3%]" src={imgHeaderImage} />
+        </div>
+        <div className="absolute bg-[rgba(0,0,0,0.2)] inset-0" />
+      </div>
+      <BarcodeSection />
+    </div>
+  );
+}
+
+function OnboardingDetails2() {
+  return (
+    <div className="[word-break:break-word] content-stretch flex flex-col gap-[28px] h-[308px] items-start not-italic relative shrink-0 text-[#4f2115] w-[633px]" data-name="Onboarding details">
+      <p className="font-['Sura',sans-serif] font-bold leading-[0] min-w-full relative shrink-0 text-[92px] w-[min-content] whitespace-pre-wrap" dir="auto">
+        <span className="leading-[85px] text-[#cb654a]">Replace</span>
+        <span className="leading-[85px]">
+          {` `}
+          <br aria-hidden />
+          with a safer alternative
+        </span>
+      </p>
+      <p className="font-['Poppins',sans-serif] font-bold leading-[30.236px] relative shrink-0 text-[22px] w-[574px]" dir="auto">
+        Choose from over 1,000 safer alternative items personalized to your dietary needs and preferences.
+      </p>
+    </div>
+  );
+}
+
+function OnboardingSection() {
+  return (
+    <div className="absolute content-stretch flex items-center left-0 top-[197.5px]" data-name="Onboarding Section">
+      <OnboardingDetails2 />
+    </div>
+  );
+}
+
 function MainContent() {
   return (
     <div className="content-stretch flex flex-col items-end relative shrink-0 w-full" data-name="Main content">
@@ -3125,6 +3188,7 @@ function MainContent() {
       <OnboardingDescription />
       <MainContainer />
       <MainFrame />
+      <Frame />
       <BackgroundFrame />
       <MainImage1 />
       <DeviceImage />
