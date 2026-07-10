@@ -565,7 +565,7 @@ function MobileAtAGlance() {
               )}
               label="Hold a Certification in"
               value="UI UX"
-              caption="Over 140 hours at Graphitech College"
+              caption="Over 240 hours at Graphitech College"
             />
           </div>
           <div style={{ borderBottom: "1px solid rgba(255,255,255,0.1)" }}>

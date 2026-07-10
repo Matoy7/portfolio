@@ -480,7 +480,7 @@ function AtAGlanceSection() {
                 }
                 label="Hold a Certification in"
                 value="UI UX"
-                caption={<>Over 140 hours at<br aria-hidden />Graphitech College</>}
+                caption={<>Over 240 hours at<br aria-hidden />Graphitech College</>}
               />
 
               {/* B.Sc Computer Science */}
