@@ -215,9 +215,10 @@ function StickyNav({
           <span
             key={item.label}
             onClick={item.onClick}
-            className="cursor-pointer text-[#161616] transition-all duration-200 hover:opacity-60 hover:-translate-y-0.5 inline-block"
+            className="cursor-pointer text-[#161616] relative group"
           >
             {item.label}
+            <span className="absolute left-1/2 -translate-x-1/2 bottom-[-3px] h-[2px] bg-[#161616] w-[92%] scale-x-0 group-hover:scale-x-100 transition-transform duration-[220ms] ease-in-out origin-left" />
           </span>
         ))}
       </div>
