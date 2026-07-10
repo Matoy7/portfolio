@@ -3398,7 +3398,7 @@ function MaterialSymbolsCheckRounded1() {
 function Button8() {
   return (
     <div className="bg-[#cc7a00] h-[34.94px] relative rounded-[15.286px] shrink-0" data-name="Button">
-      <div aria-hidden className="absolute border-[#419247] border-[1.092px] border-solid inset-0 pointer-events-none rounded-[15.286px]" />
+      <div aria-hidden className="absolute inset-0 pointer-events-none rounded-[15.286px]" />
       <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-center justify-center px-[15.286px] py-[8.735px] relative size-full">
         <MaterialSymbolsCheckRounded1 />
       </div>
