@@ -145,21 +145,24 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
           >
             <span
               onClick={onScrollWork}
-              className="relative shrink-0 text-[#161616] cursor-pointer transition-all duration-200 hover:opacity-60 hover:-translate-y-0.5 inline-block"
+              className="relative shrink-0 text-[#161616] cursor-pointer group"
             >
               Work
+              <span className="absolute left-1/2 -translate-x-1/2 bottom-[-3px] h-[2px] bg-[#161616] w-[92%] scale-x-0 group-hover:scale-x-100 transition-transform duration-[220ms] ease-in-out origin-left" />
             </span>
             <span
               onClick={onNavigateAbout}
-              className="relative shrink-0 text-[#161616] cursor-pointer transition-all duration-200 hover:opacity-60 hover:-translate-y-0.5 inline-block"
+              className="relative shrink-0 text-[#161616] cursor-pointer group"
             >
               About
+              <span className="absolute left-1/2 -translate-x-1/2 bottom-[-3px] h-[2px] bg-[#161616] w-[92%] scale-x-0 group-hover:scale-x-100 transition-transform duration-[220ms] ease-in-out origin-left" />
             </span>
             <span
               onClick={onScrollContact}
-              className="relative shrink-0 text-[#161616] cursor-pointer transition-all duration-200 hover:opacity-60 hover:-translate-y-0.5 inline-block"
+              className="relative shrink-0 text-[#161616] cursor-pointer group"
             >
               Contact
+              <span className="absolute left-1/2 -translate-x-1/2 bottom-[-3px] h-[2px] bg-[#161616] w-[92%] scale-x-0 group-hover:scale-x-100 transition-transform duration-[220ms] ease-in-out origin-left" />
             </span>
           </div>
         </div>
