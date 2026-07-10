@@ -3174,6 +3174,32 @@ function OnboardingSection() {
   );
 }
 
+function PhoneUi() {
+  return (
+    <div className="absolute h-[703px] left-[360px] top-[98px] w-[955.999px]" data-name="Phone UI">
+      <OnboardingSection />
+      <AppScreen />
+    </div>
+  );
+}
+
+function MainSection() {
+  return (
+    <div className="bg-white content-stretch flex h-[900px] items-center justify-center relative shrink-0 w-full" data-name="Main Section">
+      <PhoneUi />
+    </div>
+  );
+}
+
+function Frame() {
+  return (
+    <div className="content-stretch flex flex-col items-start mb-[-1px] relative shrink-0 w-full" data-name="Frame">
+      <HeaderImage />
+      <MainSection />
+    </div>
+  );
+}
+
 function MainContent() {
   return (
     <div className="content-stretch flex flex-col items-end relative shrink-0 w-full" data-name="Main content">
