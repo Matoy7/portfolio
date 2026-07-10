@@ -1623,8 +1623,974 @@ function MainFrame() {
   );
 }
 
+function BarcodeSection() {
+  return (
+    <div className="absolute content-stretch flex flex-col gap-[25px] items-start left-[1359px] top-[111px] w-[561.363px]" data-name="Barcode Section">
+      <p className="[word-break:break-word] font-['Sura',sans-serif] font-bold leading-[0] min-w-full not-italic relative shrink-0 text-[#fef0e8] text-[0px] w-[min-content]" dir="auto">
+        <span className="leading-[85px] text-[92px]">
+          Scan the
+          <br aria-hidden />
+        </span>
+        <span className="leading-[85px] text-[#ff8a65] text-[92px]">barcode</span>
+        <span className="leading-[85px] text-[92px]">
+          <br aria-hidden />
+          to verify
+          <br aria-hidden />
+          {`its safety `}
+        </span>
+      </p>
+      <div className="h-[656.125px] relative shrink-0 w-[314.512px]" data-name="Barcode">
+        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgBarcode} />
+      </div>
+    </div>
+  );
+}
 
+function HeaderImage() {
+  return (
+    <div className="content-stretch flex flex-col h-[900px] items-start relative shrink-0 w-full" data-name="Header Image">
+      <div aria-hidden className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 overflow-hidden">
+          <img alt="" className="absolute h-[113.39%] left-[-2.65%] max-w-none top-[-13.38%] w-[101.3%]" src={imgHeaderImage} />
+        </div>
+        <div className="absolute bg-[rgba(0,0,0,0.2)] inset-0" />
+      </div>
+      <BarcodeSection />
+    </div>
+  );
+}
 
+function OnboardingDetails2() {
+  return (
+    <div className="[word-break:break-word] content-stretch flex flex-col gap-[28px] h-[308px] items-start not-italic relative shrink-0 text-[#4f2115] w-[633px]" data-name="Onboarding details">
+      <p className="font-['Sura',sans-serif] font-bold leading-[0] min-w-full relative shrink-0 text-[92px] w-[min-content] whitespace-pre-wrap" dir="auto">
+        <span className="leading-[85px] text-[#cb654a]">Replace</span>
+        <span className="leading-[85px]">
+          {` `}
+          <br aria-hidden />
+          with a safer alternative
+        </span>
+      </p>
+      <p className="font-['Poppins',sans-serif] font-bold leading-[30.236px] relative shrink-0 text-[22px] w-[574px]" dir="auto">
+        Choose from over 1,000 safer alternative items personalized to your dietary needs and preferences.
+      </p>
+    </div>
+  );
+}
+
+function OnboardingSection() {
+  return (
+    <div className="absolute content-stretch flex items-center left-0 top-[197.5px]" data-name="Onboarding Section">
+      <OnboardingDetails2 />
+    </div>
+  );
+}
+
+function Group1() {
+  return (
+    <div className="absolute h-[54.685px] left-[14.73px] mix-blend-screen top-[0.05px] w-[307.308px]" data-name="Group">
+      <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 307.308 54.6847">
+        <g id="Group" opacity="0.7" style={{ mixBlendMode: "screen" }}>
+          <path d={svgPaths.p23f78c80} fill="var(--fill-0, #1A1A1A)" id="Vector" />
+        </g>
+      </svg>
+    </div>
+  );
+}
+
+function Group2() {
+  return (
+    <div className="absolute h-[694.225px] left-[6.84px] top-[4.39px] w-[311.984px]" data-name="Group">
+      <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 311.984 694.225">
+        <g id="Group">
+          <path d={svgPaths.p3a30960} fill="var(--fill-0, #1A1A1A)" id="Vector" />
+          <path d={svgPaths.p11316840} fill="var(--fill-0, #1A1A1A)" id="Vector_2" />
+        </g>
+      </svg>
+    </div>
+  );
+}
+
+function Group3() {
+  return (
+    <div className="absolute h-[27.451px] left-0 top-[87.2px] w-[2.645px]" data-name="Group">
+      <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 2.64495 27.4512">
+        <g id="Group">
+          <path d={svgPaths.p24649e80} fill="var(--fill-0, #1A1A1A)" id="Vector" />
+          <path d={svgPaths.p2bf8300} fill="var(--fill-0, #1A1A1A)" id="Vector_2" />
+          <path d={svgPaths.p1a112700} fill="var(--fill-0, #1A1A1A)" id="Vector_3" />
+        </g>
+      </svg>
+    </div>
+  );
+}
+
+function Camera() {
+  return (
+    <div className="absolute contents left-[2.55px] top-[2.7px]" data-name="Camera">
+      <div className="absolute h-[5.403px] left-0 top-0 w-[5.14px]" data-name="Vector">
+        <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 5.14021 5.40294">
+          <path d={svgPaths.p29785f00} fill="var(--fill-0, #1A1A1A)" id="Vector" />
+        </svg>
+      </div>
+      <div className="absolute h-[5.403px] left-0 mix-blend-multiply top-0 w-[5.14px]" data-name="Vector">
+        <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 5.14021 5.40294">
+          <g id="Vector" style={{ mixBlendMode: "multiply" }}>
+            <path d={svgPaths.p29785f00} fill="var(--fill-0, #1A1A1A)" />
+          </g>
+        </svg>
+      </div>
+    </div>
+  );
+}
+
+function Group4() {
+  return (
+    <div className="absolute contents left-[182.74px] top-[21.23px]" data-name="Group">
+      <div className="absolute h-[10.806px] left-0 top-0 w-[10.28px]" data-name="Vector">
+        <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 10.2804 10.8059">
+          <path d={svgPaths.p324a8d00} fill="var(--fill-0, #1A1A1A)" id="Vector" />
+        </svg>
+      </div>
+      <div className="absolute bg-[#1a1a1a] h-[10.878px] left-[0.22px] top-[0.29px] w-[10.349px]" data-name="Rectangle" />
+      <div className="absolute h-[6.164px] left-[2.2px] top-[2.32px] w-[5.865px]" data-name="Vector">
+        <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 5.86467 6.16443">
+          <path d={svgPaths.p293def00} fill="var(--fill-0, #1A1A1A)" id="Vector" />
+        </svg>
+      </div>
+      <Camera />
+      <div className="absolute h-[1.922px] left-[5.61px] mix-blend-screen top-[5.84px] w-[1.828px]" data-name="Vector">
+        <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 1.82841 1.92185">
+          <g id="Vector" style={{ mixBlendMode: "screen" }}>
+            <path d={svgPaths.p17a58880} fill="var(--fill-0, #1A1A1A)" />
+          </g>
+        </svg>
+      </div>
+    </div>
+  );
+}
+
+function Layer() {
+  return (
+    <div className="absolute contents inset-0" data-name="Layer 1">
+      <div className="absolute h-[703px] left-[2.63px] top-0 w-[320.367px]" data-name="Vector">
+        <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 320.367 703">
+          <path d={svgPaths.pd66d80} fill="var(--fill-0, #1A1A1A)" id="Vector" />
+        </svg>
+      </div>
+      <Group1 />
+      <Group2 />
+      <Group3 />
+      <Group4 />
+    </div>
+  );
+}
+
+function Group() {
+  return (
+    <div className="absolute contents inset-0" data-name="Group">
+      <Layer />
+    </div>
+  );
+}
+
+function Time1() {
+  return (
+    <div className="h-[10.024px] relative shrink-0 w-[30.842px]" data-name="Time">
+      <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 30.8418 10.0236">
+        <g clipPath="url(#clip0_5_2024)" id="Time">
+          <path d={svgPaths.p2897c200} fill="var(--fill-0, black)" id="Vector" />
+        </g>
+        <defs>
+          <clipPath id="clip0_5_2024">
+            <rect fill="white" height="10.0236" width="30.8418" />
+          </clipPath>
+        </defs>
+      </svg>
+    </div>
+  );
+}
+
+function Time() {
+  return (
+    <div className="content-stretch flex flex-[1_0_0] h-[45.492px] items-center justify-center min-w-px overflow-clip relative" data-name="Time">
+      <Time1 />
+    </div>
+  );
+}
+
+function DynamicIslandFrame() {
+  return <div className="flex-[1_0_0] h-[45.492px] min-w-px relative" data-name="Dynamic Island Frame" />;
+}
+
+function Reception() {
+  return (
+    <div className="h-[9.253px] relative shrink-0 w-[13.879px]" data-name="Reception">
+      <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 13.8788 9.25253">
+        <g clipPath="url(#clip0_5_1938)" id="Reception">
+          <path d={svgPaths.p38926780} fill="var(--fill-0, black)" id="Vector" />
+          <path d={svgPaths.p1b628f00} fill="var(--fill-0, black)" id="Vector_2" />
+          <path d={svgPaths.p2f9f2000} fill="var(--fill-0, black)" id="Vector_3" />
+          <path d={svgPaths.p3f5b8480} fill="var(--fill-0, black)" id="Vector_4" />
+        </g>
+        <defs>
+          <clipPath id="clip0_5_1938">
+            <rect fill="white" height="9.25253" width="13.8788" />
+          </clipPath>
+        </defs>
+      </svg>
+    </div>
+  );
+}
+
+function WiFi() {
+  return (
+    <div className="h-[9.253px] relative shrink-0 w-[13.879px]" data-name="Wi-fi">
+      <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 13.8788 9.25253">
+        <g clipPath="url(#clip0_5_1946)" id="Wi-fi">
+          <path clipRule="evenodd" d={svgPaths.p7089680} fill="var(--fill-0, black)" fillRule="evenodd" id="Vector" />
+        </g>
+        <defs>
+          <clipPath id="clip0_5_1946">
+            <rect fill="white" height="9.25253" width="13.8788" />
+          </clipPath>
+        </defs>
+      </svg>
+    </div>
+  );
+}
+
+function Battery() {
+  return (
+    <div className="h-[10.024px] relative shrink-0 w-[21.589px]" data-name="Battery">
+      <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 21.5892 10.0236">
+        <g clipPath="url(#clip0_5_2037)" id="Battery">
+          <path d={svgPaths.p20ae9200} id="Vector" opacity="0.35" stroke="var(--stroke-0, black)" strokeWidth="0.771044" />
+          <path d={svgPaths.pa591200} fill="var(--fill-0, black)" id="Vector_2" opacity="0.4" />
+          <path d={svgPaths.pdc1b980} fill="var(--fill-0, black)" id="Vector_3" />
+        </g>
+        <defs>
+          <clipPath id="clip0_5_2037">
+            <rect fill="white" height="10.0236" width="21.5892" />
+          </clipPath>
+        </defs>
+      </svg>
+    </div>
+  );
+}
+
+function Icons() {
+  return (
+    <div className="content-stretch flex flex-[1_0_0] gap-[6.168px] h-[45.492px] items-center justify-center min-w-px overflow-clip relative" data-name="Icons">
+      <Reception />
+      <WiFi />
+      <Battery />
+    </div>
+  );
+}
+
+function StatusBar() {
+  return (
+    <div className="bg-[#fef0e8] content-stretch flex h-[37.01px] items-center justify-center overflow-clip relative rounded-tl-[30px] rounded-tr-[35px] shrink-0 w-[303.02px]" data-name="Status Bar">
+      <Time />
+      <DynamicIslandFrame />
+      <Icons />
+    </div>
+  );
+}
+
+function Icon() {
+  return (
+    <div className="relative shrink-0 size-[18.505px]" data-name="Icon">
+      <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 18.5051 18.5051">
+        <g id="Icon">
+          <path d={svgPaths.p1729f400} id="Vector" stroke="var(--stroke-0, #4F2115)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.54209" />
+        </g>
+      </svg>
+    </div>
+  );
+}
+
+function Button2() {
+  return (
+    <div className="relative shrink-0 size-[24.673px]" data-name="Button">
+      <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center px-[3.084px] relative size-full">
+        <Icon />
+      </div>
+    </div>
+  );
+}
+
+function Heading() {
+  return (
+    <div className="h-[20.818px] relative shrink-0 w-[77.239px]" data-name="Heading 1">
+      <div className="bg-clip-padding border-0 border-[transparent] border-solid relative size-full">
+        <p className="[word-break:break-word] absolute font-['Inter',sans-serif] font-semibold leading-[20.818px] left-0 not-italic text-[#4f2115] text-[13.879px] top-[-0.92px] whitespace-nowrap" dir="auto">
+          Replace Item
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function Container6() {
+  return (
+    <div className="h-[55.515px] relative shrink-0 w-full" data-name="Container">
+      <div className="flex flex-row items-center size-full">
+        <div className="content-stretch flex gap-[9.253px] items-center pb-[12.337px] pt-[18.505px] px-[18.505px] relative size-full">
+          <Button2 />
+          <Heading />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ImageEggsBenedict() {
+  return (
+    <div className="absolute h-[127.993px] left-[-13.05px] top-0 w-[188.562px]" data-name="Image (Eggs Benedict)">
+      <img alt="" className="absolute inset-0 max-w-none object-contain pointer-events-none size-full" src={imgImageEggsBenedict} />
+    </div>
+  );
+}
+
+function Container9() {
+  return (
+    <div className="bg-[rgba(254,245,245,0)] content-stretch flex flex-col h-[127.993px] items-start overflow-clip relative rounded-[23247120px] shrink-0 w-[162.813px]" data-name="Container">
+      <ImageEggsBenedict />
+    </div>
+  );
+}
+
+function Heading1() {
+  return (
+    <div className="h-[26.05px] relative shrink-0 w-[236.621px]" data-name="Heading 2">
+      <p className="-translate-x-1/2 [word-break:break-word] absolute font-['Inter',sans-serif] font-bold leading-[26.05px] left-[118.39px] not-italic text-[#4f2115] text-[17.367px] text-center top-[-1.74px] whitespace-nowrap">Sushi</p>
+    </div>
+  );
+}
+
+function Icon1() {
+  return (
+    <div className="relative shrink-0 size-[14.472px]" data-name="Icon">
+      <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 14.4722 14.4722">
+        <g clipPath="url(#clip0_5_1963)" id="Icon">
+          <g filter="url(#filter0_dddd_5_1963)" id="Vector">
+            <path d={svgPaths.p12b8fac0} fill="var(--fill-0, #CC7A00)" />
+            <path d={svgPaths.p12b8fac0} stroke="var(--stroke-0, #CC7A00)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.20602" />
+          </g>
+          <path d="M7.23502 5.42559V7.83763" id="Vector_2" stroke="var(--stroke-0, #FEF5F5)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.20602" />
+          <path d="M7.23502 10.2498H7.24225" id="Vector_3" stroke="var(--stroke-0, #FEF5F5)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.20602" />
+        </g>
+        <defs>
+          <filter colorInterpolationFilters="sRGB" filterUnits="userSpaceOnUse" height="20.0283" id="filter0_dddd_5_1963" width="17.6175" x="-0.856061" y="0.472987">
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
+            <feColorMatrix in="SourceAlpha" result="hardAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+            <feOffset />
+            <feGaussianBlur stdDeviation="0.361806" />
+            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0" />
+            <feBlend in2="BackgroundImageFix" mode="normal" result="effect1_dropShadow_5_1963" />
+            <feColorMatrix in="SourceAlpha" result="hardAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+            <feOffset dy="1.44722" />
+            <feGaussianBlur stdDeviation="0.723611" />
+            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.09 0" />
+            <feBlend in2="effect1_dropShadow_5_1963" mode="normal" result="effect2_dropShadow_5_1963" />
+            <feColorMatrix in="SourceAlpha" result="hardAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+            <feOffset dx="0.723611" dy="2.89444" />
+            <feGaussianBlur stdDeviation="0.723611" />
+            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.05 0" />
+            <feBlend in2="effect2_dropShadow_5_1963" mode="normal" result="effect3_dropShadow_5_1963" />
+            <feColorMatrix in="SourceAlpha" result="hardAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+            <feOffset dx="0.723611" dy="5.06528" />
+            <feGaussianBlur stdDeviation="1.08542" />
+            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.01 0" />
+            <feBlend in2="effect3_dropShadow_5_1963" mode="normal" result="effect4_dropShadow_5_1963" />
+            <feBlend in="SourceGraphic" in2="effect4_dropShadow_5_1963" mode="normal" result="shape" />
+          </filter>
+          <clipPath id="clip0_5_1963">
+            <rect fill="white" height="14.4722" width="14.4722" />
+          </clipPath>
+        </defs>
+      </svg>
+    </div>
+  );
+}
+
+function Paragraph() {
+  return (
+    <div className="relative shrink-0" data-name="Paragraph">
+      <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
+        <p className="[word-break:break-word] font-['Inter',sans-serif] font-bold leading-[13.025px] not-italic relative shrink-0 text-[#4f2115] text-[12.337px] whitespace-nowrap">Requires more information</p>
+      </div>
+    </div>
+  );
+}
+
+function Container11() {
+  return (
+    <div className="content-stretch flex gap-[5.789px] h-[15.196px] items-center justify-center pl-[47.026px] pr-[47.035px] relative shrink-0 w-[236.621px]" data-name="Container">
+      <Icon1 />
+      <Paragraph />
+    </div>
+  );
+}
+
+function Heading2() {
+  return (
+    <div className="h-[17.367px] relative shrink-0 w-full" data-name="Heading 3">
+      <p className="[word-break:break-word] absolute font-['Inter',sans-serif] font-semibold leading-[17.367px] left-0 not-italic text-[#4f2115] text-[12.337px] top-[-1.59px] whitespace-nowrap">1. Does it include raw fish?</p>
+    </div>
+  );
+}
+
+function Text() {
+  return (
+    <div className="relative shrink-0" data-name="Text">
+      <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
+        <p className="[word-break:break-word] font-['Inter',sans-serif] font-bold leading-[11.781px] not-italic relative shrink-0 text-[#4f2115] text-[8.38px] whitespace-nowrap">No</p>
+      </div>
+    </div>
+  );
+}
+
+function Text1() {
+  return (
+    <div className="relative shrink-0" data-name="Text">
+      <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
+        <p className="[word-break:break-word] font-['Inter',sans-serif] font-bold leading-[10.996px] not-italic relative shrink-0 text-[#4f2115] text-[8.38px] whitespace-nowrap">Not sure</p>
+      </div>
+    </div>
+  );
+}
+
+function Text2() {
+  return (
+    <div className="relative shrink-0" data-name="Text">
+      <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
+        <p className="[word-break:break-word] font-['Inter',sans-serif] font-bold leading-[16.281px] not-italic relative shrink-0 text-[#fde5de] text-[13.03px] whitespace-nowrap">Yes</p>
+      </div>
+    </div>
+  );
+}
+
+function Container13() {
+  return (
+    <div className="gap-x-[5.06527853012085px] gap-y-[5.7888898849487305px] grid grid-cols-[repeat(2,minmax(0,1fr))] grid-rows-[repeat(2,fit-content(100%))] relative shrink-0 w-full" data-name="Container">
+      <div className="bg-[#fef5f5] col-2 content-stretch flex h-[34.878px] items-center justify-center p-[11.94px] relative rounded-[16px] row-1 shrink-0 w-[109.917px]" data-name="Option 3">
+        <div aria-hidden className="absolute border-[#f47c5c] border-[0.362px] border-solid inset-0 pointer-events-none rounded-[16px]" />
+        <Text />
+      </div>
+      <div className="bg-[#fef5f5] col-1 content-stretch flex h-[34.878px] items-center justify-center p-[11.94px] relative rounded-[16px] row-2 shrink-0 w-[109.917px]" data-name="Option 2">
+        <div aria-hidden className="absolute border-[#f47c5c] border-[0.362px] border-solid inset-0 pointer-events-none rounded-[16px]" />
+        <Text1 />
+      </div>
+      <div className="bg-gradient-to-b col-1 content-stretch flex from-[#ff8a65] from-[41%] h-[34.878px] items-center justify-center p-[11.578px] relative rounded-[16px] row-1 shrink-0 to-[#ff7a59] w-[109.917px]" data-name="Question Container">
+        <Text2 />
+      </div>
+    </div>
+  );
+}
+
+function Container12() {
+  return (
+    <div className="content-stretch flex flex-col gap-[8.683px] h-[101.595px] items-start relative shrink-0 w-[225.622px]" data-name="Container">
+      <Heading2 />
+      <Container13 />
+    </div>
+  );
+}
+
+function Heading3() {
+  return (
+    <div className="h-[17.367px] relative shrink-0 w-full" data-name="Heading 3">
+      <p className="[word-break:break-word] absolute font-['Inter',sans-serif] font-semibold leading-[17.367px] left-0 not-italic text-[#4f2115] text-[12.337px] top-[-1.59px] whitespace-nowrap">2. Where is it from?</p>
+    </div>
+  );
+}
+
+function Text3() {
+  return (
+    <div className="relative shrink-0" data-name="Text">
+      <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
+        <p className="[word-break:break-word] font-['Inter',sans-serif] font-bold leading-[11.781px] not-italic relative shrink-0 text-[#4f2115] text-[8.38px] whitespace-nowrap">Restaurant</p>
+      </div>
+    </div>
+  );
+}
+
+function Text4() {
+  return (
+    <div className="relative shrink-0" data-name="Text">
+      <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
+        <p className="[word-break:break-word] font-['Inter',sans-serif] font-bold leading-[16.281px] not-italic relative shrink-0 text-[#fde5de] text-[13.03px] whitespace-nowrap">Homemade</p>
+      </div>
+    </div>
+  );
+}
+
+function Text5() {
+  return (
+    <div className="relative shrink-0" data-name="Text">
+      <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
+        <p className="[word-break:break-word] font-['Inter',sans-serif] font-bold leading-[10.996px] not-italic relative shrink-0 text-[#4f2115] text-[8.38px] whitespace-nowrap">Not sure</p>
+      </div>
+    </div>
+  );
+}
+
+function Text6() {
+  return (
+    <div className="relative shrink-0" data-name="Text">
+      <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
+        <p className="[word-break:break-word] font-['Inter',sans-serif] font-bold leading-[10.996px] not-italic relative shrink-0 text-[#4f2115] text-[8.38px] whitespace-nowrap">Supermarket</p>
+      </div>
+    </div>
+  );
+}
+
+function Container15() {
+  return (
+    <div className="gap-x-[5.06527853012085px] gap-y-[5.7888898849487305px] grid grid-cols-[repeat(2,minmax(0,1fr))] grid-rows-[repeat(2,fit-content(100%))] relative shrink-0 w-full" data-name="Container">
+      <div className="bg-[#fef5f5] col-1 content-stretch flex h-[34.878px] items-center justify-center p-[11.94px] relative rounded-[16px] row-1 shrink-0 w-[109.917px]" data-name="Option 7">
+        <div aria-hidden className="absolute border-[#f47c5c] border-[0.362px] border-solid inset-0 pointer-events-none rounded-[16px]" />
+        <Text3 />
+      </div>
+      <div className="bg-gradient-to-b col-2 content-stretch flex from-[#ff8a65] from-[41%] h-[34.878px] items-center justify-center p-[11.578px] relative rounded-[16px] row-1 shrink-0 to-[#ff7a59] w-[109.917px]" data-name="Option 6">
+        <Text4 />
+      </div>
+      <div className="bg-[#fef5f5] col-2 content-stretch flex h-[34.878px] items-center justify-center p-[11.94px] relative rounded-[16px] row-2 shrink-0 w-[109.917px]" data-name="Option 5">
+        <div aria-hidden className="absolute border-[#f47c5c] border-[0.362px] border-solid inset-0 pointer-events-none rounded-[16px]" />
+        <Text5 />
+      </div>
+      <div className="bg-[#fef5f5] col-1 content-stretch flex h-[34.878px] items-center justify-center p-[11.94px] relative rounded-[16px] row-2 shrink-0 w-[109.917px]" data-name="Option 4">
+        <div aria-hidden className="absolute border-[#f47c5c] border-[0.362px] border-solid inset-0 pointer-events-none rounded-[16px]" />
+        <Text6 />
+      </div>
+    </div>
+  );
+}
+
+function Container14() {
+  return (
+    <div className="content-stretch flex flex-col gap-[8.683px] items-start relative shrink-0 w-[225.622px]" data-name="Container">
+      <Heading3 />
+      <Container15 />
+    </div>
+  );
+}
+
+function QuestionsContainer() {
+  return (
+    <div className="content-stretch flex flex-col gap-[28.944px] items-start py-[11.578px] relative shrink-0" data-name="Questions Container">
+      <Container12 />
+      <Container14 />
+    </div>
+  );
+}
+
+function Button3() {
+  return (
+    <div className="bg-gradient-to-b content-stretch flex from-[#ff8a65] from-[41.346%] h-[39.863px] items-center justify-center relative rounded-[15.421px] shrink-0 to-[#ff7a59] to-[98.558%] w-[238.409px]" data-name="Button">
+      <p className="[word-break:break-word] font-['Inter',sans-serif] font-semibold leading-[17.367px] not-italic relative shrink-0 text-[#fef5f5] text-[14.472px] text-center text-shadow-[0px_0.724px_1.447px_rgba(0,0,0,0.1),0px_3.618px_3.618px_rgba(0,0,0,0.09),0px_7.236px_4.342px_rgba(0,0,0,0.05),0px_13.025px_5.065px_rgba(0,0,0,0.01),0px_20.261px_5.789px_rgba(0,0,0,0)] whitespace-nowrap">Check</p>
+    </div>
+  );
+}
+
+function Container10() {
+  return (
+    <div className="absolute content-stretch flex flex-col gap-[17.367px] items-center justify-center left-[-60.08px] pb-[23.156px] pt-[11.578px] px-[17.367px] top-[120.28px] w-[284.379px]" data-name="Container">
+      <Heading1 />
+      <Container11 />
+      <QuestionsContainer />
+      <Button3 />
+    </div>
+  );
+}
+
+function Container8() {
+  return (
+    <div className="content-stretch flex flex-col gap-[7.236px] items-center relative shrink-0" data-name="Container">
+      <Container9 />
+      <Container10 />
+    </div>
+  );
+}
+
+function Container7() {
+  return (
+    <div className="bg-[rgba(254,245,245,0)] content-stretch flex flex-col items-start overflow-clip relative rounded-[23247120px] shrink-0 w-[162.813px]" data-name="Container">
+      <Container8 />
+    </div>
+  );
+}
+
+function Heading4() {
+  return (
+    <div className="h-[27.758px] relative shrink-0 w-[252.131px]" data-name="Heading 2">
+      <p className="-translate-x-1/2 [word-break:break-word] absolute font-['Inter',sans-serif] font-bold leading-[27.758px] left-[126.27px] not-italic text-[#4f2115] text-[18.505px] text-center top-[-1.85px] whitespace-nowrap">{`Cap'n Crunch Chocolate`}</p>
+    </div>
+  );
+}
+
+function Icon2() {
+  return (
+    <div className="relative shrink-0 size-[15.421px]" data-name="Icon">
+      <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 15.4209 15.4209">
+        <g clipPath="url(#clip0_5_1933)" id="Icon">
+          <g filter="url(#filter0_dddd_5_1933)" id="Vector">
+            <path d={svgPaths.p2d1b9c00} fill="var(--fill-0, #CC7A00)" />
+            <path d={svgPaths.p2d1b9c00} stroke="var(--stroke-0, #CC7A00)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.28507" />
+          </g>
+          <path d="M7.71218 5.78384V8.35398" id="Vector_2" stroke="var(--stroke-0, #FEF5F5)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.28507" />
+          <path d="M7.71218 10.9246H7.71941" id="Vector_3" stroke="var(--stroke-0, #FEF5F5)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.28507" />
+        </g>
+        <defs>
+          <filter colorInterpolationFilters="sRGB" filterUnits="userSpaceOnUse" height="21.3412" id="filter0_dddd_5_1933" width="18.7723" x="-0.909024" y="0.50684">
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
+            <feColorMatrix in="SourceAlpha" result="hardAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+            <feOffset />
+            <feGaussianBlur stdDeviation="0.385522" />
+            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0" />
+            <feBlend in2="BackgroundImageFix" mode="normal" result="effect1_dropShadow_5_1933" />
+            <feColorMatrix in="SourceAlpha" result="hardAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+            <feOffset dy="1.54209" />
+            <feGaussianBlur stdDeviation="0.771044" />
+            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.09 0" />
+            <feBlend in2="effect1_dropShadow_5_1933" mode="normal" result="effect2_dropShadow_5_1933" />
+            <feColorMatrix in="SourceAlpha" result="hardAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+            <feOffset dx="0.771044" dy="3.08417" />
+            <feGaussianBlur stdDeviation="0.771044" />
+            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.05 0" />
+            <feBlend in2="effect2_dropShadow_5_1933" mode="normal" result="effect3_dropShadow_5_1933" />
+            <feColorMatrix in="SourceAlpha" result="hardAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+            <feOffset dx="0.771044" dy="5.39731" />
+            <feGaussianBlur stdDeviation="1.15657" />
+            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.01 0" />
+            <feBlend in2="effect3_dropShadow_5_1933" mode="normal" result="effect4_dropShadow_5_1933" />
+            <feBlend in="SourceGraphic" in2="effect4_dropShadow_5_1933" mode="normal" result="shape" />
+          </filter>
+          <clipPath id="clip0_5_1933">
+            <rect fill="white" height="15.4209" width="15.4209" />
+          </clipPath>
+        </defs>
+      </svg>
+    </div>
+  );
+}
+
+function Paragraph1() {
+  return (
+    <div className="relative shrink-0" data-name="Paragraph">
+      <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
+        <p className="[word-break:break-word] font-['Inter',sans-serif] font-bold leading-[18.505px] not-italic relative shrink-0 text-[#cc7a00] text-[12.337px] whitespace-nowrap">High in sugar</p>
+      </div>
+    </div>
+  );
+}
+
+function Container18() {
+  return (
+    <div className="content-stretch flex gap-[6.168px] h-[16.192px] items-center justify-center pl-[50.108px] pr-[50.118px] relative shrink-0 w-[252.131px]" data-name="Container">
+      <Icon2 />
+      <Paragraph1 />
+    </div>
+  );
+}
+
+function Paragraph2() {
+  return (
+    <div className="content-stretch flex items-center px-[39.323px] relative shrink-0" data-name="Paragraph">
+      <p className="[word-break:break-word] font-['Inter',sans-serif] font-semibold leading-[16.192px] not-italic relative shrink-0 text-[#4f2115] text-[12.337px] whitespace-nowrap">Choose one of these options:</p>
+    </div>
+  );
+}
+
+function ImageCapnCrunchPlainCereal() {
+  return (
+    <div className="h-[90.983px] relative rounded-[5.686px] shrink-0 w-[63.997px]" data-name="Image (Cap'n Crunch Plain Cereal)">
+      <img alt="" className="absolute inset-0 max-w-none object-contain pointer-events-none rounded-[5.686px] size-full" src={imgImageCapnCrunchPlainCereal} />
+    </div>
+  );
+}
+
+function OptionDescription() {
+  return (
+    <div className="[word-break:break-word] content-stretch flex flex-col font-['Inter',sans-serif] font-bold gap-[12.337px] items-start leading-[17.348px] not-italic relative shrink-0 text-[#4f2115] text-[12.337px]" data-name="Option Description">
+      <p className="min-w-full relative shrink-0 w-[min-content] whitespace-pre-wrap">
+        {`Cheerios `}
+        <br aria-hidden />
+        Original
+      </p>
+      <p className="relative shrink-0 w-[75.562px]">Lower sugar</p>
+    </div>
+  );
+}
+
+function Paragraph3() {
+  return (
+    <div className="content-stretch flex items-center justify-center relative shrink-0" data-name="Paragraph">
+      <OptionDescription />
+    </div>
+  );
+}
+
+function Container21() {
+  return (
+    <div className="content-stretch flex gap-[6.168px] items-center relative shrink-0 w-[154.209px]" data-name="Container">
+      <ImageCapnCrunchPlainCereal />
+      <Paragraph3 />
+    </div>
+  );
+}
+
+function Container20() {
+  return (
+    <div className="absolute bg-[#fef5f5] content-stretch flex flex-col h-[123.367px] items-center justify-center left-0 p-[18.505px] rounded-[12.337px] top-0 w-[174.256px]" data-name="Container">
+      <div aria-hidden className="absolute border-[#f47c5c] border-[0.386px] border-solid inset-0 pointer-events-none rounded-[12.337px]" />
+      <Container21 />
+    </div>
+  );
+}
+
+function ImageCapnCrunchPlainCereal1() {
+  return (
+    <div className="h-[90.983px] relative rounded-[5.686px] shrink-0 w-[63.997px]" data-name="Image (Cap'n Crunch Plain Cereal)">
+      <img alt="" className="absolute inset-0 max-w-none object-contain pointer-events-none rounded-[5.686px] size-full" src={imgImageCapnCrunchPlainCereal1} />
+    </div>
+  );
+}
+
+function OptionDescription1() {
+  return (
+    <div className="[word-break:break-word] content-stretch flex flex-col font-['Inter',sans-serif] font-bold gap-[12.337px] items-start leading-[17.348px] not-italic relative shrink-0 text-[#4f2115] text-[12.337px]" data-name="Option Description">
+      <p className="min-w-full relative shrink-0 w-[min-content] whitespace-pre-wrap" dir="auto">
+        {`Special K `}
+        <br aria-hidden />
+        Original
+      </p>
+      <p className="relative shrink-0 w-[75.562px]">Lower sugar</p>
+    </div>
+  );
+}
+
+function Paragraph4() {
+  return (
+    <div className="content-stretch flex items-center justify-center relative shrink-0" data-name="Paragraph">
+      <OptionDescription1 />
+    </div>
+  );
+}
+
+function Container23() {
+  return (
+    <div className="content-stretch flex gap-[6.168px] items-center relative shrink-0 w-[154.209px]" data-name="Container">
+      <ImageCapnCrunchPlainCereal1 />
+      <Paragraph4 />
+    </div>
+  );
+}
+
+function Container22() {
+  return (
+    <div className="absolute bg-[#fef5f5] content-stretch flex flex-col h-[123.367px] items-center justify-center left-[183.51px] p-[18.505px] rounded-[12.337px] top-0 w-[174.256px]" data-name="Container">
+      <div aria-hidden className="absolute border-[#f47c5c] border-[0.386px] border-solid inset-0 pointer-events-none rounded-[12.337px]" />
+      <Container23 />
+    </div>
+  );
+}
+
+function ImageCapnCrunchPlainCereal2() {
+  return (
+    <div className="h-[90.983px] relative rounded-[5.686px] shrink-0 w-[63.997px]" data-name="Image (Cap'n Crunch Plain Cereal)">
+      <img alt="" className="absolute inset-0 max-w-none object-contain pointer-events-none rounded-[5.686px] size-full" src={imgImageCapnCrunchPlainCereal2} />
+    </div>
+  );
+}
+
+function OptionDescription2() {
+  return (
+    <div className="[word-break:break-word] content-stretch flex flex-col font-['Inter',sans-serif] font-bold gap-[12.337px] items-start leading-[17.348px] not-italic relative shrink-0 text-[#4f2115] text-[12.337px]" data-name="Option Description">
+      <p className="min-w-full relative shrink-0 w-[min-content]">Shreddies</p>
+      <p className="relative shrink-0 w-[75.562px]">
+        <br aria-hidden />
+        Lower sugar
+      </p>
+    </div>
+  );
+}
+
+function Paragraph5() {
+  return (
+    <div className="content-stretch flex items-center justify-center relative shrink-0" data-name="Paragraph">
+      <OptionDescription2 />
+    </div>
+  );
+}
+
+function Container25() {
+  return (
+    <div className="content-stretch flex gap-[6.168px] items-center relative shrink-0 w-[154.209px]" data-name="Container">
+      <ImageCapnCrunchPlainCereal2 />
+      <Paragraph5 />
+    </div>
+  );
+}
+
+function Container24() {
+  return (
+    <div className="absolute bg-[#fef5f5] content-stretch flex flex-col h-[123.367px] items-center justify-center left-[367.02px] p-[18.505px] rounded-[12.337px] top-0 w-[174.256px]" data-name="Container">
+      <div aria-hidden className="absolute border-[#f47c5c] border-[0.386px] border-solid inset-0 pointer-events-none rounded-[12.337px]" />
+      <Container25 />
+    </div>
+  );
+}
+
+function ImageCapnCrunchPlainCereal3() {
+  return (
+    <div className="h-[90.983px] relative rounded-[5.686px] shrink-0 w-[63.997px]" data-name="Image (Cap'n Crunch Plain Cereal)">
+      <img alt="" className="absolute inset-0 max-w-none object-contain pointer-events-none rounded-[5.686px] size-full" src={imgImageCapnCrunchPlainCereal3} />
+    </div>
+  );
+}
+
+function OptionDescription3() {
+  return (
+    <div className="[word-break:break-word] content-stretch flex flex-col font-['Inter',sans-serif] font-bold gap-[12.337px] items-start leading-[17.348px] not-italic relative shrink-0 text-[#4f2115] text-[12.337px]" data-name="Option Description">
+      <p className="min-w-full relative shrink-0 w-[min-content]">Weetabix</p>
+      <p className="relative shrink-0 w-[75.562px]">
+        High fibre
+        <br aria-hidden />
+        Lower sugar
+      </p>
+    </div>
+  );
+}
+
+function Paragraph6() {
+  return (
+    <div className="content-stretch flex h-[64.768px] items-end justify-center relative shrink-0" data-name="Paragraph">
+      <OptionDescription3 />
+    </div>
+  );
+}
+
+function Container27() {
+  return (
+    <div className="content-stretch flex gap-[6.168px] items-center relative shrink-0 w-[154.209px]" data-name="Container">
+      <ImageCapnCrunchPlainCereal3 />
+      <Paragraph6 />
+    </div>
+  );
+}
+
+function Container26() {
+  return (
+    <div className="absolute bg-[#fef5f5] content-stretch flex flex-col h-[123.367px] items-center justify-center left-[550.53px] p-[18.505px] rounded-[12.337px] top-0 w-[174.256px]" data-name="Container">
+      <div aria-hidden className="absolute border-[#f47c5c] border-[0.386px] border-solid inset-0 pointer-events-none rounded-[12.337px]" />
+      <Container27 />
+    </div>
+  );
+}
+
+function Frame2() {
+  return (
+    <div className="h-[123.367px] relative shrink-0 w-[724.781px]">
+      <Container20 />
+      <Container22 />
+      <Container24 />
+      <Container26 />
+    </div>
+  );
+}
+
+function Heading5() {
+  return <div className="h-[20.818px] relative shrink-0 w-[309.034px]" data-name="Heading 3" />;
+}
+
+function Container19() {
+  return (
+    <div className="content-stretch flex gap-[9.253px] items-start relative shrink-0 w-[252.131px]" data-name="Container">
+      <Frame2 />
+      <Heading5 />
+    </div>
+  );
+}
+
+function Container17() {
+  return (
+    <div className="content-stretch flex flex-col gap-[18.505px] items-center justify-center pb-[24.673px] px-[18.505px] relative shrink-0 w-[303.02px]" data-name="Container">
+      <Heading4 />
+      <Container18 />
+      <Paragraph2 />
+      <Container19 />
+    </div>
+  );
+}
+
+function Container16() {
+  return (
+    <div className="absolute content-stretch flex flex-col items-center left-[-71.65px] top-[143.41px]" data-name="Container">
+      <Container17 />
+    </div>
+  );
+}
+
+function FoodItemDetails() {
+  return (
+    <div className="content-stretch flex flex-col items-center pb-[24.673px] relative shrink-0" data-name="Food Item Details">
+      <Container7 />
+      <Container16 />
+    </div>
+  );
+}
+
+function AppFrame() {
+  return (
+    <div className="absolute content-stretch flex flex-col gap-[12.337px] h-[687px] items-center left-[11px] rounded-[36px] top-[8px] w-[304px]" data-name="App Frame">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-[36px]">
+        <img alt="" className="absolute h-[111%] left-[-10.3%] max-w-none top-[4.08%] w-[120.36%]" src={imgAppFrame} />
+      </div>
+      <StatusBar />
+      <Container6 />
+      <FoodItemDetails />
+    </div>
+  );
+}
+
+function AppScreen() {
+  return (
+    <div className="absolute content-stretch flex flex-col gap-[10px] h-[703px] items-start left-[633px] p-[10px] top-0 w-[322.999px]" data-name="App Screen">
+      <Group />
+      <AppFrame />
+    </div>
+  );
+}
+
+function PhoneUi() {
+  return (
+    <div className="absolute h-[703px] left-[360px] top-[98px] w-[955.999px]" data-name="Phone UI">
+      <OnboardingSection />
+      <AppScreen />
+    </div>
+  );
+}
+
+function MainSection() {
+  return (
+    <div className="bg-white content-stretch flex h-[900px] items-center justify-center relative shrink-0 w-full" data-name="Main Section">
+      <PhoneUi />
+    </div>
+  );
+}
+
+function Frame() {
+  return (
+    <div className="content-stretch flex flex-col items-start mb-[-1px] relative shrink-0 w-full" data-name="Frame">
+      <HeaderImage />
+      <MainSection />
+    </div>
+  );
+}
 
 function FinalStatementTitle() {
   return (
@@ -2222,7 +3188,7 @@ function Paragraph8() {
   return (
     <div className="relative shrink-0" data-name="Paragraph">
       <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
-        <p className="[word-break:break-word] font-['Inter',sans-serif] font-bold leading-[28.612px] not-italic relative shrink-0 text-[#419247] text-[19.07px] whitespace-nowrap">Mozza Sticks</p>
+        <p className="[word-break:break-word] font-['Inter',sans-serif] font-bold leading-[28.612px] not-italic relative shrink-0 text-[#419247] text-[19.07px] whitespace-nowrap">Mozzarella Sticks</p>
       </div>
     </div>
   );
@@ -2267,7 +3233,7 @@ function Container31() {
         <div className="content-stretch flex flex-col gap-[17.47px] items-center justify-center p-[17.47px] relative size-full">
           <Button5 />
           <Spacer />
-          <div className="bg-[#fef0e8] content-stretch flex h-[88.441px] items-center p-[9.281px] relative rounded-[21.837px] shrink-0 w-[338.477px]" data-name="Mozzarella Sticks container">
+          <div className="bg-[#fef0e8] content-stretch flex gap-[12px] h-[88.441px] items-center p-[9.281px] relative rounded-[21.837px] shrink-0 w-[338.477px]" data-name="Mozzarella Sticks container">
             <div aria-hidden className="absolute border-[#419247] border-[0.546px] border-solid inset-0 pointer-events-none rounded-[21.837px]" />
             <Container35 />
             <Container36 />
@@ -2432,7 +3398,7 @@ function MaterialSymbolsCheckRounded1() {
 function Button8() {
   return (
     <div className="bg-[#cc7a00] h-[34.94px] relative rounded-[15.286px] shrink-0" data-name="Button">
-      <div aria-hidden className="absolute border-[#cc7a00] border-[1.092px] border-solid inset-0 pointer-events-none rounded-[15.286px]" />
+      <div aria-hidden className="absolute border-[#419247] border-[1.092px] border-solid inset-0 pointer-events-none rounded-[15.286px]" />
       <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-center justify-center px-[15.286px] py-[8.735px] relative size-full">
         <MaterialSymbolsCheckRounded1 />
       </div>
@@ -3107,95 +4073,6 @@ function DeviceImage() {
         </span>
         <span className="leading-[111.265px] text-[#cb654a]">watching</span>
       </p>
-    </div>
-  );
-}
-
-function BarcodeSection() {
-  return (
-    <div className="absolute content-stretch flex flex-col gap-[25px] items-start left-[1359px] top-[111px] w-[561.363px]" data-name="Barcode Section">
-      <p className="[word-break:break-word] font-['Sura',sans-serif] font-bold leading-[0] min-w-full not-italic relative shrink-0 text-[#fef0e8] text-[0px] w-[min-content]" dir="auto">
-        <span className="leading-[85px] text-[92px]">
-          Scan the
-          <br aria-hidden />
-        </span>
-        <span className="leading-[85px] text-[#ff8a65] text-[92px]">barcode</span>
-        <span className="leading-[85px] text-[92px]">
-          <br aria-hidden />
-          to verify
-          <br aria-hidden />
-          {`its safety `}
-        </span>
-      </p>
-      <div className="h-[656.125px] relative shrink-0 w-[314.512px]" data-name="Barcode">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgBarcode} />
-      </div>
-    </div>
-  );
-}
-
-function HeaderImage() {
-  return (
-    <div className="content-stretch flex flex-col h-[900px] items-start relative shrink-0 w-full" data-name="Header Image">
-      <div aria-hidden className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 overflow-hidden">
-          <img alt="" className="absolute h-[113.39%] left-[-2.65%] max-w-none top-[-13.38%] w-[101.3%]" src={imgHeaderImage} />
-        </div>
-        <div className="absolute bg-[rgba(0,0,0,0.2)] inset-0" />
-      </div>
-      <BarcodeSection />
-    </div>
-  );
-}
-
-function OnboardingDetails2() {
-  return (
-    <div className="[word-break:break-word] content-stretch flex flex-col gap-[28px] h-[308px] items-start not-italic relative shrink-0 text-[#4f2115] w-[633px]" data-name="Onboarding details">
-      <p className="font-['Sura',sans-serif] font-bold leading-[0] min-w-full relative shrink-0 text-[92px] w-[min-content] whitespace-pre-wrap" dir="auto">
-        <span className="leading-[85px] text-[#cb654a]">Replace</span>
-        <span className="leading-[85px]">
-          {` `}
-          <br aria-hidden />
-          with a safer alternative
-        </span>
-      </p>
-      <p className="font-['Poppins',sans-serif] font-bold leading-[30.236px] relative shrink-0 text-[22px] w-[574px]" dir="auto">
-        Choose from over 1,000 safer alternative items personalized to your dietary needs and preferences.
-      </p>
-    </div>
-  );
-}
-
-function OnboardingSection() {
-  return (
-    <div className="absolute content-stretch flex items-center left-0 top-[197.5px]" data-name="Onboarding Section">
-      <OnboardingDetails2 />
-    </div>
-  );
-}
-
-function PhoneUi() {
-  return (
-    <div className="absolute h-[703px] left-[360px] top-[98px] w-[955.999px]" data-name="Phone UI">
-      <OnboardingSection />
-      <AppScreen />
-    </div>
-  );
-}
-
-function MainSection() {
-  return (
-    <div className="bg-white content-stretch flex h-[900px] items-center justify-center relative shrink-0 w-full" data-name="Main Section">
-      <PhoneUi />
-    </div>
-  );
-}
-
-function Frame() {
-  return (
-    <div className="content-stretch flex flex-col items-start mb-[-1px] relative shrink-0 w-full" data-name="Frame">
-      <HeaderImage />
-      <MainSection />
     </div>
   );
 }
