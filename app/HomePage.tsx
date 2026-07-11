@@ -1023,7 +1023,9 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
                     className="font-['Inter',sans-serif] font-medium leading-[22px] relative shrink-0 text-[14px]"
                     dir="auto"
                   >
-                    {"I'm currently working on my next projects. Stay tuned."}
+                    {"I'm currently working on my next projects."}
+                    <br aria-hidden />
+                    Stay tuned.
                   </p>
                 </div>
               </CaseStudyGridCard>
