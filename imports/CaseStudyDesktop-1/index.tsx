@@ -76,7 +76,7 @@ function HeroContent() {
 
 function Hero() {
   return (
-    <div className="relative h-[1099px] mb-[-1px] shrink-0 w-full overflow-hidden" data-name="hero">
+    <div className="relative h-[1013px] mb-0 shrink-0 w-full overflow-hidden" data-name="hero">
       {/* Full-bleed hi-res background */}
       <div className="absolute inset-0 pointer-events-none">
         <img

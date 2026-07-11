@@ -29,7 +29,7 @@ function DesktopAlma({ onNavigate }: { onNavigate: (page: string) => void }) {
       if (!root) return;
       const sections = Array.from(root.children) as HTMLElement[];
       sections.forEach((el, i) => {
-        if (i === 0 || i === 1 || i === 2) return;
+        if (i === 0 || i === 1) return;
         el.style.opacity = "0";
         el.style.transform = "translateY(40px)";
         el.style.transition = "opacity 0.75s ease-out, transform 0.75s ease-out";
