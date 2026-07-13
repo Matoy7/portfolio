@@ -217,7 +217,7 @@ function MobileNav({
           {[
             { label: "Work", fn: onWork },
             { label: "About", fn: onGlance },
-            { label: "CV", fn: () => window.open("/public/Yotam Eliraz - CV.pdf", "_blank") },
+            { label: "CV", fn: () => window.open("/app/cv.pdf", "_blank") },
             { label: "Contact", fn: onContact },
           ].map((item) => (
             <button
