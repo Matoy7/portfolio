@@ -210,6 +210,7 @@ function StickyNav({
         {[
           { label: "Work", onClick: onScrollWork },
           { label: "About", onClick: onNavigateAbout },
+          { label: "CV", onClick: () => window.open("/public/Yotam Eliraz - CV.pdf", "_blank") },
           { label: "Contact", onClick: onScrollContact },
         ].map((item) => (
           <span

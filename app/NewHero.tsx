@@ -157,6 +157,14 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
               About
               <span className="absolute left-1/2 -translate-x-1/2 bottom-[-3px] h-[2px] bg-[#161616] w-[92%] scale-x-0 group-hover:scale-x-100 transition-transform duration-[220ms] ease-in-out origin-left" />
             </span>
+            <a
+              href="/public/Yotam Eliraz - CV.pdf"
+              target="_blank"
+              className="relative shrink-0 text-[#161616] cursor-pointer group"
+            >
+              CV
+              <span className="absolute left-1/2 -translate-x-1/2 bottom-[-3px] h-[2px] bg-[#161616] w-[92%] scale-x-0 group-hover:scale-x-100 transition-transform duration-[220ms] ease-in-out origin-left" />
+            </a>
             <span
               onClick={onScrollContact}
               className="relative shrink-0 text-[#161616] cursor-pointer group"
