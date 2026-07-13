@@ -210,7 +210,7 @@ function StickyNav({
         {[
           { label: "Work", onClick: onScrollWork },
           { label: "About", onClick: onNavigateAbout },
-          { label: "CV", onClick: () => window.open("/portfolio/app/CV.pdf", "_blank") },
+          { label: "CV", onClick: () => window.open("https://raw.githubusercontent.com/Matoy7/portfolio/main/app/CV.pdf", "_blank") },
           { label: "Contact", onClick: onScrollContact },
         ].map((item) => (
           <span

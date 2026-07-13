@@ -217,7 +217,7 @@ function MobileNav({
           {[
             { label: "Work", fn: onWork },
             { label: "About", fn: onGlance },
-            { label: "CV", fn: () => window.open("/portfolio/app/CV.pdf", "_blank") },
+            { label: "CV", fn: () => window.open("https://raw.githubusercontent.com/Matoy7/portfolio/main/app/CV.pdf", "_blank") },
             { label: "Contact", fn: onContact },
           ].map((item) => (
             <button
