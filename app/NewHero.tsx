@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useTextScramble } from "./useTextScramble";
 import heroPhoto from "@/imports/Frame_19__3_.png";
 
 interface Props {
@@ -16,6 +17,14 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
   const [mounted, setMounted] = useState(false);
   const [floatY, setFloatY] = useState(0);
   const [reducedMotion, setReducedMotion] = useState(false);
+
+  // Text scramble animation for name
+  const scrambledName = useTextScramble({
+    targetText: "Yotam Eliraz",
+    scrambleDuration: 800,
+    pauseDuration: 4500,
+    enabled: !reducedMotion,
+  });
 
   useEffect(() => {
     const update = () => setScale(window.innerWidth / DESIGN_WIDTH);
@@ -136,7 +145,7 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
             className="relative shrink-0 text-[#161616]"
             style={{ fontFamily: "Inter, sans-serif", fontWeight: 700, fontSize: "24px", lineHeight: "1.2", margin: 0 }}
           >
-            Yotam Eliraz
+            {scrambledName}
           </p>
 
           <div
