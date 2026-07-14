@@ -79,25 +79,27 @@ export default function GlassOrbCursor() {
         // Entering interactive element
         const isCaseStudy = interactiveEl!.getAttribute("data-case-study") === "true";
         if (isCaseStudy) {
-          orb.style.width = "52px";
-          orb.style.height = "52px";
+          // Hover on case study: larger ring with glow
+          orb.style.width = "50px";
+          orb.style.height = "50px";
+          orb.style.border = "9px solid rgba(255, 255, 255, 0.4)";
           orb.style.boxShadow =
-            "0 4px 12px rgba(0, 0, 0, 0.15), 0 0 30px rgba(255, 255, 255, 0.15)";
-          orb.style.backgroundColor = "rgba(255, 255, 255, 0.25)";
+            "0 4px 16px rgba(0, 0, 0, 0.12), 0 0 24px rgba(255, 255, 255, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.3)";
         } else {
+          // Hover on regular interactive: normal ring, subtle enhance
           orb.style.width = "34px";
           orb.style.height = "34px";
+          orb.style.border = "7px solid rgba(255, 255, 255, 0.35)";
           orb.style.boxShadow =
-            "0 4px 12px rgba(0, 0, 0, 0.1), 0 0 20px rgba(255, 255, 255, 0.1)";
-          orb.style.backgroundColor = "rgba(255, 255, 255, 0.2)";
+            "0 2px 8px rgba(0, 0, 0, 0.08), 0 0 16px rgba(255, 255, 255, 0.12), inset 0 0 0 1px rgba(255, 255, 255, 0.2)";
         }
       } else if (!isInteractiveRef.current && wasInteractive) {
         // Leaving interactive element - return to default
         orb.style.width = "34px";
         orb.style.height = "34px";
+        orb.style.border = "7px solid rgba(255, 255, 255, 0.3)";
         orb.style.boxShadow =
-          "0 4px 12px rgba(0, 0, 0, 0.1), 0 0 20px rgba(255, 255, 255, 0.1)";
-        orb.style.backgroundColor = "rgba(255, 255, 255, 0.2)";
+          "0 2px 8px rgba(0, 0, 0, 0.06), 0 0 14px rgba(255, 255, 255, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.15)";
       }
     };
 
@@ -165,15 +167,19 @@ export default function GlassOrbCursor() {
         width: "34px",
         height: "34px",
         borderRadius: "50%",
-        backgroundColor: "rgba(255, 255, 255, 0.2)",
+        // Glass ring: semi-transparent white border with no background
+        border: "7px solid rgba(255, 255, 255, 0.3)",
+        backgroundColor: "transparent",
+        // Frosted glass effect via backdrop blur
         backdropFilter: "blur(14px)",
-        border: "2px solid rgba(0, 0, 0, 0.4)",
+        // Subtle shadow and inner highlight for premium feel
         boxShadow:
-          "0 4px 12px rgba(0, 0, 0, 0.1), 0 0 20px rgba(255, 255, 255, 0.1)",
+          "0 2px 8px rgba(0, 0, 0, 0.06), 0 0 14px rgba(255, 255, 255, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.15)",
         opacity: 1,
         transform: "translate(-17px, -17px)",
+        // Smooth transitions for size, shadow, and border
         transition:
-          "width 200ms cubic-bezier(0.23, 1, 0.320, 1), height 200ms cubic-bezier(0.23, 1, 0.320, 1), box-shadow 200ms cubic-bezier(0.23, 1, 0.320, 1), background-color 200ms cubic-bezier(0.23, 1, 0.320, 1)",
+          "width 200ms cubic-bezier(0.23, 1, 0.320, 1), height 200ms cubic-bezier(0.23, 1, 0.320, 1), box-shadow 200ms cubic-bezier(0.23, 1, 0.320, 1), border 200ms cubic-bezier(0.23, 1, 0.320, 1)",
       }}
     />
   );
