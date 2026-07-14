@@ -3,6 +3,7 @@ import HomePage from "./HomePage";
 import AlmaPage from "./AlmaPage";
 import PulsePage from "./PulsePage";
 import CurioPage from "./CurioPage";
+import GlassOrbCursor from "./GlassOrbCursor";
 
 function routeFromHash(): string {
   const h = window.location.hash.replace(/^#\/?/, "");
@@ -33,8 +34,18 @@ export default function App() {
     setRoute(target);
   };
 
-  if (route === "alma")  return <AlmaPage  onNavigate={navigate} />;
-  if (route === "pulse") return <PulsePage onNavigate={navigate} />;
-  if (route === "curio") return <CurioPage onNavigate={navigate} />;
-  return <HomePage onNavigate={navigate} />;
+  // Only show glass orb cursor on desktop with hover capability
+  const showCursor =
+    typeof window !== "undefined" &&
+    window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+  return (
+    <>
+      {showCursor && <GlassOrbCursor />}
+      {route === "alma" && <AlmaPage onNavigate={navigate} />}
+      {route === "pulse" && <PulsePage onNavigate={navigate} />}
+      {route === "curio" && <CurioPage onNavigate={navigate} />}
+      {route === "home" && <HomePage onNavigate={navigate} />}
+    </>
+  );
 }

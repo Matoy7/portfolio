@@ -323,6 +323,7 @@ function CaseStudyGridCard({ children, onClick }: { children: React.ReactNode; o
   return (
     <div
       onClick={onClick}
+      data-case-study="true"
       className={[
         "group h-[300px] overflow-clip relative rounded-[20px] shrink-0 w-[535px]",
         onClick ? "cursor-pointer transition-all duration-250 ease-out hover:-translate-y-[6px] hover:shadow-[0_20px_40px_rgba(0,0,0,0.18)] active:translate-y-0" : "",
