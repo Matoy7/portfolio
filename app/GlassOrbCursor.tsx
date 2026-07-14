@@ -15,6 +15,18 @@ export default function GlassOrbCursor() {
     document.documentElement.style.cursor = "none";
     document.body.style.cursor = "none";
 
+    // Remove all cursor: pointer from elements to prevent hand cursor
+    const styleSheet = document.createElement("style");
+    styleSheet.textContent = `
+      * {
+        cursor: none !important;
+      }
+      *:hover {
+        cursor: none !important;
+      }
+    `;
+    document.head.appendChild(styleSheet);
+
     // Check if element is interactive
     const isInteractive = (el: HTMLElement): boolean => {
       if (
@@ -126,6 +138,8 @@ export default function GlassOrbCursor() {
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
       }
+      // Clean up injected styles
+      document.head.removeChild(styleSheet);
       // Restore cursor on unmount
       document.documentElement.style.cursor = "";
       document.body.style.cursor = "";
@@ -142,7 +156,7 @@ export default function GlassOrbCursor() {
         borderRadius: "50%",
         backgroundColor: "rgba(255, 255, 255, 0.2)",
         backdropFilter: "blur(14px)",
-        border: "1px solid rgba(255, 255, 255, 0.3)",
+        border: "2px solid rgba(0, 0, 0, 0.4)",
         boxShadow:
           "0 4px 12px rgba(0, 0, 0, 0.1), 0 0 20px rgba(255, 255, 255, 0.1)",
         opacity: 1,
