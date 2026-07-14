@@ -8,6 +8,7 @@ export default function GlassOrbCursor() {
   const isCaseStudyRef = useRef(false);
   const animationFrameRef = useRef<number>();
   const currentTargetRef = useRef<HTMLElement | null>(null);
+  const previousCursorRef = useRef<string>("auto");
 
   useEffect(() => {
     const orb = orbRef.current;
@@ -41,20 +42,46 @@ export default function GlassOrbCursor() {
       return null;
     };
 
+    // Restore cursor globally and on specific element
+    const restoreCursor = (el: HTMLElement | null = null) => {
+      if (el) {
+        // Restore cursor on specific element - remove inline style
+        el.style.cursor = "";
+      }
+      
+      // Also ensure document body has default cursor
+      document.body.style.cursor = "";
+      document.documentElement.style.cursor = "";
+    };
+
+    // Hide cursor globally
+    const hideCursor = (el: HTMLElement) => {
+      // Store the previous cursor style before hiding
+      previousCursorRef.current = window.getComputedStyle(el).cursor || "auto";
+      
+      // Set cursor to none on the element
+      el.style.cursor = "none";
+    };
+
     // Track mouse position
     const onMouseMove = (e: MouseEvent) => {
       mouseRef.current = { x: e.clientX, y: e.clientY };
 
-      // Check current element
+      // Check current element under cursor
       const target = e.target as HTMLElement;
       const interactiveEl = getInteractiveElement(target);
 
+      // If we're on a different element, update tracking
       if (interactiveEl && interactiveEl !== currentTargetRef.current) {
         currentTargetRef.current = interactiveEl;
         isCaseStudyRef.current = !!interactiveEl.getAttribute("data-case-study");
       } else if (!interactiveEl && currentTargetRef.current) {
+        // Moved away from interactive element
+        restoreCursor(currentTargetRef.current);
         currentTargetRef.current = null;
         isCaseStudyRef.current = false;
+        isHoveringRef.current = false;
+        orb.style.opacity = "0";
       }
     };
 
@@ -73,7 +100,6 @@ export default function GlassOrbCursor() {
       orbPosRef.current.y = lerp(orbPosRef.current.y, mouseRef.current.y, 0.15);
 
       // Apply transform (offset by half size for centering)
-      // Use current width from DOM to get accurate half-size
       const width = parseFloat(orb.style.width || "34");
       const offset = width / 2;
       orb.style.transform = `translate(${orbPosRef.current.x - offset}px, ${
@@ -85,18 +111,18 @@ export default function GlassOrbCursor() {
 
     animationFrameRef.current = requestAnimationFrame(animate);
 
-    // Detect hover enter/leave
+    // Detect hover enter
     const onMouseEnter = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       const interactiveEl = getInteractiveElement(target);
 
-      if (interactiveEl) {
+      if (interactiveEl && interactiveEl !== currentTargetRef.current) {
+        currentTargetRef.current = interactiveEl;
         isHoveringRef.current = true;
         isCaseStudyRef.current = !!interactiveEl.getAttribute("data-case-study");
-        currentTargetRef.current = interactiveEl;
 
         // Hide native cursor
-        interactiveEl.style.cursor = "none";
+        hideCursor(interactiveEl);
 
         // Update size for case study
         if (isCaseStudyRef.current) {
@@ -104,6 +130,11 @@ export default function GlassOrbCursor() {
           orb.style.height = "52px";
           orb.style.boxShadow =
             "0 4px 12px rgba(0, 0, 0, 0.15), 0 0 30px rgba(255, 255, 255, 0.15)";
+        } else {
+          orb.style.width = "34px";
+          orb.style.height = "34px";
+          orb.style.boxShadow =
+            "0 4px 12px rgba(0, 0, 0, 0.1), 0 0 20px rgba(255, 255, 255, 0.1)";
         }
 
         // Animate in
@@ -111,17 +142,18 @@ export default function GlassOrbCursor() {
       }
     };
 
+    // Detect hover leave
     const onMouseLeave = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       const interactiveEl = getInteractiveElement(target);
 
-      if (interactiveEl) {
+      if (interactiveEl && interactiveEl === currentTargetRef.current) {
         isHoveringRef.current = false;
         isCaseStudyRef.current = false;
-        currentTargetRef.current = null;
 
-        // Restore native cursor
-        interactiveEl.style.cursor = "";
+        // CRITICAL: Restore cursor immediately
+        restoreCursor(interactiveEl);
+        currentTargetRef.current = null;
 
         // Reset size
         orb.style.width = "34px";
@@ -134,18 +166,47 @@ export default function GlassOrbCursor() {
       }
     };
 
-    // Event delegation - capture phase
+    // Handle mouse leaving the window entirely
+    const onMouseOut = (e: MouseEvent) => {
+      if (!e.relatedTarget || (e.relatedTarget as HTMLElement).nodeName === "HTML") {
+        // Left the browser window
+        if (currentTargetRef.current) {
+          restoreCursor(currentTargetRef.current);
+          currentTargetRef.current = null;
+        }
+        isHoveringRef.current = false;
+        isCaseStudyRef.current = false;
+        orb.style.opacity = "0";
+      }
+    };
+
+    // Ensure cursor is restored when page loses focus
+    const onBlur = () => {
+      if (currentTargetRef.current) {
+        restoreCursor(currentTargetRef.current);
+        currentTargetRef.current = null;
+      }
+      orb.style.opacity = "0";
+    };
+
+    // Event listeners
     document.addEventListener("mouseenter", onMouseEnter, true);
     document.addEventListener("mouseleave", onMouseLeave, true);
+    document.addEventListener("mouseout", onMouseOut, true);
     document.addEventListener("mousemove", onMouseMove);
+    window.addEventListener("blur", onBlur);
 
     return () => {
       document.removeEventListener("mouseenter", onMouseEnter, true);
       document.removeEventListener("mouseleave", onMouseLeave, true);
+      document.removeEventListener("mouseout", onMouseOut, true);
       document.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("blur", onBlur);
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
       }
+      // Final cleanup: ensure cursor is restored
+      restoreCursor();
     };
   }, []);
 
