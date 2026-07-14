@@ -9,9 +9,9 @@ interface UseTextScrambleOptions {
 
 /**
  * Elegant premium text animation hook
- * Matches the refined, sophisticated style of luxury brand animations
- * Characters cycle through intelligible letterforms in a smooth, wave-like motion
- * Creates a sense of the text "settling" into place rather than chaotic scrambling
+ * Characters morph through visually similar letterforms and progressively resolve
+ * Creates an intelligent, refined "coming into focus" effect
+ * Matches the sophisticated animation style of luxury brand websites
  */
 export function useTextScramble({
   targetText,
@@ -25,80 +25,101 @@ export function useTextScramble({
   const phaseRef = useRef<"animate" | "pause">("animate");
   const prefersReducedMotionRef = useRef<boolean>(false);
 
-  // Character cycles - intelligible, refined progressions
-  const characterCycles: Record<string, string[]> = {
-    // Uppercase letters
-    A: "AHIMTUVWXYZNABCDEFG".split(""),
-    B: "BPRDEBFGHIJKLMNOPQR".split(""),
-    C: "CEOGLCDEFGHIJKLMNOP".split(""),
-    D: "DOPDBCDEFGHIJKLMNPQ".split(""),
-    E: "EFHLMNEABCDEFGHIJKL".split(""),
-    F: "FTELABCDEFGHIJKLMNO".split(""),
-    G: "GCOEQGDEFGHIJKLMNOP".split(""),
-    H: "HNUMHABCDEFGHIJKLMN".split(""),
-    I: "ILTIJABCDEFGHIJKLMN".split(""),
-    J: "JJUABCDEFGHIJKLMNO".split(""),
-    K: "KXYVABCDEFGHIJKLMNO".split(""),
-    L: "LEFHILABCDEFGHIJKMN".split(""),
-    M: "MNWHVMABCDEFGHIJKLM".split(""),
-    N: "NMHUNABCDEFGHIJKLMO".split(""),
-    O: "OQCEGOPABCDEFGHIJKL".split(""),
-    P: "PRBOPABCDEFGHIJKLMN".split(""),
-    Q: "QOCEPQABCDEFGHIJKLM".split(""),
-    R: "RPBDRABCDEFGHIJKLMN".split(""),
-    S: "SCZSOABCDEFGHIJKLMN".split(""),
-    T: "TELABCDEFGHIJKLMNOP".split(""),
-    U: "UNHUMABCDEFGHIJKLMN".split(""),
-    V: "VWYUVABCDEFGHIJKLMN".split(""),
-    W: "WMVHWABCDEFGHIJKLMN".split(""),
-    X: "XKYVXABCDEFGHIJKLMN".split(""),
-    Y: "YVWXYABCDEFGHIJKLMN".split(""),
-    Z: "ZSCZABCDEFGHIJKLMNO".split(""),
-    // Lowercase letters
-    a: "anbcdaeghimnopqrstu".split(""),
-    b: "bdhpobcdefghijklmno".split(""),
-    c: "ceosbcdefghijklmnop".split(""),
-    d: "dbophdbcdefghijklmn".split(""),
-    e: "acebdefghijklmnoprs".split(""),
-    f: "ftieabcdefghijklmno".split(""),
-    g: "gqobdgefghijklmnopq".split(""),
-    h: "hnhumabcdefghijklmn".split(""),
-    i: "iltijabcdefghijklmn".split(""),
-    j: "jijabcdefghijklmnop".split(""),
-    k: "kxyzvabcdefghijklmn".split(""),
-    l: "liefhabcdefghijklmn".split(""),
-    m: "mnwhvmabcdefghijklm".split(""),
-    n: "hnumabcdefghijklmno".split(""),
-    o: "oqcesofbcdefghijklm".split(""),
-    p: "pbhodpabcdefghijklm".split(""),
-    q: "qocdepabcdefghijklm".split(""),
-    r: "rbopdeabcdefghijklm".split(""),
-    s: "szcosabcdefghijklmn".split(""),
-    t: "telfbcdefghijklmnop".split(""),
-    u: "unhumabcdefghijklmn".split(""),
-    v: "vwyuvabcdefghijklmn".split(""),
-    w: "wmvhwabcdefghijklmn".split(""),
-    x: "xkyvxabcdefghijklmn".split(""),
-    y: "yvwxyabcdefghijklmn".split(""),
-    z: "zsczabcdefghijklmno".split(""),
+  // Proximity maps - characters ordered from visually similar to target
+  // Each sequence ends with the target character itself
+  const proximityMap: Record<string, string[]> = {
+    // Uppercase
+    "A": ["V", "H", "R", "N", "U", "T", "A"],
+    "B": ["P", "D", "R", "L", "E", "F", "B"],
+    "C": ["G", "O", "Q", "U", "C"],
+    "D": ["O", "B", "P", "R", "D"],
+    "E": ["F", "L", "B", "H", "E"],
+    "F": ["E", "L", "T", "F"],
+    "G": ["C", "O", "Q", "G"],
+    "H": ["N", "M", "U", "H"],
+    "I": ["L", "T", "J", "I"],
+    "J": ["I", "L", "J"],
+    "K": ["X", "Y", "K"],
+    "L": ["I", "T", "F", "L"],
+    "M": ["N", "W", "U", "M"],
+    "N": ["M", "H", "U", "N"],
+    "O": ["Q", "C", "P", "I", "O"],
+    "P": ["R", "B", "D", "O", "P"],
+    "Q": ["O", "C", "G", "Q"],
+    "R": ["P", "B", "T", "R"],
+    "S": ["Z", "X", "Y", "S"],
+    "T": ["Y", "R", "L", "F", "T"],
+    "U": ["V", "Y", "H", "N", "U"],
+    "V": ["U", "Y", "A", "V"],
+    "W": ["M", "U", "V", "W"],
+    "X": ["Y", "K", "Z", "X"],
+    "Y": ["X", "Z", "T", "U", "V", "Y"],
+    "Z": ["S", "X", "Y", "Z"],
+    // Lowercase
+    "a": ["v", "n", "u", "r", "a"],
+    "b": ["p", "d", "o", "b"],
+    "c": ["o", "e", "c"],
+    "d": ["o", "b", "p", "d"],
+    "e": ["c", "o", "a", "e"],
+    "f": ["t", "l", "f"],
+    "g": ["o", "q", "g"],
+    "h": ["n", "u", "h"],
+    "i": ["l", "j", "i"],
+    "j": ["i", "l", "j"],
+    "k": ["x", "k"],
+    "l": ["i", "t", "f", "l"],
+    "m": ["n", "u", "w", "m"],
+    "n": ["m", "u", "h", "n"],
+    "o": ["c", "e", "p", "q", "o"],
+    "p": ["o", "d", "b", "p"],
+    "q": ["o", "p", "q"],
+    "r": ["t", "b", "r"],
+    "s": ["z", "x", "s"],
+    "t": ["l", "f", "t"],
+    "u": ["v", "n", "u"],
+    "v": ["u", "y", "v"],
+    "w": ["m", "u", "v", "w"],
+    "x": ["y", "z", "x"],
+    "y": ["x", "v", "y"],
+    "z": ["s", "x", "z"],
   };
 
-  // Smooth easing function (ease-in-out cubic) for natural motion
-  const easeInOutCubic = (t: number): number => {
-    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  // Get the proximity sequence for a character
+  const getProximitySequence = (char: string): string[] => {
+    if (char === " ") return [" "];
+    return proximityMap[char] || [char];
   };
 
-  // Get scrambled character based on progress (0-1)
-  const getScrambledChar = (char: string, progress: number): string => {
+  // Get character at a given progress point
+  // Implements progressive resolution where characters gradually lock in
+  const getCharAtProgress = (
+    char: string,
+    globalProgress: number,
+    positionIndex: number,
+    totalLength: number
+  ): string => {
     if (char === " ") return " ";
 
-    const cycle = characterCycles[char];
-    if (!cycle) return char;
+    const sequence = getProximitySequence(char);
+    if (sequence.length <= 1) return char;
 
-    // Progress through the cycle: 0 = start of cycle, 1 = end
-    // Characters cycle through intelligible letterforms smoothly
-    const cycleIndex = Math.floor(progress * cycle.length) % cycle.length;
-    return cycle[cycleIndex];
+    // Calculate when this character should fully resolve
+    // Early positions resolve first, creating a wave effect
+    const resolutionTime =
+      0.1 + (0.85 * positionIndex) / Math.max(totalLength - 1, 1);
+
+    // If we've passed the resolution time, show the correct character
+    if (globalProgress >= resolutionTime) {
+      return char;
+    }
+
+    // Before resolution: show intermediate character from sequence
+    // localProgress: 0 = start of resolution window, 1 = end
+    const localProgress = globalProgress / resolutionTime;
+
+    // Index into the sequence: progresses from start to end
+    const sequenceIndex = Math.floor(localProgress * (sequence.length - 1));
+    return sequence[Math.min(sequenceIndex, sequence.length - 1)];
   };
 
   // Check if user prefers reduced motion
@@ -125,20 +146,14 @@ export function useTextScramble({
 
       if (phaseRef.current === "animate") {
         if (elapsed < scrambleDuration) {
-          // Normalize progress: 0 to 1
-          const rawProgress = elapsed / scrambleDuration;
-          
-          // Apply easing for smooth, natural motion
-          const eased = easeInOutCubic(rawProgress);
+          // Calculate progress: 0 to 1
+          const progress = elapsed / scrambleDuration;
 
-          // Generate scrambled text
+          // Generate text for this frame
           let newText = "";
           for (let i = 0; i < targetText.length; i++) {
             const char = targetText[i];
-            // Stagger the animation slightly per character for wave effect (subtle)
-            const stagger = (i * 0.02); // 2% stagger per character
-            const charProgress = Math.min(1, eased + stagger);
-            newText += getScrambledChar(char, charProgress);
+            newText += getCharAtProgress(char, progress, i, targetText.length);
           }
 
           setDisplayText(newText);
@@ -151,12 +166,12 @@ export function useTextScramble({
           animationFrameRef.current = requestAnimationFrame(animate);
         }
       } else if (phaseRef.current === "pause") {
-        // Pause phase
+        // Pause phase - keep text static
         if (elapsed < pauseDuration) {
           setDisplayText(targetText);
           animationFrameRef.current = requestAnimationFrame(animate);
         } else {
-          // Restart animation
+          // Pause complete - restart animation
           phaseRef.current = "animate";
           startTimeRef.current = 0;
           animationFrameRef.current = requestAnimationFrame(animate);
