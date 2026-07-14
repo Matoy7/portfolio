@@ -5,6 +5,7 @@ export default function GlassOrbCursor() {
   const mouseRef = useRef({ x: 0, y: 0 });
   const orbPosRef = useRef({ x: 0, y: 0 });
   const isInteractiveRef = useRef(false);
+  const isInitializedRef = useRef(false);
   const animationFrameRef = useRef<number>();
 
   useEffect(() => {
@@ -57,7 +58,14 @@ export default function GlassOrbCursor() {
 
     // Track mouse position
     const onMouseMove = (e: MouseEvent) => {
-      mouseRef.current = { x: e.clientX, y: e.clientY };
+      // Initialize position on first mouse move
+      if (!isInitializedRef.current) {
+        mouseRef.current = { x: e.clientX, y: e.clientY };
+        orbPosRef.current = { x: e.clientX, y: e.clientY };
+        isInitializedRef.current = true;
+      } else {
+        mouseRef.current = { x: e.clientX, y: e.clientY };
+      }
 
       // Check if currently hovering an interactive element
       const target = e.target as HTMLElement;
@@ -101,7 +109,10 @@ export default function GlassOrbCursor() {
     // Animation loop for smooth cursor following
     const animate = () => {
       const orb = orbRef.current;
-      if (!orb) return;
+      if (!orb || !isInitializedRef.current) {
+        animationFrameRef.current = requestAnimationFrame(animate);
+        return;
+      }
 
       // Smooth follow with lerp
       orbPosRef.current.x = lerp(orbPosRef.current.x, mouseRef.current.x, 0.15);

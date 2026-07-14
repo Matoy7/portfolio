@@ -2,20 +2,22 @@ import { useEffect, useRef, useState } from "react";
 
 interface UseTextScrambleOptions {
   targetText: string;
-  scrambleDuration?: number; // ms (default: 800)
-  pauseDuration?: number; // ms (default: 4500)
+  scrambleDuration?: number; // ms (default: 2800)
+  updateInterval?: number; // ms between character updates (default: 50)
+  pauseDuration?: number; // ms (default: 5000)
   enabled?: boolean; // respect prefers-reduced-motion automatically
 }
 
 /**
  * Premium text scramble animation hook
- * Animates text by scrambling it with random letters and locking in characters left-to-right
- * Perfect for high-end portfolio websites
+ * All characters shuffle simultaneously, then resolve at the same moment
+ * Creates an elegant, lively "shuffling" effect
  */
 export function useTextScramble({
   targetText,
-  scrambleDuration = 800,
-  pauseDuration = 4500,
+  scrambleDuration = 2800,
+  updateInterval = 50,
+  pauseDuration = 5000,
   enabled = true,
 }: UseTextScrambleOptions) {
   const [displayText, setDisplayText] = useState(targetText);
@@ -23,6 +25,7 @@ export function useTextScramble({
   const startTimeRef = useRef<number>(0);
   const phaseRef = useRef<"scramble" | "pause">("scramble");
   const prefersReducedMotionRef = useRef<boolean>(false);
+  const lastUpdateRef = useRef<number>(0);
 
   // Generate a random letter (uppercase or lowercase)
   const getRandomLetter = () => {
@@ -48,52 +51,52 @@ export function useTextScramble({
     const animate = (currentTime: number) => {
       if (!startTimeRef.current) {
         startTimeRef.current = currentTime;
+        lastUpdateRef.current = currentTime;
       }
 
       const elapsed = currentTime - startTimeRef.current;
 
       if (phaseRef.current === "scramble") {
-        // Scramble phase
+        // Scramble phase - all characters update simultaneously
         if (elapsed < scrambleDuration) {
-          // Calculate progress (0 to 1)
-          const progress = elapsed / scrambleDuration;
+          // Update characters every `updateInterval` milliseconds
+          if (currentTime - lastUpdateRef.current >= updateInterval) {
+            lastUpdateRef.current = currentTime;
 
-          // Calculate how many characters should be locked in
-          // Lock in characters from left to right based on progress
-          const lockedCount = Math.floor(progress * targetText.length);
-
-          // Build the display text
-          let newText = "";
-          for (let i = 0; i < targetText.length; i++) {
-            if (i < lockedCount) {
-              // This character is locked in
-              newText += targetText[i];
-            } else {
-              // This character is scrambling
-              newText += getRandomLetter();
+            // Generate new random text for all characters
+            let newText = "";
+            for (let i = 0; i < targetText.length; i++) {
+              const char = targetText[i];
+              // If it's a space, keep it as space
+              if (char === " ") {
+                newText += " ";
+              } else {
+                // Replace with random letter
+                newText += getRandomLetter();
+              }
             }
-          }
 
-          setDisplayText(newText);
+            setDisplayText(newText);
+          }
 
           animationFrameRef.current = requestAnimationFrame(animate);
         } else {
-          // Scramble phase complete
+          // Scramble phase complete - reveal the actual text
           setDisplayText(targetText);
           phaseRef.current = "pause";
           startTimeRef.current = currentTime;
           animationFrameRef.current = requestAnimationFrame(animate);
         }
       } else if (phaseRef.current === "pause") {
-        // Pause phase
+        // Pause phase - keep the text steady
         if (elapsed < pauseDuration) {
-          // Keep the text steady
           setDisplayText(targetText);
           animationFrameRef.current = requestAnimationFrame(animate);
         } else {
           // Pause phase complete, restart
           phaseRef.current = "scramble";
           startTimeRef.current = 0;
+          lastUpdateRef.current = 0;
           animationFrameRef.current = requestAnimationFrame(animate);
         }
       }
@@ -106,7 +109,7 @@ export function useTextScramble({
         cancelAnimationFrame(animationFrameRef.current);
       }
     };
-  }, [targetText, scrambleDuration, pauseDuration, enabled]);
+  }, [targetText, scrambleDuration, updateInterval, pauseDuration, enabled]);
 
   return displayText;
 }

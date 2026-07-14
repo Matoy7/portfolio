@@ -21,8 +21,9 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
   // Text scramble animation for name
   const scrambledName = useTextScramble({
     targetText: "Yotam Eliraz",
-    scrambleDuration: 800,
-    pauseDuration: 4500,
+    scrambleDuration: 2800,
+    updateInterval: 50,
+    pauseDuration: 5000,
     enabled: !reducedMotion,
   });
 
