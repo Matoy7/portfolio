@@ -3,6 +3,7 @@ import mobilePortrait from "@/imports/mobile-portrait.png";
 import imgPulseCard from "@/imports/Frame13/b408d64d475512d56275485cd8a85bf540ac8e83.png";
 import imgAlmaCard from "@/imports/Frame13/fde8b98f3f8528432f9f6c69d09f5bccf388e844.png";
 import imgCurioCard from "@/imports/Frame13/c51554de7237f51893371d0ee285af660281af21.png";
+import { useTextScramble } from "./useTextScramble";
 
 const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
 
@@ -168,6 +169,24 @@ function MobileNav({
   onContact: () => void;
 }) {
   const [open, setOpen] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
+
+  // Text scramble animation for name
+  const scrambledName = useTextScramble({
+    targetText: "Yotam Eliraz",
+    scrambleDuration: 2800,
+    updateInterval: 50,
+    pauseDuration: 5000,
+    enabled: !reducedMotion,
+  });
+
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReducedMotion(mq.matches);
+    const onChange = () => setReducedMotion(mq.matches);
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
 
   const go = (fn: () => void) => {
     setOpen(false);
@@ -178,7 +197,7 @@ function MobileNav({
     <>
       <div className="w-full flex items-center justify-between" style={{ padding: "18px 20px" }}>
         <p className="font-bold text-[#161616]" style={{ fontFamily: "Inter, sans-serif", fontSize: "17px" }}>
-          Yotam Eliraz
+          {scrambledName}
         </p>
         <button
           aria-label={open ? "Close menu" : "Open menu"}
@@ -202,7 +221,7 @@ function MobileNav({
       >
         <div className="w-full flex items-center justify-between" style={{ padding: "18px 20px" }}>
           <p className="font-bold text-[#161616]" style={{ fontFamily: "Inter, sans-serif", fontSize: "17px" }}>
-            Yotam Eliraz
+            {scrambledName}
           </p>
           <button
             aria-label="Close menu"
