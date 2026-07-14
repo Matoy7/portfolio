@@ -83,24 +83,24 @@ export default function GlassOrbCursor() {
           orb.style.height = "52px";
           orb.style.boxShadow =
             "0 4px 12px rgba(0, 0, 0, 0.15), 0 0 30px rgba(255, 255, 255, 0.15)";
-          orb.style.backgroundColor = "rgba(255, 255, 255, 0.03)";
-          orb.style.borderColor = "rgba(0, 0, 0, 0.08)";
+          orb.style.backgroundColor = "rgba(255, 255, 255, 0.02)";
+          orb.style.borderColor = "rgba(0, 0, 0, 0.06)";
         } else {
           orb.style.width = "34px";
           orb.style.height = "34px";
           orb.style.boxShadow =
-            "0 4px 12px rgba(0, 0, 0, 0.1), 0 0 20px rgba(255, 255, 255, 0.1)";
-          orb.style.backgroundColor = "rgba(255, 255, 255, 0.03)";
-          orb.style.borderColor = "rgba(0, 0, 0, 0.08)";
+            "0 2px 6px rgba(0, 0, 0, 0.08), 0 0 12px rgba(255, 255, 255, 0.08)";
+          orb.style.backgroundColor = "rgba(255, 255, 255, 0.02)";
+          orb.style.borderColor = "rgba(0, 0, 0, 0.06)";
         }
       } else if (!isInteractiveRef.current && wasInteractive) {
         // Leaving interactive element - return to default
         orb.style.width = "34px";
         orb.style.height = "34px";
         orb.style.boxShadow =
-          "0 4px 12px rgba(0, 0, 0, 0.1), 0 0 20px rgba(255, 255, 255, 0.1)";
-        orb.style.backgroundColor = "rgba(255, 255, 255, 0.03)";
-        orb.style.borderColor = "rgba(0, 0, 0, 0.08)";
+          "0 2px 6px rgba(0, 0, 0, 0.08), 0 0 12px rgba(255, 255, 255, 0.08)";
+        orb.style.backgroundColor = "rgba(255, 255, 255, 0.02)";
+        orb.style.borderColor = "rgba(0, 0, 0, 0.06)";
       }
     };
 
@@ -168,11 +168,11 @@ export default function GlassOrbCursor() {
         width: "34px",
         height: "34px",
         borderRadius: "50%",
-        backgroundColor: "rgba(255, 255, 255, 0.03)",
-        backdropFilter: "blur(14px)",
-        border: "2px solid rgba(0, 0, 0, 0.08)",
+        backgroundColor: "rgba(255, 255, 255, 0.02)",
+        backdropFilter: "none",
+        border: "1.5px solid rgba(0, 0, 0, 0.06)",
         boxShadow:
-          "0 4px 12px rgba(0, 0, 0, 0.1), 0 0 20px rgba(255, 255, 255, 0.1)",
+          "0 2px 6px rgba(0, 0, 0, 0.08), 0 0 12px rgba(255, 255, 255, 0.08)",
         opacity: 1,
         transform: "translate(-17px, -17px)",
         transition:
