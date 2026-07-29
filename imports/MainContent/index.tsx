@@ -9162,6 +9162,9 @@ function Container390() {
     <div className="flex h-[176.076px] items-center justify-center relative shrink-0 w-[164.065px]">
       <div className="flex-none rotate-[-0.68deg]">
         <div className="content-stretch flex flex-col h-[174.162px] items-center overflow-clip relative w-[162.005px]" data-name="Container">
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <img alt="" className="absolute h-[139.53%] left-[1.25%] max-w-none top-[-12.61%] w-full" src={imgImage9} />
+          </div>
           <Container391 />
           <Container392 />
         </div>
@@ -9685,6 +9688,9 @@ function Container411() {
     <div className="flex h-[176.076px] items-center justify-center relative shrink-0 w-[164.065px]">
       <div className="flex-none rotate-[-0.68deg]">
         <div className="content-stretch flex flex-col h-[174.162px] items-center overflow-clip relative w-[162.005px]" data-name="Container">
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <img alt="" className="absolute h-[139.53%] left-[1.25%] max-w-none top-[-12.61%] w-full" src={imgImage9} />
+          </div>
           <Container412 />
           <Container413 />
         </div>
@@ -9858,6 +9864,9 @@ function Container418() {
     <div className="flex h-[176.076px] items-center justify-center relative shrink-0 w-[164.065px]">
       <div className="flex-none rotate-[-0.68deg]">
         <div className="content-stretch flex flex-col h-[174.162px] items-center overflow-clip relative w-[162.005px]" data-name="Container">
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <img alt="" className="absolute h-[139.53%] left-[1.25%] max-w-none top-[-12.61%] w-full" src={imgImage9} />
+          </div>
           <Container419 />
           <Container420 />
         </div>
@@ -10621,9 +10630,6 @@ function Frame86() {
       <p className="[word-break:break-word] absolute font-['Quicksand',sans-serif] font-bold leading-[normal] left-[calc(50%-942px)] text-[400px] text-[rgba(215,232,248,0.5)] top-[1131px] whitespace-nowrap" dir="auto">
         PRODUCT
       </p>
-      <div className="absolute h-[175px] left-[1245px] top-[940px] w-[165px]" data-name="catalog fill image">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full rounded-[6px]" src={imgImage9} />
-      </div>
       <Frame98 />
       <Frame93 />
     </div>
