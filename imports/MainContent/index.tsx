@@ -52,6 +52,8 @@ import imgImage9 from "./fc06f3251b6cdcf7882de9dddf81cf6d1c27e79b.png";
 import imgContainer20 from "./37c64f178ccd7cf81d7f54ae862348988af8b8a3.png";
 import imgUntitled23 from "./0347daedce85113bb7ed19ec7f2f8c195fa825e1.png";
 import imgFrame133 from "./5df8fd1a6948299715c596180941cba6bbf2880e.png";
+import imgStemRobot from "./stem-robot.png";
+import imgCatAnatomy from "./cat-anatomy.png";
 
 function Heading1() {
   return (
@@ -9163,7 +9165,7 @@ function Container390() {
       <div className="flex-none rotate-[-0.68deg]">
         <div className="content-stretch flex flex-col h-[174.162px] items-center overflow-clip relative w-[162.005px]" data-name="Container">
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <img alt="" className="absolute h-[139.53%] left-[1.25%] max-w-none top-[-12.61%] w-full" src={imgImage9} />
+            <img alt="" className="absolute h-[139.53%] left-[1.25%] max-w-none top-[-12.61%] w-full" src={imgCatAnatomy} />
           </div>
           <Container391 />
           <Container392 />
@@ -9689,7 +9691,7 @@ function Container411() {
       <div className="flex-none rotate-[-0.68deg]">
         <div className="content-stretch flex flex-col h-[174.162px] items-center overflow-clip relative w-[162.005px]" data-name="Container">
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <img alt="" className="absolute h-[139.53%] left-[1.25%] max-w-none top-[-12.61%] w-full" src={imgImage9} />
+            <img alt="" className="absolute h-[139.53%] left-[1.25%] max-w-none top-[-12.61%] w-full" src={imgStemRobot} />
           </div>
           <Container412 />
           <Container413 />
