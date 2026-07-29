@@ -10052,42 +10052,6 @@ function ProductsGrid() {
           </div>
           <div aria-hidden className="absolute border-[0.463px] border-solid border-white inset-0 pointer-events-none rounded-[5.786px]" />
         </div>
-        <div className="col-2 relative rounded-[5.786px] row-4 self-start shrink-0 w-[185.148px]" data-name="Container">
-          <div className="content-stretch flex flex-col items-center overflow-clip relative rounded-[inherit] size-full">
-            <Container362 />
-            <Container365 />
-            <button className="absolute block cursor-pointer h-[15.043px] left-[144px] top-[10.41px] w-[16.779px]" data-name="Vector">
-              <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 16.6999 15.0433">
-                <path d={svgPaths.p23c9d800} id="Vector" stroke="var(--stroke-0, #12243E)" strokeWidth="0.578588" />
-              </svg>
-            </button>
-          </div>
-          <div aria-hidden className="absolute border-[0.463px] border-solid border-white inset-0 pointer-events-none rounded-[5.786px]" />
-        </div>
-        <div className="col-3 relative rounded-[5.786px] row-4 self-start shrink-0 w-[185.148px]" data-name="Container">
-          <div className="content-stretch flex flex-col items-center overflow-clip relative rounded-[inherit] size-full">
-            <Container362 />
-            <Container365 />
-            <button className="absolute block cursor-pointer h-[15.043px] left-[144px] top-[10.41px] w-[16.779px]" data-name="Vector">
-              <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 16.6999 15.0433">
-                <path d={svgPaths.p23c9d800} id="Vector" stroke="var(--stroke-0, #12243E)" strokeWidth="0.578588" />
-              </svg>
-            </button>
-          </div>
-          <div aria-hidden className="absolute border-[0.463px] border-solid border-white inset-0 pointer-events-none rounded-[5.786px]" />
-        </div>
-        <div className="col-4 relative rounded-[5.786px] row-4 self-start shrink-0 w-[185.148px]" data-name="Container">
-          <div className="content-stretch flex flex-col items-center overflow-clip relative rounded-[inherit] size-full">
-            <Container362 />
-            <Container365 />
-            <button className="absolute block cursor-pointer h-[15.043px] left-[144px] top-[10.41px] w-[16.779px]" data-name="Vector">
-              <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 16.6999 15.0433">
-                <path d={svgPaths.p23c9d800} id="Vector" stroke="var(--stroke-0, #12243E)" strokeWidth="0.578588" />
-              </svg>
-            </button>
-          </div>
-          <div aria-hidden className="absolute border-[0.463px] border-solid border-white inset-0 pointer-events-none rounded-[5.786px]" />
-        </div>
         <div className="col-4 relative rounded-[5.786px] row-3 self-start shrink-0 w-[185.148px]" data-name="Container">
           <div className="content-stretch flex flex-col items-center overflow-clip relative rounded-[inherit] size-full">
             <Container369 />
@@ -10657,6 +10621,9 @@ function Frame86() {
       <p className="[word-break:break-word] absolute font-['Quicksand',sans-serif] font-bold leading-[normal] left-[calc(50%-942px)] text-[400px] text-[rgba(215,232,248,0.5)] top-[1131px] whitespace-nowrap" dir="auto">
         PRODUCT
       </p>
+      <div className="absolute h-[175px] left-[1245px] top-[940px] w-[165px]" data-name="catalog fill image">
+        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full rounded-[6px]" src={imgImage9} />
+      </div>
       <Frame98 />
       <Frame93 />
     </div>
