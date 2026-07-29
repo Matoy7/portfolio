@@ -10054,8 +10054,8 @@ function ProductsGrid() {
         </div>
         <div className="col-2 relative rounded-[5.786px] row-4 self-start shrink-0 w-[185.148px]" data-name="Container">
           <div className="content-stretch flex flex-col items-center overflow-clip relative rounded-[inherit] size-full">
-            <Container362 />
-            <Container365 />
+            <Container341 />
+            <Container344 />
             <button className="absolute block cursor-pointer h-[15.043px] left-[144px] top-[10.41px] w-[16.779px]" data-name="Vector">
               <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 16.6999 15.0433">
                 <path d={svgPaths.p23c9d800} id="Vector" stroke="var(--stroke-0, #12243E)" strokeWidth="0.578588" />
@@ -10066,11 +10066,11 @@ function ProductsGrid() {
         </div>
         <div className="col-3 relative rounded-[5.786px] row-4 self-start shrink-0 w-[185.148px]" data-name="Container">
           <div className="content-stretch flex flex-col items-center overflow-clip relative rounded-[inherit] size-full">
-            <Container362 />
-            <Container365 />
+            <Container348 />
+            <Container351 />
             <button className="absolute block cursor-pointer h-[15.043px] left-[144px] top-[10.41px] w-[16.779px]" data-name="Vector">
               <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 16.6999 15.0433">
-                <path d={svgPaths.p23c9d800} id="Vector" stroke="var(--stroke-0, #12243E)" strokeWidth="0.578588" />
+                <path d={svgPaths.p15446200} fill="var(--fill-0, #FF7779)" id="Vector" />
               </svg>
             </button>
           </div>
@@ -10078,8 +10078,8 @@ function ProductsGrid() {
         </div>
         <div className="col-4 relative rounded-[5.786px] row-4 self-start shrink-0 w-[185.148px]" data-name="Container">
           <div className="content-stretch flex flex-col items-center overflow-clip relative rounded-[inherit] size-full">
-            <Container362 />
-            <Container365 />
+            <Container355 />
+            <Container358 />
             <button className="absolute block cursor-pointer h-[15.043px] left-[144px] top-[10.41px] w-[16.779px]" data-name="Vector">
               <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 16.6999 15.0433">
                 <path d={svgPaths.p23c9d800} id="Vector" stroke="var(--stroke-0, #12243E)" strokeWidth="0.578588" />
