@@ -9867,7 +9867,7 @@ function Container418() {
       <div className="flex-none rotate-[-0.68deg]">
         <div className="content-stretch flex flex-col h-[174.162px] items-center overflow-clip relative w-[162.005px]" data-name="Container">
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <img alt="" className="absolute h-[139.53%] left-[1.25%] max-w-none top-[-12.61%] w-full" src={imgImage9} />
+            <img alt="" className="absolute h-[139.53%] left-[1.25%] max-w-none top-[-12.61%] w-full" src={imgCatAnatomy} />
           </div>
           <Container419 />
           <Container420 />
