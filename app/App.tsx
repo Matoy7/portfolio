@@ -1,9 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, lazy, Suspense } from "react";
 import HomePage from "./HomePage";
-import AlmaPage from "./AlmaPage";
-import PulsePage from "./PulsePage";
-import CurioPage from "./CurioPage";
 import GlassOrbCursor from "./GlassOrbCursor";
+
+// Lazy-load case studies — massive win: initial page load doesn't ship 200MB of
+// Alma/Curio/Pulse assets. Each page (and all its images) is fetched only when
+// the user navigates there.
+const AlmaPage = lazy(() => import("./AlmaPage"));
+const PulsePage = lazy(() => import("./PulsePage"));
+const CurioPage = lazy(() => import("./CurioPage"));
 
 function routeFromHash(): string {
   const h = window.location.hash.replace(/^#\/?/, "");
@@ -42,9 +46,11 @@ export default function App() {
   return (
     <>
       {showCursor && <GlassOrbCursor />}
-      {route === "alma" && <AlmaPage onNavigate={navigate} />}
-      {route === "pulse" && <PulsePage onNavigate={navigate} />}
-      {route === "curio" && <CurioPage onNavigate={navigate} />}
+      <Suspense fallback={<div style={{ minHeight: "100vh", background: "white" }} />}>
+        {route === "alma" && <AlmaPage onNavigate={navigate} />}
+        {route === "pulse" && <PulsePage onNavigate={navigate} />}
+        {route === "curio" && <CurioPage onNavigate={navigate} />}
+      </Suspense>
       {route === "home" && <HomePage onNavigate={navigate} />}
     </>
   );
