@@ -4086,7 +4086,6 @@ function MainContent() {
       <Persona />
       <Presona />
       <OurSolution />
-      <Wireframes />
       <Container />
       <OnboardingDescription />
       <MainContainer />

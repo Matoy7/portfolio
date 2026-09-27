@@ -11112,7 +11112,7 @@ function Frame20() {
 
 function Frame21() {
   return (
-    <div className="absolute h-[791px] left-0 top-[14928px] w-[1920px]">
+    <div className="absolute h-[791px] left-0 top-[13334px] w-[1920px]">
       <div className="absolute h-[791px] left-0 top-0 w-[1920px]" data-name="image 30">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <img alt="" className="absolute h-[136.66%] left-[-0.02%] max-w-none top-[-20.23%] w-[100.04%]" src={imgImage30} />
@@ -11131,7 +11131,6 @@ export default function Desktop() {
       <Container1 />
       <Frame />
       <Container8 />
-      <App />
       <App3 />
       <Frame6 />
       <Frame3 />

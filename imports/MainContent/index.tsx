@@ -11420,7 +11420,6 @@ export default function MainContent() {
     <div className="bg-white content-stretch flex flex-col items-center relative size-full" data-name="Main content">
       <Frame78 />
       <OurSolution />
-      <App />
       <Frame16 />
       <Frame83 />
       <Frame87 />

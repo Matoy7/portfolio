@@ -2567,7 +2567,6 @@ function MobileCaseStudyAdaptation() {
       <Frame21 />
       <Frame22 />
       <Section2 />
-      <Section3 />
       <Section4 />
       <Section5 />
       <Frame12 />
@@ -2586,7 +2585,7 @@ function MobileCaseStudyAdaptation() {
 
 function Frame20() {
   return (
-    <div className="h-[10688.98px] relative shrink-0 w-[373.51px]">
+    <div className="h-[9702.68px] relative shrink-0 w-[373.51px]">
       <MobileCaseStudyAdaptation />
     </div>
   );
@@ -2594,7 +2593,7 @@ function Frame20() {
 
 function Mobile() {
   return (
-    <div className="bg-white content-stretch flex flex-col h-[10860px] items-center overflow-x-clip overflow-y-auto relative shrink-0 w-[375px]" data-name="Mobile">
+    <div className="bg-white content-stretch flex flex-col h-[9873.7px] items-center overflow-x-clip overflow-y-auto relative shrink-0 w-[375px]" data-name="Mobile">
       <Frame20 />
     </div>
   );
