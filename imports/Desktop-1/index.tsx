@@ -11058,7 +11058,7 @@ function Container1060() {
 
 function Frame5() {
   return (
-    <div className="bg-[#040022] content-stretch drop-shadow-[-500px_-820px_125px_rgba(197,17,232,0),-320px_-525px_123px_rgba(197,17,232,0.01),-180px_-295px_103.5px_rgba(197,17,232,0.05),-80px_-131px_77px_rgba(197,17,232,0.09),-20px_-33px_42.5px_rgba(197,17,232,0.1)] flex flex-col gap-[10px] h-[1571px] items-center justify-center p-[10px] relative shrink-0 w-[1920px]">
+    <div className="bg-[#040022] content-stretch shadow-[-320px_-525px_123px_rgba(197,17,232,0.01),-180px_-295px_103.5px_rgba(197,17,232,0.05),-80px_-131px_77px_rgba(197,17,232,0.09),-20px_-33px_42.5px_rgba(197,17,232,0.1)] isolate flex flex-col gap-[10px] h-[1571px] items-center justify-center p-[10px] relative shrink-0 w-[1920px]">
       <Container1060 />
       <p className="-translate-x-1/2 [word-break:break-word] absolute font-['Inter',sans-serif] font-extrabold leading-[0] left-[1006px] not-italic text-[92px] text-center text-white top-[360px] whitespace-pre" dir="auto">
         <span className="leading-[98px]">{`See which `}</span>

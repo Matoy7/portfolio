@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useLayoutEffect } from "react";
 import MobileHome from "./MobileHome";
+import { useViewportWidth, useHomeUpscale, HOME_DESIGN_WIDTH } from "./useViewportWidth";
 import NewHero from "./NewHero";
 import imgHero from "@/imports/Frame11/376b4ff69c76e4c7548a2d9016b80b772b65dbee.png";
 import imgHeroDashboard from "@/imports/Frame11/hero_dashboard.png";
@@ -175,6 +176,7 @@ function StickyNav({
 }) {
   const [visible, setVisible] = useState(false);
   const reducedMotion = usePrefersReducedMotion();
+  const upscale = useHomeUpscale();
 
   useEffect(() => {
     const onScroll = () => setVisible(window.scrollY > 420);
@@ -187,6 +189,7 @@ function StickyNav({
     <div
       className="fixed top-0 left-0 w-full z-50 flex items-center justify-between"
       style={{
+        zoom: upscale,
         padding: "18px 56px",
         background: visible ? "rgba(255,255,255,0.75)" : "rgba(255,255,255,0)",
         backdropFilter: visible ? "blur(12px)" : "blur(0px)",
@@ -412,7 +415,10 @@ function GlanceStat({
 function AtAGlanceSection() {
   const GLANCE_DESIGN_WIDTH = 1512.02;
 
-  const [scale, setScale] = useState(1);
+  const vw = useViewportWidth();
+  const upscale = useHomeUpscale();
+  // Card width stays 55% of the usable viewport (scrollbar excluded).
+  const scale = (vw / GLANCE_DESIGN_WIDTH) * 0.55;
   const [designHeight, setDesignHeight] = useState<number | null>(null);
   const glanceContentRef = useRef<HTMLDivElement>(null);
   const [boxRef, dividersVisible] = useInViewOnce<HTMLDivElement>(0.3);
@@ -428,21 +434,11 @@ function AtAGlanceSection() {
   // Scale so the grid renders smaller than the viewport width, then center it
   // inside a black background that spans the full screen edge-to-edge width
   // (same treatment as the footer — no white gaps on the sides).
-  useEffect(() => {
-    const update = () => {
-      const available = window.innerWidth;
-      setScale((available / GLANCE_DESIGN_WIDTH) * 0.55);
-    };
-    update();
-    window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
-  }, []);
-
   return (
-    <section id="at-a-glance" className="w-full flex flex-col items-center" style={{ marginTop: "96px" }}>
-      <Reveal className="w-full flex flex-col items-center gap-[24px]">
-        {/* Eyebrow label — stays at its original literal size, not scaled */}
-        <p className="font-['Inter',sans-serif] font-semibold leading-[29.01px] not-italic text-[#121111] text-[22px] tracking-[5.8019px] uppercase whitespace-nowrap">
+    <section id="at-a-glance" className="w-full flex flex-col items-center" style={{ marginTop: 96 * upscale }}>
+      <Reveal className="w-full flex flex-col items-center" style={{ gap: 24 * upscale }}>
+        {/* Eyebrow label — design size up to 1512px, then grows with the page */}
+        <p style={{ zoom: upscale }} className="font-['Inter',sans-serif] font-semibold leading-[29.01px] not-italic text-[#121111] text-[22px] tracking-[5.8019px] uppercase whitespace-nowrap">
           At a Glance
         </p>
 
@@ -644,13 +640,14 @@ function FaqAccordionItem({
 
 function FaqSection() {
   const [openId, setOpenId] = useState<string | null>(null);
+  const upscale = useHomeUpscale();
 
   const toggle = (id: string) => {
     setOpenId((prev) => (prev === id ? null : id));
   };
 
   return (
-    <section id="faq" className="w-full flex justify-center px-8" style={{ marginTop: "96px" }}>
+    <section id="faq" className="w-full flex justify-center px-8" style={{ marginTop: "96px", zoom: upscale }}>
       <Reveal className="w-full" style={{ maxWidth: "680px" }}>
         {faqs.map((item) => (
           <FaqAccordionItem
@@ -720,6 +717,7 @@ function FtrMailIcon() {
 }
 
 function SiteFooter() {
+  const upscale = useHomeUpscale();
   const socialLinks = [
     { label: "LinkedIn", icon: <FtrLinkedInIcon />, href: "https://www.linkedin.com/in/yotam-eliraz-977b0450/", external: true },
     { label: "Behance", icon: <FtrBehanceIcon />, href: "https://www.behance.net/yotame", external: true },
@@ -728,7 +726,7 @@ function SiteFooter() {
   ];
 
   return (
-    <div className="w-full bg-[#0f0f0f] flex items-end" style={{ marginTop: "96px" }}>
+    <div className="w-full bg-[#0f0f0f] flex items-end" style={{ marginTop: "96px", zoom: upscale }}>
       <footer
         id="contact"
         className="bg-[#161616] rounded-tl-[50px] rounded-tr-[50px] w-full flex flex-col items-start"
@@ -893,6 +891,13 @@ function HeroSlideshow() {
 }
 
 export default function HomePage({ onNavigate }: { onNavigate: (page: string) => void }) {
+  const vw = useViewportWidth();
+  const upscale = Math.max(1, vw / HOME_DESIGN_WIDTH);
+  // The 2x2 grid is 1086px at design size (+104px section padding). Below the
+  // design width it shrinks to fit instead of overflowing; above it the whole
+  // section grows via `upscale`.
+  const GRID_WIDTH = 1086;
+  const gridFit = vw < HOME_DESIGN_WIDTH ? Math.min(1, (vw - 104) / GRID_WIDTH) : 1;
   const [isMobile, setIsMobile] = useState(() => typeof window !== "undefined" && window.innerWidth < 768);
 
   useEffect(() => {
@@ -944,15 +949,11 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
       </div>
 
 
-      <div className="w-[1145.25px] flex flex-col">
-        {/* placeholder — case studies moved to full-width below */}
-      </div>
-
       {/* ── Featured Works — Case Studies grid (Figma Make) ────── */}
       <section
         id="case-studies"
         className="relative w-full bg-white flex flex-col gap-[48px] items-start justify-center"
-        style={{ padding: "10px 52px 48px", marginTop: "20px" }}
+        style={{ padding: "10px 52px 48px", marginTop: "20px", zoom: upscale }}
       >
         {/* Title */}
         <Reveal className="flex items-center justify-center relative shrink-0 w-full">
@@ -969,6 +970,7 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
           <div
             className="inline-grid relative shrink-0"
             style={{
+              zoom: gridFit,
               gridTemplateColumns: "repeat(2, fit-content(100%))",
               gridTemplateRows: "repeat(2, fit-content(100%))",
               gap: "16px",

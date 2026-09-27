@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useTextScramble } from "./useTextScramble";
+import { useViewportWidth } from "./useViewportWidth";
 import heroPhoto from "@/imports/Frame_19__3_.png";
 
 interface Props {
@@ -13,7 +14,9 @@ const DESIGN_HEIGHT = 908;
 const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
 
 export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork }: Props) {
-  const [scale, setScale] = useState(1);
+  // Scales with the usable viewport width (scrollbar excluded, and re-measured
+  // when the scrollbar appears — innerWidth would clip the right edge).
+  const scale = useViewportWidth() / DESIGN_WIDTH;
   const [mounted, setMounted] = useState(false);
   const [floatY, setFloatY] = useState(0);
   const [reducedMotion, setReducedMotion] = useState(false);
@@ -26,13 +29,6 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
     pauseDuration: 5000,
     enabled: !reducedMotion,
   });
-
-  useEffect(() => {
-    const update = () => setScale(window.innerWidth / DESIGN_WIDTH);
-    update();
-    window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
-  }, []);
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
