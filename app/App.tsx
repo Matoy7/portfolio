@@ -1,6 +1,5 @@
 import { useEffect, useState, lazy, Suspense } from "react";
 import HomePage from "./HomePage";
-import GlassOrbCursor from "./GlassOrbCursor";
 
 // Lazy-load case studies — massive win: initial page load doesn't ship 200MB of
 // Alma/Curio/Pulse assets. Each page (and all its images) is fetched only when
@@ -38,14 +37,8 @@ export default function App() {
     setRoute(target);
   };
 
-  // Only show glass orb cursor on desktop with hover capability
-  const showCursor =
-    typeof window !== "undefined" &&
-    window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-
   return (
     <>
-      {showCursor && <GlassOrbCursor />}
       <Suspense fallback={<div style={{ minHeight: "100vh", background: "white" }} />}>
         {route === "alma" && <AlmaPage onNavigate={navigate} />}
         {route === "pulse" && <PulsePage onNavigate={navigate} />}
