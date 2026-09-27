@@ -6182,7 +6182,9 @@ function Frame26() {
         Choose based on age
       </p>
       <Container296 />
-      <div className="absolute h-[1008px] left-[-127.51px] shadow-[-504px_0px_141px_0px_rgba(0,0,0,0),-323px_0px_129px_0px_rgba(0,0,0,0.01),-181px_0px_109px_0px_rgba(0,0,0,0.05),-81px_0px_81px_0px_rgba(0,0,0,0.09),-20px_0px_44px_0px_rgba(0,0,0,0.1)] top-[-46px] w-[1166px]" data-name="image 6">
+      <div className="absolute h-[1008px] left-[-127.51px] top-[-46px] w-[1166px]" data-name="image 6">
+        {/* Shadow cast by the bezel's real outline (outer edge + rounded corner measured from the PNG), not by the rectangular box — so no white/square area shows around the rounded corner. */}
+        <div aria-hidden className="absolute bottom-0 left-[4.5px] pointer-events-none right-0 rounded-tl-[60px] shadow-[-504px_0px_141px_0px_rgba(0,0,0,0),-323px_0px_129px_0px_rgba(0,0,0,0.01),-181px_0px_109px_0px_rgba(0,0,0,0.05),-81px_0px_81px_0px_rgba(0,0,0,0.09),-20px_0px_44px_0px_rgba(0,0,0,0.1)] top-[4.5px]" />
         <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage6} />
       </div>
     </div>
@@ -7029,7 +7031,9 @@ function Frame91() {
 function Frame102() {
   return (
     <div className="absolute h-[1021px] left-[-33px] top-[1206.89px] w-[1154px]">
-      <div className="absolute h-[1021px] left-0 shadow-[878px_908px_250px_0px_rgba(0,0,0,0),562px_581px_250px_0px_rgba(0,0,0,0.01),316px_327px_250px_0px_rgba(0,0,0,0.05),140px_145px_202px_0px_rgba(0,0,0,0.09),35px_36px_111px_0px_rgba(0,0,0,0.1)] top-0 w-[1154px]" data-name="image 8">
+      <div className="absolute h-[1021px] left-0 top-0 w-[1154px]" data-name="image 8">
+        {/* Shadow cast by the bezel's real outline (outer edge + rounded corner measured from the PNG), not by the rectangular box. */}
+        <div aria-hidden className="absolute bottom-[1.5px] left-0 pointer-events-none right-[6px] rounded-br-[75px] shadow-[878px_908px_250px_0px_rgba(0,0,0,0),562px_581px_250px_0px_rgba(0,0,0,0.01),316px_327px_250px_0px_rgba(0,0,0,0.05),140px_145px_202px_0px_rgba(0,0,0,0.09),35px_36px_111px_0px_rgba(0,0,0,0.1)] top-0" />
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <img alt="" className="absolute h-[101.43%] left-0 max-w-none top-[-1.4%] w-full" src={imgImage8} />
         </div>
