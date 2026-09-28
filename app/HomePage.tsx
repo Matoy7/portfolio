@@ -984,7 +984,7 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
                   className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[20px] size-full transition-transform duration-[400ms] ease-out group-hover:scale-[1.04]"
                   src={imgPulseCard}
                 />
-                <CaseStudyCardOverlay title="Pulse" tags={["Dashboard", "Analytics"]} top="212px" />
+                <CaseStudyCardOverlay title="Pulse" tags={["Dashboard", "B2B"]} top="212px" />
               </CaseStudyGridCard>
             </Reveal>
 
@@ -996,7 +996,7 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
                   className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[20px] size-full transition-transform duration-[400ms] ease-out group-hover:scale-[1.04]"
                   src={imgAlmaCard}
                 />
-                <CaseStudyCardOverlay title="Alma" tags={["Mobile App", "Health"]} top="212px" />
+                <CaseStudyCardOverlay title="Alma" tags={["Mobile App", "B2C"]} top="212px" />
               </CaseStudyGridCard>
             </Reveal>
 
@@ -1008,7 +1008,7 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
                   className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[20px] size-full transition-transform duration-[400ms] ease-out group-hover:scale-[1.04]"
                   src={imgCurioCard}
                 />
-                <CaseStudyCardOverlay title="Curio" tags={["E-Commerce", "Kids"]} top="212px" />
+                <CaseStudyCardOverlay title="Curio" tags={["E-Commerce", "B2C"]} top="212px" />
               </CaseStudyGridCard>
             </Reveal>
 

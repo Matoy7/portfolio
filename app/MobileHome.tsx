@@ -475,13 +475,13 @@ function MobileFeaturedWorks({ onNavigate }: { onNavigate: (page: string) => voi
 
       <div className="flex flex-col" style={{ gap: "14px" }}>
         <Reveal delay={0}>
-          <MobileWorkCard image={imgPulseCard} title="Pulse" tags={["Dashboard", "Analytics"]} onClick={() => onNavigate("pulse")} />
+          <MobileWorkCard image={imgPulseCard} title="Pulse" tags={["Dashboard", "B2B"]} onClick={() => onNavigate("pulse")} />
         </Reveal>
         <Reveal delay={70}>
-          <MobileWorkCard image={imgAlmaCard} title="Alma" tags={["Mobile App", "Health"]} onClick={() => onNavigate("alma")} />
+          <MobileWorkCard image={imgAlmaCard} title="Alma" tags={["Mobile App", "B2C"]} onClick={() => onNavigate("alma")} />
         </Reveal>
         <Reveal delay={140}>
-          <MobileWorkCard image={imgCurioCard} title="Curio" tags={["E-Commerce", "Kids"]} onClick={() => onNavigate("curio")} />
+          <MobileWorkCard image={imgCurioCard} title="Curio" tags={["E-Commerce", "B2C"]} onClick={() => onNavigate("curio")} />
         </Reveal>
       </div>
     </section>
