@@ -990,7 +990,7 @@ function WireframesStep() {
 
 function OnboardingImage() {
   return (
-    <div className="col-2 h-[337.168px] justify-self-start relative row-1 self-start shrink-0 w-[156.43px]" data-name="Onboarding image">
+    <div className="col-1 h-[337.168px] justify-self-start relative row-1 self-start shrink-0 w-[156.43px]" data-name="Onboarding image">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <img alt="" className="absolute h-[174.41%] left-[-116.29%] max-w-none top-[-36.65%] w-[334.5%]" src={imgOnboardingImage} />
         {/* Onboarding screen recording, playing inside this mockup's phone screen */}
@@ -1201,9 +1201,8 @@ function OnboardingImage3() {
 
 function OnboardingStep() {
   return (
-    <div className="relative shrink-0" data-name="Onboarding step">
-      <div className="bg-clip-padding border-0 border-[transparent] border-solid gap-x-[26.60942840576172px] gap-y-[13.291823387145996px] grid-cols-[repeat(2,fit-content(100%))] grid-rows-[repeat(1,fit-content(100%))] inline-grid relative size-full">
-        <WireframesStep />
+    <div className="relative self-center shrink-0" data-name="Onboarding step">
+      <div className="bg-clip-padding border-0 border-[transparent] border-solid gap-x-[26.60942840576172px] gap-y-[13.291823387145996px] align-top grid-cols-[repeat(1,fit-content(100%))] grid-rows-[repeat(1,fit-content(100%))] inline-grid relative size-full">
         <OnboardingImage />
       </div>
     </div>

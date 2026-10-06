@@ -1005,7 +1005,7 @@ function WireframesStep2() {
 
 function OnboardingImage() {
   return (
-    <div className="col-2 h-[735.268px] relative row-1 shrink-0 w-[341.13px]" data-name="Onboarding image">
+    <div className="col-1 h-[735.268px] relative row-1 shrink-0 w-[341.13px]" data-name="Onboarding image">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <img alt="" className="absolute h-[174.41%] left-[-116.29%] max-w-none top-[-36.65%] w-[334.5%]" src={imgOnboardingImage} />
         {/* Onboarding screen recording, playing inside this mockup's phone screen */}
@@ -1249,8 +1249,7 @@ function OnboardingImage3() {
 
 function OnboardingStep() {
   return (
-    <div className="gap-x-[200px] gap-y-[40px] grid-cols-[repeat(2,fit-content(100%))] grid-rows-[repeat(1,fit-content(100%))] inline-grid relative shrink-0" data-name="Onboarding step">
-      <WireframesStep2 />
+    <div className="gap-x-[200px] gap-y-[40px] grid-cols-[repeat(1,fit-content(100%))] grid-rows-[repeat(1,fit-content(100%))] inline-grid relative shrink-0" data-name="Onboarding step">
       <OnboardingImage />
     </div>
   );
@@ -1259,7 +1258,7 @@ function OnboardingStep() {
 function OnboardingContent() {
   return (
     <div className="h-[807px] relative shrink-0 w-full" data-name="Onboarding content">
-      <div className="content-stretch flex flex-col items-start px-[426px] relative size-full">
+      <div className="content-stretch flex flex-col items-center px-[426px] relative size-full">
         <OnboardingStep />
       </div>
     </div>
