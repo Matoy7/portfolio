@@ -45,6 +45,15 @@ import imgMainImage1 from "./39d4789caec75f82502a16d35dd19efb793b6608.png";
 import imgEscalators from "./e9adecc2cec9c9504cc7329feec797726cfd50ee.png";
 import imgDeviceImage from "./156283ba77d5f368bb41b709512cdc36b6b66027.png";
 import imgAppIcon from "./cdc34a2c78496aefc8fe50e9d80dad1e9466727b.png";
+import MockupScreenVideo from "@/app/MockupScreenVideo";
+import onboardingStep1 from "@/imports/AlmaOnboarding/step-1.mp4";
+import onboardingStep1Webm from "@/imports/AlmaOnboarding/step-1.webm";
+import onboardingStep2 from "@/imports/AlmaOnboarding/step-2.mp4";
+import onboardingStep2Webm from "@/imports/AlmaOnboarding/step-2.webm";
+import onboardingStep3 from "@/imports/AlmaOnboarding/step-3.mp4";
+import onboardingStep3Webm from "@/imports/AlmaOnboarding/step-3.webm";
+import onboardingStep4 from "@/imports/AlmaOnboarding/step-4.mp4";
+import onboardingStep4Webm from "@/imports/AlmaOnboarding/step-4.webm";
 
 function HeroContent() {
   return (
@@ -1005,6 +1014,10 @@ function OnboardingImage() {
     <div className="col-2 h-[735.268px] relative row-1 shrink-0 w-[341.13px]" data-name="Onboarding image">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <img alt="" className="absolute h-[174.41%] left-[-116.29%] max-w-none top-[-36.65%] w-[334.5%]" src={imgOnboardingImage} />
+        {/* Onboarding screen recording, playing inside this mockup's phone screen */}
+        <div className="absolute h-[174.41%] left-[-116.29%] top-[-36.65%] w-[334.5%]">
+          <MockupScreenVideo mp4={onboardingStep1} webm={onboardingStep1Webm} />
+        </div>
       </div>
     </div>
   );
@@ -1015,6 +1028,10 @@ function OnboardingImage1() {
     <div className="col-1 h-[735.268px] relative row-2 shrink-0 w-[341.13px]" data-name="Onboarding image">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <img alt="" className="absolute h-[177.78%] left-[-126.86%] max-w-none top-[-39.13%] w-[353.72%]" src={imgOnboardingImage1} />
+        {/* Onboarding screen recording, playing inside this mockup's phone screen */}
+        <div className="absolute h-[177.78%] left-[-126.86%] top-[-39.13%] w-[353.72%]">
+          <MockupScreenVideo mp4={onboardingStep2} webm={onboardingStep2Webm} />
+        </div>
       </div>
     </div>
   );
@@ -1158,6 +1175,10 @@ function OnboardingImage2() {
       <div className="col-[1/span_2] justify-self-stretch relative row-[1/span_2] self-stretch shrink-0" data-name="Mokker">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <img alt="" className="absolute h-[175.52%] left-[-121.08%] max-w-none top-[-37.36%] w-[342.16%]" src={imgMokker} />
+          {/* Onboarding screen recording, playing inside this mockup's phone screen */}
+          <div className="absolute h-[175.52%] left-[-121.08%] top-[-37.36%] w-[342.16%]">
+            <MockupScreenVideo mp4={onboardingStep4} webm={onboardingStep4Webm} />
+          </div>
         </div>
       </div>
     </div>
@@ -1235,6 +1256,10 @@ function OnboardingImage3() {
     <div className="col-2 h-[732px] justify-self-start relative row-3 self-start shrink-0 w-[339px]" data-name="Onboarding image">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <img alt="" className="absolute h-[177.71%] left-[-124.65%] max-w-none top-[-38.89%] w-[348.87%]" src={imgOnboardingImage2} />
+        {/* Onboarding screen recording, playing inside this mockup's phone screen */}
+        <div className="absolute h-[177.71%] left-[-124.65%] top-[-38.89%] w-[348.87%]">
+          <MockupScreenVideo mp4={onboardingStep3} webm={onboardingStep3Webm} />
+        </div>
       </div>
     </div>
   );
