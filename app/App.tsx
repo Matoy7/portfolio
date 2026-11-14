@@ -1,5 +1,6 @@
 import { useEffect, useState, lazy, Suspense } from "react";
 import HomePage from "./HomePage";
+import PixelPerfectInvite from "./PixelPerfectInvite";
 
 // Lazy-load case studies — massive win: initial page load doesn't ship 200MB of
 // Alma/Curio/Pulse assets. Each page (and all its images) is fetched only when
@@ -45,6 +46,7 @@ export default function App() {
         {route === "curio" && <CurioPage onNavigate={navigate} />}
       </Suspense>
       {route === "home" && <HomePage onNavigate={navigate} />}
+      <PixelPerfectInvite />
     </>
   );
 }
