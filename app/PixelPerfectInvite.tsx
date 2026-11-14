@@ -13,7 +13,8 @@ import thumbImg from "@/imports/PixelPerfect/thumbnail.png";
  * - Only the cat (and the open bubble) take pointer events; the rest of the
  *   fixed layer is click-through, so it never blocks page content.
  * - Closes on pointer leave (desktop), outside tap/click, or Escape.
- * - The X dismisses the whole widget; remembered in localStorage.
+ * - The X (on the cat) hides the whole widget until the page is reloaded.
+ * - Idle peeking runs for a few cycles after load, then the cat stays still.
  * - prefers-reduced-motion: no idle peeking, no sliding — the bubble just
  *   fades in/out.
  */
@@ -73,7 +74,7 @@ const CSS = `
 .ppi-cat:focus-visible { outline: 2px solid #8b7cf6; outline-offset: 4px; border-radius: 16px; }
 
 /* idle: every ~7s peek out a little, hold, slip back */
-.ppi:not(.is-open) .ppi-cat { animation: ppi-peek 7s ease-in-out 2.5s infinite; }
+.ppi.is-idle:not(.is-open) .ppi-cat { animation: ppi-peek 7s ease-in-out 2.5s infinite; }
 @keyframes ppi-peek {
   0%, 62%, 100% { transform: translateX(var(--ppi-rest)); }
   70%           { transform: translateX(12%) rotate(-4deg); }
@@ -123,7 +124,7 @@ const CSS = `
 }
 
 .ppi-title {
-  margin: 0 22px 12px 2px; /* room for the close button */
+  margin: 0 2px 12px;
   font-size: 16px;
   line-height: 1.3;
   font-weight: 700;
@@ -146,23 +147,27 @@ const CSS = `
 /* ---------- close (dismiss) ---------- */
 .ppi-close {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 26px;
-  height: 26px;
+  z-index: 3;
+  top: -6px;
+  left: -8px;
+  width: 24px;
+  height: 24px;
   display: grid;
   place-items: center;
   padding: 0;
   border: 0;
   border-radius: 999px;
-  background: transparent;
+  background: var(--ppi-lav);
   color: #0a0a0a;
   cursor: pointer;
-  opacity: 0.55;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.6);
   -webkit-tap-highlight-color: transparent;
-  transition: opacity 0.2s ease, background-color 0.2s ease;
+  transition: opacity 0.2s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
 }
-.ppi-close:hover, .ppi-close:focus-visible { opacity: 1; background: var(--ppi-lav); outline: none; }
+.ppi.is-open .ppi-close { opacity: 1; transform: none; pointer-events: auto; transition-delay: 0.12s; }
+.ppi-close:hover, .ppi-close:focus-visible { background: #e9e4ff; outline: none; }
 .ppi-close svg { display: block; }
 
 /* dismissed: the cat slips away behind the edge for good */
@@ -178,15 +183,14 @@ const CSS = `
 }
 `;
 
-const DISMISS_KEY = "ppi-dismissed";
-const readDismissed = () => {
-  try { return window.localStorage.getItem(DISMISS_KEY) === "1"; } catch { return false; }
-};
+// idle peeking: 3 peeks (7s each, starting after 2.5s), then the cat stays still
+const IDLE_MS = 2500 + 7000 * 3;
 
 export default function PixelPerfectInvite() {
   const [open, setOpen] = useState(false);
-  // Visitor closed it with the X: remembered in this browser, so it stays gone.
-  const [dismissed, setDismissed] = useState(readDismissed);
+  // Closed with the X: hidden for this page view only (comes back on reload).
+  const [dismissed, setDismissed] = useState(false);
+  const [idle, setIdle] = useState(true);
   const [leaving, setLeaving] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
   const closeTimer = useRef<number | undefined>(undefined);
@@ -214,11 +218,15 @@ export default function PixelPerfectInvite() {
 
   useEffect(() => () => window.clearTimeout(closeTimer.current), []);
 
+  useEffect(() => {
+    const t = window.setTimeout(() => setIdle(false), IDLE_MS);
+    return () => window.clearTimeout(t);
+  }, []);
+
   const dismiss = () => {
     window.clearTimeout(closeTimer.current);
     setOpen(false);
     setLeaving(true);
-    try { window.localStorage.setItem(DISMISS_KEY, "1"); } catch { /* storage blocked: just hide for this visit */ }
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     window.setTimeout(() => setDismissed(true), reduce ? 0 : 480);
   };
@@ -240,7 +248,7 @@ export default function PixelPerfectInvite() {
   return (
     <div
       ref={rootRef}
-      className={`ppi${open ? " is-open" : ""}${leaving ? " is-leaving" : ""}`}
+      className={`ppi${open ? " is-open" : ""}${idle ? " is-idle" : ""}${leaving ? " is-leaving" : ""}`}
       onMouseLeave={hoverClose}
     >
       <style>{CSS}</style>
@@ -253,17 +261,6 @@ export default function PixelPerfectInvite() {
         aria-hidden={!open}
         onMouseEnter={hoverOpen}
       >
-        <button
-          type="button"
-          className="ppi-close"
-          aria-label="Close and don't show again"
-          tabIndex={open ? 0 : -1}
-          onClick={dismiss}
-        >
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-            <path d="M2 2l8 8M10 2l-8 8" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-          </svg>
-        </button>
         <p className="ppi-title">Psst... check out this fun little thing I made.</p>
         <a
           className="ppi-thumb"
@@ -293,6 +290,17 @@ export default function PixelPerfectInvite() {
         }}
       >
         <img src={catImg} alt="" draggable={false} />
+      </button>
+      <button
+        type="button"
+        className="ppi-close"
+        aria-label="Hide"
+        tabIndex={open ? 0 : -1}
+        onClick={dismiss}
+      >
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+          <path d="M2 2l8 8M10 2l-8 8" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+        </svg>
       </button>
     </div>
   );
