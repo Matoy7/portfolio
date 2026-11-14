@@ -13,6 +13,7 @@ import thumbImg from "@/imports/PixelPerfect/thumbnail.png";
  * - Only the cat (and the open bubble) take pointer events; the rest of the
  *   fixed layer is click-through, so it never blocks page content.
  * - Closes on pointer leave (desktop), outside tap/click, or Escape.
+ * - The X dismisses the whole widget; remembered in localStorage.
  * - prefers-reduced-motion: no idle peeking, no sliding — the bubble just
  *   fades in/out.
  */
@@ -122,7 +123,7 @@ const CSS = `
 }
 
 .ppi-title {
-  margin: 0 2px 12px;
+  margin: 0 22px 12px 2px; /* room for the close button */
   font-size: 16px;
   line-height: 1.3;
   font-weight: 700;
@@ -142,6 +143,31 @@ const CSS = `
 .ppi-thumb:active { transform: scale(0.98); }
 .ppi-thumb:focus-visible { box-shadow: 0 0 0 2px #fff, 0 0 0 4px #8b7cf6; }
 
+/* ---------- close (dismiss) ---------- */
+.ppi-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: #0a0a0a;
+  cursor: pointer;
+  opacity: 0.55;
+  -webkit-tap-highlight-color: transparent;
+  transition: opacity 0.2s ease, background-color 0.2s ease;
+}
+.ppi-close:hover, .ppi-close:focus-visible { opacity: 1; background: var(--ppi-lav); outline: none; }
+.ppi-close svg { display: block; }
+
+/* dismissed: the cat slips away behind the edge for good */
+.ppi.is-leaving .ppi-cat { animation: none; transform: translateX(115%); transition-duration: 0.45s; }
+
 /* ---------- reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   .ppi:not(.is-open) .ppi-cat { animation: none; }
@@ -152,8 +178,16 @@ const CSS = `
 }
 `;
 
+const DISMISS_KEY = "ppi-dismissed";
+const readDismissed = () => {
+  try { return window.localStorage.getItem(DISMISS_KEY) === "1"; } catch { return false; }
+};
+
 export default function PixelPerfectInvite() {
   const [open, setOpen] = useState(false);
+  // Visitor closed it with the X: remembered in this browser, so it stays gone.
+  const [dismissed, setDismissed] = useState(readDismissed);
+  const [leaving, setLeaving] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
   const closeTimer = useRef<number | undefined>(undefined);
   // true on devices with a real hover pointer (mouse / trackpad)
@@ -180,8 +214,17 @@ export default function PixelPerfectInvite() {
 
   useEffect(() => () => window.clearTimeout(closeTimer.current), []);
 
+  const dismiss = () => {
+    window.clearTimeout(closeTimer.current);
+    setOpen(false);
+    setLeaving(true);
+    try { window.localStorage.setItem(DISMISS_KEY, "1"); } catch { /* storage blocked: just hide for this visit */ }
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.setTimeout(() => setDismissed(true), reduce ? 0 : 480);
+  };
+
   const hoverOpen = () => {
-    if (!canHover.current) return;
+    if (!canHover.current || leaving) return;
     window.clearTimeout(closeTimer.current);
     setOpen(true);
   };
@@ -192,10 +235,12 @@ export default function PixelPerfectInvite() {
     closeTimer.current = window.setTimeout(() => setOpen(false), 220);
   };
 
+  if (dismissed) return null;
+
   return (
     <div
       ref={rootRef}
-      className={`ppi${open ? " is-open" : ""}`}
+      className={`ppi${open ? " is-open" : ""}${leaving ? " is-leaving" : ""}`}
       onMouseLeave={hoverClose}
     >
       <style>{CSS}</style>
@@ -208,6 +253,17 @@ export default function PixelPerfectInvite() {
         aria-hidden={!open}
         onMouseEnter={hoverOpen}
       >
+        <button
+          type="button"
+          className="ppi-close"
+          aria-label="Close and don't show again"
+          tabIndex={open ? 0 : -1}
+          onClick={dismiss}
+        >
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+            <path d="M2 2l8 8M10 2l-8 8" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+          </svg>
+        </button>
         <p className="ppi-title">Psst... check out this fun little thing I made.</p>
         <a
           className="ppi-thumb"
@@ -231,6 +287,7 @@ export default function PixelPerfectInvite() {
         onMouseEnter={hoverOpen}
         onClick={() => {
           // Touch: tap toggles. Mouse: hover already opened it; a click keeps it open.
+          if (leaving) return;
           if (canHover.current) setOpen(true);
           else setOpen((o) => !o);
         }}
