@@ -7,7 +7,7 @@ import thumbImg from "@/imports/PixelPerfect/thumbnail.png";
  *
  * Pigmi the cat hides behind the right edge of the viewport (bottom-right),
  * now and then peeks out a little, and on hover (desktop) / tap (touch)
- * slides a small speech bubble out from behind itself: a Hebrew headline and
+ * slides a small speech bubble out from behind itself: a short headline and
  * the game thumbnail, which opens the game in a new tab.
  *
  * - Only the cat (and the open bubble) take pointer events; the rest of the
@@ -34,7 +34,7 @@ const CSS = `
   bottom: 28px;
   z-index: 55;
   pointer-events: none;
-  font-family: Arimo, "Segoe UI", Arial, sans-serif;
+  font-family: Inter, sans-serif;
 }
 @media (max-width: 767.98px) {
   .ppi { --ppi-cat-h: 84px; bottom: 18px; }
@@ -95,8 +95,8 @@ const CSS = `
   background: #fff;
   /* the lavender accent: a whisper of tint around the white card */
   box-shadow: 0 0 0 6px var(--ppi-lav), 0 10px 30px rgba(110, 90, 220, 0.08);
-  direction: rtl;
-  text-align: right;
+  direction: ltr;
+  text-align: left;
   pointer-events: none;
   visibility: hidden;
   opacity: 0;
@@ -126,7 +126,6 @@ const CSS = `
   font-size: 16px;
   line-height: 1.3;
   font-weight: 700;
-  white-space: nowrap;
   color: #0a0a0a;
   letter-spacing: 0;
 }
@@ -209,14 +208,14 @@ export default function PixelPerfectInvite() {
         aria-hidden={!open}
         onMouseEnter={hoverOpen}
       >
-        <p className="ppi-title" lang="he">בא לכם 5 דקות הפסקה?</p>
+        <p className="ppi-title">Psst... check out this fun little thing I made.</p>
         <a
           className="ppi-thumb"
           href={GAME_URL}
           target="_blank"
           rel="noopener noreferrer"
           tabIndex={open ? 0 : -1}
-          aria-label="PIXEL PERFECT — פתיחת המשחק בלשונית חדשה"
+          aria-label="Play PIXEL PERFECT (opens in a new tab)"
           onClick={() => setOpen(false)}
         >
           <img src={thumbImg} alt="PIXEL PERFECT" draggable={false} />
@@ -228,7 +227,7 @@ export default function PixelPerfectInvite() {
         className="ppi-cat"
         aria-expanded={open}
         aria-controls="ppi-bubble"
-        aria-label="PIXEL PERFECT — בא לכם 5 דקות הפסקה?"
+        aria-label="Psst... check out this fun little thing I made."
         onMouseEnter={hoverOpen}
         onClick={() => {
           // Touch: tap toggles. Mouse: hover already opened it; a click keeps it open.
