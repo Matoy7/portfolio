@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useLayoutEffect } from "react";
 import MobileHome from "./MobileHome";
 import { useViewportWidth, useHomeUpscale, HOME_DESIGN_WIDTH } from "./useViewportWidth";
+import HighlightMark from "./HighlightMark";
 import NewHero from "./NewHero";
 import imgHero from "@/imports/Frame11/376b4ff69c76e4c7548a2d9016b80b772b65dbee.png";
 import imgHeroDashboard from "@/imports/Frame11/hero_dashboard.png";
@@ -750,7 +751,7 @@ function SiteFooter() {
               <div className="text-[#f5f5f5] text-[44px] text-center tracking-[-0.88px] leading-[1.2]" style={{ fontWeight: 500 }}>
                 <p className="mb-0">
                   <span style={{ fontWeight: 500 }}>{"Let's "}</span>
-                  <span style={{ fontWeight: 800 }}>build</span>
+                  <span style={{ fontWeight: 800 }}><HighlightMark delay={400} bleed={[0.06, 0.04]} ink="#161616">build</HighlightMark></span>
                   <span style={{ fontWeight: 500 }}>{" something"}</span>
                 </p>
                 <p>great together</p>
@@ -961,7 +962,7 @@ export default function HomePage({ onNavigate }: { onNavigate: (page: string) =>
             className="flex-[1_0_0] font-['Inter',sans-serif] font-semibold leading-[29.01px] min-w-px not-italic relative text-[#121111] text-[22px] tracking-[5.8019px] uppercase whitespace-nowrap"
             dir="auto"
           >
-            Selected Case Studies
+            Selected <HighlightMark delay={400} bleed={[0.3, 0.05]}>Case Studies</HighlightMark>
           </p>
         </Reveal>
 

@@ -751,7 +751,7 @@ function MobileFooter() {
               letterSpacing: "-0.6px",
             }}
           >
-            Let's <strong style={{ fontWeight: 800 }}>build</strong> something great together
+            Let's <strong style={{ fontWeight: 800 }}><HighlightMark delay={400} bleed={[0.06, 0.04]} ink="#161616">build</HighlightMark></strong> something great together
           </h2>
           <p style={{ fontWeight: 400, fontSize: "14px", color: "#9ca3af", margin: "14px 0 0" }}>
             Currently open to new opportunities.

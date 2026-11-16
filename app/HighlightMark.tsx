@@ -25,10 +25,16 @@ export default function HighlightMark({
   children,
   delay = 0,
   bleed = [0.32, 0.3],
+  ink,
 }: {
   children: ReactNode;
   delay?: number;
   bleed?: [number, number];
+  /** Text colour under the stroke, for light text on dark sections (white on
+   *  yellow is unreadable). A clone of the word in this colour is revealed
+   *  with the exact same left-to-right wipe, so the word reads dark wherever
+   *  the marker has passed. The original text itself is never animated. */
+  ink?: string;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
   const [drawn, setDrawn] = useState(false);
@@ -79,6 +85,23 @@ export default function HighlightMark({
         }}
       />
       {children}
+      {ink && (
+        <span
+          aria-hidden
+          style={{
+            position: "absolute",
+            inset: 0,
+            color: ink,
+            clipPath: drawn ? "inset(0 0 0 0)" : "inset(0 100% 0 0)",
+            WebkitClipPath: drawn ? "inset(0 0 0 0)" : "inset(0 100% 0 0)",
+            transition: instant ? "none" : `clip-path ${DURATION}ms ${EASE}, -webkit-clip-path ${DURATION}ms ${EASE}`,
+            pointerEvents: "none",
+            userSelect: "none",
+          }}
+        >
+          {children}
+        </span>
+      )}
     </span>
   );
 }
