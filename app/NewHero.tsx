@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useTextScramble } from "./useTextScramble";
 import { useViewportWidth } from "./useViewportWidth";
+import HighlightMark from "./HighlightMark";
 import heroPhoto from "@/imports/Frame_19__3_.png";
 
 interface Props {
@@ -198,7 +199,11 @@ export default function NewHero({ onNavigateAbout, onScrollContact, onScrollWork
             transition: reducedMotion ? "none" : `opacity 750ms ${EASE} 80ms, transform 750ms ${EASE} 80ms`,
           }}
         >
-          {"A product\ndesigner\nwith a\ndevelopment\nbackground"}
+          {"A product\n"}
+          <HighlightMark delay={500}>designer</HighlightMark>
+          {"\nwith a\n"}
+          <HighlightMark delay={850}>development</HighlightMark>
+          {"\nbackground"}
         </p>
 
         {/* Body copy */}

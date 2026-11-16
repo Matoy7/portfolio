@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import HighlightMark from "./HighlightMark";
 import mobilePortrait from "@/imports/mobile-portrait.png";
 import imgPulseCard from "@/imports/Frame13/b408d64d475512d56275485cd8a85bf540ac8e83.png";
 import imgAlmaCard from "@/imports/Frame13/fde8b98f3f8528432f9f6c69d09f5bccf388e844.png";
@@ -330,7 +331,8 @@ function MobileHero() {
           margin: "16px 0 0",
         }}
       >
-        A product designer with a development background
+        A product <HighlightMark delay={500} bleed={[0.04, 0.02]}>designer</HighlightMark> with a{" "}
+        <HighlightMark delay={850} bleed={[0.04, 0.02]}>development</HighlightMark> background
       </h1>
 
       {/* Portrait card */}
